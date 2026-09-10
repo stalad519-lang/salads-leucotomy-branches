@@ -1,173 +1,303 @@
-import type { WikiPage, WikiSettings } from "@/lib/types"
+import type { PageCopy, WikiPage } from "@/lib/types"
 
 const createdAt = "2026-09-10T12:00:00.000Z"
 
-export const defaultSettings: WikiSettings = {
-  name: "星尘百科",
-  tagline: "先写起来，再用免费地址发给别人看",
+export const defaultSettings = {
+  name: "Salad's leucotomy branches",
+  tagline: "",
 }
 
 function page(
-  partial: Omit<WikiPage, "createdAt" | "updatedAt" | "revisions">
+  slug: string,
+  en: PageCopy,
+  zh?: Partial<PageCopy>
 ): WikiPage {
   return {
-    ...partial,
+    slug,
+    locales: zh ? { en, zh } : { en },
     createdAt,
     updatedAt: createdAt,
     revisions: [
       {
         at: createdAt,
-        summary: "初始版本",
-        title: partial.title,
-        content: partial.content,
-        categories: partial.categories,
-        infobox: partial.infobox,
+        locale: "en",
+        summary: "Initial version",
+        title: en.title,
+        content: en.content,
+        categories: en.categories,
+        infobox: en.infobox,
       },
     ],
   }
 }
 
 export const seedPages: WikiPage[] = [
-  page({
-    slug: "首页",
-    title: "首页",
-    categories: ["帮助"],
-    content: `欢迎来到**星尘百科**。这是一份可以在浏览器里直接写的个人维基：条目能搜、能改、也能用双方括号互相链接。
+  page(
+    "Main_Page",
+    {
+      title: "Main Page",
+      categories: ["Help"],
+      content: `Welcome to the wiki for **Salad's leucotomy branches**.
 
-当前预览用的是临时地址。以后要发给国内和国际的朋友，推荐把站点发布到 **Cloudflare** 的免费域名 \`你的项目.pages.dev\`。原因写在 [[帮助:免费域名]]。
+This is a game encyclopedia: characters, procedures, locations, and the branching routes. English is the source language. Switch to 中文 in the header; any article without a Chinese translation keeps the English text.
 
-## 先看这几篇
+## Start here
 
-* [[帮助:如何编辑]] — 标题、分类、信息框、维基链接
-* [[帮助:免费域名]] — 为什么选 \`pages.dev\`，以及国内访问实际会怎样
-* [[星尘号]] — 带信息框的示例条目
-* [[星尘港]] — 和上一篇互相链接的地点
+* [[Salad's leucotomy branches|The game]] — overview, platform, and tone
+* [[Salad]] — the person the title names
+* [[Leucotomy]] — the procedure at the center of play
+* [[Branches]] — how routes split and close
+* [[The Q]] — the emblem (English only, to show fallback)
 
-## 你现在就能做的事
+## How to write
 
-1. 点右上角 **搜索**，搜「星尘」或「域名」
-2. 打开任意条目，切到 **编辑** 改一句话后保存
-3. 用 **新建页面** 写你真正想做的百科（游戏、同人、公司资料都可以）
-4. 内容保存在你这台设备的浏览器里。清空站点数据会丢掉未导出的修改
+See [[Help:Editing]] for wiki links, categories, and infoboxes. Create a page, then point to it with \`[[Page name]]\`.`,
+    },
+    {
+      title: "首页",
+      categories: ["Help"],
+      content: `欢迎来到 **Salad's leucotomy branches** 的游戏百科。
 
-想换维基名字，点顶栏的百科设置。`,
+这里收录人物、术式、地点和分支路线。网站以英语为原文。顶栏可切到中文；还没有中文的条目会继续显示英语。
+
+## 从这里开始
+
+* [[Salad's leucotomy branches|游戏]] — 概述、平台与气质
+* [[Salad]] — 标题里的那个人
+* [[Leucotomy]] — 玩法核心的术式
+* [[Branches]] — 路线如何分叉与闭合
+* [[The Q]] — 徽章（本条暂无中文，用来演示回退）
+
+## 怎么写
+
+编辑方法见 [[Help:Editing]]。新建页面后，用 \`[[条目名]]\` 链过去。`,
+    }
+  ),
+  page(
+    "Salad's_leucotomy_branches",
+    {
+      title: "Salad's leucotomy branches",
+      categories: ["Game"],
+      infobox: {
+        heading: "Salad's leucotomy branches",
+        caption: "Game",
+        rows: [
+          { label: "Type", value: "Narrative / route game" },
+          { label: "Setting", value: "A clinic of branching wards" },
+          { label: "Focus", value: "[[Leucotomy]], [[Branches]], [[Salad]]" },
+          { label: "Emblem", value: "[[The Q]]" },
+        ],
+      },
+      content: `**Salad's leucotomy branches** is a game about a mind that is opened, mapped, and split. Players follow [[Salad]] through wards where a [[Leucotomy|leucotomy]] is not only medical history but a playable choice: cut, spare, or follow a nerve into another [[Branches|branch]].
+
+## Tone
+
+The emblem is a brain inside a Q-shaped mark. Routes are clinical on the surface and personal underneath. Articles on this wiki should stay encyclopedic: what a thing is, where it appears, and how it connects, not walkthrough spoilers unless a page is clearly marked.
+
+## On this wiki
+
+Use infoboxes for games, people, and procedures. Keep titles in English so links stay stable; Chinese is an overlay, not a second set of page names.
+
+If you are filling lore, start with [[Salad]], [[Leucotomy]], and [[Branches]].`,
+    },
+    {
+      title: "Salad's leucotomy branches",
+      categories: ["Game"],
+      infobox: {
+        heading: "Salad's leucotomy branches",
+        caption: "游戏",
+        rows: [
+          { label: "类型", value: "叙事 / 路线游戏" },
+          { label: "舞台", value: "不断分叉的病房" },
+          { label: "核心", value: "[[Leucotomy]]、[[Branches]]、[[Salad]]" },
+          { label: "徽章", value: "[[The Q]]" },
+        ],
+      },
+      content: `**Salad's leucotomy branches** 讲的是一个被打开、测绘、再切开的意识。玩家跟着 [[Salad]] 走过一间间病房：[[Leucotomy|白质切开]] 不只是医学史，也是可玩的选择——切断、留下，或顺着一条神经走进另一条 [[Branches|分支]]。
+
+## 气质
+
+徽章是 Q 形框里的脑。路线表面像病历，底下是私人的。本百科的写法应像词条：它是什么、在哪出现、和谁相连。除非页面标明是攻略，否则少写剧透逐步操作。
+
+## 在本站
+
+游戏、人物、术式用信息框。条目标题尽量保持英语，这样链接稳定；中文是覆盖层，不是第二套页面名。
+
+补设定时，从 [[Salad]]、[[Leucotomy]]、[[Branches]] 开始即可。`,
+    }
+  ),
+  page(
+    "Salad",
+    {
+      title: "Salad",
+      categories: ["Characters"],
+      infobox: {
+        heading: "Salad",
+        caption: "Character",
+        rows: [
+          { label: "Role", value: "Title character / viewpoint" },
+          { label: "Appears in", value: "[[Salad's leucotomy branches]]" },
+          { label: "Tied to", value: "[[Leucotomy]], [[Branches]]" },
+        ],
+      },
+      content: `**Salad** is the name the game carries in its title. On this wiki, Salad is treated as the viewpoint the [[Branches]] are drawn around: the person who enters the wards, receives or refuses a [[Leucotomy]], and whose memories may not stay in one piece.
+
+## Notes for editors
+
+Replace this stub with confirmed names, pronouns, and appearances as the game is documented. Until then, keep links pointing here so later facts have a home.`,
+    },
+    {
+      title: "Salad",
+      categories: ["Characters"],
+      infobox: {
+        heading: "Salad",
+        caption: "人物",
+        rows: [
+          { label: "身份", value: "标题人物 / 视角" },
+          { label: "出现于", value: "[[Salad's leucotomy branches]]" },
+          { label: "相关", value: "[[Leucotomy]]、[[Branches]]" },
+        ],
+      },
+      content: `**Salad** 是游戏标题里的那个名字。在本百科里，Salad 是 [[Branches]] 围绕的视角：走进病房、接受或拒绝 [[Leucotomy]] 的人，记忆不一定仍是一整块。
+
+## 给编辑
+
+有确切姓名、代词和出场后，请改掉这篇草稿。现在先把链接指到这里，方便以后补事实。`,
+    }
+  ),
+  page(
+    "Leucotomy",
+    {
+      title: "Leucotomy",
+      categories: ["Mechanics"],
+      infobox: {
+        heading: "Leucotomy",
+        caption: "Procedure / mechanic",
+        rows: [
+          { label: "Also called", value: "White-matter cut" },
+          { label: "Used by", value: "[[Salad]]" },
+          { label: "Produces", value: "[[Branches]]" },
+        ],
+      },
+      content: `A **leucotomy** (historically a cut through white matter of the brain) is the central operation in [[Salad's leucotomy branches]]. In play it is both a story beat and a routing tool: each cut can close a symptom, a memory, or a whole corridor of the clinic.
+
+## On the wiki
+
+Describe what the player is asked to do, not a full medical lecture. Link outcomes to [[Branches]] and the people who live with the result, starting with [[Salad]].`,
+    },
+    {
+      title: "白质切开",
+      categories: ["Mechanics"],
+      infobox: {
+        heading: "Leucotomy",
+        caption: "术式 / 机制",
+        rows: [
+          { label: "也称为", value: "白质切开" },
+          { label: "相关人物", value: "[[Salad]]" },
+          { label: "结果", value: "[[Branches]]" },
+        ],
+      },
+      content: `**Leucotomy**（历史上指切开脑白质）是 [[Salad's leucotomy branches]] 的核心操作。在游戏里它既是剧情节点，也是路线工具：每一刀都可能关掉一种症状、一段记忆，或整条病房走廊。
+
+## 在本百科
+
+写清玩家被要求做什么，而不是医学讲义。把结果链到 [[Branches]]，以及承受结果的人，首先是 [[Salad]]。`,
+    }
+  ),
+  page(
+    "Branches",
+    {
+      title: "Branches",
+      categories: ["Mechanics"],
+      infobox: {
+        heading: "Branches",
+        caption: "Route structure",
+        rows: [
+          { label: "Opened by", value: "[[Leucotomy]]" },
+          { label: "Followed by", value: "[[Salad]]" },
+        ],
+      },
+      content: `**Branches** are the split routes of [[Salad's leucotomy branches]]. A branch is a corridor the story can take after a choice — often after a [[Leucotomy]] — and may not reconnect with the path you left.
+
+Document branches by what they change (who is present, which ward is open, which memory remains), not by a numbered ending list unless the game names endings that way.`,
+    },
+    {
+      title: "分支",
+      categories: ["Mechanics"],
+      infobox: {
+        heading: "Branches",
+        caption: "路线结构",
+        rows: [
+          { label: "由何打开", value: "[[Leucotomy]]" },
+          { label: "由谁走完", value: "[[Salad]]" },
+        ],
+      },
+      content: `**Branches** 是 [[Salad's leucotomy branches]] 的分叉路线。一条分支是选择之后故事能走进的走廊——常常发生在一次 [[Leucotomy]] 之后——而且未必会和你离开的那条路再会合。
+
+记录分支时写它改变了什么（谁在场、哪间病房开着、哪段记忆还在），不要急着做成编号结局表，除非游戏自己那样命名。`,
+    }
+  ),
+  page("The_Q", {
+    title: "The Q",
+    categories: ["Game"],
+    infobox: {
+      heading: "The Q",
+      caption: "Emblem",
+      rows: [
+        { label: "Form", value: "Brain inside a Q-shaped mark" },
+        { label: "Used in", value: "[[Salad's leucotomy branches]]" },
+        { label: "Chinese", value: "Not translated yet — this page tests fallback" },
+      ],
+    },
+    content: `**The Q** is the mark of [[Salad's leucotomy branches]]: a red brain seated in a white Q. It is the icon of the wiki and the game.
+
+This article has **no Chinese translation** on purpose. Switch the header to 中文 and you should still see this English text, with a notice that English is being used as fallback.
+
+Add a Chinese version later from the Edit tab while 中文 is selected.`,
   }),
-  page({
-    slug: "帮助:如何编辑",
-    title: "帮助:如何编辑",
-    categories: ["帮助"],
-    content: `编辑方式和常见维基很接近。点条目上方的 **编辑**，改完后写一句摘要并保存。历史最多保留最近 20 次。
+  page(
+    "Help:Editing",
+    {
+      title: "Help:Editing",
+      categories: ["Help"],
+      content: `English is the source. Chinese is optional. If a Chinese field is empty, readers see English.
 
-## 正文格式
+## Language
 
-支持常见 Markdown：
+Use the **English / 中文** control in the header. It changes chrome, article text, and which language you are editing.
 
-* \`**加粗**\`、\`*斜体*\`、列表、表格
-* \`## 二级标题\` 会自动出现在右侧目录里
+## Links
 
-## 维基链接
+* \`[[Salad]]\`
+* \`[[Leucotomy|the procedure]]\` for custom label
+* Missing pages render as red links
 
-用双方括号指向另一篇（还没有的页面会显示成红链，点进去就能创建）：
+Titles should stay stable in English even when the displayed Chinese title is different.
 
-* \`[[星尘号]]\`
-* \`[[星尘港|港口]]\` 可以自定义显示文字
+## Categories
+
+Use English keys such as \`Game, Characters, Mechanics, Locations, Help\`. The wiki shows them in the current language.`,
+    },
+    {
+      title: "帮助:编辑",
+      categories: ["Help"],
+      content: `英语是原文，中文可选。中文某栏为空时，读者看到的是英语。
+
+## 语言
+
+用顶栏的 **English / 中文** 切换。它会改界面、正文，以及你正在编辑的语言。
+
+## 链接
+
+* \`[[Salad]]\`
+* \`[[Leucotomy|术式]]\` 可自定义显示文字
+* 还不存在的页面是红链
+
+条目标题尽量保持英语稳定，即使中文显示名不同。
 
 ## 分类
 
-编辑页里用逗号分隔，例如 \`帮助, 设定\`。同一分类下的条目会汇总到分类页，例如 [[分类:帮助]]。
-
-## 信息框
-
-适合人物、舰船、地点。编辑页下方可以增加「标签 / 内容」行。内容里也可以写 \`[[链接]]\`。
-
-## 还没有的页面
-
-打开一个不存在的标题（或点红链）会看到「此页面尚未创建」。点创建即可。不要等资料齐了再开工，先立标题往往更有效。`,
-  }),
-  page({
-    slug: "帮助:免费域名",
-    title: "帮助:免费域名",
-    categories: ["帮助"],
-    content: `没有一种免费后缀能同时做到「国内永远秒开 + 国际也最稳」。下面是按这个目标筛过的选择，以及本项目采用的方案。
-
-## 结论：用 Cloudflare 的 \`pages.dev\`
-
-| 免费地址 | 国际访问 | 中国大陆 | 备注 |
-| --- | --- | --- | --- |
-| **\`项目名.pages.dev\`**（Cloudflare） | 通常最好 | 多数时候能开，部分网络会慢或失败 | **本 wiki 的首选** |
-| \`项目名.vercel.app\` | 很好 | 波动大，部分地区打不开 | Next.js 最省事 |
-| \`用户名.github.io\` | 好 | 经常慢或被干扰 | 只适合静态页 |
-| \`xxx.fandom.com\` | 好 | 相对常见内容站，往往能开 | 有广告，账号和规则归 Fandom |
-
-所以：**先做 wiki、发给朋友看，选 Cloudflare Pages 的 \`pages.dev\`。** 它不是国内专线，但是免费方案里「国际最稳、国内相对能用」的那一档。
-
-## 别人能不能打开
-
-可以。\`pages.dev\` 是公网地址，不用注册 Cloudflare 也能点开。国内不保证每次都顺畅；国外、港澳台通常更稳。
-
-## 以后想更稳
-
-1. 花大约 40–95 元买一个自己的域名（\`yourwiki.com\` 或 \`.cn\`）
-2. 把域名放到 Cloudflare 解析
-3. 若读者主要在国内，再考虑阿里云 / 腾讯云托管或国内 CDN
-
-Fandom 仍然适合「完全不想管服务器」的百科，但那是他们的平台，不是你的独立站。
-
-本地运行和发布步骤见仓库里的说明文档。`,
-  }),
-  page({
-    slug: "星尘号",
-    title: "星尘号",
-    categories: ["设定", "舰船"],
-    infobox: {
-      heading: "星尘号",
-      caption: "远洋考察船 · 示例条目",
-      rows: [
-        { label: "类型", value: "远洋考察船" },
-        { label: "下水", value: "2019 年" },
-        { label: "母港", value: "[[星尘港]]" },
-        { label: "呼号", value: "XD-19" },
-        { label: "定员", value: "42" },
-      ],
-    },
-    content: `**星尘号** 是这篇百科里的示例条目，用来展示信息框、分类和维基链接。你可以整篇改写成自己的人物、作品或产品。
-
-## 概述
-
-星尘号以 [[星尘港]] 为母港，主要承担近海测绘和科普航次。条目右侧的信息框来自编辑页里的字段，不是写死在模板里的。
-
-## 沿革
-
-2019 年下水后，星尘号先跑沿海断面，再逐步承担面向公众的开放日。若你在写同人世界或游戏设定，这一节通常放年表。
-
-## 相关
-
-* 母港：[[星尘港]]
-* 编辑方法：[[帮助:如何编辑]]
-* 如何发给别人看：[[帮助:免费域名]]`,
-  }),
-  page({
-    slug: "星尘港",
-    title: "星尘港",
-    categories: ["设定", "地点"],
-    infobox: {
-      heading: "星尘港",
-      caption: "港口 · 示例条目",
-      rows: [
-        { label: "类型", value: "科研港区" },
-        { label: "气候", value: "温带季风" },
-        { label: "知名停靠", value: "[[星尘号]]" },
-        { label: "开放", value: "部分码头对公众开放" },
-      ],
-    },
-    content: `**星尘港** 是 [[星尘号]] 的母港，用来演示地点条目如何和人物 / 载具互相链接。
-
-## 港区
-
-内港是船坞和实验室，外港是防波堤与灯塔。分类页会把这里和「星尘号」一起列出来，见 [[分类:设定]]。
-
-## 到访
-
-开放日可登上星尘号的露天甲板。写你自己的百科时，这一节可以改成交通、地图或营业时间。`,
-  }),
+填写英语键名，例如 \`Game, Characters, Mechanics, Locations, Help\`。前台会按当前语言显示。`,
+    }
+  ),
 ]

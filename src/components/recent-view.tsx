@@ -7,36 +7,39 @@ import { useWiki } from "@/components/wiki-provider"
 import { formatTime, historyHref, wikiHref } from "@/lib/wiki"
 
 export function RecentView() {
-  const { pages } = useWiki()
+  const { pages, locale, t, resolve } = useWiki()
   const items = useMemo(
     () =>
-      Object.values(pages).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)),
-    [pages]
+      Object.values(pages)
+        .map((page) => ({ page, resolved: resolve(page) }))
+        .sort((a, b) => b.page.updatedAt.localeCompare(a.page.updatedAt)),
+    [pages, resolve]
   )
 
   return (
     <div className="wiki-article">
-      <h1 className="wiki-title">最近更改</h1>
-      <p className="mt-1 text-sm text-muted-foreground">
-        按本机保存时间排列。清空浏览器数据后，这里会回到示例条目。
-      </p>
+      <h1 className="wiki-title">{t("navRecent")}</h1>
+      <p className="mt-1 text-sm text-muted-foreground">{t("recentIntro")}</p>
       {items.length === 0 ? (
-        <p className="mt-6 text-sm text-muted-foreground">还没有任何页面。</p>
+        <p className="mt-6 text-sm text-muted-foreground">{t("noPages")}</p>
       ) : (
         <ul className="mt-6 divide-y">
-          {items.map((page) => (
-            <li key={page.slug} className="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between">
+          {items.map(({ page, resolved }) => (
+            <li
+              key={page.slug}
+              className="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between"
+            >
               <div>
                 <Link href={wikiHref(page.slug)} className="font-medium">
-                  {page.title}
+                  {resolved.title}
                 </Link>
                 <div className="text-xs text-muted-foreground">
-                  {page.revisions[0]?.summary || "已保存"}
+                  {page.revisions[0]?.summary || t("saved")}
                 </div>
               </div>
               <div className="text-xs text-muted-foreground">
-                {formatTime(page.updatedAt)} ·{" "}
-                <Link href={historyHref(page.slug)}>历史</Link>
+                {formatTime(page.updatedAt, locale)} ·{" "}
+                <Link href={historyHref(page.slug)}>{t("history")}</Link>
               </div>
             </li>
           ))}

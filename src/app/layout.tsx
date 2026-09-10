@@ -20,12 +20,12 @@ const serif = Noto_Serif_SC({
 
 export const metadata: Metadata = {
   title: {
-    default: "星尘百科",
-    template: "%s · 星尘百科",
+    default: "Salad's leucotomy branches",
+    template: "%s · Salad's leucotomy branches",
   },
-  description: "一份可编辑的个人维基。推荐发布到 Cloudflare 免费域名 pages.dev。",
+  description: "Game wiki for Salad's leucotomy branches. English source, Chinese optional.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/game-icon.jpg",
   },
 }
 
@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="zh-CN"
+      lang="en"
       className={`${sans.variable} ${serif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">

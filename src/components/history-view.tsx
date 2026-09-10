@@ -1,25 +1,24 @@
 "use client"
 
 import Link from "next/link"
-import { useMemo } from "react"
 
 import { useWiki } from "@/components/wiki-provider"
+import { messages } from "@/lib/i18n"
 import { editHref, formatTime, titleFromSlug, wikiHref, HOME_SLUG } from "@/lib/wiki"
 
 export function HistoryView({ slug }: { slug: string }) {
-  const { getPage } = useWiki()
+  const { getPage, resolve, t, locale } = useWiki()
   const page = getPage(slug)
-  const revisions = useMemo(() => page?.revisions ?? [], [page])
+  const resolved = page ? resolve(page) : null
+  const revisions = page?.revisions ?? []
 
-  if (!page) {
+  if (!page || !resolved) {
     return (
       <div className="wiki-article">
-        <h1 className="wiki-title">{titleFromSlug(slug)} 的历史</h1>
-        <p className="mt-4 text-sm text-muted-foreground">
-          此页面还不存在，因此没有历史。
-        </p>
+        <h1 className="wiki-title">{messages[locale].historyOf(titleFromSlug(slug))}</h1>
+        <p className="mt-4 text-sm text-muted-foreground">{t("noHistory")}</p>
         <Link href={editHref(slug)} className="mt-4 inline-block text-sm">
-          创建此页面
+          {t("createPage")}
         </Link>
       </div>
     )
@@ -28,21 +27,23 @@ export function HistoryView({ slug }: { slug: string }) {
   return (
     <div className="wiki-article">
       <div className="wiki-tabs">
-        <Link href={slug === HOME_SLUG ? "/" : wikiHref(slug)}>页面</Link>
-        <Link href={editHref(slug)}>编辑</Link>
+        <Link href={slug === HOME_SLUG ? "/" : wikiHref(slug)}>{t("page")}</Link>
+        <Link href={editHref(slug)}>{t("edit")}</Link>
         <Link href="#" className="active">
-          历史
+          {t("history")}
         </Link>
       </div>
-      <h1 className="wiki-title">{page.title} 的历史</h1>
-      <p className="mt-1 text-sm text-muted-foreground">
-        只保存在本机，最多 20 条。这不是多人协作服务器上的版本库。
-      </p>
+      <h1 className="wiki-title">{messages[locale].historyOf(resolved.title)}</h1>
+      <p className="mt-1 text-sm text-muted-foreground">{t("historyHelp")}</p>
       <ul className="mt-6 divide-y">
         {revisions.map((revision, index) => (
           <li key={`${revision.at}-${index}`} className="py-3">
-            <div className="text-sm font-medium">{revision.summary}</div>
-            <div className="text-xs text-muted-foreground">{formatTime(revision.at)}</div>
+            <div className="text-sm font-medium">
+              [{revision.locale}] {revision.summary}
+            </div>
+            <div className="text-xs text-muted-foreground">
+              {formatTime(revision.at, locale)}
+            </div>
           </li>
         ))}
       </ul>

@@ -8,14 +8,24 @@ import {
   useSyncExternalStore,
 } from "react"
 
-import type { Infobox, WikiPage, WikiSettings } from "@/lib/types"
+import {
+  getLocaleSnapshot,
+  getServerLocaleSnapshot,
+  setLocale as writeLocale,
+  subscribeLocale,
+  t as translate,
+  type MessageKey,
+} from "@/lib/i18n"
+import type { Infobox, Locale, WikiPage, WikiSettings } from "@/lib/types"
 import {
   deletePage,
+  findPage,
   getPagesSnapshot,
   getServerPagesSnapshot,
   getServerSettingsSnapshot,
   getSettingsSnapshot,
   persistSettings,
+  resolveCopy,
   restoreSeedPages,
   savePage,
   subscribeWiki,
@@ -24,7 +34,11 @@ import {
 type WikiContextValue = {
   pages: Record<string, WikiPage>
   settings: WikiSettings
+  locale: Locale
+  setLocale: (locale: Locale) => void
+  t: (key: MessageKey) => string
   getPage: (slug: string) => WikiPage | undefined
+  resolve: (page: WikiPage) => ReturnType<typeof resolveCopy>
   exists: (titleOrSlug: string) => boolean
   save: (draft: {
     slug?: string
@@ -52,6 +66,11 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
     getSettingsSnapshot,
     getServerSettingsSnapshot
   )
+  const locale = useSyncExternalStore(
+    subscribeLocale,
+    getLocaleSnapshot,
+    getServerLocaleSnapshot
+  )
 
   const save = useCallback(
     (draft: {
@@ -61,8 +80,8 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
       categories: string[]
       infobox?: Infobox
       summary?: string
-    }) => savePage(pages, draft).slug,
-    [pages]
+    }) => savePage(pages, { ...draft, locale }).slug,
+    [locale, pages]
   )
 
   const remove = useCallback(
@@ -84,17 +103,18 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
     () => ({
       pages,
       settings,
-      getPage: (slug) => pages[slug],
-      exists: (titleOrSlug) => {
-        const slug = titleOrSlug.trim().replace(/\s+/g, "_")
-        return Boolean(pages[slug] || pages[titleOrSlug])
-      },
+      locale,
+      setLocale: writeLocale,
+      t: (key) => translate(locale, key),
+      getPage: (slug) => findPage(pages, slug),
+      resolve: (page) => resolveCopy(page, locale),
+      exists: (titleOrSlug) => Boolean(findPage(pages, titleOrSlug)),
       save,
       remove,
       updateSettings,
       resetDemo,
     }),
-    [pages, remove, resetDemo, save, settings, updateSettings]
+    [locale, pages, remove, resetDemo, save, settings, updateSettings]
   )
 
   return <WikiContext.Provider value={value}>{children}</WikiContext.Provider>

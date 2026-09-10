@@ -1,10 +1,18 @@
 import { seedPages, defaultSettings } from "@/data/seed-pages"
-import type { Infobox, WikiPage, WikiSettings } from "@/lib/types"
+import { categoryKey, DEFAULT_LOCALE } from "@/lib/i18n"
+import type {
+  Infobox,
+  Locale,
+  PageCopy,
+  ResolvedPage,
+  WikiPage,
+  WikiSettings,
+} from "@/lib/types"
 
-export const HOME_SLUG = "首页"
-export const PAGES_KEY = "xingchen-wiki.pages.v2"
-export const SETTINGS_KEY = "xingchen-wiki.settings.v1"
-export const WIKI_EVENT = "xingchen-wiki:changed"
+export const HOME_SLUG = "Main_Page"
+export const PAGES_KEY = "slb-wiki.pages.v1"
+export const SETTINGS_KEY = "slb-wiki.settings.v1"
+export const WIKI_EVENT = "slb-wiki:changed"
 
 export function slugify(title: string): string {
   return title.trim().replace(/\s+/g, "_")
@@ -27,24 +35,92 @@ export function historyHref(titleOrSlug: string): string {
 }
 
 export function categoryHref(name: string): string {
-  return `/category/${encodeURIComponent(name)}`
+  return `/category/${encodeURIComponent(categoryKey(name))}`
+}
+
+function filled(value: string | undefined) {
+  return Boolean(value && value.trim())
+}
+
+export function resolveCopy(page: WikiPage, locale: Locale): ResolvedPage {
+  const en = page.locales.en
+  const zh = page.locales.zh
+  if (locale === "en") {
+    return {
+      slug: page.slug,
+      title: en.title,
+      content: en.content,
+      categories: en.categories,
+      infobox: en.infobox,
+      createdAt: page.createdAt,
+      updatedAt: page.updatedAt,
+      usingEnglishFallback: false,
+      fallbackFields: { title: false, content: false, infobox: false },
+    }
+  }
+  const titleFallback = !filled(zh?.title)
+  const contentFallback = !filled(zh?.content)
+  const infoboxFallback = !zh?.infobox
+  return {
+    slug: page.slug,
+    title: titleFallback ? en.title : zh!.title!,
+    content: contentFallback ? en.content : zh!.content!,
+    categories:
+      zh?.categories && zh.categories.length > 0 ? zh.categories : en.categories,
+    infobox: infoboxFallback ? en.infobox : zh!.infobox,
+    createdAt: page.createdAt,
+    updatedAt: page.updatedAt,
+    usingEnglishFallback: titleFallback || contentFallback,
+    fallbackFields: {
+      title: titleFallback,
+      content: contentFallback,
+      infobox: infoboxFallback,
+    },
+  }
+}
+
+export function findPage(
+  pages: Record<string, WikiPage>,
+  titleOrSlug: string
+): WikiPage | undefined {
+  const slug = slugify(titleOrSlug)
+  if (pages[slug]) return pages[slug]
+  return Object.values(pages).find((page) => {
+    const titles = [page.locales.en.title, page.locales.zh?.title].filter(Boolean) as string[]
+    return titles.some((title) => title === titleOrSlug || slugify(title) === slug)
+  })
+}
+
+export function displayTitle(
+  pages: Record<string, WikiPage>,
+  titleOrSlug: string,
+  locale: Locale
+) {
+  const page = findPage(pages, titleOrSlug)
+  if (!page) return titleOrSlug
+  return resolveCopy(page, locale).title
 }
 
 export function expandWikiLinks(
   markdown: string,
-  exists: (title: string) => boolean
+  pages: Record<string, WikiPage>,
+  locale: Locale
 ): string {
   return markdown.replace(
     /(```[\s\S]*?```|`[^`]+`)|\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,
     (full, code?: string, target?: string, label?: string) => {
       if (code || !target) return full
       const title = target.trim()
-      const text = (label ?? title).trim()
-      if (title.startsWith("分类:")) {
-        return `[${text}](${categoryHref(title.slice(3))})`
+      const explicit = label?.trim()
+      if (title.startsWith("Category:") || title.startsWith("分类:")) {
+        const name = title.replace(/^(Category:|分类:)/, "")
+        return `[${explicit || name}](${categoryHref(name)})`
       }
-      const missing = exists(title) ? "" : "?missing=1"
-      return `[${text}](${wikiHref(title)}${missing})`
+      const page = findPage(pages, title)
+      const text = explicit || (page ? resolveCopy(page, locale).title : title)
+      const href = page ? wikiHref(page.slug) : wikiHref(title)
+      const missing = page ? "" : "?missing=1"
+      return `[${text}](${href}${missing})`
     }
   )
 }
@@ -152,14 +228,6 @@ export function subscribeWiki(onStoreChange: () => void) {
   }
 }
 
-export function loadPages(): Record<string, WikiPage> {
-  return getPagesSnapshot()
-}
-
-export function loadSettings(): WikiSettings {
-  return getSettingsSnapshot()
-}
-
 export function persistPages(pages: Record<string, WikiPage>) {
   pagesCache = pages
   window.localStorage.setItem(PAGES_KEY, JSON.stringify(pages))
@@ -172,10 +240,15 @@ export function persistSettings(settings: WikiSettings) {
   emitWikiChange()
 }
 
+function normalizeCategories(list: string[]) {
+  return [...new Set(list.map((item) => categoryKey(item.trim())).filter(Boolean))]
+}
+
 export function savePage(
   pages: Record<string, WikiPage>,
   draft: {
     slug?: string
+    locale: Locale
     title: string
     content: string
     categories: string[]
@@ -183,24 +256,45 @@ export function savePage(
     summary?: string
   }
 ): { pages: Record<string, WikiPage>; slug: string } {
-  const slug = slugify(draft.slug || draft.title)
+  const previous =
+    (draft.slug ? findPage(pages, draft.slug) : undefined) ||
+    findPage(pages, draft.title)
+  const slug = previous?.slug || slugify(draft.slug || draft.title)
   const now = new Date().toISOString()
-  const previous = pages[slug]
-  const next: WikiPage = {
-    slug,
+  const copy: PageCopy = {
     title: draft.title.trim() || titleFromSlug(slug),
     content: draft.content,
-    categories: [...new Set(draft.categories.map((item) => item.trim()).filter(Boolean))],
+    categories: normalizeCategories(draft.categories),
     infobox: draft.infobox,
+  }
+  const en = previous?.locales.en ?? copy
+  const zh = previous?.locales.zh
+  let nextLocales: WikiPage["locales"]
+  if (draft.locale === "en") {
+    nextLocales = { en: copy, zh }
+  } else if (!filled(copy.content) && !filled(copy.title)) {
+    nextLocales = { en }
+  } else {
+    nextLocales = {
+      en: previous?.locales.en ?? copy,
+      zh: copy,
+    }
+  }
+  const next: WikiPage = {
+    slug,
+    locales: nextLocales,
     createdAt: previous?.createdAt ?? now,
     updatedAt: now,
     revisions: [
       {
         at: now,
-        summary: draft.summary?.trim() || (previous ? "编辑页面" : "创建页面"),
-        title: draft.title.trim() || titleFromSlug(slug),
-        content: draft.content,
-        categories: draft.categories,
+        locale: draft.locale,
+        summary:
+          draft.summary?.trim() ||
+          (previous ? "Edited page" : "Created page"),
+        title: copy.title,
+        content: copy.content,
+        categories: copy.categories,
         infobox: draft.infobox,
       },
       ...(previous?.revisions ?? []),
@@ -228,47 +322,75 @@ export function restoreSeedPages(pages: Record<string, WikiPage>) {
   return { pages: updated, settings: { ...defaultSettings } }
 }
 
-export function searchPages(pages: Record<string, WikiPage>, query: string) {
+export function searchPages(
+  pages: Record<string, WikiPage>,
+  query: string,
+  locale: Locale = DEFAULT_LOCALE
+) {
   const q = query.trim().toLowerCase()
   if (!q) return []
   return Object.values(pages)
     .map((page) => {
-      const haystack = `${page.title}\n${page.content}\n${page.categories.join(" ")}`.toLowerCase()
-      const score =
-        page.title.toLowerCase().includes(q) ? 3 : haystack.includes(q) ? 1 : 0
-      return { page, score }
+      const resolved = resolveCopy(page, locale)
+      const en = page.locales.en
+      const zh = page.locales.zh
+      const haystack = [
+        resolved.title,
+        resolved.content,
+        resolved.categories.join(" "),
+        en.title,
+        en.content,
+        zh?.title,
+        zh?.content,
+      ]
+        .filter(Boolean)
+        .join("\n")
+        .toLowerCase()
+      const score = resolved.title.toLowerCase().includes(q)
+        ? 3
+        : haystack.includes(q)
+          ? 1
+          : 0
+      return { page, resolved, score }
     })
     .filter((item) => item.score > 0)
-    .sort((a, b) => b.score - a.score || a.page.title.localeCompare(b.page.title, "zh"))
-    .map((item) => item.page)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        a.resolved.title.localeCompare(b.resolved.title, locale === "zh" ? "zh" : "en")
+    )
 }
 
-export function pagesInCategory(pages: Record<string, WikiPage>, name: string) {
+export function pagesInCategory(
+  pages: Record<string, WikiPage>,
+  name: string,
+  locale: Locale
+) {
+  const key = categoryKey(name)
   return Object.values(pages)
-    .filter((page) => page.categories.includes(name))
-    .sort((a, b) => a.title.localeCompare(b.title, "zh"))
+    .map((page) => ({ page, resolved: resolveCopy(page, locale) }))
+    .filter((item) => item.resolved.categories.some((cat) => categoryKey(cat) === key))
+    .sort((a, b) => a.resolved.title.localeCompare(b.resolved.title, locale === "zh" ? "zh" : "en"))
 }
 
-export function allCategories(pages: Record<string, WikiPage>) {
+export function allCategories(pages: Record<string, WikiPage>, locale: Locale) {
   const counts = new Map<string, number>()
   for (const page of Object.values(pages)) {
-    for (const category of page.categories) {
-      counts.set(category, (counts.get(category) ?? 0) + 1)
+    const resolved = resolveCopy(page, locale)
+    for (const category of resolved.categories) {
+      const key = categoryKey(category)
+      counts.set(key, (counts.get(key) ?? 0) + 1)
     }
   }
   return [...counts.entries()]
-    .sort((a, b) => a[0].localeCompare(b[0], "zh"))
+    .sort((a, b) => a[0].localeCompare(b[0], locale === "zh" ? "zh" : "en"))
     .map(([name, count]) => ({ name, count }))
 }
 
-export function recentPages(pages: Record<string, WikiPage>) {
-  return Object.values(pages).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
-}
-
-export function formatTime(iso: string) {
+export function formatTime(iso: string, locale: Locale) {
   const date = new Date(iso)
   if (Number.isNaN(date.getTime())) return iso
-  return new Intl.DateTimeFormat("zh-CN", {
+  return new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : "en", {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(date)
@@ -276,7 +398,9 @@ export function formatTime(iso: string) {
 
 export function snippet(content: string, query?: string, length = 120) {
   const plain = content
-    .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, t: string, l?: string) => (l ?? t).trim())
+    .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, t: string, l?: string) =>
+      (l ?? t).trim()
+    )
     .replace(/[#>*`_\-]/g, "")
     .replace(/\s+/g, " ")
     .trim()

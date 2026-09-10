@@ -16,8 +16,8 @@ export function WikiMarkdown({
   content: string
   className?: string
 }) {
-  const { exists } = useWiki()
-  const prepared = expandWikiLinks(content, exists)
+  const { pages, locale, t } = useWiki()
+  const prepared = expandWikiLinks(content, pages, locale)
 
   const components: Components = {
     a: ({ href, children }) => {
@@ -36,7 +36,7 @@ export function WikiMarkdown({
         <Link
           href={clean || "/"}
           className={cn(missing && "wiki-missing")}
-          title={missing ? "此页面尚未创建" : undefined}
+          title={missing ? t("missingLink") : undefined}
         >
           {children}
         </Link>

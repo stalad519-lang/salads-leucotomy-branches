@@ -1,9 +1,10 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
-import { BookOpen, Menu, Shuffle, Plus, Settings2 } from "lucide-react"
+import { Menu, Shuffle, Plus, Settings2 } from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
@@ -14,7 +15,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { SearchBox } from "@/components/search-box"
 import {
   Sheet,
@@ -25,20 +26,20 @@ import {
 import { useWiki } from "@/components/wiki-provider"
 import { HOME_SLUG, wikiHref } from "@/lib/wiki"
 
-const nav = [
-  { href: "/", label: "首页" },
-  { href: "/special/recent", label: "最近更改" },
-  { href: "/special/all", label: "所有页面" },
-]
-
 export function WikiShell({ children }: { children: React.ReactNode }) {
-  const { settings, pages, updateSettings, resetDemo } = useWiki()
+  const { settings, pages, updateSettings, resetDemo, t } = useWiki()
   const pathname = usePathname()
   const router = useRouter()
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [name, setName] = useState(settings.name)
   const [tagline, setTagline] = useState(settings.tagline)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const nav = [
+    { href: "/", label: t("navMain") },
+    { href: "/special/recent", label: t("navRecent") },
+    { href: "/special/all", label: t("navAll") },
+  ]
 
   function openSettings() {
     setName(settings.name)
@@ -62,12 +63,12 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               variant="ghost"
               size="icon"
               className="text-white hover:bg-white/10 md:hidden"
-              aria-label="打开菜单"
+              aria-label={t("openMenu")}
               onClick={() => setMenuOpen(true)}
             >
               <Menu />
             </Button>
-            <SheetContent side="left" className="bg-[#10243c] text-white">
+            <SheetContent side="left" className="bg-[#111] text-white">
               <SheetHeader>
                 <SheetTitle className="text-white">{settings.name}</SheetTitle>
               </SheetHeader>
@@ -87,36 +88,46 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                   onClick={() => setMenuOpen(false)}
                   className="rounded-md px-2 py-2 text-sm hover:bg-white/10"
                 >
-                  新建页面
+                  {t("newPage")}
                 </Link>
               </nav>
+              <div className="px-4 pt-4">
+                <LanguageSwitcher />
+              </div>
             </SheetContent>
           </Sheet>
 
-          <Link href="/" className="flex min-w-0 items-center gap-2 text-white">
-            <span className="flex size-9 items-center justify-center rounded-md bg-amber-200/15 ring-1 ring-amber-200/30">
-              <BookOpen className="size-4 text-amber-200" />
-            </span>
+          <Link href="/" className="flex min-w-0 items-center gap-2.5 text-white">
+            <Image
+              src="/game-icon.jpg"
+              alt=""
+              width={40}
+              height={40}
+              className="size-10 shrink-0 rounded-md ring-1 ring-white/20"
+            />
             <span className="min-w-0">
-              <span className="block truncate font-heading text-base leading-tight font-semibold tracking-wide">
+              <span className="block truncate font-heading text-[15px] leading-tight font-semibold tracking-wide">
                 {settings.name}
               </span>
-              <span className="hidden truncate text-[11px] text-white/60 sm:block">
-                {settings.tagline}
+              <span className="hidden truncate text-[11px] text-white/55 sm:block">
+                {settings.tagline || t("defaultTagline")}
               </span>
             </span>
           </Link>
 
-          <div className="ml-auto hidden w-full max-w-md md:block">
+          <div className="ml-auto hidden w-full max-w-sm lg:block">
             <SearchBox compact />
           </div>
 
-          <div className="ml-auto flex items-center gap-1 md:ml-2">
+          <div className="ml-auto flex items-center gap-2 md:ml-2">
+            <div className="hidden sm:block">
+              <LanguageSwitcher />
+            </div>
             <Button
               variant="ghost"
               size="icon"
               className="text-white hover:bg-white/10"
-              aria-label="随机条目"
+              aria-label={t("random")}
               onClick={goRandom}
             >
               <Shuffle />
@@ -125,7 +136,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               variant="ghost"
               size="icon"
               className="text-white hover:bg-white/10"
-              aria-label="百科设置"
+              aria-label={t("settings")}
               onClick={openSettings}
             >
               <Settings2 />
@@ -134,17 +145,18 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               href="/new"
               className={buttonVariants({
                 className:
-                  "hidden bg-amber-200 text-[#152536] hover:bg-amber-100 sm:inline-flex",
+                  "hidden bg-[#c81e1e] text-white hover:bg-[#e03131] sm:inline-flex",
               })}
             >
               <Plus className="size-4" />
-              新建
+              {t("newShort")}
             </Link>
           </div>
         </div>
         <div className="border-t border-white/10 md:hidden">
-          <div className="px-4 py-2">
+          <div className="flex items-center gap-2 px-4 py-2">
             <SearchBox compact />
+            <LanguageSwitcher />
           </div>
         </div>
         <div className="hidden border-t border-white/10 md:block">
@@ -160,7 +172,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                   href={item.href}
                   className={`border-b-2 px-3 py-2 text-sm ${
                     active
-                      ? "border-amber-200 text-white"
+                      ? "border-[#c81e1e] text-white"
                       : "border-transparent text-white/70 hover:text-white"
                   }`}
                 >
@@ -174,29 +186,31 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">{children}</main>
 
-      <footer className="mt-auto border-t border-[#d9cfc0] bg-[#f3eee4] px-4 py-6 text-center text-xs text-muted-foreground">
-        内容保存在本机浏览器。推荐发布到 Cloudflare 免费域名{" "}
-        <span className="font-mono">pages.dev</span>，方便国内和国际访问。
+      <footer className="mt-auto border-t border-neutral-800 bg-black px-4 py-6 text-center text-xs text-white/45">
+        {t("footer")}
       </footer>
 
       <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>百科设置</DialogTitle>
-            <DialogDescription>
-              名字只存在你的浏览器里。重置会恢复示例条目，并覆盖同名页面。
-            </DialogDescription>
+            <DialogTitle>{t("settings")}</DialogTitle>
+            <DialogDescription>{t("settingsHelp")}</DialogDescription>
           </DialogHeader>
           <div className="grid gap-3">
             <label className="grid gap-1 text-sm">
-              维基名称
-              <Input value={name} onChange={(event) => setName(event.target.value)} />
+              {t("settingsName")}
+              <input
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+              />
             </label>
             <label className="grid gap-1 text-sm">
-              副标题
-              <Input
+              {t("settingsTagline")}
+              <input
                 value={tagline}
                 onChange={(event) => setTagline(event.target.value)}
+                className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
               />
             </label>
           </div>
@@ -209,18 +223,18 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                 router.push("/")
               }}
             >
-              恢复示例
+              {t("restore")}
             </Button>
             <Button
               onClick={() => {
                 updateSettings({
-                  name: name.trim() || "星尘百科",
+                  name: name.trim() || t("gameName"),
                   tagline: tagline.trim(),
                 })
                 setSettingsOpen(false)
               }}
             >
-              保存
+              {t("save")}
             </Button>
           </DialogFooter>
         </DialogContent>
