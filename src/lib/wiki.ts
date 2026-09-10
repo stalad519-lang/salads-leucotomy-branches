@@ -2,7 +2,7 @@ import { seedPages, defaultSettings } from "@/data/seed-pages"
 import type { Infobox, WikiPage, WikiSettings } from "@/lib/types"
 
 export const HOME_SLUG = "首页"
-export const PAGES_KEY = "xingchen-wiki.pages.v1"
+export const PAGES_KEY = "xingchen-wiki.pages.v2"
 export const SETTINGS_KEY = "xingchen-wiki.settings.v1"
 export const WIKI_EVENT = "xingchen-wiki:changed"
 
@@ -35,8 +35,9 @@ export function expandWikiLinks(
   exists: (title: string) => boolean
 ): string {
   return markdown.replace(
-    /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,
-    (_, target: string, label?: string) => {
+    /(```[\s\S]*?```|`[^`]+`)|\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,
+    (full, code?: string, target?: string, label?: string) => {
+      if (code || !target) return full
       const title = target.trim()
       const text = (label ?? title).trim()
       if (title.startsWith("分类:")) {

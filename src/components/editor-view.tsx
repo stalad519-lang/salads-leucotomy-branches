@@ -2,15 +2,12 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useMemo, useState } from "react"
+import { useMemo, useState, type FormEvent } from "react"
 
 import { InfoboxCard } from "@/components/infobox"
 import { WikiMarkdown } from "@/components/wiki-markdown"
 import { useWiki } from "@/components/wiki-provider"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { buttonVariants } from "@/components/ui/button"
 import type { Infobox, InfoboxRow, WikiPage } from "@/lib/types"
 import {
   editHref,
@@ -37,6 +34,7 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
   const [boxCaption, setBoxHeadingCaption] = useState(page?.infobox?.caption ?? "")
   const [rows, setRows] = useState<InfoboxRow[]>(page?.infobox?.rows ?? [])
   const [error, setError] = useState("")
+  const [tab, setTab] = useState<"write" | "preview">("write")
 
   const infobox = useMemo((): Infobox | undefined => {
     const cleaned = rows.filter((row) => row.label.trim() && row.value.trim())
@@ -48,20 +46,46 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
     }
   }, [boxCaption, boxHeading, rows, title])
 
-  function onSave() {
-    if (!title.trim()) {
+  function onSave(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const fd = new FormData(event.currentTarget)
+    const nextTitle = String(fd.get("title") || title).trim()
+    const nextContent = String(fd.get("content") ?? content)
+    const nextCategories = String(fd.get("categories") ?? categories)
+    const nextSummary = String(fd.get("summary") ?? summary)
+    const nextHeading = String(fd.get("boxHeading") ?? boxHeading)
+    const nextCaption = String(fd.get("boxCaption") ?? boxCaption)
+    if (!nextTitle) {
       setError("请填写条目标题。")
       return
     }
-    const nextSlug = save({
-      slug: page?.slug ?? slug,
-      title,
-      content,
-      categories: categories.split(/[,，]/),
-      infobox,
-      summary,
-    })
-    router.push(nextSlug === HOME_SLUG ? "/" : wikiHref(nextSlug))
+    const cleaned = rows
+      .map((row, index) => ({
+        label: String(fd.get(`row-label-${index}`) ?? row.label),
+        value: String(fd.get(`row-value-${index}`) ?? row.value),
+      }))
+      .filter((row) => row.label.trim() && row.value.trim())
+    const nextInfobox =
+      nextHeading.trim() || cleaned.length
+        ? {
+            heading: nextHeading.trim() || nextTitle,
+            caption: nextCaption.trim() || undefined,
+            rows: cleaned,
+          }
+        : undefined
+    try {
+      const nextSlug = save({
+        slug: page?.slug ?? slug,
+        title: nextTitle,
+        content: nextContent,
+        categories: nextCategories.split(/[,，]/),
+        infobox: nextInfobox,
+        summary: nextSummary,
+      })
+      router.push(nextSlug === HOME_SLUG ? "/" : wikiHref(nextSlug))
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "保存失败，请再试一次。")
+    }
   }
 
   function onDelete() {
@@ -88,39 +112,61 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
         保存后立刻可在搜索和分类里看到。内容只写在你的浏览器里。
       </p>
 
-      <div className="mt-6 grid gap-4">
+      <form className="mt-6 grid gap-4" onSubmit={onSave}>
         <label className="grid gap-1 text-sm font-medium">
           标题
-          <Input value={title} onChange={(event) => setTitle(event.target.value)} />
+          <input
+            name="title"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+            className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+          />
         </label>
         <label className="grid gap-1 text-sm font-medium">
           分类
-          <Input
+          <input
+            name="categories"
             value={categories}
             onChange={(event) => setCategories(event.target.value)}
             placeholder="例如：帮助, 设定"
+            className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
           />
         </label>
-        <Tabs defaultValue="write">
-          <TabsList>
-            <TabsTrigger value="write">撰写</TabsTrigger>
-            <TabsTrigger value="preview">预览</TabsTrigger>
-          </TabsList>
-          <TabsContent value="write" className="mt-3">
-            <Textarea
+        <div>
+          <div className="mb-3 flex gap-1">
+            <button
+              type="button"
+              className={buttonVariants({ variant: tab === "write" ? "default" : "outline" })}
+              onClick={() => setTab("write")}
+            >
+              撰写
+            </button>
+            <button
+              type="button"
+              className={buttonVariants({ variant: tab === "preview" ? "default" : "outline" })}
+              onClick={() => setTab("preview")}
+            >
+              预览
+            </button>
+          </div>
+          {tab === "write" ? (
+            <textarea
+              name="content"
               value={content}
               onChange={(event) => setContent(event.target.value)}
-              className="min-h-[320px] font-mono text-sm"
+              className="min-h-[320px] w-full rounded-lg border border-input bg-transparent px-2.5 py-2 font-mono text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
               placeholder="支持 Markdown 和 [[维基链接]]"
             />
-          </TabsContent>
-          <TabsContent value="preview" className="mt-3">
-            <div className="flex flex-col gap-4 lg:flex-row">
-              <WikiMarkdown content={content || "*还没有正文。*"} className="min-w-0 flex-1" />
-              {infobox ? <InfoboxCard infobox={infobox} /> : null}
-            </div>
-          </TabsContent>
-        </Tabs>
+          ) : (
+            <>
+              <textarea name="content" value={content} readOnly hidden />
+              <div className="flex flex-col gap-4 lg:flex-row">
+                <WikiMarkdown content={content || "*还没有正文。*"} className="min-w-0 flex-1" />
+                {infobox ? <InfoboxCard infobox={infobox} /> : null}
+              </div>
+            </>
+          )}
+        </div>
 
         <section className="rounded-xl border bg-[#fbfaf6] p-4">
           <div className="text-sm font-medium">信息框（可选）</div>
@@ -128,21 +174,26 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
             适合人物、地点、舰船。值里也可以写 [[链接]]。
           </p>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
-            <Input
+            <input
+              name="boxHeading"
               value={boxHeading}
               onChange={(event) => setBoxHeading(event.target.value)}
               placeholder="信息框标题"
+              className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
             />
-            <Input
+            <input
+              name="boxCaption"
               value={boxCaption}
               onChange={(event) => setBoxHeadingCaption(event.target.value)}
               placeholder="副标题"
+              className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
             />
           </div>
           <div className="mt-3 grid gap-2">
             {rows.map((row, index) => (
               <div key={index} className="grid grid-cols-[1fr_1fr_auto] gap-2">
-                <Input
+                <input
+                  name={`row-label-${index}`}
                   value={row.label}
                   placeholder="标签"
                   onChange={(event) =>
@@ -152,8 +203,10 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
                       )
                     )
                   }
+                  className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                 />
-                <Input
+                <input
+                  name={`row-value-${index}`}
                   value={row.value}
                   placeholder="内容"
                   onChange={(event) =>
@@ -163,32 +216,42 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
                       )
                     )
                   }
+                  className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                 />
-                <Button
-                  variant="ghost"
+                <button
+                  type="button"
+                  className={buttonVariants({ variant: "ghost" })}
                   onClick={() => setRows((current) => current.filter((_, i) => i !== index))}
                 >
                   删除
-                </Button>
+                </button>
               </div>
             ))}
-            <Button variant="outline" onClick={() => setRows((current) => [...current, { label: "", value: "" }])}>
+            <button
+              type="button"
+              className={buttonVariants({ variant: "outline" })}
+              onClick={() => setRows((current) => [...current, { label: "", value: "" }])}
+            >
               添加一行
-            </Button>
+            </button>
           </div>
         </section>
 
         <label className="grid gap-1 text-sm font-medium">
           编辑摘要
-          <Input
+          <input
+            name="summary"
             value={summary}
             onChange={(event) => setSummary(event.target.value)}
             placeholder="这一版改了什么（会写进历史）"
+            className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
           />
         </label>
         {error ? <p className="text-sm text-destructive">{error}</p> : null}
         <div className="flex flex-wrap gap-2">
-          <Button onClick={onSave}>{page ? "保存" : "创建页面"}</Button>
+          <button type="submit" className={buttonVariants({ size: "lg" })}>
+            {page ? "保存" : "创建页面"}
+          </button>
           <Link
             href={page ? (slug === HOME_SLUG ? "/" : wikiHref(slug)) : "/"}
             className={buttonVariants({ variant: "outline" })}
@@ -196,12 +259,16 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
             取消
           </Link>
           {page && page.slug !== HOME_SLUG ? (
-            <Button variant="destructive" onClick={onDelete}>
+            <button
+              type="button"
+              className={buttonVariants({ variant: "destructive" })}
+              onClick={onDelete}
+            >
               删除页面
-            </Button>
+            </button>
           ) : null}
         </div>
-      </div>
+      </form>
     </div>
   )
 }

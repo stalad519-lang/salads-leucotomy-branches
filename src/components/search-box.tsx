@@ -5,10 +5,8 @@ import { useRouter } from "next/navigation"
 import { FormEvent, useMemo, useState } from "react"
 import { Search } from "lucide-react"
 
-import { Input } from "@/components/ui/input"
-import { searchPages } from "@/lib/wiki"
+import { searchPages, wikiHref } from "@/lib/wiki"
 import { useWiki } from "@/components/wiki-provider"
-import { wikiHref } from "@/lib/wiki"
 
 export function SearchBox({
   compact = false,
@@ -29,9 +27,9 @@ export function SearchBox({
     [pages, query]
   )
 
-  function onSubmit(event: FormEvent) {
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    const q = query.trim()
+    const q = String(new FormData(event.currentTarget).get("q") || query).trim()
     if (!q) return
     setOpen(false)
     router.push(`/search?q=${encodeURIComponent(q)}`)
@@ -44,7 +42,8 @@ export function SearchBox({
           tone === "dark" ? "text-white/55" : "text-muted-foreground"
         }`}
       />
-      <Input
+      <input
+        name="q"
         value={query}
         onChange={(event) => {
           setQuery(event.target.value)
@@ -56,8 +55,8 @@ export function SearchBox({
         aria-label="搜索百科"
         className={
           tone === "dark"
-            ? "h-9 border-white/15 bg-white/10 pl-8 text-white placeholder:text-white/45 focus-visible:border-amber-200/70 focus-visible:ring-amber-200/30"
-            : "h-9 pl-8"
+            ? "h-9 w-full rounded-lg border border-white/15 bg-white/10 pl-8 text-sm text-white outline-none placeholder:text-white/45 focus-visible:border-amber-200/70 focus-visible:ring-3 focus-visible:ring-amber-200/30"
+            : "h-9 w-full rounded-lg border border-input bg-transparent pl-8 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         }
       />
       {open && hits.length > 0 && (
