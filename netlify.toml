@@ -1,0 +1,51 @@
+[build]
+  publish = "out"
+  command = "npm run build"
+
+[build.processing]
+  skip_processing = true
+
+[build.processing.html]
+  pretty_urls = false
+
+[[redirects]]
+  from = "/wiki/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/edit/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/history/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/category/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/special/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/search"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/new"
+  to = "/index.html"
+  status = 200
+  force = true
