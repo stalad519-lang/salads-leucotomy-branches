@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!_next/|game-icon\\.jpg).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

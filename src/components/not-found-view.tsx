@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link"
+import { Link } from "@/components/wiki-link"
 
 import { useWiki } from "@/components/wiki-provider"
 

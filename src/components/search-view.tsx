@@ -1,7 +1,7 @@
 "use client"
 
-import Link from "next/link"
-import { useMemo, useState } from "react"
+import { Link } from "@/components/wiki-link"
+import { useMemo } from "react"
 
 import { useWiki } from "@/components/wiki-provider"
 import { messages } from "@/lib/i18n"
@@ -10,7 +10,7 @@ import { SearchBox } from "@/components/search-box"
 
 export function SearchView({ query }: { query: string }) {
   const { pages, locale, t } = useWiki()
-  const [q] = useState(query)
+  const q = query
   const hits = useMemo(() => searchPages(pages, q, locale), [locale, pages, q])
 
   return (

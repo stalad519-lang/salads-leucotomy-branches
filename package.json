@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 43217 --hostname 0.0.0.0",
-    "build": "next build",
-    "start": "next start --port 43217 --hostname 0.0.0.0",
-    "lint": "eslint"
+    "build": "next build && node -e \"require('fs').copyFileSync('out/index.html','out/404.html')\"",
+    "start": "npx --yes serve out -p 43217 -s --no-port-switching",
+    "lint": "eslint",
+    "deploy": "npm run build && npx --yes wrangler pages deploy out --project-name salads-leucotomy-branches"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

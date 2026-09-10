@@ -1,14 +1,13 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { useRouter } from "next/navigation"
 
 import { useWiki } from "@/components/wiki-provider"
 import { buttonVariants } from "@/components/ui/button"
+import { navigate } from "@/lib/nav"
 import { editHref, slugify } from "@/lib/wiki"
 
 export function NewPageView({ preset = "" }: { preset?: string }) {
-  const router = useRouter()
   const { exists, t } = useWiki()
   const [title, setTitle] = useState(preset)
   const taken = useMemo(() => Boolean(title.trim() && exists(title)), [exists, title])
@@ -27,7 +26,7 @@ export function NewPageView({ preset = "" }: { preset?: string }) {
           const nextTitle = String(new FormData(event.currentTarget).get("title") || "")
             .trim()
           if (!nextTitle) return
-          router.push(editHref(slugify(nextTitle)))
+          navigate(editHref(slugify(nextTitle)))
         }}
       >
         <input

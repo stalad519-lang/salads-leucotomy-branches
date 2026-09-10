@@ -1,12 +1,12 @@
 "use client"
 
-import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { useMemo, useState, type FormEvent } from "react"
 
 import { InfoboxCard } from "@/components/infobox"
 import { WikiMarkdown } from "@/components/wiki-markdown"
+import { Link } from "@/components/wiki-link"
 import { useWiki } from "@/components/wiki-provider"
+import { navigate } from "@/lib/nav"
 import { buttonVariants } from "@/components/ui/button"
 import { messages } from "@/lib/i18n"
 import type { Infobox, InfoboxRow, WikiPage } from "@/lib/types"
@@ -25,7 +25,6 @@ export function EditorView({ slug }: { slug: string }) {
 }
 
 function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
-  const router = useRouter()
   const { save, remove, t, locale } = useWiki()
   const source = locale === "zh" ? page?.locales.zh : page?.locales.en
   const english = page?.locales.en
@@ -85,7 +84,7 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
         infobox: nextInfobox,
         summary: nextSummary,
       })
-      router.push(nextSlug === HOME_SLUG ? "/" : wikiHref(nextSlug))
+      navigate(nextSlug === HOME_SLUG ? "/" : wikiHref(nextSlug))
     } catch (err) {
       setError(err instanceof Error ? err.message : t("saveFailed"))
     }
@@ -96,7 +95,7 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
     const display = page.locales.en.title
     if (!window.confirm(messages[locale].deleteConfirm(display))) return
     remove(page.slug)
-    router.push("/")
+    navigate("/")
   }
 
   return (

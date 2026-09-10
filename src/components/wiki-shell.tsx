@@ -1,9 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { useState } from "react"
+import { useSyncExternalStore, useState } from "react"
 import { Menu, Shuffle, Plus, Settings2 } from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
@@ -17,6 +15,13 @@ import {
 } from "@/components/ui/dialog"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { SearchBox } from "@/components/search-box"
+import { Link } from "@/components/wiki-link"
+import {
+  getLocation,
+  getServerLocation,
+  navigate,
+  subscribeLocation,
+} from "@/lib/nav"
 import {
   Sheet,
   SheetContent,
@@ -28,8 +33,11 @@ import { HOME_SLUG, wikiHref } from "@/lib/wiki"
 
 export function WikiShell({ children }: { children: React.ReactNode }) {
   const { settings, pages, updateSettings, resetDemo, t } = useWiki()
-  const pathname = usePathname()
-  const router = useRouter()
+  const pathname = useSyncExternalStore(
+    subscribeLocation,
+    getLocation,
+    getServerLocation
+  ).pathname
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [name, setName] = useState(settings.name)
   const [tagline, setTagline] = useState(settings.tagline)
@@ -51,7 +59,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
     const slugs = Object.keys(pages)
     if (slugs.length === 0) return
     const slug = slugs[Math.floor(Math.random() * slugs.length)]
-    router.push(wikiHref(slug))
+    navigate(wikiHref(slug))
   }
 
   return (
@@ -220,7 +228,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               onClick={() => {
                 resetDemo()
                 setSettingsOpen(false)
-                router.push("/")
+                navigate("/")
               }}
             >
               {t("restore")}

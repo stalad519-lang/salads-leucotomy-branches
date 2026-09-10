@@ -1,13 +1,13 @@
 "use client"
 
-import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { FormEvent, useMemo, useState } from "react"
 import { Search } from "lucide-react"
 
 import { categoryLabel } from "@/lib/i18n"
 import { searchPages, wikiHref } from "@/lib/wiki"
+import { navigate } from "@/lib/nav"
 import { useWiki } from "@/components/wiki-provider"
+import { Link } from "@/components/wiki-link"
 
 export function SearchBox({
   compact = false,
@@ -18,7 +18,6 @@ export function SearchBox({
   initialQuery?: string
   tone?: "dark" | "light"
 }) {
-  const router = useRouter()
   const { pages, locale, t } = useWiki()
   const [query, setQuery] = useState(initialQuery)
   const [open, setOpen] = useState(false)
@@ -33,7 +32,7 @@ export function SearchBox({
     const q = String(new FormData(event.currentTarget).get("q") || query).trim()
     if (!q) return
     setOpen(false)
-    router.push(`/search?q=${encodeURIComponent(q)}`)
+    navigate(`/search?q=${encodeURIComponent(q)}`)
   }
 
   return (
