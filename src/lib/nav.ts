@@ -7,18 +7,34 @@ type Listener = () => void
 
 const listeners = new Set<Listener>()
 
-export function getLocation(): WikiLocation {
-  if (typeof window === "undefined") {
-    return { pathname: "/", search: "" }
-  }
+const SERVER_LOCATION: WikiLocation = { pathname: "/", search: "" }
+let current: WikiLocation = SERVER_LOCATION
+
+function readWindowLocation(): WikiLocation {
   return {
     pathname: window.location.pathname,
     search: window.location.search,
   }
 }
 
+function syncFromWindow(): WikiLocation {
+  const next = readWindowLocation()
+  if (current.pathname === next.pathname && current.search === next.search) {
+    return current
+  }
+  current = next
+  return current
+}
+
+export function getLocation(): WikiLocation {
+  if (typeof window === "undefined") {
+    return SERVER_LOCATION
+  }
+  return syncFromWindow()
+}
+
 export function getServerLocation(): WikiLocation {
-  return { pathname: "/", search: "" }
+  return SERVER_LOCATION
 }
 
 export function subscribeLocation(listener: Listener) {
@@ -35,14 +51,17 @@ export function subscribeLocation(listener: Listener) {
 }
 
 export function emitLocation() {
+  if (typeof window !== "undefined") {
+    syncFromWindow()
+  }
   listeners.forEach((listener) => listener())
 }
 
 export function navigate(href: string, options?: { replace?: boolean }) {
   const url = new URL(href, window.location.origin)
   const next = `${url.pathname}${url.search}${url.hash}`
-  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`
-  if (next === current) {
+  const now = `${window.location.pathname}${window.location.search}${window.location.hash}`
+  if (next === now) {
     emitLocation()
     return
   }

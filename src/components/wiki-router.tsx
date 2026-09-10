@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useSyncExternalStore } from "react"
+import { useEffect, useState, useSyncExternalStore } from "react"
 
 import { AllPagesView } from "@/components/all-pages-view"
 import { ArticleView } from "@/components/article-view"
@@ -22,11 +22,7 @@ import {
 import { HOME_SLUG, wikiHref } from "@/lib/wiki"
 
 export function WikiRouter() {
-  const ready = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false
-  )
+  const [mounted, setMounted] = useState(false)
   const location = useSyncExternalStore(
     subscribeLocation,
     getLocation,
@@ -34,7 +30,11 @@ export function WikiRouter() {
   )
   const route = matchRoute(location.pathname, location.search)
 
-  if (!ready) {
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
     return <div className="h-48 animate-pulse rounded-xl bg-muted/70" />
   }
 
