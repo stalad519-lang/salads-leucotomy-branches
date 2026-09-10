@@ -7,14 +7,12 @@ import { useWiki } from "@/components/wiki-provider"
 import { allCategories, categoryHref, wikiHref } from "@/lib/wiki"
 
 export function AllPagesView() {
-  const { ready, pages } = useWiki()
+  const { pages } = useWiki()
   const items = useMemo(
     () => Object.values(pages).sort((a, b) => a.title.localeCompare(b.title, "zh")),
     [pages]
   )
   const cats = useMemo(() => allCategories(pages), [pages])
-
-  if (!ready) return <div className="wiki-article h-40 animate-pulse rounded-xl bg-muted" />
 
   return (
     <div className="wiki-article">

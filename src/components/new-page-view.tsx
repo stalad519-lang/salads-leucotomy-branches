@@ -10,11 +10,9 @@ import { editHref, slugify } from "@/lib/wiki"
 
 export function NewPageView({ preset = "" }: { preset?: string }) {
   const router = useRouter()
-  const { ready, exists } = useWiki()
+  const { exists } = useWiki()
   const [title, setTitle] = useState(preset)
   const taken = useMemo(() => Boolean(title.trim() && exists(title)), [exists, title])
-
-  if (!ready) return <div className="wiki-article h-40 animate-pulse rounded-xl bg-muted" />
 
   return (
     <div className="wiki-article">

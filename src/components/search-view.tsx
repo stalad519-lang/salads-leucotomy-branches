@@ -8,11 +8,9 @@ import { searchPages, snippet, wikiHref } from "@/lib/wiki"
 import { SearchBox } from "@/components/search-box"
 
 export function SearchView({ query }: { query: string }) {
-  const { ready, pages } = useWiki()
+  const { pages } = useWiki()
   const [q] = useState(query)
   const hits = useMemo(() => searchPages(pages, q), [pages, q])
-
-  if (!ready) return <div className="wiki-article h-40 animate-pulse rounded-xl bg-muted" />
 
   return (
     <div className="wiki-article">

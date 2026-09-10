@@ -75,8 +75,10 @@ function clonePages(pages: WikiPage[]): Record<string, WikiPage> {
 const serverPages = clonePages(seedPages)
 const serverSettings: WikiSettings = { ...defaultSettings }
 
-let pagesCache: Record<string, WikiPage> | null = null
-let settingsCache: WikiSettings | null = null
+let pagesCache: Record<string, WikiPage> = serverPages
+let settingsCache: WikiSettings = serverSettings
+let storageHydrated = false
+const listeners = new Set<() => void>()
 
 function readPagesFromStorage(): Record<string, WikiPage> {
   try {
@@ -102,15 +104,25 @@ function readSettingsFromStorage(): WikiSettings {
   }
 }
 
+function emitWikiChange() {
+  for (const listener of listeners) listener()
+}
+
+function hydrateFromStorage() {
+  if (storageHydrated || typeof window === "undefined") return
+  storageHydrated = true
+  queueMicrotask(() => {
+    pagesCache = readPagesFromStorage()
+    settingsCache = readSettingsFromStorage()
+    emitWikiChange()
+  })
+}
+
 export function getPagesSnapshot() {
-  if (typeof window === "undefined") return serverPages
-  if (!pagesCache) pagesCache = readPagesFromStorage()
   return pagesCache
 }
 
 export function getSettingsSnapshot() {
-  if (typeof window === "undefined") return serverSettings
-  if (!settingsCache) settingsCache = readSettingsFromStorage()
   return settingsCache
 }
 
@@ -123,16 +135,19 @@ export function getServerSettingsSnapshot() {
 }
 
 export function subscribeWiki(onStoreChange: () => void) {
-  const handler = () => {
-    pagesCache = null
-    settingsCache = null
-    onStoreChange()
+  listeners.add(onStoreChange)
+  hydrateFromStorage()
+  const onEvent = () => {
+    pagesCache = readPagesFromStorage()
+    settingsCache = readSettingsFromStorage()
+    emitWikiChange()
   }
-  window.addEventListener(WIKI_EVENT, handler)
-  window.addEventListener("storage", handler)
+  window.addEventListener(WIKI_EVENT, onEvent)
+  window.addEventListener("storage", onEvent)
   return () => {
-    window.removeEventListener(WIKI_EVENT, handler)
-    window.removeEventListener("storage", handler)
+    listeners.delete(onStoreChange)
+    window.removeEventListener(WIKI_EVENT, onEvent)
+    window.removeEventListener("storage", onEvent)
   }
 }
 
@@ -147,13 +162,13 @@ export function loadSettings(): WikiSettings {
 export function persistPages(pages: Record<string, WikiPage>) {
   pagesCache = pages
   window.localStorage.setItem(PAGES_KEY, JSON.stringify(pages))
-  window.dispatchEvent(new Event(WIKI_EVENT))
+  emitWikiChange()
 }
 
 export function persistSettings(settings: WikiSettings) {
   settingsCache = settings
   window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings))
-  window.dispatchEvent(new Event(WIKI_EVENT))
+  emitWikiChange()
 }
 
 export function savePage(

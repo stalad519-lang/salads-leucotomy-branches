@@ -6,10 +6,8 @@ import { useWiki } from "@/components/wiki-provider"
 import { categoryHref, pagesInCategory, wikiHref } from "@/lib/wiki"
 
 export function CategoryView({ name }: { name: string }) {
-  const { ready, pages } = useWiki()
+  const { pages } = useWiki()
   const items = pagesInCategory(pages, name)
-
-  if (!ready) return <div className="wiki-article h-40 animate-pulse rounded-xl bg-muted" />
 
   return (
     <div className="wiki-article">

@@ -20,22 +20,13 @@ import {
 } from "@/lib/wiki"
 
 export function ArticleView({ slug }: { slug: string }) {
-  const { ready, getPage } = useWiki()
+  const { getPage } = useWiki()
   const page = getPage(slug)
   const title = page?.title ?? titleFromSlug(slug)
   const toc = useMemo(
     () => (page ? extractToc(page.content) : []),
     [page]
   )
-
-  if (!ready) {
-    return (
-      <div className="wiki-article animate-pulse">
-        <div className="h-8 w-40 rounded bg-muted" />
-        <div className="mt-6 h-40 rounded bg-muted" />
-      </div>
-    )
-  }
 
   if (!page) {
     return (

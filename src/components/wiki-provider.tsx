@@ -22,7 +22,6 @@ import {
 } from "@/lib/wiki"
 
 type WikiContextValue = {
-  ready: boolean
   pages: Record<string, WikiPage>
   settings: WikiSettings
   getPage: (slug: string) => WikiPage | undefined
@@ -43,7 +42,6 @@ type WikiContextValue = {
 const WikiContext = createContext<WikiContextValue | null>(null)
 
 export function WikiProvider({ children }: { children: React.ReactNode }) {
-  const ready = useSyncExternalStore(subscribeWiki, () => true, () => false)
   const pages = useSyncExternalStore(
     subscribeWiki,
     getPagesSnapshot,
@@ -84,7 +82,6 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
 
   const value = useMemo<WikiContextValue>(
     () => ({
-      ready,
       pages,
       settings,
       getPage: (slug) => pages[slug],
@@ -97,7 +94,7 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
       updateSettings,
       resetDemo,
     }),
-    [pages, ready, remove, resetDemo, save, settings, updateSettings]
+    [pages, remove, resetDemo, save, settings, updateSettings]
   )
 
   return <WikiContext.Provider value={value}>{children}</WikiContext.Provider>

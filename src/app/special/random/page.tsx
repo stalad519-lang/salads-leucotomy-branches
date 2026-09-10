@@ -7,11 +7,10 @@ import { useWiki } from "@/components/wiki-provider"
 import { wikiHref } from "@/lib/wiki"
 
 export default function RandomPage() {
-  const { ready, pages } = useWiki()
+  const { pages } = useWiki()
   const router = useRouter()
 
   useEffect(() => {
-    if (!ready) return
     const slugs = Object.keys(pages)
     if (slugs.length === 0) {
       router.replace("/")
@@ -19,7 +18,7 @@ export default function RandomPage() {
     }
     const slug = slugs[Math.floor(Math.random() * slugs.length)]
     router.replace(wikiHref(slug))
-  }, [pages, ready, router])
+  }, [pages, router])
 
   return <p className="text-sm text-muted-foreground">正在前往随机条目…</p>
 }

@@ -7,14 +7,12 @@ import { useWiki } from "@/components/wiki-provider"
 import { formatTime, historyHref, wikiHref } from "@/lib/wiki"
 
 export function RecentView() {
-  const { ready, pages } = useWiki()
+  const { pages } = useWiki()
   const items = useMemo(
     () =>
       Object.values(pages).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)),
     [pages]
   )
-
-  if (!ready) return <div className="wiki-article h-40 animate-pulse rounded-xl bg-muted" />
 
   return (
     <div className="wiki-article">

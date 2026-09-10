@@ -7,11 +7,9 @@ import { useWiki } from "@/components/wiki-provider"
 import { editHref, formatTime, titleFromSlug, wikiHref, HOME_SLUG } from "@/lib/wiki"
 
 export function HistoryView({ slug }: { slug: string }) {
-  const { ready, getPage } = useWiki()
+  const { getPage } = useWiki()
   const page = getPage(slug)
   const revisions = useMemo(() => page?.revisions ?? [], [page])
-
-  if (!ready) return <div className="wiki-article h-40 animate-pulse rounded-xl bg-muted" />
 
   if (!page) {
     return (

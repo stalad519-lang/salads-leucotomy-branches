@@ -21,10 +21,7 @@ import {
 } from "@/lib/wiki"
 
 export function EditorView({ slug }: { slug: string }) {
-  const { ready, getPage } = useWiki()
-  if (!ready) {
-    return <div className="wiki-article h-64 animate-pulse rounded-xl bg-muted" />
-  }
+  const { getPage } = useWiki()
   const page = getPage(slug)
   return <EditorForm key={slug} slug={slug} page={page} />
 }
