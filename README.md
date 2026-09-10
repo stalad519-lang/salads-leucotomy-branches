@@ -29,7 +29,16 @@ The **English / 中文** control in the header changes:
 
 The local preview is only on your computer. To let a phone or other people open it, deploy the static site.
 
-### Cloudflare Pages (recommended)
+### Netlify (no account required to start)
+
+```bash
+npm run build
+npx netlify-cli deploy --allow-anonymous --dir out --no-build --prod
+```
+
+This prints a `https://….netlify.app` address. Claim the site within 60 minutes if you want to keep it.
+
+### Cloudflare Pages (recommended for a lasting `pages.dev` address)
 
 1. Create a free [Cloudflare](https://dash.cloudflare.com/sign-up) account.
 2. In a terminal in this folder:
@@ -39,15 +48,4 @@ npx wrangler login
 npm run deploy
 ```
 
-Wrangler prints a `https://….pages.dev` address. Anyone can open that link.
-
 Or in the Cloudflare dashboard: **Workers & Pages → Create → Pages → Upload assets**, and upload the `out` folder after `npm run build`.
-
-### Vercel (also free)
-
-```bash
-npx vercel login
-npx vercel --yes
-```
-
-This gives a `https://….vercel.app` address. It is often slower to open from mainland China than `pages.dev`.
