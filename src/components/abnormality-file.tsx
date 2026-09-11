@@ -476,10 +476,12 @@ function ResistanceList({
             <span className="abn-res-name" style={{ color: meta.css }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={meta.icon} alt="" className="dmg-type-icon dmg-type-icon--sm" />
-              {locale === "zh" ? meta.zh : meta.en}
+              <span className="abn-res-label">{locale === "zh" ? meta.zh : meta.en}</span>
             </span>
-            <span className="abn-res-n">{value}</span>
-            <span className="abn-res-w">{resistanceWord(value, locale)}</span>
+            <span className="abn-res-meta">
+              <span className="abn-res-n">{value}</span>
+              <span className="abn-res-w">{resistanceWord(value, locale)}</span>
+            </span>
           </li>
         )
       })}

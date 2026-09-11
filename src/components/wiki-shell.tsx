@@ -83,7 +83,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
             <Button
               variant="ghost"
               size="icon"
-              className="text-white hover:bg-white/10 md:hidden"
+              className="text-white hover:bg-white/10"
               aria-label={t("openMenu")}
               onClick={() => setMenuOpen(true)}
             >
@@ -126,6 +126,12 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                   {t("newPage")}
                 </Link>
               </nav>
+              <div className="sheet-lang mt-4 border-t border-white/30 px-4 pt-4">
+                <p className="mb-2 text-xs tracking-wide text-white/55 uppercase">
+                  {t("language")}
+                </p>
+                <LanguageSwitcher />
+              </div>
             </SheetContent>
           </Sheet>
 
@@ -149,7 +155,6 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="flex items-center gap-2">
-            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="icon"
