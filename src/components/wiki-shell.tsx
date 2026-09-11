@@ -224,8 +224,21 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-3 py-4 sm:px-4 sm:py-5">{children}</main>
 
-      <footer className="mt-auto border-t border-white bg-black px-4 py-6 text-center text-xs text-white/50">
-        {t("footer")}
+      <footer className="wiki-footer mt-auto border-t border-white bg-black px-4 py-6 text-center text-xs text-white/50">
+        <p>{t("footer")}</p>
+        <p className="wiki-community">
+          <a
+            href="https://pd.qq.com/g/pd88206495"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="wiki-community-link"
+          >
+            {t("communityQQ")} · {t("communityQQName")}
+          </a>
+          <span className="wiki-community-id" aria-label="channel id">
+            {t("communityQQId")}
+          </span>
+        </p>
       </footer>
 
       <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>

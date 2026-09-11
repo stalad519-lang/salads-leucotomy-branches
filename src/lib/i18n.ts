@@ -56,6 +56,9 @@ export const messages = {
       "Names are stored in this browser. Language follows the device on first visit; change it here to keep a preference. Restore replaces starter articles that share the same slug.",
     footer:
       "Fan wiki for Salad's leucotomy branches, a Roblox Lobotomy Corporation game. Files in this browser stay here until you publish.",
+    communityQQ: "QQ Channel",
+    communityQQName: "Salad's Lobotomy Branch Community",
+    communityQQId: "pd88206495",
     recentIntro: "Sorted by the time this browser last saved the page.",
     noPages: "No pages yet.",
     saved: "Saved",
@@ -148,6 +151,9 @@ export const messages = {
     settingsHelp:
       "名称只存在这台浏览器里。首次打开会跟设备语言；在这里改过之后会记住你的选择。恢复会覆盖相同短链的起始条目。",
     footer: "Salad's leucotomy branches 的同人百科（Roblox 脑叶公司）。内容先存在本机，发布后才给所有人看。",
+    communityQQ: "QQ 频道",
+    communityQQName: "沙拉的脑叶分部社区",
+    communityQQId: "pd88206495",
     recentIntro: "按本机最近保存时间排列。",
     noPages: "还没有任何页面。",
     saved: "已保存",

@@ -259,13 +259,39 @@
   box-shadow: inset 0 -3px 0 #ff2a2a, 0 0 16px rgb(255 42 42 / 0.35);
 }
 
-.wiki-hero-eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #ff2a2a;
-  text-shadow: 0 0 10px rgb(255 42 42 / 0.7);
-  margin: 0 0 0.55rem;
+.wiki-footer {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.wiki-footer > p {
+  margin: 0;
+}
+
+.wiki-community {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 0.75rem;
+}
+
+.wiki-community-link {
+  color: #fff !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid rgb(255 42 42 / 0.75);
+  padding-bottom: 1px;
+}
+
+.wiki-community-link:hover {
+  color: #ff6b6b !important;
+  border-bottom-color: #ff6b6b;
+}
+
+.wiki-community-id {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: rgb(255 255 255 / 0.4);
 }
 
 .wiki-hero-title {
