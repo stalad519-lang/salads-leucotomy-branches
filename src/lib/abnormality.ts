@@ -78,7 +78,7 @@ export type AbnormalityRecord = {
     suit: EgoSuit
     corrosion: EgoCorrosion
     gift: EgoGift
-  }
+  } | null
 }
 
 export const DAMAGE_META: Record<
@@ -143,6 +143,7 @@ export const FILE_UI = {
     instinct: "Instinct",
     attachment: "Attachment",
     repression: "Repression",
+    immune: "Immune",
     endured: "Endured",
     normalRes: "Normal",
     weak: "Weak",
@@ -193,6 +194,7 @@ export const FILE_UI = {
     instinct: "本能",
     attachment: "沟通",
     repression: "压迫",
+    immune: "免疫",
     endured: "抵抗",
     normalRes: "普通",
     weak: "脆弱",
@@ -239,16 +241,21 @@ export function findAbnormality(titleOrSlug: string) {
 }
 
 export function abnormalitySearchText(file: AbnormalityRecord) {
+  const egoBits = file.ego
+    ? [
+        file.ego.name.en,
+        file.ego.name.zh,
+        file.ego.gift.name.en,
+        file.ego.gift.name.zh,
+      ]
+    : []
   return [
     file.code,
     file.slug,
     ...file.aliases,
     file.name.en,
     file.name.zh,
-    file.ego.name.en,
-    file.ego.name.zh,
-    file.ego.gift.name.en,
-    file.ego.gift.name.zh,
+    ...egoBits,
     file.story.en,
     file.story.zh,
     ...file.management.en,
@@ -267,6 +274,7 @@ export function formatSigned(value: number) {
 
 export function resistanceWord(value: number, locale: Locale) {
   const ui = FILE_UI[locale]
+  if (value <= 0) return ui.immune
   if (value < 1) return ui.endured
   if (value === 1) return ui.normalRes
   if (value < 2) return ui.weak

@@ -69,6 +69,8 @@ Every hit in this game is one of four colors. Each color is also a work:
 * [[Work]] — Analysis, Instinct, Attachment, Repression
 * [[Creators]] — credits
 * [[Qe]] — first abnormality file (H-01-0)
+* [[Imaginary Friend]] — H-02-0 (sealed: Remedic)
+* [[folagerlak]] — S-03-0
 * [[Help:Editing]] — how to write an abnormality file
 * [[The Q]] — emblem (English only, to show language fallback)
 
@@ -105,6 +107,8 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 * [[Work]] — 解析、本能、沟通、压迫
 * [[Creators]] — 创作者名单
 * [[Qe]] — 第一份异想体档案（H-01-0）
+* [[Imaginary Friend|幻想朋友]] — H-02-0（密封：医骸）
+* [[folagerlak]] — S-03-0
 * [[Help:Editing]] — 怎么写一篇异想体档案
 * [[The Q]] — 徽章（本条故意没有中文，用来演示回退）
 
@@ -189,7 +193,9 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
 
 ## Files
 
-* [[Qe]] — H-01-0, HE. Grey 6–9. EGO: Fusion.
+* [[Qe]] — H-01-0, TETH. Red 14. EGO: Fusion.
+* [[Imaginary Friend]] — H-02-0, ALEPH (sealed Remedic / WAW). Red 32. EGO: Mimesis.
+* [[folagerlak]] — S-03-0, WAW. Black 32. No EGO yet.
 
 ## Related
 
@@ -220,7 +226,9 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
 
 ## 档案
 
-* [[Qe]] — H-01-0，HE。灰伤 6–9。EGO：融合。
+* [[Qe]] — H-01-0，TETH。红伤 14。EGO：融合。
+* [[Imaginary Friend|幻想朋友]] — H-02-0，ALEPH（密封医骸 / WAW）。红伤 32。EGO：拟生。
+* [[folagerlak]] — S-03-0，WAW。黑伤 32。暂无 EGO。
 
 ## 相关
 
@@ -236,40 +244,130 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
       categories: ["Abnormalities"],
       infobox: box("Qe", "H-01-0", [
         { label: "Code", value: "H-01-0" },
-        { label: "Risk", value: "HE" },
+        { label: "Risk", value: "TETH" },
         { label: "PE", value: "3" },
-        { label: "Damage", value: "[[Grey damage]] 6–9" },
+        { label: "Damage", value: "[[Red damage]] 14" },
         { label: "EGO", value: "Fusion / 融合" },
       ]),
-      content: `H-01-0 **Qe** is the first containment file in this archive. The readable sheet on this page is the source of truth.
+      content: `H-01-0 **Qe** is a TETH abnormality. The readable sheet on this page is synced from the game's English content file.
 
 * Code: H-01-0
-* Risk: HE
-* PE: 3
-* Damage: [[Grey damage]] 6–9
-* EGO: Fusion (融合) · gift Bone (骨头)
+* Risk: TETH
+* PE (mood max): 3
+* Work damage: [[Red damage]] 14 (Mental)
+* EGO: Fusion (融合) · gift Bone Spike (骨刺)
+* Personality: Curious · Obsessive, Selfish
 
-See [[Abnormalities]], [[Grey damage]], [[Work]].`,
+See [[Abnormalities]], [[Red damage]], [[Work]].`,
     },
     {
       title: "Qe",
       categories: ["Abnormalities"],
       infobox: box("Qe", "H-01-0", [
         { label: "编号", value: "H-01-0" },
-        { label: "危险等级", value: "HE" },
+        { label: "危险等级", value: "TETH" },
         { label: "情绪值", value: "3" },
-        { label: "伤害", value: "[[Grey damage|灰伤]] 6–9" },
+        { label: "伤害", value: "[[Red damage|红伤]] 14" },
         { label: "EGO", value: "融合" },
       ]),
-      content: `H-01-0 **Qe** 是本档案的第一份异想体。本页上的分栏表格才是可读的正文。
+      content: `H-01-0 **Qe** 为 TETH 异想体。本页分栏表格与游戏英文本对齐。
 
 * 编号：H-01-0
-* 危险等级：HE
-* 情绪值：3
-* 伤害：[[Grey damage|灰伤]] 6–9
-* EGO：融合 · 饰品骨头
+* 危险等级：TETH
+* 情绪上限：3
+* 作业伤害：[[Red damage|红伤]] 14（精神）
+* EGO：融合 · 饰品骨刺
+* 性格：好奇 · 执着、自私
 
-见 [[Abnormalities|异想体]]、[[Grey damage|灰伤]]、[[Work|工作]]。`,
+见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]。`,
+    }
+  ),
+  page(
+    "Imaginary_Friend",
+    {
+      title: "Imaginary Friend",
+      categories: ["Abnormalities"],
+      infobox: box("Imaginary Friend", "H-02-0", [
+        { label: "Code", value: "H-02-0" },
+        { label: "Risk", value: "ALEPH (sealed: Remedic / WAW)" },
+        { label: "PE", value: "2" },
+        { label: "Damage", value: "[[Red damage]] 32" },
+        { label: "EGO", value: "Mimesis / Pseudo-Life / You found me" },
+      ]),
+      content: `H-02-0 **Imaginary Friend** (幻想朋友). Before an Agent claims the gift **You found me**, Introduce shows **Remedic** (医骸) at WAW.
+
+* Code: H-02-0
+* Revealed risk: ALEPH · Sealed: Remedic / WAW
+* PE (mood max): 2
+* Work damage: [[Red damage]] 32
+* EGO: Mimesis (weapon), Pseudo-Life (suit), You found me (gift)
+* Personality: Compassionate · Innocent, Remorse
+
+See [[Abnormalities]], [[Red damage]], [[Work]].`,
+    },
+    {
+      title: "幻想朋友",
+      categories: ["Abnormalities"],
+      infobox: box("幻想朋友", "H-02-0", [
+        { label: "编号", value: "H-02-0" },
+        { label: "危险等级", value: "ALEPH（密封：医骸 / WAW）" },
+        { label: "情绪值", value: "2" },
+        { label: "伤害", value: "[[Red damage|红伤]] 32" },
+        { label: "EGO", value: "拟生 / You found me" },
+      ]),
+      content: `H-02-0 **幻想朋友**。在员工获得饰品 **You found me** 之前，图鉴显示 **医骸**（WAW）。
+
+* 编号：H-02-0
+* 揭示危险等级：ALEPH · 密封：医骸 / WAW
+* 情绪上限：2
+* 作业伤害：[[Red damage|红伤]] 32
+* EGO：拟生（武器）、Pseudo-Life（套装）、You found me（饰品）
+* 性格：慈悲 · 天真、悔恨
+
+见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]。`,
+    }
+  ),
+  page(
+    "folagerlak",
+    {
+      title: "folagerlak",
+      categories: ["Abnormalities"],
+      infobox: box("folagerlak", "S-03-0", [
+        { label: "Code", value: "S-03-0" },
+        { label: "Risk", value: "WAW" },
+        { label: "PE", value: "4" },
+        { label: "Damage", value: "[[Black damage]] 32" },
+        { label: "EGO", value: "—" },
+      ]),
+      content: `S-03-0 **folagerlak** is a WAW abnormality. No E.G.O has been extracted in the current build.
+
+* Code: S-03-0
+* Risk: WAW
+* PE (mood max): 4
+* Work damage: [[Black damage]] 32 (Corrosion)
+* Personality: Calm · Patient, Loyal
+
+See [[Abnormalities]], [[Black damage]], [[Work]].`,
+    },
+    {
+      title: "folagerlak",
+      categories: ["Abnormalities"],
+      infobox: box("folagerlak", "S-03-0", [
+        { label: "编号", value: "S-03-0" },
+        { label: "危险等级", value: "WAW" },
+        { label: "情绪值", value: "4" },
+        { label: "伤害", value: "[[Black damage|黑伤]] 32" },
+        { label: "EGO", value: "—" },
+      ]),
+      content: `S-03-0 **folagerlak** 为 WAW 异想体。当前版本尚未提取 E.G.O。
+
+* 编号：S-03-0
+* 危险等级：WAW
+* 情绪上限：4
+* 作业伤害：[[Black damage|黑伤]] 32（侵蚀）
+* 性格：冷静 · 耐心、忠诚
+
+见 [[Abnormalities|异想体]]、[[Black damage|黑伤]]、[[Work|工作]]。`,
     }
   ),
   page(
@@ -846,7 +944,7 @@ The **English / 中文** control changes chrome, article text, and which languag
 
 ## Abnormality file
 
-Create one page per abnormality. Keep the **English title** stable (code or English name). [[Qe]] (H-01-0) is the first structured file: portrait, PE, energy, resistances, story, guidelines, personality, and EGO.
+Create one page per abnormality. Keep the **English title** stable (code or English name). Structured files currently include [[Qe]] (H-01-0), [[Imaginary Friend]] (H-02-0), and [[folagerlak]] (S-03-0).
 
 Infobox rows (example):
 
@@ -906,7 +1004,7 @@ Escape conditions, gifts, or other facts from the Roblox game — not copied off
 
 ## 异想体档案
 
-一个异想体一页。**英语标题**保持稳定（编号或英文名）。第一份结构化档案是 [[Qe]]（H-01-0）：立绘、情绪值、能源、抗性、故事、管理需知、性格、EGO。
+一个异想体一页。**英语标题**保持稳定（编号或英文名）。当前结构化档案包括 [[Qe]]（H-01-0）、[[Imaginary Friend|幻想朋友]]（H-02-0）、[[folagerlak]]（S-03-0）。
 
 信息框示例：
 

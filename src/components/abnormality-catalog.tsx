@@ -95,7 +95,7 @@ export function AbnormalityBoard() {
                       </span>
                     </td>
                     <td className="archive-pe">{file.pe}</td>
-                    <td>{loc(file.ego.name, locale) || "—"}</td>
+                    <td>{file.ego ? loc(file.ego.name, locale) : "—"}</td>
                   </tr>
                 )
               })}

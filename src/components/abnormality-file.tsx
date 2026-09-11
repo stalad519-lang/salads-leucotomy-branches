@@ -36,13 +36,13 @@ export function AbnormalityFile({
   const { locale, t } = useWiki()
   const ui = FILE_UI[locale]
   const name = loc(file.name, locale)
-  const egoName = loc(file.ego.name, locale)
+  const egoName = file.ego ? loc(file.ego.name, locale) : null
   const dmg = DAMAGE_META[file.damage.color]
   const sections = [
     { id: "Story", label: ui.story },
     { id: "Management", label: ui.management },
     { id: "Personality", label: ui.personality },
-    { id: "EGO", label: `${ui.ego} · ${egoName}` },
+    ...(egoName ? [{ id: "EGO", label: `${ui.ego} · ${egoName}` }] : []),
     ...(notes?.trim() ? [{ id: "Notes", label: ui.notes }] : []),
   ]
 
@@ -83,7 +83,7 @@ export function AbnormalityFile({
               </dd>
             </div>
             <BoxRow label={ui.pe} value={String(file.pe)} />
-            <BoxRow label={ui.ego} value={egoName} />
+            <BoxRow label={ui.ego} value={egoName ?? "—"} />
           </dl>
           <div className="dossier-box-energy">
             <p>{ui.energy}</p>
@@ -159,57 +159,59 @@ export function AbnormalityFile({
             </p>
           </section>
 
-          <section id="EGO">
-            <h2>
-              {ui.ego} · {egoName}
-            </h2>
+          {file.ego && egoName ? (
+            <section id="EGO">
+              <h2>
+                {ui.ego} · {egoName}
+              </h2>
 
-            <h3>
-              {ui.weapon} <RiskBadge risk={file.ego.weapon.risk} />
-            </h3>
-            <p className="abn-look">{loc(file.ego.weapon.appearance, locale)}</p>
-            <p>
-              {ui.range}: {loc(file.ego.weapon.range, locale)} · {ui.damage}:{" "}
-              <DamageChip damage={file.ego.weapon.damage} locale={locale} />
-            </p>
-            <p>
-              {ui.mastered}: {loc(file.ego.weapon.mastered.range, locale)} ·{" "}
-              <DamageChip damage={file.ego.weapon.mastered.damage} locale={locale} />
-            </p>
+              <h3>
+                {ui.weapon} <RiskBadge risk={file.ego.weapon.risk} />
+              </h3>
+              <p className="abn-look">{loc(file.ego.weapon.appearance, locale)}</p>
+              <p>
+                {ui.range}: {loc(file.ego.weapon.range, locale)} · {ui.damage}:{" "}
+                <DamageChip damage={file.ego.weapon.damage} locale={locale} />
+              </p>
+              <p>
+                {ui.mastered}: {loc(file.ego.weapon.mastered.range, locale)} ·{" "}
+                <DamageChip damage={file.ego.weapon.mastered.damage} locale={locale} />
+              </p>
 
-            <h3>
-              {ui.suit} <RiskBadge risk={file.ego.suit.risk} />
-            </h3>
-            <p className="abn-look">{loc(file.ego.suit.appearance, locale)}</p>
-            <ResistanceList values={file.ego.suit.resistances} locale={locale} />
-            <p className="abn-special">
-              {ui.special}: {file.ego.suit.special ? loc(file.ego.suit.special, locale) : ui.optional}
-            </p>
+              <h3>
+                {ui.suit} <RiskBadge risk={file.ego.suit.risk} />
+              </h3>
+              <p className="abn-look">{loc(file.ego.suit.appearance, locale)}</p>
+              <ResistanceList values={file.ego.suit.resistances} locale={locale} />
+              <p className="abn-special">
+                {ui.special}: {file.ego.suit.special ? loc(file.ego.suit.special, locale) : ui.optional}
+              </p>
 
-            <h3>{ui.corrosion}</h3>
-            <p className="abn-look">{loc(file.ego.corrosion.appearance, locale)}</p>
-            <ResistanceList values={file.ego.corrosion.resistances} locale={locale} />
-            <p className="abn-special">
-              {ui.special}: {loc(file.ego.corrosion.special, locale)}
-            </p>
-            <p className="abn-special">
-              {ui.weaponSkill}: {loc(file.ego.corrosion.weaponSkill, locale)}
-            </p>
+              <h3>{ui.corrosion}</h3>
+              <p className="abn-look">{loc(file.ego.corrosion.appearance, locale)}</p>
+              <ResistanceList values={file.ego.corrosion.resistances} locale={locale} />
+              <p className="abn-special">
+                {ui.special}: {loc(file.ego.corrosion.special, locale)}
+              </p>
+              <p className="abn-special">
+                {ui.weaponSkill}: {loc(file.ego.corrosion.weaponSkill, locale)}
+              </p>
 
-            <h3>
-              {ui.gift} · {loc(file.ego.gift.name, locale)}
-            </h3>
-            <blockquote className="abn-quote">{loc(file.ego.gift.appearance, locale)}</blockquote>
-            <dl className="abn-bonus">
-              <BonusRow href={WORK_HREF.analysis} label={ui.analysis} value={file.ego.gift.bonuses.analysis} />
-              <BonusRow href={WORK_HREF.instinct} label={ui.instinct} value={file.ego.gift.bonuses.instinct} />
-              <BonusRow href={WORK_HREF.attachment} label={ui.attachment} value={file.ego.gift.bonuses.attachment} />
-              <BonusRow href={WORK_HREF.repression} label={ui.repression} value={file.ego.gift.bonuses.repression} />
-            </dl>
-            <p className="abn-special">
-              {ui.special}: {file.ego.gift.special ? loc(file.ego.gift.special, locale) : ui.none}
-            </p>
-          </section>
+              <h3>
+                {ui.gift} · {loc(file.ego.gift.name, locale)}
+              </h3>
+              <blockquote className="abn-quote">{loc(file.ego.gift.appearance, locale)}</blockquote>
+              <dl className="abn-bonus">
+                <BonusRow href={WORK_HREF.analysis} label={ui.analysis} value={file.ego.gift.bonuses.analysis} />
+                <BonusRow href={WORK_HREF.instinct} label={ui.instinct} value={file.ego.gift.bonuses.instinct} />
+                <BonusRow href={WORK_HREF.attachment} label={ui.attachment} value={file.ego.gift.bonuses.attachment} />
+                <BonusRow href={WORK_HREF.repression} label={ui.repression} value={file.ego.gift.bonuses.repression} />
+              </dl>
+              <p className="abn-special">
+                {ui.special}: {file.ego.gift.special ? loc(file.ego.gift.special, locale) : ui.none}
+              </p>
+            </section>
+          ) : null}
 
           {notes?.trim() ? (
             <section id="Notes">
