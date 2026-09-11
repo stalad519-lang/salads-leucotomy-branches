@@ -54,9 +54,8 @@ jobs:
           fi
           echo "site=$SITE_ID token_chars=${#NETLIFY_AUTH_TOKEN}"
           set +e
-          npx --yes netlify-cli@17.38.1 deploy \
+          npx --yes netlify-cli@23.1.0 deploy \
             --dir /tmp/wiki-deploy \
-            --no-build \
             --prod \
             --site "$SITE_ID" \
             --message "GHA ${GITHUB_SHA:0:7}" > /tmp/deploy-out.txt 2>&1

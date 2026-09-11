@@ -44,9 +44,8 @@ if [[ -n "${NETLIFY_AUTH_TOKEN:-}" ]]; then
   AUTH_ARGS+=(--auth "$NETLIFY_AUTH_TOKEN")
 fi
 
-npx --yes netlify-cli deploy \
+npx --yes netlify-cli@23.1.0 deploy \
   --dir /tmp/wiki-deploy \
-  --no-build \
   --prod \
   --site "$SITE_ID" \
   --message "$MSG" \
