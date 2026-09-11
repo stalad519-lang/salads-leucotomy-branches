@@ -22,12 +22,20 @@ export function AbnormalityBoard() {
 
   return (
     <div className="archive">
-      <header className="archive-head">
-        <p className="archive-kicker">{ui.file}</p>
-        <h1>{locale === "zh" ? "异想体一览" : "List of Abnormalities"}</h1>
-        <span>
-          {held} {ui.board}
-        </span>
+      <header className="archive-head archive-head--banner">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/game-title-banner.png"
+          alt="Salad's leucotomy branches"
+          className="game-title-banner"
+        />
+        <div className="archive-head-meta">
+          <p className="archive-kicker">{ui.file}</p>
+          <h1>{locale === "zh" ? "异想体一览" : "List of Abnormalities"}</h1>
+          <span>
+            {held} {ui.board}
+          </span>
+        </div>
       </header>
 
       <div className="archive-scroll">
