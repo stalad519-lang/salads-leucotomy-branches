@@ -49,6 +49,10 @@ jobs:
             echo "::error::NETLIFY_AUTH_TOKEN secret is empty. Add it under Settings → Secrets → Actions."
             exit 1
           fi
+          if [ -z "$SITE_ID" ]; then
+            echo "::error::NETLIFY_SITE_ID secret is empty."
+            exit 1
+          fi
 
           echo "token_len=${#TOKEN} site=$SITE_ID"
 
@@ -63,6 +67,17 @@ jobs:
             exit 1
           fi
 
+          site_code="$(curl -sS -o /tmp/netlify-site.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${TOKEN}" \
+            "https://api.netlify.com/api/v1/sites/${SITE_ID}" || true)"
+          echo "netlify_site_http=${site_code}"
+          if [ "$site_code" != "200" ]; then
+            echo "::error::Site id ${SITE_ID} was not found for this token (HTTP ${site_code})."
+            head -c 400 /tmp/netlify-site.json || true
+            echo
+            exit 1
+          fi
+
           rm -rf /tmp/wiki-deploy
           mkdir -p /tmp/wiki-deploy
           cp -a out/. /tmp/wiki-deploy/
@@ -70,9 +85,24 @@ jobs:
           find /tmp/wiki-deploy -name '*:*' -exec rm -rf {} + 2>/dev/null || true
           test -f /tmp/wiki-deploy/hand-ui/panel-torn.png
 
+          set +e
           npx --yes netlify-cli@23.1.0 deploy \
             --dir /tmp/wiki-deploy \
             --prod \
             --site "$SITE_ID" \
             --auth "$TOKEN" \
-            --message "GHA ${GITHUB_SHA:0:7}"
+            --message "GHA ${GITHUB_SHA:0:7}" \
+            > /tmp/netlify-deploy-out.txt 2>&1
+          status=$?
+          set -e
+          cat /tmp/netlify-deploy-out.txt
+          if [ "$status" -ne 0 ]; then
+            if grep -qi 'credit usage exceeded' /tmp/netlify-deploy-out.txt; then
+              echo "::error::Netlify account credits are exhausted. New deploys are blocked until credits are added or the monthly allowance resets. Your GitHub commits are safe."
+            elif grep -qi 'Project not found' /tmp/netlify-deploy-out.txt; then
+              echo "::error::Netlify CLI could not deploy this site. Often this is a wrong NETLIFY_SITE_ID or exhausted account credits."
+            else
+              echo "::error::Netlify deploy failed. See log above."
+            fi
+            exit "$status"
+          fi
