@@ -53,7 +53,7 @@ export const messages = {
     settingsTagline: "Tagline",
     restore: "Restore starter pages",
     settingsHelp:
-      "Names are stored in this browser. Restore replaces starter articles that share the same slug.",
+      "Names are stored in this browser. Language follows the device on first visit; change it here to keep a preference. Restore replaces starter articles that share the same slug.",
     footer:
       "Fan wiki for Salad's leucotomy branches, a Roblox Lobotomy Corporation game. Files in this browser stay here until you publish.",
     recentIntro: "Sorted by the time this browser last saved the page.",
@@ -145,7 +145,8 @@ export const messages = {
     settingsName: "维基名称",
     settingsTagline: "副标题",
     restore: "恢复起始条目",
-    settingsHelp: "名称只存在这台浏览器里。恢复会覆盖相同短链的起始条目。",
+    settingsHelp:
+      "名称只存在这台浏览器里。首次打开会跟设备语言；在这里改过之后会记住你的选择。恢复会覆盖相同短链的起始条目。",
     footer: "Salad's leucotomy branches 的同人百科（Roblox 脑叶公司）。内容先存在本机，发布后才给所有人看。",
     recentIntro: "按本机最近保存时间排列。",
     noPages: "还没有任何页面。",
@@ -200,6 +201,20 @@ export function t(locale: Locale, key: MessageKey): string {
 
 export function localeTag(locale: Locale) {
   return locale === "zh" ? "zh-CN" : "en"
+}
+
+/** Prefer Chinese when the device language is zh*; otherwise English. */
+export function detectDeviceLocale(): Locale {
+  if (typeof navigator === "undefined") return DEFAULT_LOCALE
+  const list =
+    navigator.languages && navigator.languages.length > 0
+      ? [...navigator.languages]
+      : [navigator.language]
+  for (const raw of list) {
+    if (!raw) continue
+    if (raw.toLowerCase().startsWith("zh")) return "zh"
+  }
+  return "en"
 }
 
 export const PRIMARY_CATEGORIES = [
@@ -284,11 +299,19 @@ export function subscribeLocale(onStoreChange: () => void) {
   if (!localeHydrated && typeof window !== "undefined") {
     localeHydrated = true
     const stored = window.localStorage.getItem(LOCALE_KEY)
-    if (stored && isLocale(stored) && stored !== localeCache) {
-      queueMicrotask(() => setLocale(stored))
-    } else {
-      document.documentElement.lang = localeTag(localeCache)
-    }
+    const next =
+      stored && isLocale(stored) ? stored : detectDeviceLocale()
+    queueMicrotask(() => {
+      if (next !== localeCache) {
+        setLocale(next)
+      } else {
+        document.documentElement.lang = localeTag(localeCache)
+        // Persist device pick so later visits stay stable until user changes it in Settings
+        if (!stored) {
+          window.localStorage.setItem(LOCALE_KEY, next)
+        }
+      }
+    })
   }
   return () => {
     localeListeners.delete(onStoreChange)

@@ -164,6 +164,39 @@
   box-shadow: 0 0 18px rgb(200 16 46 / 0.18);
 }
 
+.wiki-topbar-row {
+  min-width: 0;
+}
+
+.wiki-brand-name {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .wiki-brand-name {
+    display: block;
+    max-width: 11rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .wiki-brand-name {
+    max-width: 18rem;
+  }
+}
+
+.topbar-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+@media (max-width: 639px) {
+  .wiki-topbar .search-compact input {
+    padding-left: 2rem;
+    font-size: 0.82rem;
+  }
+}
+
 .dept-tabs {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
