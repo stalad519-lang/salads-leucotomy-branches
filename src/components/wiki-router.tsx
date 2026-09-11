@@ -5,6 +5,7 @@ import { useEffect, useState, useSyncExternalStore } from "react"
 import { AllPagesView } from "@/components/all-pages-view"
 import { ArticleView } from "@/components/article-view"
 import { CategoryView } from "@/components/category-view"
+import { FacilityHero } from "@/components/category-deck"
 import { EditorView } from "@/components/editor-view"
 import { HistoryView } from "@/components/history-view"
 import { NewPageView } from "@/components/new-page-view"
@@ -35,7 +36,7 @@ export function WikiRouter() {
   }, [])
 
   if (!mounted) {
-    return <div className="h-48 animate-pulse rounded-xl bg-muted/70" />
+    return <div className="h-48 animate-pulse rounded-xl bg-white/10" />
   }
 
   if (route.type === "random") {
@@ -44,7 +45,12 @@ export function WikiRouter() {
 
   switch (route.type) {
     case "home":
-      return <ArticleView slug={HOME_SLUG} />
+      return (
+        <>
+          <FacilityHero />
+          <ArticleView slug={HOME_SLUG} />
+        </>
+      )
     case "wiki":
       return <ArticleView slug={route.slug} />
     case "edit":

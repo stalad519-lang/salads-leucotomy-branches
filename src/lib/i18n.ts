@@ -90,6 +90,12 @@ export const messages = {
     label: "Label",
     value: "Value",
     defaultTagline: "Roblox Lobotomy Corporation fan wiki",
+    archiveEyebrow: "Facility archive",
+    categoryFiles: "files",
+    catAbnormalitiesDesc: "Containment files. One article per abnormality.",
+    catBasicsDesc: "Damage types and other standing rules of the facility.",
+    catMechanicsDesc: "Work: Analysis, Instinct, Attachment, Repression.",
+    catCreatorsDesc: "People who built the Roblox game.",
   },
   zh: {
     navMain: "首页",
@@ -171,6 +177,12 @@ export const messages = {
     label: "标签",
     value: "内容",
     defaultTagline: "Roblox 脑叶公司同人百科",
+    archiveEyebrow: "设施档案",
+    categoryFiles: "篇",
+    catAbnormalitiesDesc: "收容档案。每个异想体单独一页。",
+    catBasicsDesc: "伤害类型，以及设施里其他固定规则。",
+    catMechanicsDesc: "工作：解析、本能、沟通、压迫。",
+    catCreatorsDesc: "做这款 Roblox 游戏的人。",
   },
 } as const
 
@@ -226,6 +238,16 @@ export function categoryKey(name: string) {
 export function categoryLabel(name: string, locale: Locale) {
   const key = categoryKey(name)
   return categoryLabels[key]?.[locale] || name
+}
+
+export const categoryBlurbs: Record<
+  (typeof PRIMARY_CATEGORIES)[number],
+  MessageKey
+> = {
+  Abnormalities: "catAbnormalitiesDesc",
+  Basics: "catBasicsDesc",
+  Mechanics: "catMechanicsDesc",
+  Creators: "catCreatorsDesc",
 }
 
 let localeCache: Locale = DEFAULT_LOCALE

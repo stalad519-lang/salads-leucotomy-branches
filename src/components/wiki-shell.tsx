@@ -191,7 +191,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                   href={item.href}
                   className={`border-b-2 px-3 py-2 text-sm ${
                     active
-                      ? "border-[#c81e1e] text-white"
+                      ? "border-[#d4b37a] text-white"
                       : "border-transparent text-white/70 hover:text-white"
                   }`}
                 >
@@ -205,7 +205,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">{children}</main>
 
-      <footer className="mt-auto border-t border-neutral-800 bg-black px-4 py-6 text-center text-xs text-white/45">
+      <footer className="mt-auto border-t border-white/10 bg-black/45 px-4 py-6 text-center text-xs text-white/45 backdrop-blur-md">
         {t("footer")}
       </footer>
 
