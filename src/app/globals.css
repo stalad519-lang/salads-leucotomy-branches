@@ -124,11 +124,11 @@
   flex-direction: column;
   background-color: #000;
   background-image:
-    linear-gradient(180deg, rgb(0 0 0 / 0.62) 0%, rgb(0 0 0 / 0.84) 48%, #000 100%),
-    radial-gradient(720px 320px at 50% 0%, rgb(200 16 46 / 0.22), transparent 58%),
-    url("/facility-bg.jpg");
+    linear-gradient(180deg, rgb(0 0 0 / 0.55) 0%, rgb(0 0 0 / 0.72) 42%, rgb(0 0 0 / 0.88) 100%),
+    radial-gradient(900px 420px at 50% 18%, rgb(200 16 46 / 0.14), transparent 62%),
+    url("/abnormalities/containment-room.png");
   background-size: cover;
-  background-position: center 28%;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 
@@ -1354,14 +1354,15 @@
   padding: 0;
 }
 
-/* Hand ornate frame only for short panels (creators / small indexes), not the tall abnormality list */
+/* Clean LC-style double frame for short panels (creators / small indexes) */
 .archive:not(:has(.archive-head--banner)) {
-  border: 0;
-  box-shadow: none;
-  padding: 0.55rem;
-  background:
-    linear-gradient(rgb(0 0 0 / 0.92), rgb(0 0 0 / 0.92)) center / calc(100% - 22px) calc(100% - 22px) no-repeat,
-    url("/hand-ui/frame-ornate.png") center / 100% 100% no-repeat;
+  border: 1px solid rgb(255 255 255 / 0.75);
+  box-shadow:
+    0 0 0 3px #000,
+    0 0 0 4px rgb(255 255 255 / 0.4),
+    0 0 28px rgb(200 16 46 / 0.16);
+  padding: 0;
+  background: rgb(0 0 0 / 0.92);
 }
 
 .archive-head {
@@ -1753,19 +1754,9 @@
   padding-bottom: 1.25rem;
 }
 
+/* Containment room is full-bleed on .wiki-shell; keep dossier transparent */
 .dossier::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    linear-gradient(180deg, rgb(0 0 0 / 0.72) 0%, rgb(0 0 0 / 0.35) 42%, rgb(0 0 0 / 0.78) 100%),
-    url("/abnormalities/containment-room.png");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: min(980px, 115%) auto;
-  opacity: 0.95;
+  content: none;
 }
 
 .dossier-back {
@@ -1835,19 +1826,17 @@
 
 .dossier-box.hand-panel {
   position: relative;
-  padding: 0.7rem 0.65rem 1.5rem;
-  background: rgb(0 0 0 / 0.9);
-  border: 0;
+  padding: 0.55rem 0.45rem 0.85rem;
+  background: rgb(0 0 0 / 0.92);
+  border: 1px solid rgb(255 255 255 / 0.85);
+  box-shadow:
+    0 0 0 2px #000,
+    0 0 0 3px rgb(255 255 255 / 0.35),
+    0 0 22px rgb(255 255 255 / 0.08);
 }
 
 .dossier-box.hand-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: url("/hand-ui/panel-torn.png") center / 100% 100% no-repeat;
-  opacity: 1;
+  content: none;
 }
 
 .dossier-box.hand-panel > * {
@@ -1865,11 +1854,22 @@
 }
 
 .dossier-box-name.hand-namebar {
-  margin: 0.15rem 0.2rem 0.35rem;
-  padding: 0.7rem 0.85rem;
-  border: 0;
-  border-bottom: 0;
-  background: url("/hand-ui/bar-slash.png") center / 100% 100% no-repeat;
+  margin: 0.1rem 0.15rem 0.4rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgb(255 255 255 / 0.7);
+  border-bottom: 2px solid #ff2a2a;
+  background:
+    linear-gradient(90deg, transparent 0.55rem, #050505 0.55rem),
+    repeating-linear-gradient(
+      -45deg,
+      #111,
+      #111 4px,
+      #f5f5f5 4px,
+      #f5f5f5 8px
+    );
+  background-size: 100% 100%, 0.55rem 100%;
+  background-position: 0 0, 0 0;
+  background-repeat: no-repeat;
   text-shadow: 0 0 8px rgb(0 0 0 / 0.85);
 }
 
@@ -1915,11 +1915,23 @@
   grid-template-columns: 4.8rem 1fr;
   gap: 0.45rem;
   margin: 0.2rem 0.35rem;
-  padding: 0.42rem 0.75rem;
-  border-top: 0;
+  padding: 0.42rem 0.75rem 0.42rem 0.95rem;
+  border: 1px solid rgb(255 255 255 / 0.45);
+  border-top: 1px solid rgb(255 255 255 / 0.45);
   font-size: 0.82rem;
   align-items: center;
-  background: url("/hand-ui/bar-stripes.png") center / 100% 100% no-repeat;
+  background:
+    linear-gradient(90deg, transparent 0.5rem, #050505 0.5rem),
+    repeating-linear-gradient(
+      -45deg,
+      #0a0a0a,
+      #0a0a0a 3px,
+      #efefef 3px,
+      #efefef 6px
+    );
+  background-size: 100% 100%, 0.5rem 100%;
+  background-position: 0 0, 0 0;
+  background-repeat: no-repeat;
 }
 
 .dossier-box-row dt {
@@ -1934,8 +1946,12 @@
 }
 
 .dossier-box-energy.hand-energy {
-  background: url("/hand-ui/frame-wide-noise.png") center / 100% 100% no-repeat;
-  padding: 0.85rem 0.9rem 1rem;
+  margin: 0.35rem 0.35rem 0.15rem;
+  padding: 0.7rem 0.75rem 0.85rem;
+  border: 1px solid rgb(255 255 255 / 0.55);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.04), transparent 40%),
+    #050505;
 }
 
 .dossier-box-energy > p,
@@ -1949,11 +1965,13 @@
 
 .sensitive-panel {
   --sensitive-ink: #d8d8a7;
-  margin: 0.35rem 0.2rem 0.15rem;
-  padding: 1rem 0.7rem 1.15rem;
-  border-top: 0;
+  margin: 0.45rem 0.35rem 0.15rem;
+  padding: 0.95rem 0.65rem 1rem;
+  border: 1px solid var(--sensitive-ink);
   color: var(--sensitive-ink);
-  background: url("/hand-ui/frame-tall-smoke.png") center / 100% 100% no-repeat;
+  background:
+    linear-gradient(180deg, rgb(216 216 167 / 0.06), transparent 35%),
+    #050505;
 }
 
 .sensitive-panel-title {
@@ -2088,10 +2106,13 @@
 
 .dossier-body.hand-frame {
   position: relative;
-  padding: 1.55rem 1.55rem 1.9rem;
-  background:
-    linear-gradient(rgb(0 0 0 / 0.88), rgb(0 0 0 / 0.88)) center / calc(100% - 28px) calc(100% - 28px) no-repeat,
-    url("/hand-ui/frame-ornate.png") center / 100% 100% no-repeat;
+  padding: 1.25rem 1.2rem 1.55rem;
+  border: 1px solid rgb(255 255 255 / 0.75);
+  background: rgb(0 0 0 / 0.88);
+  box-shadow:
+    0 0 0 3px #000,
+    0 0 0 4px rgb(255 255 255 / 0.35),
+    0 0 24px rgb(0 0 0 / 0.55);
 }
 
 .dossier-stamp {
@@ -2112,8 +2133,21 @@
   display: inline-block;
   min-width: min(100%, 18rem);
   margin: 0 0 0.65rem;
-  padding: 0.45rem 1.1rem 0.55rem;
-  background: url("/hand-ui/bar-slash.png") center / 100% 100% no-repeat;
+  padding: 0.4rem 1rem 0.5rem 1.15rem;
+  border: 1px solid rgb(255 255 255 / 0.7);
+  border-bottom: 2px solid #ff2a2a;
+  background:
+    linear-gradient(90deg, transparent 0.5rem, #050505 0.5rem),
+    repeating-linear-gradient(
+      -45deg,
+      #111,
+      #111 4px,
+      #f5f5f5 4px,
+      #f5f5f5 8px
+    );
+  background-size: 100% 100%, 0.5rem 100%;
+  background-position: 0 0, 0 0;
+  background-repeat: no-repeat;
   font-size: clamp(1.45rem, 3.5vw, 2rem);
   line-height: 1.2;
 }

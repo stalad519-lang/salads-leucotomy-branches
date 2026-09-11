@@ -19,7 +19,13 @@ export const metadata: Metadata = {
   },
   description: "Wiki for Salad's leucotomy branches, a Roblox Lobotomy Corporation fan game. English source, Chinese optional.",
   icons: {
-    icon: "/game-icon.jpg",
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/game-icon.jpg", sizes: "1080x1080", type: "image/jpeg" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon-32.png",
   },
 }
 

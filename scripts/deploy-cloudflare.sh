@@ -46,7 +46,9 @@ mkdir -p /tmp/wiki-cf-deploy
 cp -a out/. /tmp/wiki-cf-deploy/
 find /tmp/wiki-cf-deploy -name '*.txt' -delete
 find /tmp/wiki-cf-deploy -name '*:*' -exec rm -rf {} + 2>/dev/null || true
-test -f /tmp/wiki-cf-deploy/hand-ui/panel-torn.png
+test -f /tmp/wiki-cf-deploy/abnormalities/containment-room.png
+test -f /tmp/wiki-cf-deploy/favicon-32.png
+test -f /tmp/wiki-cf-deploy/game-icon.jpg
 
 echo "==> Deploying to Cloudflare Pages project: ${PROJECT}"
 npx --yes wrangler pages deploy /tmp/wiki-cf-deploy \

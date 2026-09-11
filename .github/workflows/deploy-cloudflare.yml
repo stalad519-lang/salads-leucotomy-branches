@@ -32,10 +32,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify hand-ui assets
+      - name: Verify public assets
         run: |
-          ls -la out/hand-ui
-          test -f out/hand-ui/panel-torn.png
+          test -f out/abnormalities/containment-room.png
+          test -f out/favicon-32.png
+          test -f out/game-icon.jpg
 
       - name: Prepare publish folder
         run: |
@@ -44,7 +45,8 @@ jobs:
           cp -a out/. /tmp/wiki-cf-deploy/
           find /tmp/wiki-cf-deploy -name '*.txt' -delete
           find /tmp/wiki-cf-deploy -name '*:*' -exec rm -rf {} + 2>/dev/null || true
-          test -f /tmp/wiki-cf-deploy/hand-ui/panel-torn.png
+          test -f /tmp/wiki-cf-deploy/abnormalities/containment-room.png
+          test -f /tmp/wiki-cf-deploy/favicon-32.png
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

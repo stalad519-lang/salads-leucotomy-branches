@@ -74,13 +74,6 @@ export function AbnormalityFile({
       </p>
 
       <div className="dossier-grid">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/hand-ui/deco-pillar.png"
-          alt=""
-          aria-hidden
-          className="dossier-deco"
-        />
         <aside className="dossier-box hand-panel">
           <div className="dossier-box-name hand-namebar">{name}</div>
           <figure>
