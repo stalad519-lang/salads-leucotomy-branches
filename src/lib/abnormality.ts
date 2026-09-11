@@ -100,6 +100,8 @@ export const RISK_CSS: Record<RiskLevel, string> = {
   ALEPH: "#FF0000",
 }
 
+export const RISK_ORDER: RiskLevel[] = ["ZAYIN", "TETH", "HE", "WAW", "ALEPH"]
+
 export const RISK_INK: Record<RiskLevel, string> = {
   ZAYIN: "#000",
   TETH: "#fff",
@@ -146,6 +148,8 @@ export const FILE_UI = {
     vulnerable: "Vulnerable",
     notes: "Wiki notes",
     file: "Containment file",
+    board: "Containment",
+    emptyRank: "None held",
   },
   zh: {
     code: "编号",
@@ -184,6 +188,8 @@ export const FILE_UI = {
     vulnerable: "极脆弱",
     notes: "词条备注",
     file: "收容档案",
+    board: "收容",
+    emptyRank: "未收容",
   },
 } as const
 
@@ -193,6 +199,13 @@ export function loc<T>(copy: Localized<T>, locale: Locale): T {
 
 export function fileKey(value: string) {
   return value.trim().replace(/\s+/g, "_")
+}
+
+export function groupedAbnormalities() {
+  return RISK_ORDER.map((risk) => ({
+    risk,
+    files: abnormalityFiles.filter((file) => file.risk === risk),
+  }))
 }
 
 export function findAbnormality(titleOrSlug: string) {

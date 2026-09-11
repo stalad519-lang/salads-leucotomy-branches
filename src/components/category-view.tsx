@@ -2,15 +2,9 @@
 
 import { Link } from "@/components/wiki-link"
 import { SceneRail } from "@/components/category-deck"
+import { AbnormalityBoard } from "@/components/abnormality-catalog"
 
 import { useWiki } from "@/components/wiki-provider"
-import {
-  DAMAGE_META,
-  RISK_CSS,
-  findAbnormality,
-  formatRange,
-  loc,
-} from "@/lib/abnormality"
 import { categoryKey, categoryLabel, messages } from "@/lib/i18n"
 import { pagesInCategory, wikiHref } from "@/lib/wiki"
 
@@ -19,6 +13,15 @@ export function CategoryView({ name }: { name: string }) {
   const key = categoryKey(name)
   const items = pagesInCategory(pages, name, locale)
   const label = categoryLabel(name, locale)
+
+  if (key === "Abnormalities") {
+    return (
+      <div className="category-scene">
+        <SceneRail active={key} />
+        <AbnormalityBoard />
+      </div>
+    )
+  }
 
   return (
     <div className="category-scene">
@@ -38,48 +41,12 @@ export function CategoryView({ name }: { name: string }) {
           </p>
         ) : (
           <div className="wiki-file-list">
-            {items.map(({ page, resolved }) => {
-              const file = findAbnormality(page.slug)
-              if (file && page.slug !== "Abnormalities") {
-                const meta = DAMAGE_META[file.damage.color]
-                const risk = RISK_CSS[file.risk]
-                return (
-                  <Link
-                    key={page.slug}
-                    href={wikiHref(page.slug)}
-                    className="abn-index-card"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={file.portrait}
-                      alt=""
-                      style={{ objectPosition: file.portraitFocus ?? "center" }}
-                    />
-                    <span>
-                      <span className="abn-index-code">{file.code}</span>
-                      <span className="abn-index-name">{loc(file.name, locale)}</span>
-                      <span className="abn-index-meta">
-                        <span className="abn-index-risk" style={{ color: risk, textShadow: `0 0 8px ${risk}` }}>
-                          {file.risk}
-                        </span>
-                        {" · "}
-                        {locale === "zh" ? "情绪值" : "PE"} {file.pe} ·{" "}
-                        {formatRange(file.damage.min, file.damage.max)}{" "}
-                        {locale === "zh" ? meta.zh : meta.en}
-                      </span>
-                    </span>
-                  </Link>
-                )
-              }
-              return (
-                <Link key={page.slug} href={wikiHref(page.slug)} className="wiki-file-row">
-                  <span>{resolved.title}</span>
-                  <span className="wiki-file-slug">
-                    {page.slug.replaceAll("_", " ")}
-                  </span>
-                </Link>
-              )
-            })}
+            {items.map(({ page, resolved }) => (
+              <Link key={page.slug} href={wikiHref(page.slug)} className="wiki-file-row">
+                <span>{resolved.title}</span>
+                <span className="wiki-file-slug">{page.slug.replaceAll("_", " ")}</span>
+              </Link>
+            ))}
           </div>
         )}
       </article>

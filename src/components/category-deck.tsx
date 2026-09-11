@@ -2,6 +2,7 @@
 
 import { Link } from "@/components/wiki-link"
 import { useWiki } from "@/components/wiki-provider"
+import { abnormalityFiles } from "@/data/abnormalities"
 import {
   categoryBlurbs,
   categoryLabel,
@@ -25,7 +26,6 @@ export function FacilityHero() {
       <p className="wiki-hero-eyebrow">{t("archiveEyebrow")}</p>
       <h1 className="wiki-hero-title">{settings.name}</h1>
       <p className="wiki-hero-tagline">{settings.tagline || t("defaultTagline")}</p>
-      <p className="wiki-hero-pick">{t("pickScene")}</p>
       <SceneDoors />
     </section>
   )
@@ -42,7 +42,12 @@ export function SceneDoors({ active }: { active?: string }) {
       {PRIMARY_CATEGORIES.map((key) => {
         const href = categoryHref(key)
         const blurb = t(categoryBlurbs[key] as MessageKey)
-        const count = counts[key] ?? 0
+        const count =
+          key === "Abnormalities" ? abnormalityFiles.length : (counts[key] ?? 0)
+        const codes =
+          key === "Abnormalities"
+            ? abnormalityFiles.map((file) => file.code).join("  ")
+            : null
         return (
           <Link
             key={key}
@@ -51,7 +56,7 @@ export function SceneDoors({ active }: { active?: string }) {
           >
             <span className="scene-door-index">{SCENE_INDEX[key]}</span>
             <span className="scene-door-name">{categoryLabel(key, locale)}</span>
-            <span className="scene-door-blurb">{blurb}</span>
+            <span className="scene-door-blurb">{codes || blurb}</span>
             <span className="scene-door-count">
               {count} {t("categoryFiles")}
             </span>
