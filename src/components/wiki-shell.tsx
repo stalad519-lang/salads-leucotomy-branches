@@ -159,13 +159,14 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
             href="/"
             className="wiki-brand flex min-w-0 shrink-0 items-center gap-2 text-white sm:gap-2.5"
           >
-            <Image
-              src="/game-icon.jpg"
-              alt=""
-              width={40}
-              height={40}
-              className="size-8 shrink-0 border border-white sm:size-10"
-            />
+            <span className="wiki-brand-icon" aria-hidden>
+              <Image
+                src="/game-icon.jpg"
+                alt=""
+                width={64}
+                height={64}
+              />
+            </span>
             <span className="wiki-brand-name min-w-0">
               <span className="block truncate text-[15px] leading-tight font-semibold">
                 {settings.name}
