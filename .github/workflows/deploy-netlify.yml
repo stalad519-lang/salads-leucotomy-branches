@@ -10,7 +10,7 @@ permissions:
 
 concurrency:
   group: netlify-production
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -46,16 +46,27 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          set -euo pipefail
+          set -uo pipefail
+          SITE_ID="${NETLIFY_SITE_ID:-9adc9168-5491-4e81-9bfc-9f19068b0ab6}"
           if [ -z "${NETLIFY_AUTH_TOKEN:-}" ]; then
-            echo "::error::NETLIFY_AUTH_TOKEN is empty. Re-add the repo secret."
+            echo "::error::NETLIFY_AUTH_TOKEN is empty. Update the GitHub Actions secret."
             exit 1
           fi
-          SITE_ID="${NETLIFY_SITE_ID:-9adc9168-5491-4e81-9bfc-9f19068b0ab6}"
-          echo "Deploying site $SITE_ID"
+          echo "site=$SITE_ID token_chars=${#NETLIFY_AUTH_TOKEN}"
+          set +e
           npx --yes netlify-cli@17.38.1 deploy \
             --dir /tmp/wiki-deploy \
             --no-build \
             --prod \
             --site "$SITE_ID" \
-            --message "GitHub Actions ${GITHUB_SHA:0:7}"
+            --message "GHA ${GITHUB_SHA:0:7}" > /tmp/deploy-out.txt 2>&1
+          code=$?
+          set -e
+          cat /tmp/deploy-out.txt
+          if [ "$code" -ne 0 ]; then
+            echo "::error::Netlify deploy exited with $code"
+            tail -n 50 /tmp/deploy-out.txt | while IFS= read -r line; do
+              echo "::error::${line}"
+            done
+            exit "$code"
+          fi
