@@ -258,6 +258,10 @@ export const FILE_UI = {
     sealedNarration: "Sealed work narration",
     workLevel: "Level",
     agentPlaceholder: "{1} = Agent name",
+    grade: "Grade",
+    observationLevel: "Observation Level",
+    workSpeed: "Work Speed",
+    successRate: "Success Rate",
   },
   zh: {
     code: "编号",
@@ -324,8 +328,22 @@ export const FILE_UI = {
     sealedNarration: "密封形态工作旁白",
     workLevel: "等级",
     agentPlaceholder: "{1} = 员工名字",
+    grade: "Grade",
+    observationLevel: "观察等级",
+    workSpeed: "工作速度",
+    successRate: "成功率",
   },
 } as const
+
+/** Introduce → Grade unlock ladder (shared across files). */
+export const OBSERVATION_GRADE_STEPS = [
+  { roman: "Ⅰ", bonus: "workSpeed" },
+  { roman: "Ⅱ", bonus: "successRate" },
+  { roman: "Ⅲ", bonus: "workSpeed" },
+  { roman: "Ⅳ", bonus: "successRate" },
+] as const
+
+export const OBSERVATION_GRADE_MAX = 4
 
 export function loc<T>(copy: Localized<T>, locale: Locale): T {
   return copy[locale] ?? copy.en

@@ -99,7 +99,7 @@ export const messages = {
     pickScene: "Open a category",
     catAbnormalitiesDesc: "Held files, sorted by risk. H-01-0 lives here.",
     catBasicsDesc: "Four damage colors, four works, and primary / secondary personalities.",
-    catMechanicsDesc: "Facility mechanisms — empty for now.",
+    catMechanicsDesc: "Facility mechanisms — Observation Level (Grade) and more.",
     catCreatorsDesc: "Salad (game author) and Stalad (composer).",
   },
   zh: {
@@ -192,7 +192,7 @@ export const messages = {
     pickScene: "选择分类",
     catAbnormalitiesDesc: "在库个体，按危险等级排列。H-01-0 在这里。",
     catBasicsDesc: "四色伤害、四种工作、主性格与副性格。",
-    catMechanicsDesc: "设施机制 — 暂空。",
+    catMechanicsDesc: "设施机制 — 观察等级（Grade）等。",
     catCreatorsDesc: "Salad（游戏总作者）与 Stalad（曲师）。",
   },
 } as const

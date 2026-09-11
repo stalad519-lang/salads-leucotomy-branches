@@ -8,6 +8,8 @@ import {
   DAMAGE_META,
   DAMAGE_ORDER,
   FILE_UI,
+  OBSERVATION_GRADE_MAX,
+  OBSERVATION_GRADE_STEPS,
   WORK_ICON,
   WORK_LEVELS,
   WORK_ORDER,
@@ -131,6 +133,7 @@ export function AbnormalityFile({
               </tbody>
             </table>
           </div>
+          <GradePanel locale={locale} />
           <SensitivePanel mood={file.mood} resistances={file.resistances} locale={locale} />
         </aside>
 
@@ -359,6 +362,31 @@ export function AbnormalityFile({
         </div>
       </div>
     </div>
+  )
+}
+
+function GradePanel({ locale }: { locale: Locale }) {
+  const ui = FILE_UI[locale]
+  return (
+    <section className="grade-panel" aria-label={ui.grade}>
+      <h3 className="grade-panel-title">{ui.grade}</h3>
+      <ol className="grade-panel-list">
+        {OBSERVATION_GRADE_STEPS.map((step) => (
+          <li key={step.roman}>
+            <span className="grade-roman">{step.roman}</span>
+            <span className="grade-bonus">
+              {step.bonus === "workSpeed" ? ui.workSpeed : ui.successRate}
+              <span className="grade-star" aria-hidden>
+                *
+              </span>
+            </span>
+          </li>
+        ))}
+      </ol>
+      <p className="grade-panel-level">
+        {ui.observationLevel} {OBSERVATION_GRADE_MAX}
+      </p>
+    </section>
   )
 }
 
