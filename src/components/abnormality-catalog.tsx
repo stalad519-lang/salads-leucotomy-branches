@@ -10,6 +10,7 @@ import {
   formatRange,
   groupedAbnormalities,
   loc,
+  portraitCropStyle,
 } from "@/lib/abnormality"
 import { navigate } from "@/lib/nav"
 import { wikiHref } from "@/lib/wiki"
@@ -75,7 +76,7 @@ export function AbnormalityBoard() {
                         <img
                           src={file.portrait}
                           alt=""
-                          style={{ transformOrigin: file.portraitFocus ?? "center" }}
+                          style={portraitCropStyle(file.portraitFocus, 2.7)}
                         />
                       </div>
                     </td>

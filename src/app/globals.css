@@ -1231,6 +1231,7 @@
 }
 
 .archive-shot {
+  position: relative;
   width: 72px;
   height: 72px;
   overflow: hidden;
@@ -1240,10 +1241,6 @@
 
 .archive-shot img {
   display: block;
-  width: 72px;
-  height: 72px;
-  object-fit: cover;
-  transform: scale(2.2);
 }
 
 .archive-name {
@@ -1374,18 +1371,18 @@
   padding: 0.65rem 0.65rem 0.45rem;
   background: #050505;
   border-bottom: 1px solid #fff;
-  overflow: hidden;
 }
 
-.dossier-box img {
-  display: block;
-  width: 100%;
+.dossier-shot {
+  position: relative;
+  overflow: hidden;
   height: 16.5rem;
-  object-fit: cover;
   border: 1px solid #fff;
   background: #000;
-  transform: scale(1.75);
-  transform-origin: 80% 40%;
+}
+
+.dossier-shot img {
+  display: block;
 }
 
 .dossier-box figcaption {

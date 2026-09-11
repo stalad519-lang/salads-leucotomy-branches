@@ -217,6 +217,18 @@ export function loc<T>(copy: Localized<T>, locale: Locale): T {
   return copy[locale] ?? copy.en
 }
 
+export function portraitCropStyle(focus: string | undefined, zoom: number) {
+  const [fx, fy] = (focus ?? "50% 50%").trim().split(/\s+/)
+  return {
+    position: "absolute" as const,
+    width: `${zoom * 100}%`,
+    height: `${zoom * 100}%`,
+    maxWidth: "none" as const,
+    left: `calc(50% - ${zoom} * ${fx})`,
+    top: `calc(50% - ${zoom} * ${fy})`,
+  }
+}
+
 export function fileKey(value: string) {
   return value.trim().replace(/\s+/g, "_")
 }
