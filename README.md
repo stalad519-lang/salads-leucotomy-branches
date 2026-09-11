@@ -2,7 +2,12 @@
 
 A bilingual encyclopedia for **Salad's leucotomy branches**, a Roblox fan game of Lobotomy Corporation.
 
-The wiki is built for **abnormality files** (异想体) and the game's four damage / work colors:
+The wiki is built around four categories:
+
+- **Abnormalities** / 异想体
+- **Basics** / 基本信息 (damage types and other facts)
+- **Mechanics** / 机制
+- **Creators** / 创作者
 
 - Red / 红伤 — mental — Analysis / 解析
 - Grey / 灰伤 — physical — Instinct / 本能

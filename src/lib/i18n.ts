@@ -63,7 +63,7 @@ export const messages = {
     none: " none",
     emptyWiki: "No articles yet. Create one to start the wiki.",
     searchResults: "Search results",
-    searchHint: "Type a name, mechanic, or category.",
+    searchHint: "Type an abnormality, damage type, or creator.",
     searchEmpty: (q: string) => `No results for “${q}”. Try another word, or create a page with that title.`,
     categoryTitle: (name: string) => `Category: ${name}`,
     categoryCount: (n: number) =>
@@ -146,7 +146,7 @@ export const messages = {
     none: " 暂无",
     emptyWiki: "还没有条目。可以先新建一页。",
     searchResults: "搜索结果",
-    searchHint: "可搜人物、机制或分类。",
+    searchHint: "可搜异想体、伤害类型或创作者。",
     searchEmpty: (q: string) => `没有找到「${q}」。可以换个词，或新建同名页面。`,
     categoryTitle: (name: string) => `分类：${name}`,
     categoryCount: (n: number) => `${n} 篇页面属于此分类。`,
@@ -186,18 +186,37 @@ export function localeTag(locale: Locale) {
   return locale === "zh" ? "zh-CN" : "en"
 }
 
+export const PRIMARY_CATEGORIES = [
+  "Abnormalities",
+  "Basics",
+  "Mechanics",
+  "Creators",
+] as const
+
 export const categoryLabels: Record<string, { en: string; zh: string }> = {
-  Game: { en: "Game", zh: "游戏" },
-  Characters: { en: "Characters", zh: "人物" },
-  Mechanics: { en: "Mechanics", zh: "机制" },
-  Locations: { en: "Locations", zh: "地点" },
-  Help: { en: "Help", zh: "帮助" },
   Abnormalities: { en: "Abnormalities", zh: "异想体" },
-  Damage: { en: "Damage", zh: "伤害" },
+  Basics: { en: "Basics", zh: "基本信息" },
+  Mechanics: { en: "Mechanics", zh: "机制" },
+  Creators: { en: "Creators", zh: "创作者" },
+  Help: { en: "Help", zh: "帮助" },
+}
+
+const CATEGORY_ALIASES: Record<string, string> = {
+  Game: "Basics",
+  Damage: "Basics",
+  Characters: "Basics",
+  Locations: "Mechanics",
+  异想体: "Abnormalities",
+  基本信息: "Basics",
+  伤害: "Basics",
+  机制: "Mechanics",
+  创作者: "Creators",
+  创作者列表: "Creators",
 }
 
 export function categoryKey(name: string) {
   const n = name.trim()
+  if (CATEGORY_ALIASES[n]) return CATEGORY_ALIASES[n]
   for (const [key, labels] of Object.entries(categoryLabels)) {
     if (n === key || n === labels.en || n === labels.zh) return key
   }

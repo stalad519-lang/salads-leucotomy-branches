@@ -45,6 +45,13 @@ export const seedPages: WikiPage[] = [
 
 The files that belong here are **[[Abnormalities|abnormality]]** records: what an abnormality is, which [[Damage|damage]] it deals or takes, and which [[Work|work]] it answers.
 
+## Four categories
+
+* [[Category:Abnormalities|Abnormalities]] — one page per 异想体 file
+* [[Category:Basics|Basics]] — damage types and other facility facts
+* [[Category:Mechanics|Mechanics]] — work (Analysis, Instinct, Attachment, Repression)
+* [[Category:Creators|Creators]] — people who made the game
+
 ## Damage and work
 
 Every hit in this game is one of four colors. Each color is also a work:
@@ -57,9 +64,10 @@ Every hit in this game is one of four colors. Each color is also a work:
 ## Start here
 
 * [[Salad's leucotomy branches|The game]]
-* [[Abnormalities]] — index for the files you will add
+* [[Category:Abnormalities|Abnormalities]]
 * [[Damage]] — the four colors
 * [[Work]] — Analysis, Instinct, Attachment, Repression
+* [[Creators]] — credits
 * [[Help:Editing]] — how to write an abnormality file
 * [[The Q]] — emblem (English only, to show language fallback)
 
@@ -71,6 +79,13 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
       content: `这是 **[[Salad's leucotomy branches]]** 的百科：一款运行在 [Roblox](https://www.roblox.com/) 上的 **脑叶公司** 同人游戏。这里不是 Project Moon 的官方维基。
 
 本站主要收 **[[Abnormalities|异想体]]** 档案：它是什么、打出或吃到哪种 [[Damage|伤害]]、对应哪一种 [[Work|工作]]。
+
+## 四个分类
+
+* [[Category:Abnormalities|异想体]] — 每个异想体一页档案
+* [[Category:Basics|基本信息]] — 伤害类型等基础设定
+* [[Category:Mechanics|机制]] — 工作（解析、本能、沟通、压迫）
+* [[Category:Creators|创作者]] — 做这款游戏的人
 
 ## 伤害与工作
 
@@ -84,9 +99,10 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 ## 从这里开始
 
 * [[Salad's leucotomy branches|游戏]]
-* [[Abnormalities]] — 你之后会放上来的异想体目录
+* [[Category:Abnormalities|异想体]]
 * [[Damage]] — 四种颜色
 * [[Work]] — 解析、本能、沟通、压迫
+* [[Creators]] — 创作者名单
 * [[Help:Editing]] — 怎么写一篇异想体档案
 * [[The Q]] — 徽章（本条故意没有中文，用来演示回退）
 
@@ -97,7 +113,7 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
     "Salad's_leucotomy_branches",
     {
       title: "Salad's leucotomy branches",
-      categories: ["Game"],
+      categories: ["Basics"],
       infobox: box("Salad's leucotomy branches", "Roblox fan game", [
         { label: "Platform", value: "Roblox" },
         { label: "Kind", value: "Lobotomy Corporation fan game" },
@@ -122,7 +138,7 @@ The name **leucotomy** in the title is the medical joke the facility is built on
     },
     {
       title: "Salad's leucotomy branches",
-      categories: ["Game"],
+      categories: ["Basics"],
       infobox: box("Salad's leucotomy branches", "Roblox 同人游戏", [
         { label: "平台", value: "Roblox" },
         { label: "类型", value: "脑叶公司同人" },
@@ -161,7 +177,7 @@ The name **leucotomy** in the title is the medical joke the facility is built on
 When you add a file:
 
 1. Create a page with a stable **English** title (code name or English name).
-2. Put \`Abnormalities\` in categories, plus the damage color if it is clear (\`Damage\`, and optionally \`Red damage\`).
+2. Put \`Abnormalities\` in categories.
 3. Fill the infobox: damage type, work, and any code the game shows.
 4. Write Chinese from the Edit tab while 中文 is selected. Empty Chinese fields fall back to English.
 
@@ -190,7 +206,7 @@ Until files are pasted in, this index stays a directory. Link new articles from 
 你要归档时：
 
 1. 用稳定的 **英语** 标题建页（编号或英文名）。
-2. 分类填 \`Abnormalities\`，伤害明确时再加 \`Damage\`（以及 \`Red damage\` 等）。
+2. 分类填 \`Abnormalities\`（异想体）。
 3. 信息框写伤害类型、工作、游戏里显示的编号。
 4. 顶栏切到 中文 再写中文。中文留空会回退到英语。
 
@@ -208,10 +224,63 @@ Until files are pasted in, this index stays a directory. Link new articles from 
     }
   ),
   page(
+    "Basics",
+    {
+      title: "Basics",
+      categories: ["Basics"],
+      infobox: box("Basics", "基本信息", [
+        { label: "Holds", value: "[[Damage]], game facts" },
+        { label: "Category", value: "[[Category:Basics]]" },
+      ]),
+      content: `**Basics** (基本信息) is the category for facts that are not a single [[Abnormalities|abnormality]] file. Damage types live here.
+
+## Damage types
+
+* [[Red damage]] — mental — [[Analysis]]
+* [[Grey damage]] — physical — [[Instinct]]
+* [[Cyan damage]] — healing — [[Attachment]]
+* [[Black damage]] — lasting — [[Repression]]
+
+See [[Damage]] for the full rule.
+
+## Also in this category
+
+* [[Salad's leucotomy branches|The game]]
+* [[Salad]]
+* [[The Q]]
+* [[Category:Basics]]`,
+    },
+    {
+      title: "基本信息",
+      categories: ["Basics"],
+      infobox: box("基本信息", "Basics", [
+        { label: "收录", value: "[[Damage]]、游戏事实" },
+        { label: "分类", value: "[[Category:Basics|基本信息]]" },
+      ]),
+      content: `**基本信息**（Basics）用来放那些不是单篇 [[Abnormalities|异想体]] 档案的设定。伤害类型在这里。
+
+## 伤害类型
+
+* [[Red damage|红伤]] — 精神伤害 — [[Analysis|解析]]
+* [[Grey damage|灰伤]] — 物理伤害 — [[Instinct|本能]]
+* [[Cyan damage|青伤]] — 治疗伤害 — [[Attachment|沟通]]
+* [[Black damage|黑伤]] — 持续伤害 — [[Repression|压迫]]
+
+完整规则见 [[Damage]]。
+
+## 本分类还有
+
+* [[Salad's leucotomy branches|游戏]]
+* [[Salad]]
+* [[The Q]]
+* [[Category:Basics|基本信息]]`,
+    }
+  ),
+  page(
     "Damage",
     {
       title: "Damage",
-      categories: ["Damage", "Mechanics"],
+      categories: ["Basics"],
       infobox: box("Damage", "Four colors", [
         { label: "Count", value: "4" },
         { label: "Used by", value: "[[Abnormalities]], employees" },
@@ -230,7 +299,7 @@ When you file an abnormality, name the color it deals and the color it is weak t
     },
     {
       title: "伤害",
-      categories: ["Damage", "Mechanics"],
+      categories: ["Basics"],
       infobox: box("伤害", "四种颜色", [
         { label: "数量", value: "4" },
         { label: "对象", value: "[[Abnormalities]]、员工" },
@@ -252,7 +321,7 @@ When you file an abnormality, name the color it deals and the color it is weak t
     "Red_damage",
     {
       title: "Red damage",
-      categories: ["Damage"],
+      categories: ["Basics"],
       infobox: box("Red damage", "红伤", [
         { label: "Color", value: "Red" },
         { label: "Does", value: "Mental damage" },
@@ -270,7 +339,7 @@ Use this page for the rule. Use an abnormality article for a specific red-damage
     },
     {
       title: "红伤",
-      categories: ["Damage"],
+      categories: ["Basics"],
       infobox: box("红伤", "Red damage", [
         { label: "颜色", value: "红" },
         { label: "效果", value: "精神伤害" },
@@ -291,7 +360,7 @@ Use this page for the rule. Use an abnormality article for a specific red-damage
     "Grey_damage",
     {
       title: "Grey damage",
-      categories: ["Damage"],
+      categories: ["Basics"],
       infobox: box("Grey damage", "灰伤", [
         { label: "Color", value: "Grey" },
         { label: "Does", value: "Physical damage" },
@@ -307,7 +376,7 @@ Use this page for the rule. Use an abnormality article for a specific red-damage
     },
     {
       title: "灰伤",
-      categories: ["Damage"],
+      categories: ["Basics"],
       infobox: box("灰伤", "Grey damage", [
         { label: "颜色", value: "灰" },
         { label: "效果", value: "物理伤害" },
@@ -326,7 +395,7 @@ Use this page for the rule. Use an abnormality article for a specific red-damage
     "Cyan_damage",
     {
       title: "Cyan damage",
-      categories: ["Damage"],
+      categories: ["Basics"],
       infobox: box("Cyan damage", "青伤", [
         { label: "Color", value: "Cyan" },
         { label: "Does", value: "Healing" },
@@ -344,7 +413,7 @@ It still occupies a damage-color slot: work logs, resistances, and abnormality f
     },
     {
       title: "青伤",
-      categories: ["Damage"],
+      categories: ["Basics"],
       infobox: box("青伤", "Cyan damage", [
         { label: "颜色", value: "青" },
         { label: "效果", value: "治疗伤害" },
@@ -365,7 +434,7 @@ It still occupies a damage-color slot: work logs, resistances, and abnormality f
     "Black_damage",
     {
       title: "Black damage",
-      categories: ["Damage"],
+      categories: ["Basics"],
       infobox: box("Black damage", "黑伤", [
         { label: "Color", value: "Black" },
         { label: "Does", value: "Lasting damage" },
@@ -383,7 +452,7 @@ Write tick rate, duration, or stack rules on the abnormality that inflicts it, n
     },
     {
       title: "黑伤",
-      categories: ["Damage"],
+      categories: ["Basics"],
       infobox: box("黑伤", "Black damage", [
         { label: "颜色", value: "黑" },
         { label: "效果", value: "持续伤害" },
@@ -585,7 +654,7 @@ The English page title stays **Attachment** so links stay stable. In this game t
     "Salad",
     {
       title: "Salad",
-      categories: ["Characters"],
+      categories: ["Basics"],
       infobox: box("Salad", "Name in the title", [
         { label: "Appears in", value: "[[Salad's leucotomy branches]]" },
         { label: "Tied to", value: "[[Leucotomy]], [[Branches]]" },
@@ -596,7 +665,7 @@ Replace the stub when you have a reliable file. Keep the English title **Salad**
     },
     {
       title: "Salad",
-      categories: ["Characters"],
+      categories: ["Basics"],
       infobox: box("Salad", "标题中的名字", [
         { label: "出现于", value: "[[Salad's leucotomy branches]]" },
         { label: "相关", value: "[[Leucotomy]]、[[Branches]]" },
@@ -635,7 +704,7 @@ Describe in-game operations on the pages that use them. This article only names 
     "Branches",
     {
       title: "Branches",
-      categories: ["Locations"],
+      categories: ["Mechanics"],
       infobox: box("Branches", "Facility wings", [
         { label: "Part of", value: "[[Salad's leucotomy branches]]" },
         { label: "Holds", value: "[[Abnormalities]]" },
@@ -646,7 +715,7 @@ Abnormality files should say where a being is held if the game shows a location.
     },
     {
       title: "分支",
-      categories: ["Locations"],
+      categories: ["Mechanics"],
       infobox: box("分支", "设施侧翼", [
         { label: "属于", value: "[[Salad's leucotomy branches]]" },
         { label: "收容", value: "[[Abnormalities]]" },
@@ -656,9 +725,56 @@ Abnormality files should say where a being is held if the game shows a location.
 异想体档案在游戏有显示位置时，写清关在哪。`,
     }
   ),
+  page(
+    "Creators",
+    {
+      title: "Creators",
+      categories: ["Creators"],
+      infobox: box("Creators", "Credits", [
+        { label: "Game", value: "[[Salad's leucotomy branches]]" },
+        { label: "Platform", value: "Roblox" },
+      ]),
+      content: `**Creators** is the credit list for [[Salad's leucotomy branches]]. Add people under the role they actually had. English names stay stable; Chinese names can sit in the Chinese version of this page.
+
+## List
+
+* —
+
+Write a role next to each name (director, scripter, builder, sound, wiki). When you know a Roblox username, put it in the infobox or after the name.
+
+New people: either edit this list, or create a page for them and set the category to \`Creators\`.
+
+## See also
+
+* [[Category:Creators]]
+* [[Salad's leucotomy branches]]`,
+    },
+    {
+      title: "创作者",
+      categories: ["Creators"],
+      infobox: box("创作者", "名单", [
+        { label: "游戏", value: "[[Salad's leucotomy branches]]" },
+        { label: "平台", value: "Roblox" },
+      ]),
+      content: `**创作者** 是 [[Salad's leucotomy branches]] 的制作名单。按实际分工写人。英语名保持稳定；中文名写在本页的中文版。
+
+## 名单
+
+* —
+
+每人后面写职务（策划、脚本、建造、音效、百科）。有 Roblox 用户名就写在信息框或名字后面。
+
+新人：可以直接改这份名单，或单独建页并把分类设为 \`Creators\`。
+
+## 参见
+
+* [[Category:Creators|创作者]]
+* [[Salad's leucotomy branches]]`,
+    }
+  ),
   page("The_Q", {
     title: "The Q",
-    categories: ["Game"],
+    categories: ["Basics"],
     infobox: box("The Q", "Emblem", [
       { label: "Form", value: "Brain inside a Q-shaped mark" },
       { label: "Used in", value: "[[Salad's leucotomy branches]]" },
@@ -690,9 +806,16 @@ Infobox rows (example):
 * Work — \`[[Analysis]]\` / \`[[Instinct]]\` / \`[[Attachment]]\` / \`[[Repression]]\`
 * Location — a [[Branches|branch]] if known
 
-Categories:
+The four categories:
 
-\`Abnormalities, Damage\`
+* \`Abnormalities\` — 异想体 files
+* \`Basics\` — 基本信息 (damage types and other facts)
+* \`Mechanics\` — 机制 (work)
+* \`Creators\` — 创作者列表
+
+An abnormality page should use:
+
+\`Abnormalities\`
 
 Body sections that work well:
 
@@ -743,9 +866,16 @@ Escape conditions, gifts, or other facts from the Roblox game — not copied off
 * 工作 — \`[[Analysis]]\` / \`[[Instinct]]\` / \`[[Attachment]]\` / \`[[Repression]]\`
 * 位置 — 若知道，写某个 [[Branches]]
 
-分类：
+四个分类：
 
-\`Abnormalities, Damage\`
+* \`Abnormalities\` — 异想体
+* \`Basics\` — 基本信息（伤害类型等）
+* \`Mechanics\` — 机制（工作）
+* \`Creators\` — 创作者列表
+
+异想体档案分类填：
+
+\`Abnormalities\`
 
 正文建议分段：
 

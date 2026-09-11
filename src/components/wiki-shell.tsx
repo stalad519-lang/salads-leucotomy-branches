@@ -22,6 +22,7 @@ import {
   navigate,
   subscribeLocation,
 } from "@/lib/nav"
+import { categoryLabel, PRIMARY_CATEGORIES } from "@/lib/i18n"
 import {
   Sheet,
   SheetContent,
@@ -29,10 +30,10 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet"
 import { useWiki } from "@/components/wiki-provider"
-import { HOME_SLUG, wikiHref } from "@/lib/wiki"
+import { HOME_SLUG, categoryHref, wikiHref } from "@/lib/wiki"
 
 export function WikiShell({ children }: { children: React.ReactNode }) {
-  const { settings, pages, updateSettings, resetDemo, t } = useWiki()
+  const { settings, pages, updateSettings, resetDemo, t, locale } = useWiki()
   const pathname = useSyncExternalStore(
     subscribeLocation,
     getLocation,
@@ -45,7 +46,10 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
 
   const nav = [
     { href: "/", label: t("navMain") },
-    { href: "/special/recent", label: t("navRecent") },
+    ...PRIMARY_CATEGORIES.map((key) => ({
+      href: categoryHref(key),
+      label: categoryLabel(key, locale),
+    })),
     { href: "/special/all", label: t("navAll") },
   ]
 
@@ -91,6 +95,13 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                     {item.label}
                   </Link>
                 ))}
+                <Link
+                  href="/special/recent"
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-md px-2 py-2 text-sm hover:bg-white/10"
+                >
+                  {t("navRecent")}
+                </Link>
                 <Link
                   href="/new"
                   onClick={() => setMenuOpen(false)}
@@ -168,7 +179,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         <div className="hidden border-t border-white/10 md:block">
-          <nav className="mx-auto flex max-w-6xl gap-1 px-4">
+          <nav className="mx-auto flex max-w-6xl flex-wrap gap-1 px-4">
             {nav.map((item) => {
               const active =
                 item.href === "/"

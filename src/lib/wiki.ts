@@ -1,5 +1,5 @@
 import { seedPages, defaultSettings } from "@/data/seed-pages"
-import { categoryKey, DEFAULT_LOCALE } from "@/lib/i18n"
+import { categoryKey, DEFAULT_LOCALE, PRIMARY_CATEGORIES } from "@/lib/i18n"
 import type {
   Infobox,
   Locale,
@@ -10,7 +10,7 @@ import type {
 } from "@/lib/types"
 
 export const HOME_SLUG = "Main_Page"
-export const PAGES_KEY = "slb-wiki.pages.v2"
+export const PAGES_KEY = "slb-wiki.pages.v3"
 export const SETTINGS_KEY = "slb-wiki.settings.v2"
 export const WIKI_EVENT = "slb-wiki:changed"
 
@@ -382,8 +382,18 @@ export function allCategories(pages: Record<string, WikiPage>, locale: Locale) {
       counts.set(key, (counts.get(key) ?? 0) + 1)
     }
   }
+  const rank = (name: string) => {
+    const index = (PRIMARY_CATEGORIES as readonly string[]).indexOf(name)
+    if (index >= 0) return index
+    if (name === "Help") return 50
+    return 100
+  }
   return [...counts.entries()]
-    .sort((a, b) => a[0].localeCompare(b[0], locale === "zh" ? "zh" : "en"))
+    .sort((a, b) => {
+      const rankDiff = rank(a[0]) - rank(b[0])
+      if (rankDiff !== 0) return rankDiff
+      return a[0].localeCompare(b[0], locale === "zh" ? "zh" : "en")
+    })
     .map(([name, count]) => ({ name, count }))
 }
 
