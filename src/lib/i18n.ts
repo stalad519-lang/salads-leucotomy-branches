@@ -34,7 +34,7 @@ export const messages = {
     categories: "Categories",
     summary: "Edit summary",
     infobox: "Infobox (optional)",
-    infoboxHelp: "Use for games, characters, and mechanics. Values can include [[links]].",
+    infoboxHelp: "Use for abnormalities, damage types, and work. Values can include [[links]].",
     infoboxTitle: "Infobox heading",
     infoboxCaption: "Caption",
     addRow: "Add a row",
@@ -55,7 +55,7 @@ export const messages = {
     settingsHelp:
       "Names are stored in this browser. Restore replaces starter articles that share the same slug.",
     footer:
-      "Community wiki for Salad's leucotomy branches. Copy is stored in this browser until you publish it.",
+      "Fan wiki for Salad's leucotomy branches, a Roblox Lobotomy Corporation game. Files in this browser stay here until you publish.",
     recentIntro: "Sorted by the time this browser last saved the page.",
     noPages: "No pages yet.",
     saved: "Saved",
@@ -85,11 +85,11 @@ export const messages = {
     backHome: "Back to the main page",
     missingLink: "This page has not been created",
     gameName: "Salad's leucotomy branches",
-    placeholderTitle: "e.g. Salad, Leucotomy, Ward 9",
+    placeholderTitle: "e.g. Abnormality code, Red damage, Analysis",
     noPreview: "*Nothing to preview yet.*",
     label: "Label",
     value: "Value",
-    defaultTagline: "Game wiki",
+    defaultTagline: "Roblox Lobotomy Corporation fan wiki",
   },
   zh: {
     navMain: "首页",
@@ -119,7 +119,7 @@ export const messages = {
     categories: "分类",
     summary: "编辑摘要",
     infobox: "信息框（可选）",
-    infoboxHelp: "适合游戏、人物和机制。内容里可以写 [[链接]]。",
+    infoboxHelp: "适合异想体、伤害类型和工作。内容里可以写 [[链接]]。",
     infoboxTitle: "信息框标题",
     infoboxCaption: "副标题",
     addRow: "添加一行",
@@ -138,7 +138,7 @@ export const messages = {
     settingsTagline: "副标题",
     restore: "恢复起始条目",
     settingsHelp: "名称只存在这台浏览器里。恢复会覆盖相同短链的起始条目。",
-    footer: "Salad's leucotomy branches 的游戏百科。内容先存在本机，发布后才给所有人看。",
+    footer: "Salad's leucotomy branches 的同人百科（Roblox 脑叶公司）。内容先存在本机，发布后才给所有人看。",
     recentIntro: "按本机最近保存时间排列。",
     noPages: "还没有任何页面。",
     saved: "已保存",
@@ -166,11 +166,11 @@ export const messages = {
     backHome: "回到首页",
     missingLink: "此页面尚未创建",
     gameName: "Salad's leucotomy branches",
-    placeholderTitle: "例如：Salad、Leucotomy、九号病房",
+    placeholderTitle: "例如：异想体编号、红伤、解析",
     noPreview: "*还没有正文。*",
     label: "标签",
     value: "内容",
-    defaultTagline: "游戏百科",
+    defaultTagline: "Roblox 脑叶公司同人百科",
   },
 } as const
 
@@ -192,6 +192,8 @@ export const categoryLabels: Record<string, { en: string; zh: string }> = {
   Mechanics: { en: "Mechanics", zh: "机制" },
   Locations: { en: "Locations", zh: "地点" },
   Help: { en: "Help", zh: "帮助" },
+  Abnormalities: { en: "Abnormalities", zh: "异想体" },
+  Damage: { en: "Damage", zh: "伤害" },
 }
 
 export function categoryKey(name: string) {

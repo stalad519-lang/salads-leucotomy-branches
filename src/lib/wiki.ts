@@ -10,8 +10,8 @@ import type {
 } from "@/lib/types"
 
 export const HOME_SLUG = "Main_Page"
-export const PAGES_KEY = "slb-wiki.pages.v1"
-export const SETTINGS_KEY = "slb-wiki.settings.v1"
+export const PAGES_KEY = "slb-wiki.pages.v2"
+export const SETTINGS_KEY = "slb-wiki.settings.v2"
 export const WIKI_EVENT = "slb-wiki:changed"
 
 export function slugify(title: string): string {

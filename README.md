@@ -1,6 +1,13 @@
 # Salad's leucotomy branches wiki
 
-A bilingual game encyclopedia for **Salad's leucotomy branches**.
+A bilingual encyclopedia for **Salad's leucotomy branches**, a Roblox fan game of Lobotomy Corporation.
+
+The wiki is built for **abnormality files** (异想体) and the game's four damage / work colors:
+
+- Red / 红伤 — mental — Analysis / 解析
+- Grey / 灰伤 — physical — Instinct / 本能
+- Cyan / 青伤 — healing — Attachment / 沟通
+- Black / 黑伤 — lasting — Repression / 压迫
 
 - **English** is the source language of the site
 - **中文** is switched from the header

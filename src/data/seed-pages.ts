@@ -1,17 +1,13 @@
-import type { PageCopy, WikiPage } from "@/lib/types"
+import type { Infobox, PageCopy, WikiPage } from "@/lib/types"
 
-const createdAt = "2026-09-10T12:00:00.000Z"
+const createdAt = "2026-09-11T01:00:00.000Z"
 
 export const defaultSettings = {
   name: "Salad's leucotomy branches",
-  tagline: "",
+  tagline: "Roblox · Lobotomy Corporation fan game",
 }
 
-function page(
-  slug: string,
-  en: PageCopy,
-  zh?: Partial<PageCopy>
-): WikiPage {
+function page(slug: string, en: PageCopy, zh?: Partial<PageCopy>): WikiPage {
   return {
     slug,
     locales: zh ? { en, zh } : { en },
@@ -21,7 +17,7 @@ function page(
       {
         at: createdAt,
         locale: "en",
-        summary: "Initial version",
+        summary: "Facility file",
         title: en.title,
         content: en.content,
         categories: en.categories,
@@ -31,46 +27,70 @@ function page(
   }
 }
 
+function box(
+  heading: string,
+  caption: string,
+  rows: Infobox["rows"]
+): Infobox {
+  return { heading, caption, rows }
+}
+
 export const seedPages: WikiPage[] = [
   page(
     "Main_Page",
     {
       title: "Main Page",
       categories: ["Help"],
-      content: `Welcome to the wiki for **Salad's leucotomy branches**.
+      content: `This is the encyclopedia for **[[Salad's leucotomy branches]]**, a [Roblox](https://www.roblox.com/) fan game of **Lobotomy Corporation**. It is not an official Project Moon wiki.
 
-This is a game encyclopedia: characters, procedures, locations, and the branching routes. English is the source language. Switch to 中文 in the header; any article without a Chinese translation keeps the English text.
+The files that belong here are **[[Abnormalities|abnormality]]** records: what an abnormality is, which [[Damage|damage]] it deals or takes, and which [[Work|work]] it answers.
+
+## Damage and work
+
+Every hit in this game is one of four colors. Each color is also a work:
+
+* [[Red damage]] — mental — [[Analysis]]
+* [[Grey damage]] — physical — [[Instinct]]
+* [[Cyan damage]] — healing — [[Attachment]]
+* [[Black damage]] — lasting — [[Repression]]
 
 ## Start here
 
-* [[Salad's leucotomy branches|The game]] — overview, platform, and tone
-* [[Salad]] — the person the title names
-* [[Leucotomy]] — the procedure at the center of play
-* [[Branches]] — how routes split and close
-* [[The Q]] — the emblem (English only, to show fallback)
+* [[Salad's leucotomy branches|The game]]
+* [[Abnormalities]] — index for the files you will add
+* [[Damage]] — the four colors
+* [[Work]] — Analysis, Instinct, Attachment, Repression
+* [[Help:Editing]] — how to write an abnormality file
+* [[The Q]] — emblem (English only, to show language fallback)
 
-## How to write
-
-See [[Help:Editing]] for wiki links, categories, and infoboxes. Create a page, then point to it with \`[[Page name]]\`.`,
+English is the source language. Switch to 中文 in the header; missing Chinese falls back to English.`,
     },
     {
       title: "首页",
       categories: ["Help"],
-      content: `欢迎来到 **Salad's leucotomy branches** 的游戏百科。
+      content: `这是 **[[Salad's leucotomy branches]]** 的百科：一款运行在 [Roblox](https://www.roblox.com/) 上的 **脑叶公司** 同人游戏。这里不是 Project Moon 的官方维基。
 
-这里收录人物、术式、地点和分支路线。网站以英语为原文。顶栏可切到中文；还没有中文的条目会继续显示英语。
+本站主要收 **[[Abnormalities|异想体]]** 档案：它是什么、打出或吃到哪种 [[Damage|伤害]]、对应哪一种 [[Work|工作]]。
+
+## 伤害与工作
+
+游戏里的伤害只有四种颜色。每种颜色同时对应一种工作：
+
+* [[Red damage|红伤]] — 精神伤害 — [[Analysis|解析]]
+* [[Grey damage|灰伤]] — 物理伤害 — [[Instinct|本能]]
+* [[Cyan damage|青伤]] — 治疗伤害 — [[Attachment|沟通]]
+* [[Black damage|黑伤]] — 持续伤害 — [[Repression|压迫]]
 
 ## 从这里开始
 
-* [[Salad's leucotomy branches|游戏]] — 概述、平台与气质
-* [[Salad]] — 标题里的那个人
-* [[Leucotomy]] — 玩法核心的术式
-* [[Branches]] — 路线如何分叉与闭合
-* [[The Q]] — 徽章（本条暂无中文，用来演示回退）
+* [[Salad's leucotomy branches|游戏]]
+* [[Abnormalities]] — 你之后会放上来的异想体目录
+* [[Damage]] — 四种颜色
+* [[Work]] — 解析、本能、沟通、压迫
+* [[Help:Editing]] — 怎么写一篇异想体档案
+* [[The Q]] — 徽章（本条故意没有中文，用来演示回退）
 
-## 怎么写
-
-编辑方法见 [[Help:Editing]]。新建页面后，用 \`[[条目名]]\` 链过去。`,
+网站以英语为原文。顶栏可切到中文；缺译的字段会显示英语。`,
     }
   ),
   page(
@@ -78,52 +98,487 @@ See [[Help:Editing]] for wiki links, categories, and infoboxes. Create a page, t
     {
       title: "Salad's leucotomy branches",
       categories: ["Game"],
-      infobox: {
-        heading: "Salad's leucotomy branches",
-        caption: "Game",
-        rows: [
-          { label: "Type", value: "Narrative / route game" },
-          { label: "Setting", value: "A clinic of branching wards" },
-          { label: "Focus", value: "[[Leucotomy]], [[Branches]], [[Salad]]" },
-          { label: "Emblem", value: "[[The Q]]" },
-        ],
-      },
-      content: `**Salad's leucotomy branches** is a game about a mind that is opened, mapped, and split. Players follow [[Salad]] through wards where a [[Leucotomy|leucotomy]] is not only medical history but a playable choice: cut, spare, or follow a nerve into another [[Branches|branch]].
+      infobox: box("Salad's leucotomy branches", "Roblox fan game", [
+        { label: "Platform", value: "Roblox" },
+        { label: "Kind", value: "Lobotomy Corporation fan game" },
+        { label: "Focus", value: "[[Abnormalities]], [[Damage]], [[Work]]" },
+        { label: "Emblem", value: "[[The Q]]" },
+      ]),
+      content: `**Salad's leucotomy branches** is a fan game on Roblox that restages a Lobotomy Corporation facility: employees manage **[[Abnormalities]]**, take and deal [[Damage]], and pick a [[Work]] type.
+
+It is a community project. Official names from Project Moon should be treated as reference, not as this wiki's voice. Write what *this* Roblox game does.
+
+## What to document
+
+* Each abnormality as its own article, filed under [[Abnormalities]]
+* The four damage colors on [[Damage]]
+* The four works on [[Work]]: [[Analysis]], [[Instinct]], [[Attachment]], [[Repression]]
 
 ## Tone
 
-The emblem is a brain inside a Q-shaped mark. Routes are clinical on the surface and personal underneath. Articles on this wiki should stay encyclopedic: what a thing is, where it appears, and how it connects, not walkthrough spoilers unless a page is clearly marked.
+Keep files encyclopedic: identity, damage, work, and what happens if work fails. Mark spoilers if a page walks through a full suppression.
 
-## On this wiki
-
-Use infoboxes for games, people, and procedures. Keep titles in English so links stay stable; Chinese is an overlay, not a second set of page names.
-
-If you are filling lore, start with [[Salad]], [[Leucotomy]], and [[Branches]].`,
+The name **leucotomy** in the title is the medical joke the facility is built on. See [[Leucotomy]] and [[Salad]].`,
     },
     {
       title: "Salad's leucotomy branches",
       categories: ["Game"],
-      infobox: {
-        heading: "Salad's leucotomy branches",
-        caption: "游戏",
-        rows: [
-          { label: "类型", value: "叙事 / 路线游戏" },
-          { label: "舞台", value: "不断分叉的病房" },
-          { label: "核心", value: "[[Leucotomy]]、[[Branches]]、[[Salad]]" },
-          { label: "徽章", value: "[[The Q]]" },
-        ],
-      },
-      content: `**Salad's leucotomy branches** 讲的是一个被打开、测绘、再切开的意识。玩家跟着 [[Salad]] 走过一间间病房：[[Leucotomy|白质切开]] 不只是医学史，也是可玩的选择——切断、留下，或顺着一条神经走进另一条 [[Branches|分支]]。
+      infobox: box("Salad's leucotomy branches", "Roblox 同人游戏", [
+        { label: "平台", value: "Roblox" },
+        { label: "类型", value: "脑叶公司同人" },
+        { label: "核心", value: "[[Abnormalities]]、[[Damage]]、[[Work]]" },
+        { label: "徽章", value: "[[The Q]]" },
+      ]),
+      content: `**Salad's leucotomy branches** 是运行在 Roblox 上的脑叶公司同人游戏：员工管理 **[[Abnormalities|异想体]]**，承受和打出 [[Damage|伤害]]，并选择一种 [[Work|工作]]。
 
-## 气质
+这是同人项目。Project Moon 的正式设定只作对照，不代替本游戏自己的规则。本百科写的是 *这款 Roblox 游戏* 里实际发生的事。
 
-徽章是 Q 形框里的脑。路线表面像病历，底下是私人的。本百科的写法应像词条：它是什么、在哪出现、和谁相连。除非页面标明是攻略，否则少写剧透逐步操作。
+## 该写什么
 
-## 在本站
+* 每个异想体单独成篇，归入 [[Abnormalities]]
+* 四种伤害颜色见 [[Damage]]
+* 四种工作见 [[Work]]：[[Analysis|解析]]、[[Instinct|本能]]、[[Attachment|沟通]]、[[Repression|压迫]]
 
-游戏、人物、术式用信息框。条目标题尽量保持英语，这样链接稳定；中文是覆盖层，不是第二套页面名。
+## 文风
 
-补设定时，从 [[Salad]]、[[Leucotomy]]、[[Branches]] 开始即可。`,
+档案写成词条：它是谁、什么伤害、哪种工作、工作失败会怎样。如果一篇是完整镇压力流程，请标明剧透。
+
+标题里的 **leucotomy** 是设施建立其上的医学梗。见 [[Leucotomy]] 与 [[Salad]]。`,
+    }
+  ),
+  page(
+    "Abnormalities",
+    {
+      title: "Abnormalities",
+      categories: ["Abnormalities"],
+      infobox: box("Abnormalities", "File index", [
+        { label: "Also called", value: "异想体" },
+        { label: "Managed with", value: "[[Work]]" },
+        { label: "Harm", value: "[[Damage]]" },
+      ]),
+      content: `**Abnormalities** (异想体) are the contained beings of [[Salad's leucotomy branches]]. Each one should have its own wiki article. This page is the index, not a dump of every file.
+
+When you add a file:
+
+1. Create a page with a stable **English** title (code name or English name).
+2. Put \`Abnormalities\` in categories, plus the damage color if it is clear (\`Damage\`, and optionally \`Red damage\`).
+3. Fill the infobox: damage type, work, and any code the game shows.
+4. Write Chinese from the Edit tab while 中文 is selected. Empty Chinese fields fall back to English.
+
+## File template
+
+See [[Help:Editing]] for the full abnormality template.
+
+Until files are pasted in, this index stays a directory. Link new articles from here as they exist.
+
+## Related
+
+* [[Damage]]
+* [[Work]]
+* [[Help:Editing]]`,
+    },
+    {
+      title: "异想体",
+      categories: ["Abnormalities"],
+      infobox: box("异想体", "档案目录", [
+        { label: "也称", value: "Abnormalities" },
+        { label: "管理", value: "[[Work]]" },
+        { label: "伤害", value: "[[Damage]]" },
+      ]),
+      content: `**异想体**（Abnormalities）是 [[Salad's leucotomy branches]] 里被收容的存在。每一个都应有独立条目。本页是目录，不是把所有档案堆在一篇里。
+
+你要归档时：
+
+1. 用稳定的 **英语** 标题建页（编号或英文名）。
+2. 分类填 \`Abnormalities\`，伤害明确时再加 \`Damage\`（以及 \`Red damage\` 等）。
+3. 信息框写伤害类型、工作、游戏里显示的编号。
+4. 顶栏切到 中文 再写中文。中文留空会回退到英语。
+
+## 档案模板
+
+完整模板见 [[Help:Editing]]。
+
+在档案贴上来之前，这里先当目录。新条目建好后请链到本页。
+
+## 相关
+
+* [[Damage]]
+* [[Work]]
+* [[Help:Editing]]`,
+    }
+  ),
+  page(
+    "Damage",
+    {
+      title: "Damage",
+      categories: ["Damage", "Mechanics"],
+      infobox: box("Damage", "Four colors", [
+        { label: "Count", value: "4" },
+        { label: "Used by", value: "[[Abnormalities]], employees" },
+        { label: "Paired with", value: "[[Work]]" },
+      ]),
+      content: `**Damage** in [[Salad's leucotomy branches]] is always one of four colors. The color tells you both what the hit *does* and which [[Work]] it belongs to.
+
+* [[Red damage]] (红伤) — mental — [[Analysis]] (解析)
+* [[Grey damage]] (灰伤) — physical — [[Instinct]] (本能)
+* [[Cyan damage]] (青伤) — healing — [[Attachment]] (沟通)
+* [[Black damage]] (黑伤) — lasting — [[Repression]] (压迫)
+
+These names are this Roblox game's rules. Do not assume official Lobotomy Corporation color meanings if they disagree.
+
+When you file an abnormality, name the color it deals and the color it is weak to, if the game shows that.`,
+    },
+    {
+      title: "伤害",
+      categories: ["Damage", "Mechanics"],
+      infobox: box("伤害", "四种颜色", [
+        { label: "数量", value: "4" },
+        { label: "对象", value: "[[Abnormalities]]、员工" },
+        { label: "对应", value: "[[Work]]" },
+      ]),
+      content: `[[Salad's leucotomy branches]] 里的 **伤害** 只有四种颜色。颜色既说明这一下 *做什么*，也对应哪一种 [[Work|工作]]。
+
+* [[Red damage|红伤]] — 精神伤害 — [[Analysis|解析]]
+* [[Grey damage|灰伤]] — 物理伤害 — [[Instinct|本能]]
+* [[Cyan damage|青伤]] — 治疗伤害 — [[Attachment|沟通]]
+* [[Black damage|黑伤]] — 持续伤害 — [[Repression|压迫]]
+
+以上是这款 Roblox 游戏自己的规则。如果和官方脑叶公司的颜色含义冲突，以本游戏为准。
+
+写异想体档案时，尽量写清它打出的颜色，以及（若游戏有显示）它怕的颜色。`,
+    }
+  ),
+  page(
+    "Red_damage",
+    {
+      title: "Red damage",
+      categories: ["Damage"],
+      infobox: box("Red damage", "红伤", [
+        { label: "Color", value: "Red" },
+        { label: "Does", value: "Mental damage" },
+        { label: "Work", value: "[[Analysis]] (解析)" },
+      ]),
+      content: `**Red damage** (红伤) is **mental damage**. In this game it is the color of [[Analysis]] (解析).
+
+Use this page for the rule. Use an abnormality article for a specific red-damage file.
+
+## See also
+
+* [[Damage]]
+* [[Analysis]]
+* [[Abnormalities]]`,
+    },
+    {
+      title: "红伤",
+      categories: ["Damage"],
+      infobox: box("红伤", "Red damage", [
+        { label: "颜色", value: "红" },
+        { label: "效果", value: "精神伤害" },
+        { label: "工作", value: "[[Analysis|解析]]" },
+      ]),
+      content: `**红伤**（Red damage）是 **精神伤害**。在本游戏里，它对应 [[Analysis|解析]]。
+
+本页只写规则。具体某个打红伤的异想体，写在它自己的档案里。
+
+## 参见
+
+* [[Damage]]
+* [[Analysis]]
+* [[Abnormalities]]`,
+    }
+  ),
+  page(
+    "Grey_damage",
+    {
+      title: "Grey damage",
+      categories: ["Damage"],
+      infobox: box("Grey damage", "灰伤", [
+        { label: "Color", value: "Grey" },
+        { label: "Does", value: "Physical damage" },
+        { label: "Work", value: "[[Instinct]] (本能)" },
+      ]),
+      content: `**Grey damage** (灰伤) is **physical damage**. In this game it is the color of [[Instinct]] (本能).
+
+## See also
+
+* [[Damage]]
+* [[Instinct]]
+* [[Abnormalities]]`,
+    },
+    {
+      title: "灰伤",
+      categories: ["Damage"],
+      infobox: box("灰伤", "Grey damage", [
+        { label: "颜色", value: "灰" },
+        { label: "效果", value: "物理伤害" },
+        { label: "工作", value: "[[Instinct|本能]]" },
+      ]),
+      content: `**灰伤**（Grey damage）是 **物理伤害**。在本游戏里，它对应 [[Instinct|本能]]。
+
+## 参见
+
+* [[Damage]]
+* [[Instinct]]
+* [[Abnormalities]]`,
+    }
+  ),
+  page(
+    "Cyan_damage",
+    {
+      title: "Cyan damage",
+      categories: ["Damage"],
+      infobox: box("Cyan damage", "青伤", [
+        { label: "Color", value: "Cyan" },
+        { label: "Does", value: "Healing" },
+        { label: "Work", value: "[[Attachment]] (沟通)" },
+      ]),
+      content: `**Cyan damage** (青伤) is **healing**. In this game it is the color of [[Attachment]] (沟通).
+
+It still occupies a damage-color slot: work logs, resistances, and abnormality files should name it as cyan / 青伤 even when the number goes up instead of down.
+
+## See also
+
+* [[Damage]]
+* [[Attachment]]
+* [[Abnormalities]]`,
+    },
+    {
+      title: "青伤",
+      categories: ["Damage"],
+      infobox: box("青伤", "Cyan damage", [
+        { label: "颜色", value: "青" },
+        { label: "效果", value: "治疗伤害" },
+        { label: "工作", value: "[[Attachment|沟通]]" },
+      ]),
+      content: `**青伤**（Cyan damage）是 **治疗伤害**。在本游戏里，它对应 [[Attachment|沟通]]。
+
+它仍然占一个伤害颜色格：工作记录、抗性和异想体档案都要写成青伤，即使数字是在加而不是减。
+
+## 参见
+
+* [[Damage]]
+* [[Attachment]]
+* [[Abnormalities]]`,
+    }
+  ),
+  page(
+    "Black_damage",
+    {
+      title: "Black damage",
+      categories: ["Damage"],
+      infobox: box("Black damage", "黑伤", [
+        { label: "Color", value: "Black" },
+        { label: "Does", value: "Lasting damage" },
+        { label: "Work", value: "[[Repression]] (压迫)" },
+      ]),
+      content: `**Black damage** (黑伤) is **lasting damage**: it continues after the hit. In this game it is the color of [[Repression]] (压迫).
+
+Write tick rate, duration, or stack rules on the abnormality that inflicts it, not as guesses on this page.
+
+## See also
+
+* [[Damage]]
+* [[Repression]]
+* [[Abnormalities]]`,
+    },
+    {
+      title: "黑伤",
+      categories: ["Damage"],
+      infobox: box("黑伤", "Black damage", [
+        { label: "颜色", value: "黑" },
+        { label: "效果", value: "持续伤害" },
+        { label: "工作", value: "[[Repression|压迫]]" },
+      ]),
+      content: `**黑伤**（Black damage）是 **持续伤害**：打中之后还会继续掉。在本游戏里，它对应 [[Repression|压迫]]。
+
+跳数、持续、叠层写在施加它的异想体档案里，不要在本页臆测。
+
+## 参见
+
+* [[Damage]]
+* [[Repression]]
+* [[Abnormalities]]`,
+    }
+  ),
+  page(
+    "Work",
+    {
+      title: "Work",
+      categories: ["Mechanics"],
+      infobox: box("Work", "Four works", [
+        { label: "Count", value: "4" },
+        { label: "Used on", value: "[[Abnormalities]]" },
+        { label: "Each maps to", value: "[[Damage]]" },
+      ]),
+      content: `**Work** is how employees manage an [[Abnormalities|abnormality]]. There are four works. Each one is tied to a damage color.
+
+| Work | Chinese | Damage |
+| --- | --- | --- |
+| [[Analysis]] | 解析 | [[Red damage]] (mental) |
+| [[Instinct]] | 本能 | [[Grey damage]] (physical) |
+| [[Attachment]] | 沟通 | [[Cyan damage]] (healing) |
+| [[Repression]] | 压迫 | [[Black damage]] (lasting) |
+
+Pick the work the game names. If an abnormality prefers one work, say so on *its* file.
+
+## See also
+
+* [[Damage]]
+* [[Abnormalities]]`,
+    },
+    {
+      title: "工作",
+      categories: ["Mechanics"],
+      infobox: box("工作", "四种工作", [
+        { label: "数量", value: "4" },
+        { label: "对象", value: "[[Abnormalities]]" },
+        { label: "各对应", value: "[[Damage]]" },
+      ]),
+      content: `**工作** 是员工管理 [[Abnormalities|异想体]] 的方式。一共四种，每种绑一种伤害颜色。
+
+* [[Analysis|解析]] — [[Red damage|红伤]]（精神）
+* [[Instinct|本能]] — [[Grey damage|灰伤]]（物理）
+* [[Attachment|沟通]] — [[Cyan damage|青伤]]（治疗）
+* [[Repression|压迫]] — [[Black damage|黑伤]]（持续）
+
+以游戏里出现的名称为准。某异想体偏爱哪种工作，写在 *它自己的* 档案里。
+
+## 参见
+
+* [[Damage]]
+* [[Abnormalities]]`,
+    }
+  ),
+  page(
+    "Analysis",
+    {
+      title: "Analysis",
+      categories: ["Mechanics"],
+      infobox: box("Analysis", "解析", [
+        { label: "Work", value: "Analysis" },
+        { label: "Damage", value: "[[Red damage]] (mental)" },
+      ]),
+      content: `**Analysis** (解析) is the work paired with [[Red damage]]: mental harm.
+
+Record on each abnormality how Analysis succeeds or fails. This page is only the mapping.
+
+## See also
+
+* [[Work]]
+* [[Red damage]]`,
+    },
+    {
+      title: "解析",
+      categories: ["Mechanics"],
+      infobox: box("解析", "Analysis", [
+        { label: "工作", value: "解析" },
+        { label: "伤害", value: "[[Red damage|红伤]]（精神）" },
+      ]),
+      content: `**解析**（Analysis）是与 [[Red damage|红伤]] 绑定的工作：精神伤害。
+
+某种异想体上解析如何成功或失败，写在它的档案里。本页只写对应关系。
+
+## 参见
+
+* [[Work]]
+* [[Red damage]]`,
+    }
+  ),
+  page(
+    "Instinct",
+    {
+      title: "Instinct",
+      categories: ["Mechanics"],
+      infobox: box("Instinct", "本能", [
+        { label: "Work", value: "Instinct" },
+        { label: "Damage", value: "[[Grey damage]] (physical)" },
+      ]),
+      content: `**Instinct** (本能) is the work paired with [[Grey damage]]: physical harm.
+
+## See also
+
+* [[Work]]
+* [[Grey damage]]`,
+    },
+    {
+      title: "本能",
+      categories: ["Mechanics"],
+      infobox: box("本能", "Instinct", [
+        { label: "工作", value: "本能" },
+        { label: "伤害", value: "[[Grey damage|灰伤]]（物理）" },
+      ]),
+      content: `**本能**（Instinct）是与 [[Grey damage|灰伤]] 绑定的工作：物理伤害。
+
+## 参见
+
+* [[Work]]
+* [[Grey damage]]`,
+    }
+  ),
+  page(
+    "Attachment",
+    {
+      title: "Attachment",
+      categories: ["Mechanics"],
+      infobox: box("Attachment", "沟通", [
+        { label: "Work", value: "Attachment" },
+        { label: "Damage", value: "[[Cyan damage]] (healing)" },
+      ]),
+      content: `**Attachment** (沟通) is the work paired with [[Cyan damage]]: healing.
+
+The English page title stays **Attachment** so links stay stable. In this game the work is spoken of as 沟通.
+
+## See also
+
+* [[Work]]
+* [[Cyan damage]]`,
+    },
+    {
+      title: "沟通",
+      categories: ["Mechanics"],
+      infobox: box("沟通", "Attachment", [
+        { label: "工作", value: "沟通" },
+        { label: "伤害", value: "[[Cyan damage|青伤]]（治疗）" },
+      ]),
+      content: `**沟通**（Attachment）是与 [[Cyan damage|青伤]] 绑定的工作：治疗。
+
+英语条目标题固定为 **Attachment**，方便链接。本游戏里这种工作叫沟通。
+
+## 参见
+
+* [[Work]]
+* [[Cyan damage]]`,
+    }
+  ),
+  page(
+    "Repression",
+    {
+      title: "Repression",
+      categories: ["Mechanics"],
+      infobox: box("Repression", "压迫", [
+        { label: "Work", value: "Repression" },
+        { label: "Damage", value: "[[Black damage]] (lasting)" },
+      ]),
+      content: `**Repression** (压迫) is the work paired with [[Black damage]]: lasting harm.
+
+## See also
+
+* [[Work]]
+* [[Black damage]]`,
+    },
+    {
+      title: "压迫",
+      categories: ["Mechanics"],
+      infobox: box("压迫", "Repression", [
+        { label: "工作", value: "压迫" },
+        { label: "伤害", value: "[[Black damage|黑伤]]（持续）" },
+      ]),
+      content: `**压迫**（Repression）是与 [[Black damage|黑伤]] 绑定的工作：持续伤害。
+
+## 参见
+
+* [[Work]]
+* [[Black damage]]`,
     }
   ),
   page(
@@ -131,38 +586,24 @@ If you are filling lore, start with [[Salad]], [[Leucotomy]], and [[Branches]].`
     {
       title: "Salad",
       categories: ["Characters"],
-      infobox: {
-        heading: "Salad",
-        caption: "Character",
-        rows: [
-          { label: "Role", value: "Title character / viewpoint" },
-          { label: "Appears in", value: "[[Salad's leucotomy branches]]" },
-          { label: "Tied to", value: "[[Leucotomy]], [[Branches]]" },
-        ],
-      },
-      content: `**Salad** is the name the game carries in its title. On this wiki, Salad is treated as the viewpoint the [[Branches]] are drawn around: the person who enters the wards, receives or refuses a [[Leucotomy]], and whose memories may not stay in one piece.
+      infobox: box("Salad", "Name in the title", [
+        { label: "Appears in", value: "[[Salad's leucotomy branches]]" },
+        { label: "Tied to", value: "[[Leucotomy]], [[Branches]]" },
+      ]),
+      content: `**Salad** is the name the game carries. Until a confirmed in-game biography is filed, treat this page as a stub: the person, handle, or figure the [[Branches]] of the facility are drawn around.
 
-## Notes for editors
-
-Replace this stub with confirmed names, pronouns, and appearances as the game is documented. Until then, keep links pointing here so later facts have a home.`,
+Replace the stub when you have a reliable file. Keep the English title **Salad** so existing links do not break.`,
     },
     {
       title: "Salad",
       categories: ["Characters"],
-      infobox: {
-        heading: "Salad",
-        caption: "人物",
-        rows: [
-          { label: "身份", value: "标题人物 / 视角" },
-          { label: "出现于", value: "[[Salad's leucotomy branches]]" },
-          { label: "相关", value: "[[Leucotomy]]、[[Branches]]" },
-        ],
-      },
-      content: `**Salad** 是游戏标题里的那个名字。在本百科里，Salad 是 [[Branches]] 围绕的视角：走进病房、接受或拒绝 [[Leucotomy]] 的人，记忆不一定仍是一整块。
+      infobox: box("Salad", "标题中的名字", [
+        { label: "出现于", value: "[[Salad's leucotomy branches]]" },
+        { label: "相关", value: "[[Leucotomy]]、[[Branches]]" },
+      ]),
+      content: `**Salad** 是游戏标题里的名字。在有可靠游戏内传记之前，本页先当草稿：设施的 [[Branches]] 围着的那个人、称呼或形象。
 
-## 给编辑
-
-有确切姓名、代词和出场后，请改掉这篇草稿。现在先把链接指到这里，方便以后补事实。`,
+有确切档案后请改掉草稿。英语标题保持 **Salad**，以免已有链接断裂。`,
     }
   ),
   page(
@@ -170,134 +611,170 @@ Replace this stub with confirmed names, pronouns, and appearances as the game is
     {
       title: "Leucotomy",
       categories: ["Mechanics"],
-      infobox: {
-        heading: "Leucotomy",
-        caption: "Procedure / mechanic",
-        rows: [
-          { label: "Also called", value: "White-matter cut" },
-          { label: "Used by", value: "[[Salad]]" },
-          { label: "Produces", value: "[[Branches]]" },
-        ],
-      },
-      content: `A **leucotomy** (historically a cut through white matter of the brain) is the central operation in [[Salad's leucotomy branches]]. In play it is both a story beat and a routing tool: each cut can close a symptom, a memory, or a whole corridor of the clinic.
+      infobox: box("Leucotomy", "Name of the cut", [
+        { label: "Also called", value: "White-matter cut" },
+        { label: "Game", value: "[[Salad's leucotomy branches]]" },
+      ]),
+      content: `**Leucotomy** (a historical cut through white matter) is the medical joke in the title of [[Salad's leucotomy branches]]. The Roblox facility is a Lobotomy Corporation fan work: employees open, contain, and work [[Abnormalities]] rather than performing a lecture on surgery.
 
-## On the wiki
-
-Describe what the player is asked to do, not a full medical lecture. Link outcomes to [[Branches]] and the people who live with the result, starting with [[Salad]].`,
+Describe in-game operations on the pages that use them. This article only names the title's cut.`,
     },
     {
       title: "白质切开",
       categories: ["Mechanics"],
-      infobox: {
-        heading: "Leucotomy",
-        caption: "术式 / 机制",
-        rows: [
-          { label: "也称为", value: "白质切开" },
-          { label: "相关人物", value: "[[Salad]]" },
-          { label: "结果", value: "[[Branches]]" },
-        ],
-      },
-      content: `**Leucotomy**（历史上指切开脑白质）是 [[Salad's leucotomy branches]] 的核心操作。在游戏里它既是剧情节点，也是路线工具：每一刀都可能关掉一种症状、一段记忆，或整条病房走廊。
+      infobox: box("Leucotomy", "标题里的那一刀", [
+        { label: "也称", value: "白质切开" },
+        { label: "游戏", value: "[[Salad's leucotomy branches]]" },
+      ]),
+      content: `**Leucotomy**（历史上指切开脑白质）是 [[Salad's leucotomy branches]] 标题里的医学梗。这款 Roblox 设施是脑叶公司同人：员工打开、收容、工作 [[Abnormalities|异想体]]，而不是上手术课。
 
-## 在本百科
-
-写清玩家被要求做什么，而不是医学讲义。把结果链到 [[Branches]]，以及承受结果的人，首先是 [[Salad]]。`,
+游戏里的具体操作写在用到它的页面。本条只点明标题中的那一刀。`,
     }
   ),
   page(
     "Branches",
     {
       title: "Branches",
-      categories: ["Mechanics"],
-      infobox: {
-        heading: "Branches",
-        caption: "Route structure",
-        rows: [
-          { label: "Opened by", value: "[[Leucotomy]]" },
-          { label: "Followed by", value: "[[Salad]]" },
-        ],
-      },
-      content: `**Branches** are the split routes of [[Salad's leucotomy branches]]. A branch is a corridor the story can take after a choice — often after a [[Leucotomy]] — and may not reconnect with the path you left.
+      categories: ["Locations"],
+      infobox: box("Branches", "Facility wings", [
+        { label: "Part of", value: "[[Salad's leucotomy branches]]" },
+        { label: "Holds", value: "[[Abnormalities]]" },
+      ]),
+      content: `**Branches** are the wings and split corridors of the facility. Name a branch when the game does (a department, a wing, a containment hall). Do not invent a numbered ending list.
 
-Document branches by what they change (who is present, which ward is open, which memory remains), not by a numbered ending list unless the game names endings that way.`,
+Abnormality files should say where a being is held if the game shows a location.`,
     },
     {
       title: "分支",
-      categories: ["Mechanics"],
-      infobox: {
-        heading: "Branches",
-        caption: "路线结构",
-        rows: [
-          { label: "由何打开", value: "[[Leucotomy]]" },
-          { label: "由谁走完", value: "[[Salad]]" },
-        ],
-      },
-      content: `**Branches** 是 [[Salad's leucotomy branches]] 的分叉路线。一条分支是选择之后故事能走进的走廊——常常发生在一次 [[Leucotomy]] 之后——而且未必会和你离开的那条路再会合。
+      categories: ["Locations"],
+      infobox: box("分支", "设施侧翼", [
+        { label: "属于", value: "[[Salad's leucotomy branches]]" },
+        { label: "收容", value: "[[Abnormalities]]" },
+      ]),
+      content: `**Branches** 是设施的侧翼和分叉走廊。游戏有名字再写（部门、侧翼、收容厅）。不要编一套编号结局表。
 
-记录分支时写它改变了什么（谁在场、哪间病房开着、哪段记忆还在），不要急着做成编号结局表，除非游戏自己那样命名。`,
+异想体档案在游戏有显示位置时，写清关在哪。`,
     }
   ),
   page("The_Q", {
     title: "The Q",
     categories: ["Game"],
-    infobox: {
-      heading: "The Q",
-      caption: "Emblem",
-      rows: [
-        { label: "Form", value: "Brain inside a Q-shaped mark" },
-        { label: "Used in", value: "[[Salad's leucotomy branches]]" },
-        { label: "Chinese", value: "Not translated yet — this page tests fallback" },
-      ],
-    },
+    infobox: box("The Q", "Emblem", [
+      { label: "Form", value: "Brain inside a Q-shaped mark" },
+      { label: "Used in", value: "[[Salad's leucotomy branches]]" },
+      { label: "Chinese", value: "Not translated yet — this page tests fallback" },
+    ]),
     content: `**The Q** is the mark of [[Salad's leucotomy branches]]: a red brain seated in a white Q. It is the icon of the wiki and the game.
 
-This article has **no Chinese translation** on purpose. Switch the header to 中文 and you should still see this English text, with a notice that English is being used as fallback.
-
-Add a Chinese version later from the Edit tab while 中文 is selected.`,
+This article has **no Chinese translation** on purpose. Switch the header to 中文 and you should still see this English text, with a notice that English is being used as fallback.`,
   }),
   page(
     "Help:Editing",
     {
       title: "Help:Editing",
       categories: ["Help"],
-      content: `English is the source. Chinese is optional. If a Chinese field is empty, readers see English.
+      content: `English is the source. Chinese is optional. Empty Chinese fields show English.
 
 ## Language
 
-Use the **English / 中文** control in the header. It changes chrome, article text, and which language you are editing.
+The **English / 中文** control changes chrome, article text, and which language you are editing.
+
+## Abnormality file
+
+Create one page per abnormality. Keep the **English title** stable (code or English name).
+
+Infobox rows (example):
+
+* Code —
+* Damage — \`[[Red damage]]\` / \`[[Grey damage]]\` / \`[[Cyan damage]]\` / \`[[Black damage]]\`
+* Work — \`[[Analysis]]\` / \`[[Instinct]]\` / \`[[Attachment]]\` / \`[[Repression]]\`
+* Location — a [[Branches|branch]] if known
+
+Categories:
+
+\`Abnormalities, Damage\`
+
+Body sections that work well:
+
+## Observation
+
+What it looks like and how it behaves.
+
+## Work
+
+Which work it accepts. What [[Red damage|red]], [[Grey damage|grey]], [[Cyan damage|cyan]], and [[Black damage|black]] do here.
+
+## Notes
+
+Escape conditions, gifts, or other facts from the Roblox game — not copied official manuals.
 
 ## Links
 
-* \`[[Salad]]\`
-* \`[[Leucotomy|the procedure]]\` for custom label
-* Missing pages render as red links
+* \`[[Abnormalities]]\`
+* \`[[Red damage|red damage]]\` for a custom label
+* Missing pages are red links
 
-Titles should stay stable in English even when the displayed Chinese title is different.
+## Damage names in this game
 
-## Categories
-
-Use English keys such as \`Game, Characters, Mechanics, Locations, Help\`. The wiki shows them in the current language.`,
+| Color | Damage | Work |
+| --- | --- | --- |
+| Red / 红伤 | Mental | Analysis / 解析 |
+| Grey / 灰伤 | Physical | Instinct / 本能 |
+| Cyan / 青伤 | Healing | Attachment / 沟通 |
+| Black / 黑伤 | Lasting | Repression / 压迫 |`,
     },
     {
       title: "帮助:编辑",
       categories: ["Help"],
-      content: `英语是原文，中文可选。中文某栏为空时，读者看到的是英语。
+      content: `英语是原文，中文可选。中文留空则显示英语。
 
 ## 语言
 
-用顶栏的 **English / 中文** 切换。它会改界面、正文，以及你正在编辑的语言。
+顶栏 **English / 中文** 会改界面、正文，以及你正在编辑的语言。
+
+## 异想体档案
+
+一个异想体一页。**英语标题**保持稳定（编号或英文名）。
+
+信息框示例：
+
+* 编号 —
+* 伤害 — \`[[Red damage]]\` / \`[[Grey damage]]\` / \`[[Cyan damage]]\` / \`[[Black damage]]\`
+* 工作 — \`[[Analysis]]\` / \`[[Instinct]]\` / \`[[Attachment]]\` / \`[[Repression]]\`
+* 位置 — 若知道，写某个 [[Branches]]
+
+分类：
+
+\`Abnormalities, Damage\`
+
+正文建议分段：
+
+## 观察
+
+外形与行为。
+
+## 工作
+
+它接受哪种工作。这里的 [[Red damage|红伤]]、[[Grey damage|灰伤]]、[[Cyan damage|青伤]]、[[Black damage|黑伤]] 各做什么。
+
+## 备注
+
+逃脱、礼物、以及这款 Roblox 游戏里的事实。不要整段粘贴官方手册。
 
 ## 链接
 
-* \`[[Salad]]\`
-* \`[[Leucotomy|术式]]\` 可自定义显示文字
+* \`[[Abnormalities]]\`
+* \`[[Red damage|红伤]]\` 可自定义显示文字
 * 还不存在的页面是红链
 
-条目标题尽量保持英语稳定，即使中文显示名不同。
+## 本游戏的伤害名
 
-## 分类
-
-填写英语键名，例如 \`Game, Characters, Mechanics, Locations, Help\`。前台会按当前语言显示。`,
+| 颜色 | 伤害 | 工作 |
+| --- | --- | --- |
+| 红伤 / Red | 精神 | 解析 / Analysis |
+| 灰伤 / Grey | 物理 | 本能 / Instinct |
+| 青伤 / Cyan | 治疗 | 沟通 / Attachment |
+| 黑伤 / Black | 持续 | 压迫 / Repression |`,
     }
   ),
 ]

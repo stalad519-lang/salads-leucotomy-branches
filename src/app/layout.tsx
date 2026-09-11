@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     default: "Salad's leucotomy branches",
     template: "%s · Salad's leucotomy branches",
   },
-  description: "Game wiki for Salad's leucotomy branches. English source, Chinese optional.",
+  description: "Wiki for Salad's leucotomy branches, a Roblox Lobotomy Corporation fan game. English source, Chinese optional.",
   icons: {
     icon: "/game-icon.jpg",
   },
