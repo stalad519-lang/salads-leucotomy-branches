@@ -222,7 +222,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
         </nav>
       </header>
 
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-5">{children}</main>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-3 py-4 sm:px-4 sm:py-5">{children}</main>
 
       <footer className="mt-auto border-t border-white bg-black px-4 py-6 text-center text-xs text-white/50">
         {t("footer")}

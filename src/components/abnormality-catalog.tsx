@@ -23,30 +23,26 @@ export function AbnormalityBoard() {
   return (
     <div className="archive">
       <header className="archive-head archive-head--banner">
-        <div className="game-title-banner" role="img" aria-label="Salad's leucotomy branches">
-          <span className="game-title-banner-icon">
+        <div className="game-title-banner">
+          <span className="game-title-banner-icon" aria-hidden>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/game-icon.jpg" alt="" />
           </span>
-          <span className="game-title-banner-copy">
-            <span className="game-title-banner-line">Salad&apos;s leucotomy</span>
-            <span className="game-title-banner-line game-title-banner-line--sub">
-              branches
-            </span>
-          </span>
-        </div>
-        <div className="archive-head-meta">
-          <p className="archive-kicker">{ui.file}</p>
-          <h1>{locale === "zh" ? "异想体一览" : "List of Abnormalities"}</h1>
-          <span>
-            {held} {ui.board}
-          </span>
+          <div className="game-title-banner-copy">
+            <p className="archive-kicker">{ui.file}</p>
+            <div className="game-title-banner-title-row">
+              <h1>{locale === "zh" ? "异想体一览" : "List of Abnormalities"}</h1>
+              <span className="game-title-banner-count">
+                {held} {ui.board}
+              </span>
+            </div>
+            <p className="game-title-banner-brand">Salad&apos;s leucotomy branches</p>
+          </div>
         </div>
       </header>
 
       <div className="archive-scroll">
         <table className="archive-table">
-          <caption>{ui.listCaption}</caption>
           <thead>
             <tr>
               <th>{ui.colCode}</th>

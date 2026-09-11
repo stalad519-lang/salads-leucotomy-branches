@@ -1374,12 +1374,14 @@
 .archive {
   position: relative;
   border: 1px solid rgb(255 255 255 / 0.55);
-  background: #000;
+  background: rgb(0 0 0 / 0.82);
+  backdrop-filter: blur(2px);
   box-shadow:
     0 0 0 3px #000,
     0 0 0 4px rgb(255 255 255 / 0.35),
     0 0 28px rgb(200 16 46 / 0.18);
   padding: 0;
+  overflow: hidden;
 }
 
 /* Clean LC-style double frame for short panels (creators / small indexes) */
@@ -1421,23 +1423,30 @@
 }
 
 .game-title-banner {
+  --banner-rail: 0.42rem;
   --banner-stripe: repeating-linear-gradient(
     -45deg,
-    #7a0a12 0 7px,
-    #0a0a0a 7px 14px
+    #8a0d16 0 5px,
+    #0a0a0a 5px 10px
   );
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: clamp(0.85rem, 2.4vw, 1.6rem);
+  gap: clamp(0.8rem, 1.8vw, 1.2rem);
   width: 100%;
-  min-height: clamp(7.5rem, 18vw, 12rem);
   padding:
-    calc(0.55rem + 0.72rem) clamp(0.9rem, 2.5vw, 1.6rem)
-    calc(0.55rem + 0.72rem);
+    calc(var(--banner-rail) + 0.75rem) clamp(0.9rem, 2.2vw, 1.35rem)
+    calc(var(--banner-rail) + 0.8rem);
   box-sizing: border-box;
-  border-bottom: 0;
+  border-bottom: 1px solid rgb(255 255 255 / 0.28);
   background:
-    linear-gradient(#050505, #050505) center / 100% calc(100% - 1.44rem) no-repeat,
+    linear-gradient(
+      90deg,
+      rgb(200 16 46 / 0.2),
+      transparent 38%
+    ),
+    linear-gradient(#080808, #080808) center /
+      100% calc(100% - (var(--banner-rail) * 2)) no-repeat,
     var(--banner-stripe);
   color: #fff;
 }
@@ -1445,13 +1454,15 @@
 .game-title-banner-icon {
   display: grid;
   place-items: center;
-  width: clamp(4.6rem, 12vw, 7.25rem);
-  height: clamp(4.6rem, 12vw, 7.25rem);
+  width: clamp(3.9rem, 8.5vw, 5.1rem);
+  height: clamp(3.9rem, 8.5vw, 5.1rem);
   flex-shrink: 0;
   overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 0.7);
+  border: 1px solid rgb(255 255 255 / 0.8);
   background: #000;
-  box-shadow: 0 0 18px rgb(255 255 255 / 0.18);
+  box-shadow:
+    0 0 0 1px #000,
+    0 0 14px rgb(255 255 255 / 0.1);
 }
 
 .game-title-banner-icon img {
@@ -1459,60 +1470,63 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  /* Trim the large black padding baked into game-icon.jpg */
-  transform: scale(1.62);
+  transform: scale(1.58);
   transform-origin: center;
 }
 
 .game-title-banner-copy {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.18rem;
   min-width: 0;
 }
 
-.game-title-banner-line {
-  font-size: clamp(1.35rem, 3.6vw, 2.35rem);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
-  color: #fff;
-  text-shadow: 0 0 14px rgb(200 16 46 / 0.35);
+.game-title-banner-brand {
+  margin: 0;
+  order: 3;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgb(255 255 255 / 0.48);
 }
 
-.game-title-banner-line--sub {
-  font-size: clamp(1.05rem, 2.6vw, 1.65rem);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-  color: rgb(255 255 255 / 0.82);
+.game-title-banner-copy .archive-kicker {
+  margin: 0;
+  order: 1;
+  grid-column: auto;
+}
+
+.game-title-banner-title-row {
+  order: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-top: 0.05rem;
+}
+
+.game-title-banner-title-row h1 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.12;
+  color: #fff;
+  text-shadow: 0 0 12px rgb(200 16 46 / 0.25);
+}
+
+.game-title-banner-count {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+  white-space: nowrap;
 }
 
 .archive-head-meta {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.15rem 1rem;
-  padding: 0.55rem 1.15rem 0.7rem;
-  border-top: 1px solid rgb(255 255 255 / 0.18);
-  background:
-    linear-gradient(90deg, rgb(200 16 46 / 0.16), transparent 42%),
-    #050000;
-}
-
-.archive-head-meta .archive-kicker {
-  grid-column: 1 / -1;
-}
-
-.archive-head-meta h1 {
-  margin: 0;
-  font-size: 1.25rem;
-}
-
-.archive-head-meta span {
-  margin: 0;
-  align-self: end;
-  font-size: 0.75rem;
-  color: rgb(255 255 255 / 0.5);
+  display: none;
 }
 
 .archive-kicker {
@@ -1530,15 +1544,15 @@
   font-size: 1.4rem;
 }
 
-.archive-head span,
-.archive-head p {
+.archive-head > span,
+.archive-head > p {
   margin: 0;
   align-self: end;
   font-size: 0.75rem;
   color: rgb(255 255 255 / 0.5);
 }
 
-.archive-head p {
+.archive-head > p {
   grid-column: 1 / -1;
   align-self: start;
 }
@@ -1556,41 +1570,41 @@
 .archive-table caption {
   caption-side: top;
   text-align: left;
-  padding: 0.45rem 0.75rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #fff;
-  background: #111;
-  border-bottom: 1px solid #fff;
+  color: rgb(255 255 255 / 0.55);
+  background: rgb(255 255 255 / 0.03);
+  border-bottom: 1px solid rgb(255 255 255 / 0.14);
 }
 
 .archive-table th {
-  padding: 0.55rem 0.75rem;
+  padding: 0.5rem 0.9rem;
   text-align: left;
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.5);
-  border-bottom: 1px solid rgb(255 255 255 / 0.28);
+  color: rgb(255 255 255 / 0.45);
+  border-bottom: 1px solid rgb(255 255 255 / 0.22);
   white-space: nowrap;
-  background: #050505;
+  background: rgb(0 0 0 / 0.55);
 }
 
 .archive-shot-h {
-  width: 7rem;
+  width: 5.5rem;
 }
 
 .archive-rank td {
   padding: 0;
-  background: #0a0a0a;
-  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(0 0 0 / 0.45);
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
 }
 
 .archive-rank td span {
   display: inline-block;
-  padding: 0.45rem 0.75rem 0.35rem;
-  font-size: 0.72rem;
+  padding: 0.42rem 0.9rem 0.32rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.18em;
 }
@@ -1606,7 +1620,7 @@
 }
 
 .archive-row:nth-child(odd) {
-  background: rgb(255 255 255 / 0.03);
+  background: rgb(255 255 255 / 0.025);
 }
 
 .archive-row:hover,
@@ -1616,8 +1630,8 @@
 }
 
 .archive-table td {
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
   vertical-align: middle;
 }
 
@@ -1629,20 +1643,20 @@
 }
 
 .archive-shot {
-  width: 96px;
-  height: 96px;
+  width: 4.75rem;
+  height: 4.75rem;
   overflow: hidden;
-  border: 1px solid #fff;
+  border: 1px solid rgb(255 255 255 / 0.75);
   background: #050505;
 }
 
 .archive-shot img {
   display: block;
-  width: 96px;
-  height: 96px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(1.16) saturate(1.08);
+  filter: brightness(1.12) saturate(1.05);
 }
 
 .archive-shot img[src*="imaginary-friend"] {
