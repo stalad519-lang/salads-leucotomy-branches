@@ -31,41 +31,20 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Prepare publish folder
+      - name: Verify hand-ui assets
         run: |
-          rm -rf /tmp/wiki-deploy
-          mkdir -p /tmp/wiki-deploy
-          cp -a out/. /tmp/wiki-deploy/
-          find /tmp/wiki-deploy -name '*.txt' -delete
-          find /tmp/wiki-deploy -name '*:*' -exec rm -rf {} + 2>/dev/null || true
-          echo "hand-ui assets:"
-          ls -la /tmp/wiki-deploy/hand-ui || (echo "missing hand-ui in publish folder" && exit 1)
+          ls -la out/hand-ui
+          test -f out/hand-ui/panel-torn.png
 
       - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: "./out"
+          production-deploy: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "GHA ${{ github.sha }}"
+          enable-commit-comment: false
+          enable-pull-request-comment: false
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: |
-          set -uo pipefail
-          SITE_ID="${NETLIFY_SITE_ID:-9adc9168-5491-4e81-9bfc-9f19068b0ab6}"
-          if [ -z "${NETLIFY_AUTH_TOKEN:-}" ]; then
-            echo "::error::NETLIFY_AUTH_TOKEN is empty. Update the GitHub Actions secret."
-            exit 1
-          fi
-          echo "site=$SITE_ID token_chars=${#NETLIFY_AUTH_TOKEN}"
-          set +e
-          npx --yes netlify-cli@23.1.0 deploy \
-            --dir /tmp/wiki-deploy \
-            --prod \
-            --site "$SITE_ID" \
-            --message "GHA ${GITHUB_SHA:0:7}" > /tmp/deploy-out.txt 2>&1
-          code=$?
-          set -e
-          cat /tmp/deploy-out.txt
-          if [ "$code" -ne 0 ]; then
-            echo "::error::Netlify deploy exited with $code"
-            tail -n 50 /tmp/deploy-out.txt | while IFS= read -r line; do
-              echo "::error::${line}"
-            done
-            exit "$code"
-          fi
