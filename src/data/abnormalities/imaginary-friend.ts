@@ -17,8 +17,8 @@ export const imaginaryFriend: AbnormalityRecord = {
   name: { en: "Imaginary Friend", zh: "幻想朋友" },
   risk: "ALEPH",
   pe: 2,
-  portrait: "/abnormalities/qe.png",
-  portraitThumb: "/abnormalities/qe-thumb.png",
+  portrait: "/abnormalities/imaginary-friend.png",
+  portraitThumb: "/abnormalities/imaginary-friend.png",
   damage: { color: "red", min: 32, max: 32 },
   energy: {
     bad: "0–0",

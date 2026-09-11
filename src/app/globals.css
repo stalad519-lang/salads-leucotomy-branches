@@ -1294,6 +1294,13 @@
   filter: brightness(1.16) saturate(1.08);
 }
 
+.archive-shot img[src*="imaginary-friend"] {
+  object-fit: contain;
+  object-position: center top;
+  background: #f4f4f4;
+  filter: none;
+}
+
 .archive-name {
   font-size: 1rem;
   font-weight: 650;
@@ -1437,6 +1444,12 @@
   height: 16.5rem;
   object-fit: cover;
   object-position: center;
+}
+
+.dossier-shot img[src*="imaginary-friend"] {
+  object-fit: contain;
+  object-position: center;
+  background: #f4f4f4;
 }
 
 .dossier-box figcaption {
