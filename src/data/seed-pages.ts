@@ -684,8 +684,27 @@ Write tick rate, duration, or stack rules on the abnormality that inflicts it, n
 
 Pick the work the game names. If an abnormality prefers one work, say so on *its* file.
 
+## Work results
+
+Each work session grades **Good / Normal / Poor** (优 / 良 / 差). These faces are the in-game result icons:
+
+![Good · 优](/abnormalities/work-good.png)
+
+**Good (优)** — green smile. Highest energy band on the sheet.
+
+![Normal · 良](/abnormalities/work-normal.png)
+
+**Normal (良)** — yellow flat face. Middle energy band.
+
+![Poor · 差](/abnormalities/work-bad.png)
+
+**Poor (差)** — red frown. Lowest energy band; often worsens mood.
+
+See [[Work result]]. Energy ranges on abnormality sheets are listed under these three grades.
+
 ## See also
 
+* [[Work result]]
 * [[Damage]]
 * [[Abnormalities]]`,
     },
@@ -706,10 +725,90 @@ Pick the work the game names. If an abnormality prefers one work, say so on *its
 
 以游戏里出现的名称为准。某异想体偏爱哪种工作，写在 *它自己的* 档案里。
 
+## 工作结果
+
+每次工作会评出 **优 / 良 / 差**。游戏内图标如下：
+
+![优](/abnormalities/work-good.png)
+
+**优** — 绿色笑脸。能源区间最高。
+
+![良](/abnormalities/work-normal.png)
+
+**良** — 黄色平脸。中间档。
+
+![差](/abnormalities/work-bad.png)
+
+**差** — 红色哭脸。最低档，常会扣情绪。
+
+详见 [[Work result|工作结果]]。异想体档案侧栏的能源产量按这三档列出区间。
+
 ## 参见
 
+* [[Work result|工作结果]]
 * [[Damage]]
 * [[Abnormalities]]`,
+    }
+  ),
+  page(
+    "Work_result",
+    {
+      title: "Work result",
+      categories: ["Mechanics"],
+      infobox: box("Work result", "Session grade", [
+        { label: "Grades", value: "Good · Normal · Poor" },
+        { label: "Chinese", value: "优 · 良 · 差" },
+        { label: "Used by", value: "[[Work]], energy tables" },
+      ]),
+      content: `A **work result** is the grade for one containment work session (or the energy band on an abnormality file).
+
+![Good · 优](/abnormalities/work-good.png)
+
+**Good (优)** — green smile. Highest energy band on the sheet.
+
+![Normal · 良](/abnormalities/work-normal.png)
+
+**Normal (良)** — yellow flat face. Middle energy band.
+
+![Poor · 差](/abnormalities/work-bad.png)
+
+**Poor (差)** — red frown. Lowest energy band; often worsens mood.
+
+These icons appear on abnormality energy tables next to the PE ranges.
+
+## See also
+
+* [[Work]]
+* [[PE-BOX]]`,
+    },
+    {
+      title: "工作结果",
+      categories: ["Mechanics"],
+      infobox: box("工作结果", "当次评级", [
+        { label: "档位", value: "优 · 良 · 差" },
+        { label: "英语", value: "Good · Normal · Poor" },
+        { label: "用于", value: "[[Work|工作]]、能源表" },
+      ]),
+      content: `**工作结果** 是一次收容工作的评级（也对应异想体档案上的能源区间）。
+
+![优](/abnormalities/work-good.png)
+
+**优** — 绿色笑脸。能源区间最高。
+
+![良](/abnormalities/work-normal.png)
+
+**良** — 黄色平脸。中间档。
+
+![差](/abnormalities/work-bad.png)
+
+**差** — 红色哭脸。最低档，常会扣情绪。
+
+异想体侧栏能源表会用这三张图标标出对应区间。
+
+## 参见
+
+* [[Work|工作]]
+* [[PE-BOX]]`,
     }
   ),
   page(

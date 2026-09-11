@@ -114,9 +114,15 @@ export function AbnormalityFile({
             <table>
               <thead>
                 <tr>
-                  <th>{ui.bad}</th>
-                  <th>{ui.normal}</th>
-                  <th>{ui.good}</th>
+                  <th>
+                    <ResultIcon kind="bad" label={ui.bad} />
+                  </th>
+                  <th>
+                    <ResultIcon kind="normal" label={ui.normal} />
+                  </th>
+                  <th>
+                    <ResultIcon kind="good" label={ui.good} />
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -340,6 +346,28 @@ function PeMeter({ count, label }: { count: number; label: string }) {
         ))}
       </span>
       <span className="pe-meter-n">{count}</span>
+    </span>
+  )
+}
+
+const RESULT_ICON = {
+  bad: "/abnormalities/work-bad.png",
+  normal: "/abnormalities/work-normal.png",
+  good: "/abnormalities/work-good.png",
+} as const
+
+function ResultIcon({
+  kind,
+  label,
+}: {
+  kind: keyof typeof RESULT_ICON
+  label: string
+}) {
+  return (
+    <span className="work-result">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={RESULT_ICON[kind]} alt="" className="work-result-icon" />
+      <span>{label}</span>
     </span>
   )
 }
