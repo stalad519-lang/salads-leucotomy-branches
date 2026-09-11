@@ -67,6 +67,7 @@ Every hit in this game is one of four colors. Each color is also a work:
 * [[Category:Abnormalities|Abnormalities]]
 * [[Damage]] — the four colors
 * [[Work]] — Analysis, Instinct, Attachment, Repression
+* [[PE-BOX]] — observation boxes
 * [[Creators]] — credits
 * [[Qe]] — first abnormality file (H-01-0)
 * [[Imaginary Friend]] — H-02-0 (sealed: Remedic)
@@ -105,6 +106,7 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 * [[Category:Abnormalities|异想体]]
 * [[Damage]] — 四种颜色
 * [[Work]] — 解析、本能、沟通、压迫
+* [[PE-BOX]] — 情绪箱
 * [[Creators]] — 创作者名单
 * [[Qe]] — 第一份异想体档案（H-01-0）
 * [[Imaginary Friend|幻想朋友]] — H-02-0（密封：医骸）
@@ -392,6 +394,7 @@ See [[Damage]] for the full rule.
 
 ## Also in this category
 
+* [[PE-BOX]] — observation / unlock currency texture
 * [[Salad's leucotomy branches|The game]]
 * [[Salad]]
 * [[The Q]]
@@ -417,10 +420,54 @@ See [[Damage]] for the full rule.
 
 ## 本分类还有
 
+* [[PE-BOX]] — 观察 / 解锁用的箱子贴图
 * [[Salad's leucotomy branches|游戏]]
 * [[Salad]]
 * [[The Q]]
 * [[Category:Basics|基本信息]]`,
+    }
+  ),
+  page(
+    "PE-BOX",
+    {
+      title: "PE-BOX",
+      categories: ["Basics"],
+      infobox: box("PE-BOX", "Facility currency", [
+        { label: "Also called", value: "PEBOX · PE-Box · 情绪箱" },
+        { label: "Used for", value: "Introduce unlocks, E.G.O extract" },
+        { label: "Shown as", value: "Mood / PE on abnormality files" },
+      ]),
+      content: `**PE-BOX** (情绪箱) is the observation box used in [[Salad's leucotomy branches]]. Agents earn PE-BOX from work; the Manager spends it to unlock Introduce panels and extract E.G.O.
+
+![PE-BOX texture](/abnormalities/pebox.png)
+
+On abnormality sheets, the **PE** value is the mood ceiling (Qliphoth / emotion max). The archive list and file sidebar render that number with this PE-BOX texture.
+
+## Related
+
+* [[Abnormalities]]
+* [[Work]]
+* [[Basics]]`,
+    },
+    {
+      title: "PE-BOX",
+      categories: ["Basics"],
+      infobox: box("PE-BOX", "设施货币", [
+        { label: "也称", value: "PEBOX · 情绪箱" },
+        { label: "用途", value: "图鉴解锁、E.G.O 提取" },
+        { label: "档案显示", value: "异想体情绪上限 / PE" },
+      ]),
+      content: `**PE-BOX**（情绪箱）是 [[Salad's leucotomy branches]] 里的观察箱。员工工作产出 PE-BOX，管理人用它解锁图鉴面板、提取 E.G.O。
+
+![PE-BOX 贴图](/abnormalities/pebox.png)
+
+异想体档案上的 **PE / 情绪值** 表示情绪上限。一览表与侧栏用这张 PE-BOX 贴图标出该数值。
+
+## 相关
+
+* [[Abnormalities|异想体]]
+* [[Work|工作]]
+* [[Basics|基本信息]]`,
     }
   ),
   page(

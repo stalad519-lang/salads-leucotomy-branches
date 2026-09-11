@@ -757,6 +757,53 @@
   color: #fff;
 }
 
+.pe-meter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  vertical-align: middle;
+}
+
+.pe-meter-boxes {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.18rem;
+  max-width: 7.5rem;
+}
+
+.pe-meter-box {
+  width: 1.15rem;
+  height: 1.15rem;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(0 0 4px rgb(200 16 46 / 0.45));
+}
+
+.pe-meter-n {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.pe-meter--compact {
+  gap: 0.3rem;
+}
+
+.pe-meter--compact .pe-meter-box {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.wiki-prose img.pebox-hero,
+.wiki-prose img[src*="pebox"] {
+  display: block;
+  width: min(220px, 100%);
+  height: auto;
+  margin: 0.75rem 0 1rem;
+  image-rendering: auto;
+  filter: drop-shadow(0 0 12px rgb(200 16 46 / 0.35));
+}
+
 .abn-jump {
   display: flex;
   flex-wrap: wrap;

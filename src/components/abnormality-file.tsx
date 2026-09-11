@@ -101,7 +101,12 @@ export function AbnormalityFile({
                 </span>
               </dd>
             </div>
-            <BoxRow label={ui.pe} value={String(file.pe)} />
+            <div className="dossier-box-row">
+              <dt>{ui.pe}</dt>
+              <dd>
+                <PeMeter count={file.pe} label={ui.pe} />
+              </dd>
+            </div>
             <BoxRow label={ui.ego} value={egoName ?? "—"} />
           </dl>
           <div className="dossier-box-energy">
@@ -321,6 +326,21 @@ export function AbnormalityFile({
         </div>
       </div>
     </div>
+  )
+}
+
+function PeMeter({ count, label }: { count: number; label: string }) {
+  const n = Math.max(0, Math.min(12, Math.floor(count)))
+  return (
+    <span className="pe-meter" title={`${label}: ${count}`}>
+      <span className="pe-meter-boxes" aria-hidden>
+        {Array.from({ length: n }, (_, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img key={i} src="/abnormalities/pebox.png" alt="" className="pe-meter-box" />
+        ))}
+      </span>
+      <span className="pe-meter-n">{count}</span>
+    </span>
   )
 }
 

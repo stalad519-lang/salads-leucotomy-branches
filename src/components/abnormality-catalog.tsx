@@ -94,7 +94,13 @@ export function AbnormalityBoard() {
                         {locale === "zh" ? meta.zh : meta.en}
                       </span>
                     </td>
-                    <td className="archive-pe">{file.pe}</td>
+                    <td className="archive-pe">
+                      <span className="pe-meter pe-meter--compact" title={`PE ${file.pe}`}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/abnormalities/pebox.png" alt="" className="pe-meter-box" />
+                        <span className="pe-meter-n">{file.pe}</span>
+                      </span>
+                    </td>
                     <td>{file.ego ? loc(file.ego.name, locale) : "—"}</td>
                   </tr>
                 )
