@@ -8,8 +8,8 @@ export const folagerlak: AbnormalityRecord = {
   name: { en: "folagerlak", zh: "folagerlak" },
   risk: "WAW",
   pe: 4,
-  portrait: "/abnormalities/qe.png",
-  portraitThumb: "/abnormalities/qe-thumb.png",
+  portrait: "/abnormalities/folagerlak.jpg",
+  portraitThumb: "/abnormalities/folagerlak.jpg",
   damage: { color: "black", min: 32, max: 32 },
   energy: {
     bad: "0–2",
