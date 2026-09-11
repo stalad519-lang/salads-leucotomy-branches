@@ -41,16 +41,27 @@ The first abnormality file is **[[Qe]]** (`H-01-0`). It uses a structured sheet 
 
 ## Publish (free public URL)
 
-The local preview is only on your computer. To let a phone or other people open it, deploy the static site.
-
-### Netlify (no account required to start)
+Cursor Preview and `127.0.0.1` are **not** the public site. Edits here do **not** auto-update any `netlify.app` / `pages.dev` link. After a change, rebuild and redeploy:
 
 ```bash
 npm run build
-npx netlify-cli deploy --allow-anonymous --dir out --no-build --prod
 ```
 
-This prints a `https://….netlify.app` address. Claim the site within 60 minutes if you want to keep it.
+Then pick one host below.
+
+### Netlify Drop (fastest; may ask for a password)
+
+```bash
+# Skip RSC .txt files and colon paths — anonymous Drop rejects some of them
+rm -rf /tmp/wiki-deploy && mkdir -p /tmp/wiki-deploy
+cp -a out/. /tmp/wiki-deploy/
+find /tmp/wiki-deploy -name '*.txt' -delete
+find /tmp/wiki-deploy -name '*:*' -exec rm -rf {} +
+
+npx netlify-cli deploy --allow-anonymous --dir /tmp/wiki-deploy --no-build --prod
+```
+
+Claim the site within 60 minutes if you want to keep the URL.
 
 ### Cloudflare Pages (recommended for a lasting `pages.dev` address)
 
