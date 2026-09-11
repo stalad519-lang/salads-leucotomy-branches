@@ -1171,6 +1171,7 @@
   height: 16.5rem;
   object-fit: cover;
   background: #050505;
+  border-bottom: 1px solid #fff;
 }
 
 @media (min-width: 860px) {
