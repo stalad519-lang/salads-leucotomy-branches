@@ -88,7 +88,8 @@ export function AbnormalityBoard() {
                       <RiskBadge risk={file.risk} />
                     </td>
                     <td className="archive-dmg">
-                      <i style={{ background: meta.css }} />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={meta.icon} alt="" className="work-type-icon" />
                       <span>
                         {formatRange(file.damage.min, file.damage.max)}{" "}
                         {locale === "zh" ? meta.zh : meta.en}

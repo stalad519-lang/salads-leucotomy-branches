@@ -675,12 +675,28 @@ Write tick rate, duration, or stack rules on the abnormality that inflicts it, n
       ]),
       content: `**Work** is how employees manage an [[Abnormalities|abnormality]]. There are four works. Each one is tied to a damage color.
 
-| Work | Chinese | Damage |
-| --- | --- | --- |
-| [[Analysis]] | 解析 | [[Red damage]] (mental) |
-| [[Instinct]] | 本能 | [[Grey damage]] (physical) |
-| [[Attachment]] | 沟通 | [[Cyan damage]] (healing) |
-| [[Repression]] | 压迫 | [[Black damage]] (lasting) |
+![Analysis · Red](/abnormalities/work-red.png)
+
+**[[Analysis]]** (解析) — [[Red damage]] (mental)
+
+![Instinct · Grey](/abnormalities/work-grey.png)
+
+**[[Instinct]]** (本能) — [[Grey damage]] (physical)
+
+![Attachment · Cyan](/abnormalities/work-cyan.png)
+
+**[[Attachment]]** (沟通) — [[Cyan damage]] (healing)
+
+![Repression · Black](/abnormalities/work-black.png)
+
+**[[Repression]]** (压迫) — [[Black damage]] (lasting)
+
+| Work | Chinese | Damage | Icon |
+| --- | --- | --- | --- |
+| [[Analysis]] | 解析 | [[Red damage]] | red |
+| [[Instinct]] | 本能 | [[Grey damage]] | grey |
+| [[Attachment]] | 沟通 | [[Cyan damage]] | cyan |
+| [[Repression]] | 压迫 | [[Black damage]] | black |
 
 Pick the work the game names. If an abnormality prefers one work, say so on *its* file.
 
@@ -718,10 +734,21 @@ See [[Work result]]. Energy ranges on abnormality sheets are listed under these 
       ]),
       content: `**工作** 是员工管理 [[Abnormalities|异想体]] 的方式。一共四种，每种绑一种伤害颜色。
 
-* [[Analysis|解析]] — [[Red damage|红伤]]（精神）
-* [[Instinct|本能]] — [[Grey damage|灰伤]]（物理）
-* [[Attachment|沟通]] — [[Cyan damage|青伤]]（治疗）
-* [[Repression|压迫]] — [[Black damage|黑伤]]（持续）
+![解析 · 红](/abnormalities/work-red.png)
+
+**[[Analysis|解析]]** — [[Red damage|红伤]]（精神）
+
+![本能 · 灰](/abnormalities/work-grey.png)
+
+**[[Instinct|本能]]** — [[Grey damage|灰伤]]（物理）
+
+![沟通 · 青](/abnormalities/work-cyan.png)
+
+**[[Attachment|沟通]]** — [[Cyan damage|青伤]]（治疗）
+
+![压迫 · 黑](/abnormalities/work-black.png)
+
+**[[Repression|压迫]]** — [[Black damage|黑伤]]（持续）
 
 以游戏里出现的名称为准。某异想体偏爱哪种工作，写在 *它自己的* 档案里。
 
@@ -822,6 +849,8 @@ These icons appear on abnormality energy tables next to the PE ranges.
       ]),
       content: `**Analysis** (解析) is the work paired with [[Red damage]]: mental harm.
 
+![Analysis](/abnormalities/work-red.png)
+
 Record on each abnormality how Analysis succeeds or fails. This page is only the mapping.
 
 ## See also
@@ -837,6 +866,8 @@ Record on each abnormality how Analysis succeeds or fails. This page is only the
         { label: "伤害", value: "[[Red damage|红伤]]（精神）" },
       ]),
       content: `**解析**（Analysis）是与 [[Red damage|红伤]] 绑定的工作：精神伤害。
+
+![解析](/abnormalities/work-red.png)
 
 某种异想体上解析如何成功或失败，写在它的档案里。本页只写对应关系。
 
@@ -857,6 +888,8 @@ Record on each abnormality how Analysis succeeds or fails. This page is only the
       ]),
       content: `**Instinct** (本能) is the work paired with [[Grey damage]]: physical harm.
 
+![Instinct](/abnormalities/work-grey.png)
+
 ## See also
 
 * [[Work]]
@@ -870,6 +903,8 @@ Record on each abnormality how Analysis succeeds or fails. This page is only the
         { label: "伤害", value: "[[Grey damage|灰伤]]（物理）" },
       ]),
       content: `**本能**（Instinct）是与 [[Grey damage|灰伤]] 绑定的工作：物理伤害。
+
+![本能](/abnormalities/work-grey.png)
 
 ## 参见
 
@@ -888,6 +923,8 @@ Record on each abnormality how Analysis succeeds or fails. This page is only the
       ]),
       content: `**Attachment** (沟通) is the work paired with [[Cyan damage]]: healing.
 
+![Attachment](/abnormalities/work-cyan.png)
+
 The English page title stays **Attachment** so links stay stable. In this game the work is spoken of as 沟通.
 
 ## See also
@@ -903,6 +940,8 @@ The English page title stays **Attachment** so links stay stable. In this game t
         { label: "伤害", value: "[[Cyan damage|青伤]]（治疗）" },
       ]),
       content: `**沟通**（Attachment）是与 [[Cyan damage|青伤]] 绑定的工作：治疗。
+
+![沟通](/abnormalities/work-cyan.png)
 
 英语条目标题固定为 **Attachment**，方便链接。本游戏里这种工作叫沟通。
 
@@ -923,6 +962,8 @@ The English page title stays **Attachment** so links stay stable. In this game t
       ]),
       content: `**Repression** (压迫) is the work paired with [[Black damage]]: lasting harm.
 
+![Repression](/abnormalities/work-black.png)
+
 ## See also
 
 * [[Work]]
@@ -936,6 +977,8 @@ The English page title stays **Attachment** so links stay stable. In this game t
         { label: "伤害", value: "[[Black damage|黑伤]]（持续）" },
       ]),
       content: `**压迫**（Repression）是与 [[Black damage|黑伤]] 绑定的工作：持续伤害。
+
+![压迫](/abnormalities/work-black.png)
 
 ## 参见
 

@@ -8,6 +8,7 @@ import {
   DAMAGE_META,
   DAMAGE_ORDER,
   FILE_UI,
+  WORK_ICON,
   WORK_LEVELS,
   WORK_ORDER,
   WORK_RATE_LABEL,
@@ -221,8 +222,10 @@ export function AbnormalityFile({
                     return (
                       <tr key={key}>
                         <th scope="row">
-                          <Link href={wikiHref(label.href)}>
-                            {locale === "zh" ? label.zh : label.en}
+                          <Link href={wikiHref(label.href)} className="work-type-link">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={WORK_ICON[key]} alt="" className="work-type-icon" />
+                            <span>{locale === "zh" ? label.zh : label.en}</span>
                           </Link>
                         </th>
                         {entry.rates.map((rate, index) => (
@@ -387,8 +390,10 @@ function NarrationBlocks({
         return (
           <div key={key} className="dossier-narration-block">
             <h3>
-              <Link href={wikiHref(label.href)}>
-                {locale === "zh" ? label.zh : label.en}
+              <Link href={wikiHref(label.href)} className="work-type-link">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={WORK_ICON[key]} alt="" className="work-type-icon" />
+                <span>{locale === "zh" ? label.zh : label.en}</span>
               </Link>
             </h3>
             <ul>

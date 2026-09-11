@@ -857,6 +857,39 @@
   filter: none;
 }
 
+.wiki-prose img[src*="work-red"],
+.wiki-prose img[src*="work-grey"],
+.wiki-prose img[src*="work-cyan"],
+.wiki-prose img[src*="work-black"] {
+  display: block;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: 0.75rem 0 0.4rem;
+  object-fit: contain;
+  background: transparent;
+  filter: none;
+}
+
+.work-type-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.work-type-icon {
+  width: 1.55rem;
+  height: 1.55rem;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.dossier-narration-block .work-type-icon {
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
 .wiki-prose img.pebox-hero,
 .wiki-prose img[src*="pebox"] {
   display: block;

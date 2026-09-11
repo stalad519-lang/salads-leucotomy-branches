@@ -115,12 +115,59 @@ export const WORK_RATE_LABEL: Record<WorkRate, Localized> = {
 
 export const DAMAGE_META: Record<
   DamageColor,
-  { en: string; zh: string; workEn: string; workZh: string; css: string }
+  {
+    en: string
+    zh: string
+    workEn: string
+    workZh: string
+    workKey: "analysis" | "instinct" | "attachment" | "repression"
+    css: string
+    icon: string
+  }
 > = {
-  red: { en: "Red", zh: "红", workEn: "Analysis", workZh: "解析", css: "#c45c4a" },
-  grey: { en: "Grey", zh: "灰", workEn: "Instinct", workZh: "本能", css: "#9aa3ad" },
-  black: { en: "Black", zh: "黑", workEn: "Repression", workZh: "压迫", css: "#8a74b8" },
-  cyan: { en: "Cyan", zh: "青", workEn: "Attachment", workZh: "沟通", css: "#6ec4c4" },
+  red: {
+    en: "Red",
+    zh: "红",
+    workEn: "Analysis",
+    workZh: "解析",
+    workKey: "analysis",
+    css: "#c45c4a",
+    icon: "/abnormalities/work-red.png",
+  },
+  grey: {
+    en: "Grey",
+    zh: "灰",
+    workEn: "Instinct",
+    workZh: "本能",
+    workKey: "instinct",
+    css: "#9aa3ad",
+    icon: "/abnormalities/work-grey.png",
+  },
+  black: {
+    en: "Black",
+    zh: "黑",
+    workEn: "Repression",
+    workZh: "压迫",
+    workKey: "repression",
+    css: "#8a74b8",
+    icon: "/abnormalities/work-black.png",
+  },
+  cyan: {
+    en: "Cyan",
+    zh: "青",
+    workEn: "Attachment",
+    workZh: "沟通",
+    workKey: "attachment",
+    css: "#6ec4c4",
+    icon: "/abnormalities/work-cyan.png",
+  },
+}
+
+export const WORK_ICON: Record<"analysis" | "instinct" | "attachment" | "repression", string> = {
+  analysis: "/abnormalities/work-red.png",
+  instinct: "/abnormalities/work-grey.png",
+  attachment: "/abnormalities/work-cyan.png",
+  repression: "/abnormalities/work-black.png",
 }
 
 export const DAMAGE_ORDER: DamageColor[] = ["red", "grey", "black", "cyan"]
