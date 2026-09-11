@@ -126,12 +126,6 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                   {t("newPage")}
                 </Link>
               </nav>
-              <div className="sheet-lang mt-4 border-t border-white/30 px-4 pt-4">
-                <p className="mb-2 text-xs tracking-wide text-white/55 uppercase">
-                  {t("language")}
-                </p>
-                <LanguageSwitcher />
-              </div>
             </SheetContent>
           </Sheet>
 
@@ -227,6 +221,10 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                 className="h-8 w-full border border-white bg-black px-2.5 text-sm outline-none"
               />
             </label>
+            <div className="grid gap-1 text-sm">
+              <span>{t("language")}</span>
+              <LanguageSwitcher />
+            </div>
           </div>
           <DialogFooter className="sm:justify-between">
             <Button

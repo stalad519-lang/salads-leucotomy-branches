@@ -339,7 +339,8 @@
   border: 1px solid #fff;
   padding: 2px;
   background: #000;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .lang-switch button {
@@ -348,19 +349,14 @@
   color: rgb(255 255 255 / 0.7);
   font-size: 12px;
   line-height: 1;
-  padding: 8px 10px;
+  padding: 6px 10px;
   cursor: pointer;
-  flex: 1;
 }
 
 .lang-switch button.active {
   background: #c8102e;
   color: #fff;
   box-shadow: 0 0 10px rgb(200 16 46 / 0.55);
-}
-
-.sheet-lang .lang-switch {
-  max-width: 14rem;
 }
 
 .fallback-note {
