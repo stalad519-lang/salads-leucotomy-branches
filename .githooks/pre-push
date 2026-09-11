@@ -1,30 +1,39 @@
 #!/usr/bin/env bash
-# Auto-publish the wiki to Netlify whenever main is pushed.
-# Skip with: SKIP_NETLIFY_DEPLOY=1 git push
+# On push to main:
+# 1) Keep the local Netlify publish as a fast fallback (can skip with SKIP_NETLIFY_DEPLOY=1)
+# 2) Mirror main to GitHub so Actions can rebuild the public site
 set -euo pipefail
 
-if [[ "${SKIP_NETLIFY_DEPLOY:-}" == "1" ]]; then
-  echo "pre-push: skipping Netlify deploy (SKIP_NETLIFY_DEPLOY=1)"
+if [[ "${SKIP_NETLIFY_DEPLOY:-}" == "1" && "${SKIP_GITHUB_MIRROR:-}" == "1" ]]; then
   exit 0
 fi
 
-remote_name="${1:-}"
-url_file=
 zero="0000000000000000000000000000000000000000"
-should_deploy=0
-
+should_run=0
 while read -r local_ref local_sha remote_ref remote_sha; do
   [[ "$local_sha" == "$zero" ]] && continue
-  # Only production branch
   if [[ "$remote_ref" == "refs/heads/main" || "$local_ref" == "refs/heads/main" ]]; then
-    should_deploy=1
+    should_run=1
   fi
 done
 
-if [[ "$should_deploy" -ne 1 ]]; then
+if [[ "$should_run" -ne 1 ]]; then
   exit 0
 fi
 
-echo "pre-push: deploying wiki to Netlify before updating main…"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-bash "$ROOT/scripts/deploy-netlify.sh" "git push $(git rev-parse --short HEAD)"
+
+if [[ "${SKIP_NETLIFY_DEPLOY:-}" != "1" ]]; then
+  echo "pre-push: deploying wiki to Netlify…"
+  bash "$ROOT/scripts/deploy-netlify.sh" "git push $(git rev-parse --short HEAD)"
+else
+  echo "pre-push: skipping local Netlify deploy (SKIP_NETLIFY_DEPLOY=1)"
+fi
+
+# Mirror to GitHub so GitHub Actions continuous deploy can run.
+if [[ "${SKIP_GITHUB_MIRROR:-}" != "1" ]] && git remote get-url github >/dev/null 2>&1; then
+  # Avoid recursively re-entering this hook when mirroring.
+  echo "pre-push: mirroring main to GitHub…"
+  SKIP_NETLIFY_DEPLOY=1 SKIP_GITHUB_MIRROR=1 \
+    git push github "HEAD:refs/heads/main"
+fi

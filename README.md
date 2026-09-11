@@ -43,22 +43,27 @@ The first abnormality file is **[[Qe]]** (`H-01-0`). It uses a structured sheet 
 
 Live URL: **https://admirable-moonbeam-ccd3df.netlify.app**
 
-Cursor Preview / `127.0.0.1` are local only. The public Netlify site updates when:
+GitHub (source for continuous deploy):  
+https://github.com/stalad519-lang/salads-leucotomy-branches
 
-1. **Automatic (this repo):** every `git push` to `main` runs a pre-push hook that builds and deploys to Netlify.
-2. **Manual:** `npm run deploy`
+How the public site stays updated:
+
+1. **GitHub Actions (continuous):** every push to `main` on GitHub builds and deploys to Netlify.
+2. **Local pre-push hook:** pushing `main` from this workspace also mirrors to GitHub and publishes immediately.
+3. **Manual:** `npm run deploy`
 
 ```bash
 npm run deploy
 ```
 
-Skip one push without deploying:
+Skip helpers for one push:
 
 ```bash
-SKIP_NETLIFY_DEPLOY=1 git push
+SKIP_NETLIFY_DEPLOY=1 SKIP_GITHUB_MIRROR=1 git push
 ```
 
-Auth lives in the gitignored file `secrets/deploy.local` (Netlify token + site id). Do not commit that file.
+Auth for local deploys lives in gitignored `secrets/deploy.local`.  
+GitHub Actions uses repository secrets `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`.
 
 ### Optional: Cloudflare Pages
 
