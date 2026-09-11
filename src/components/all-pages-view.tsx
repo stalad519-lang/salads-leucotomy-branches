@@ -2,7 +2,6 @@
 
 import { useMemo } from "react"
 
-import { CategoryDeck } from "@/components/category-deck"
 import { Link } from "@/components/wiki-link"
 import { useWiki } from "@/components/wiki-provider"
 import { categoryLabel, messages, PRIMARY_CATEGORIES } from "@/lib/i18n"
@@ -25,9 +24,7 @@ export function AllPagesView() {
   )
 
   return (
-    <div>
-      <CategoryDeck />
-      <article className="wiki-article mt-5">
+    <article className="wiki-article">
         <h1 className="wiki-title">{t("navAll")}</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           {messages[locale].allPagesIntro(items.length)}
@@ -47,7 +44,7 @@ export function AllPagesView() {
             {items.map(({ page, resolved }) => (
               <Link key={page.slug} href={wikiHref(page.slug)} className="wiki-file-row">
                 <span>{resolved.title}</span>
-                <span className="text-xs tracking-widest uppercase text-[#d4b37a]/80">
+                <span className="wiki-file-slug">
                   {page.slug.replaceAll("_", " ")}
                 </span>
               </Link>
@@ -55,6 +52,5 @@ export function AllPagesView() {
           </div>
         )}
       </article>
-    </div>
   )
 }

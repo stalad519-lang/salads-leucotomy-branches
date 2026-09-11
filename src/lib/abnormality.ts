@@ -93,11 +93,19 @@ export const DAMAGE_META: Record<
 export const DAMAGE_ORDER: DamageColor[] = ["red", "grey", "black", "cyan"]
 
 export const RISK_CSS: Record<RiskLevel, string> = {
-  ZAYIN: "#7dbe6a",
-  TETH: "#4aa3d9",
-  HE: "#e0c36a",
-  WAW: "#b48ad4",
-  ALEPH: "#e05a4f",
+  ZAYIN: "#1DF900",
+  TETH: "#13A2FF",
+  HE: "#FFE400",
+  WAW: "#7B2BF9",
+  ALEPH: "#FF0000",
+}
+
+export const RISK_INK: Record<RiskLevel, string> = {
+  ZAYIN: "#000",
+  TETH: "#fff",
+  HE: "#000",
+  WAW: "#fff",
+  ALEPH: "#fff",
 }
 
 export const FILE_UI = {

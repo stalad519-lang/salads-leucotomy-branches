@@ -1,11 +1,12 @@
 "use client"
 
 import { Link } from "@/components/wiki-link"
-import { CategoryDeck } from "@/components/category-deck"
+import { SceneRail } from "@/components/category-deck"
 
 import { useWiki } from "@/components/wiki-provider"
 import {
   DAMAGE_META,
+  RISK_CSS,
   findAbnormality,
   formatRange,
   loc,
@@ -20,10 +21,13 @@ export function CategoryView({ name }: { name: string }) {
   const label = categoryLabel(name, locale)
 
   return (
-    <div>
-      <CategoryDeck active={key} />
-      <article className="wiki-article mt-5">
-        <h1 className="wiki-title">{messages[locale].categoryTitle(label)}</h1>
+    <div className="category-scene">
+      <SceneRail active={key} />
+      <article className="wiki-article">
+        <p className="scene-kicker">
+          <Link href="/">{t("backLobby")}</Link>
+        </p>
+        <h1 className="wiki-title">{label}</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           {messages[locale].categoryCount(items.length)}{" "}
           <Link href="/special/all">{t("backAll")}</Link>
@@ -38,6 +42,7 @@ export function CategoryView({ name }: { name: string }) {
               const file = findAbnormality(page.slug)
               if (file && page.slug !== "Abnormalities") {
                 const meta = DAMAGE_META[file.damage.color]
+                const risk = RISK_CSS[file.risk]
                 return (
                   <Link
                     key={page.slug}
@@ -54,7 +59,11 @@ export function CategoryView({ name }: { name: string }) {
                       <span className="abn-index-code">{file.code}</span>
                       <span className="abn-index-name">{loc(file.name, locale)}</span>
                       <span className="abn-index-meta">
-                        {file.risk} · {locale === "zh" ? "情绪值" : "PE"} {file.pe} ·{" "}
+                        <span className="abn-index-risk" style={{ color: risk, textShadow: `0 0 8px ${risk}` }}>
+                          {file.risk}
+                        </span>
+                        {" · "}
+                        {locale === "zh" ? "情绪值" : "PE"} {file.pe} ·{" "}
                         {formatRange(file.damage.min, file.damage.max)}{" "}
                         {locale === "zh" ? meta.zh : meta.en}
                       </span>
@@ -65,7 +74,7 @@ export function CategoryView({ name }: { name: string }) {
               return (
                 <Link key={page.slug} href={wikiHref(page.slug)} className="wiki-file-row">
                   <span>{resolved.title}</span>
-                  <span className="text-xs tracking-widest uppercase text-[#d4b37a]/80">
+                  <span className="wiki-file-slug">
                     {page.slug.replaceAll("_", " ")}
                   </span>
                 </Link>

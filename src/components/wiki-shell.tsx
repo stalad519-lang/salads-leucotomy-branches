@@ -80,7 +80,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
             >
               <Menu />
             </Button>
-            <SheetContent side="left" className="bg-[#111] text-white">
+            <SheetContent side="left" className="border-white bg-black text-white">
               <SheetHeader>
                 <SheetTitle className="text-white">{settings.name}</SheetTitle>
               </SheetHeader>
@@ -122,7 +122,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               alt=""
               width={40}
               height={40}
-              className="size-10 shrink-0 rounded-md ring-1 ring-white/20"
+              className="size-10 shrink-0 border border-white"
             />
             <span className="min-w-0">
               <span className="block truncate font-heading text-[15px] leading-tight font-semibold tracking-wide">
@@ -164,7 +164,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               href="/new"
               className={buttonVariants({
                 className:
-                  "hidden bg-[#c81e1e] text-white hover:bg-[#e03131] sm:inline-flex",
+                  "hidden border border-white bg-[#c8102e] text-white shadow-[0_0_12px_rgba(200,16,46,0.45)] hover:bg-[#e31b3d] sm:inline-flex",
               })}
             >
               <Plus className="size-4" />
@@ -191,7 +191,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                   href={item.href}
                   className={`border-b-2 px-3 py-2 text-sm ${
                     active
-                      ? "border-[#d4b37a] text-white"
+                      ? "border-[#ff2a2a] text-white shadow-[0_0_12px_rgba(255,42,42,0.55)]"
                       : "border-transparent text-white/70 hover:text-white"
                   }`}
                 >
@@ -205,7 +205,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">{children}</main>
 
-      <footer className="mt-auto border-t border-white/10 bg-black/45 px-4 py-6 text-center text-xs text-white/45 backdrop-blur-md">
+      <footer className="mt-auto border-t border-white bg-black px-4 py-6 text-center text-xs text-white/50">
         {t("footer")}
       </footer>
 

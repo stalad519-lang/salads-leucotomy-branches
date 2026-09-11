@@ -19,8 +19,10 @@ import {
   matchRoute,
   navigate,
   subscribeLocation,
+  type WikiRoute,
 } from "@/lib/nav"
-import { HOME_SLUG, wikiHref } from "@/lib/wiki"
+import { categoryKey } from "@/lib/i18n"
+import { wikiHref } from "@/lib/wiki"
 
 export function WikiRouter() {
   const [mounted, setMounted] = useState(false)
@@ -36,21 +38,24 @@ export function WikiRouter() {
   }, [])
 
   if (!mounted) {
-    return <div className="h-48 animate-pulse rounded-xl bg-white/10" />
+    return <div className="h-48 animate-pulse border border-white bg-black" />
   }
 
   if (route.type === "random") {
     return <RandomRedirect />
   }
 
+  return (
+    <div key={sceneKey(route)} className="wiki-scene">
+      {routeView(route)}
+    </div>
+  )
+}
+
+function routeView(route: WikiRoute) {
   switch (route.type) {
     case "home":
-      return (
-        <>
-          <FacilityHero />
-          <ArticleView slug={HOME_SLUG} />
-        </>
-      )
+      return <FacilityHero />
     case "wiki":
       return <ArticleView slug={route.slug} />
     case "edit":
@@ -70,6 +75,16 @@ export function WikiRouter() {
     default:
       return <NotFoundView />
   }
+}
+
+function sceneKey(route: WikiRoute) {
+  if (route.type === "category") return `category:${categoryKey(route.name)}`
+  if (route.type === "wiki") return `wiki:${route.slug}`
+  if (route.type === "edit") return `edit:${route.slug}`
+  if (route.type === "history") return `history:${route.slug}`
+  if (route.type === "search") return `search:${route.q}`
+  if (route.type === "new") return `new:${route.title}`
+  return route.type
 }
 
 function RandomRedirect() {

@@ -8,6 +8,7 @@ import {
   DAMAGE_ORDER,
   FILE_UI,
   RISK_CSS,
+  RISK_INK,
   formatRange,
   formatSigned,
   loc,
@@ -252,8 +253,17 @@ export function AbnormalityFile({
 }
 
 function RiskBadge({ risk }: { risk: RiskLevel }) {
+  const color = RISK_CSS[risk]
   return (
-    <span className="abn-risk" style={{ color: RISK_CSS[risk], borderColor: RISK_CSS[risk] }}>
+    <span
+      className="abn-risk"
+      style={{
+        color: RISK_INK[risk],
+        background: color,
+        borderColor: color,
+        boxShadow: `0 0 12px ${color}aa, 0 0 2px ${color}`,
+      }}
+    >
       {risk}
     </span>
   )
