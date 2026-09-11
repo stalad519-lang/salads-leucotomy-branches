@@ -23,12 +23,18 @@ export function AbnormalityBoard() {
   return (
     <div className="archive">
       <header className="archive-head archive-head--banner">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/game-title-banner.png"
-          alt="Salad's leucotomy branches"
-          className="game-title-banner"
-        />
+        <div className="game-title-banner" role="img" aria-label="Salad's leucotomy branches">
+          <span className="game-title-banner-icon">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/game-icon.jpg" alt="" />
+          </span>
+          <span className="game-title-banner-copy">
+            <span className="game-title-banner-line">Salad&apos;s leucotomy</span>
+            <span className="game-title-banner-line game-title-banner-line--sub">
+              branches
+            </span>
+          </span>
+        </div>
         <div className="archive-head-meta">
           <p className="archive-kicker">{ui.file}</p>
           <h1>{locale === "zh" ? "异想体一览" : "List of Abnormalities"}</h1>
