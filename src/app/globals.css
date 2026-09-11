@@ -1452,6 +1452,16 @@
   filter: none;
 }
 
+.wiki-prose img[src*="/creators/"] {
+  display: block;
+  width: min(180px, 100%);
+  height: auto;
+  margin: 0.75rem 0 0.4rem;
+  object-fit: contain;
+  background: #111;
+  border: 1px solid rgb(255 255 255 / 0.25);
+}
+
 .archive-pe {
   font-variant-numeric: tabular-nums;
   font-weight: 650;

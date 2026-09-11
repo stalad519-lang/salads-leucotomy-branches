@@ -95,9 +95,9 @@ export const messages = {
     backLobby: "All categories",
     pickScene: "Open a category",
     catAbnormalitiesDesc: "Held files, sorted by risk. H-01-0 lives here.",
-    catBasicsDesc: "Damage types and other standing rules of the facility.",
-    catMechanicsDesc: "Work: Analysis, Instinct, Attachment, Repression.",
-    catCreatorsDesc: "People who built the Roblox game.",
+    catBasicsDesc: "Four damage colors, four works, and primary / secondary personalities.",
+    catMechanicsDesc: "Facility mechanisms — empty for now.",
+    catCreatorsDesc: "Salad (game author) and Stalad (composer).",
   },
   zh: {
     navMain: "首页",
@@ -184,9 +184,9 @@ export const messages = {
     backLobby: "全部分类",
     pickScene: "选择分类",
     catAbnormalitiesDesc: "在库个体，按危险等级排列。H-01-0 在这里。",
-    catBasicsDesc: "伤害类型，以及设施里其他固定规则。",
-    catMechanicsDesc: "工作：解析、本能、沟通、压迫。",
-    catCreatorsDesc: "做这款 Roblox 游戏的人。",
+    catBasicsDesc: "四色伤害、四种工作、主性格与副性格。",
+    catMechanicsDesc: "设施机制 — 暂空。",
+    catCreatorsDesc: "Salad（游戏总作者）与 Stalad（曲师）。",
   },
 } as const
 

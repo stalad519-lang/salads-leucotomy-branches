@@ -48,9 +48,9 @@ The files that belong here are **[[Abnormalities|abnormality]]** records: what a
 ## Four categories
 
 * [[Category:Abnormalities|Abnormalities]] — one page per 异想体 file
-* [[Category:Basics|Basics]] — damage types and other facility facts
-* [[Category:Mechanics|Mechanics]] — work (Analysis, Instinct, Attachment, Repression)
-* [[Category:Creators|Creators]] — people who made the game
+* [[Category:Basics|Basics]] — four damage colors, four works, primary / secondary personalities
+* [[Category:Mechanics|Mechanics]] — facility mechanisms (empty for now)
+* [[Category:Creators|Creators]] — [[Salad]] (game author) and [[Stalad]] (composer)
 
 ## Damage and work
 
@@ -63,17 +63,14 @@ Every hit in this game is one of four colors. Each color is also a work:
 
 ## Start here
 
-* [[Salad's leucotomy branches|The game]]
 * [[Category:Abnormalities|Abnormalities]]
-* [[Damage]] — the four colors
-* [[Work]] — Analysis, Instinct, Attachment, Repression
-* [[PE-BOX]] — observation boxes
-* [[Creators]] — credits
+* [[Basics]] — [[Damage]], [[Work]], [[Primary personality]], [[Secondary personality]]
+* [[Mechanics]] — coming later
+* [[Creators]] — [[Salad]] and [[Stalad]]
 * [[Qe]] — first abnormality file (H-01-0)
 * [[Imaginary Friend]] — H-02-0 (sealed: Remedic)
 * [[folagerlak]] — S-03-0
 * [[Help:Editing]] — how to write an abnormality file
-* [[The Q]] — emblem (English only, to show language fallback)
 
 English is the source language. Switch to 中文 in the header; missing Chinese falls back to English.`,
     },
@@ -87,9 +84,9 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 ## 四个分类
 
 * [[Category:Abnormalities|异想体]] — 每个异想体一页档案
-* [[Category:Basics|基本信息]] — 伤害类型等基础设定
-* [[Category:Mechanics|机制]] — 工作（解析、本能、沟通、压迫）
-* [[Category:Creators|创作者]] — 做这款游戏的人
+* [[Category:Basics|基本信息]] — 四色伤害、四种工作、主性格与副性格
+* [[Category:Mechanics|机制]] — 设施机制（暂空）
+* [[Category:Creators|创作者]] — [[Salad]]（游戏总作者）与 [[Stalad]]（曲师）
 
 ## 伤害与工作
 
@@ -102,17 +99,14 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 
 ## 从这里开始
 
-* [[Salad's leucotomy branches|游戏]]
 * [[Category:Abnormalities|异想体]]
-* [[Damage]] — 四种颜色
-* [[Work]] — 解析、本能、沟通、压迫
-* [[PE-BOX]] — 情绪箱
-* [[Creators]] — 创作者名单
+* [[Basics|基本信息]] — [[Damage|伤害]]、[[Work|工作]]、[[Primary personality|主性格]]、[[Secondary personality|副性格]]
+* [[Mechanics|机制]] — 稍后补充
+* [[Creators|创作者]] — [[Salad]] 与 [[Stalad]]
 * [[Qe]] — 第一份异想体档案（H-01-0）
 * [[Imaginary Friend|幻想朋友]] — H-02-0（密封：医骸）
 * [[folagerlak]] — S-03-0
 * [[Help:Editing]] — 怎么写一篇异想体档案
-* [[The Q]] — 徽章（本条故意没有中文，用来演示回退）
 
 网站以英语为原文。顶栏可切到中文；缺译的字段会显示英语。`,
     }
@@ -121,12 +115,14 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
     "Salad's_leucotomy_branches",
     {
       title: "Salad's leucotomy branches",
-      categories: ["Basics"],
+      categories: ["Help"],
       infobox: box("Salad's leucotomy branches", "Roblox fan game", [
         { label: "Platform", value: "Roblox" },
         { label: "Kind", value: "Lobotomy Corporation fan game" },
         { label: "Focus", value: "[[Abnormalities]], [[Damage]], [[Work]]" },
         { label: "Emblem", value: "[[The Q]]" },
+        { label: "Author", value: "[[Salad]]" },
+        { label: "Composer", value: "[[Stalad]]" },
       ]),
       content: `**Salad's leucotomy branches** is a fan game on Roblox that restages a Lobotomy Corporation facility: employees manage **[[Abnormalities]]**, take and deal [[Damage]], and pick a [[Work]] type.
 
@@ -137,6 +133,7 @@ It is a community project. Official names from Project Moon should be treated as
 * Each abnormality as its own article, filed under [[Abnormalities]]
 * The four damage colors on [[Damage]]
 * The four works on [[Work]]: [[Analysis]], [[Instinct]], [[Attachment]], [[Repression]]
+* Primary and secondary personalities on [[Primary personality]] and [[Secondary personality]]
 
 ## Tone
 
@@ -146,12 +143,14 @@ The name **leucotomy** in the title is the medical joke the facility is built on
     },
     {
       title: "Salad's leucotomy branches",
-      categories: ["Basics"],
+      categories: ["Help"],
       infobox: box("Salad's leucotomy branches", "Roblox 同人游戏", [
         { label: "平台", value: "Roblox" },
         { label: "类型", value: "脑叶公司同人" },
         { label: "核心", value: "[[Abnormalities]]、[[Damage]]、[[Work]]" },
         { label: "徽章", value: "[[The Q]]" },
+        { label: "总作者", value: "[[Salad]]" },
+        { label: "曲师", value: "[[Stalad]]" },
       ]),
       content: `**Salad's leucotomy branches** 是运行在 Roblox 上的脑叶公司同人游戏：员工管理 **[[Abnormalities|异想体]]**，承受和打出 [[Damage|伤害]]，并选择一种 [[Work|工作]]。
 
@@ -162,6 +161,7 @@ The name **leucotomy** in the title is the medical joke the facility is built on
 * 每个异想体单独成篇，归入 [[Abnormalities]]
 * 四种伤害颜色见 [[Damage]]
 * 四种工作见 [[Work]]：[[Analysis|解析]]、[[Instinct|本能]]、[[Attachment|沟通]]、[[Repression|压迫]]
+* 主性格与副性格见 [[Primary personality|主性格]]、[[Secondary personality|副性格]]
 
 ## 文风
 
@@ -378,60 +378,64 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
       title: "Basics",
       categories: ["Basics"],
       infobox: box("Basics", "基本信息", [
-        { label: "Holds", value: "[[Damage]], game facts" },
+        { label: "Holds", value: "[[Damage]], [[Work]], personalities" },
         { label: "Category", value: "[[Category:Basics]]" },
       ]),
-      content: `**Basics** (基本信息) is the category for facts that are not a single [[Abnormalities|abnormality]] file. Damage types live here.
+      content: `**Basics** (基本信息) covers only the standing rules every Agent needs: four damage colors, four works, and personalities.
 
-## Damage types
+## Damage
 
-* [[Red damage]] — mental — [[Analysis]]
-* [[Grey damage]] — physical — [[Instinct]]
-* [[Cyan damage]] — healing — [[Attachment]]
-* [[Black damage]] — lasting — [[Repression]]
+![Red damage](/abnormalities/dmg-red.png)
 
-See [[Damage]] for the full rule.
+**[[Damage]]** (四色伤害) — [[Red damage]], [[Grey damage]], [[Cyan damage]], [[Black damage]]
 
-## Also in this category
+## Work
 
-* [[PE-BOX]] — observation / unlock currency texture
-* [[Salad's leucotomy branches|The game]]
-* [[Salad]]
-* [[The Q]]
-* [[Category:Basics]]`,
+![Analysis · Red](/abnormalities/work-red.png)
+
+**[[Work]]** (四种工作) — [[Analysis]], [[Instinct]], [[Attachment]], [[Repression]]
+
+## Personalities
+
+* [[Primary personality]] — one of eight primaries
+* [[Secondary personality]] — work / social traits (several at once)
+
+See [[Category:Basics]].`,
     },
     {
       title: "基本信息",
       categories: ["Basics"],
       infobox: box("基本信息", "Basics", [
-        { label: "收录", value: "[[Damage]]、游戏事实" },
+        { label: "收录", value: "[[Damage]]、[[Work]]、性格" },
         { label: "分类", value: "[[Category:Basics|基本信息]]" },
       ]),
-      content: `**基本信息**（Basics）用来放那些不是单篇 [[Abnormalities|异想体]] 档案的设定。伤害类型在这里。
+      content: `**基本信息**（Basics）只收员工都要懂的固定规则：四色伤害、四种工作、主性格与副性格。
 
-## 伤害类型
+## 伤害
 
-* [[Red damage|红伤]] — 精神伤害 — [[Analysis|解析]]
-* [[Grey damage|灰伤]] — 物理伤害 — [[Instinct|本能]]
-* [[Cyan damage|青伤]] — 治疗伤害 — [[Attachment|沟通]]
-* [[Black damage|黑伤]] — 持续伤害 — [[Repression|压迫]]
+![红伤](/abnormalities/dmg-red.png)
 
-完整规则见 [[Damage]]。
+**[[Damage|伤害]]**（四色伤害）— [[Red damage|红伤]]、[[Grey damage|灰伤]]、[[Cyan damage|青伤]]、[[Black damage|黑伤]]
 
-## 本分类还有
+## 工作
 
-* [[PE-BOX]] — 观察 / 解锁用的箱子贴图
-* [[Salad's leucotomy branches|游戏]]
-* [[Salad]]
-* [[The Q]]
-* [[Category:Basics|基本信息]]`,
+![解析 · 红](/abnormalities/work-red.png)
+
+**[[Work|工作]]**（四种工作）— [[Analysis|解析]]、[[Instinct|本能]]、[[Attachment|沟通]]、[[Repression|压迫]]
+
+## 性格
+
+* [[Primary personality|主性格]] — 八种主性格之一
+* [[Secondary personality|副性格]] — 工作 / 社交特质（可多个）
+
+见 [[Category:Basics|基本信息]]。`,
     }
   ),
   page(
     "PE-BOX",
     {
       title: "PE-BOX",
-      categories: ["Basics"],
+      categories: ["Help"],
       infobox: box("PE-BOX", "Facility currency", [
         { label: "Also called", value: "PEBOX · PE-Box · 情绪箱" },
         { label: "Used for", value: "Introduce unlocks, E.G.O extract" },
@@ -451,7 +455,7 @@ On abnormality sheets, the **PE** value is the mood ceiling (Qliphoth / emotion 
     },
     {
       title: "PE-BOX",
-      categories: ["Basics"],
+      categories: ["Help"],
       infobox: box("PE-BOX", "设施货币", [
         { label: "也称", value: "PEBOX · 情绪箱" },
         { label: "用途", value: "图鉴解锁、E.G.O 提取" },
@@ -705,7 +709,7 @@ Write tick rate, duration, or stack rules on the abnormality that inflicts it, n
     "Work",
     {
       title: "Work",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("Work", "Four works", [
         { label: "Count", value: "4" },
         { label: "Used on", value: "[[Abnormalities]]" },
@@ -764,7 +768,7 @@ See [[Work result]]. Energy ranges on abnormality sheets are listed under these 
     },
     {
       title: "工作",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("工作", "四种工作", [
         { label: "数量", value: "4" },
         { label: "对象", value: "[[Abnormalities]]" },
@@ -819,7 +823,7 @@ See [[Work result]]. Energy ranges on abnormality sheets are listed under these 
     "Work_result",
     {
       title: "Work result",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("Work result", "Session grade", [
         { label: "Grades", value: "Good · Normal · Poor" },
         { label: "Chinese", value: "优 · 良 · 差" },
@@ -848,7 +852,7 @@ These icons appear on abnormality energy tables next to the PE ranges.
     },
     {
       title: "工作结果",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("工作结果", "当次评级", [
         { label: "档位", value: "优 · 良 · 差" },
         { label: "英语", value: "Good · Normal · Poor" },
@@ -880,7 +884,7 @@ These icons appear on abnormality energy tables next to the PE ranges.
     "Analysis",
     {
       title: "Analysis",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("Analysis", "解析", [
         { label: "Work", value: "Analysis" },
         { label: "Damage", value: "[[Red damage]] (mental)" },
@@ -898,7 +902,7 @@ Record on each abnormality how Analysis succeeds or fails. This page is only the
     },
     {
       title: "解析",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("解析", "Analysis", [
         { label: "工作", value: "解析" },
         { label: "伤害", value: "[[Red damage|红伤]]（精神）" },
@@ -919,7 +923,7 @@ Record on each abnormality how Analysis succeeds or fails. This page is only the
     "Instinct",
     {
       title: "Instinct",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("Instinct", "本能", [
         { label: "Work", value: "Instinct" },
         { label: "Damage", value: "[[Grey damage]] (physical)" },
@@ -935,7 +939,7 @@ Record on each abnormality how Analysis succeeds or fails. This page is only the
     },
     {
       title: "本能",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("本能", "Instinct", [
         { label: "工作", value: "本能" },
         { label: "伤害", value: "[[Grey damage|灰伤]]（物理）" },
@@ -954,7 +958,7 @@ Record on each abnormality how Analysis succeeds or fails. This page is only the
     "Attachment",
     {
       title: "Attachment",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("Attachment", "沟通", [
         { label: "Work", value: "Attachment" },
         { label: "Damage", value: "[[Cyan damage]] (healing)" },
@@ -972,7 +976,7 @@ The English page title stays **Attachment** so links stay stable. In this game t
     },
     {
       title: "沟通",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("沟通", "Attachment", [
         { label: "工作", value: "沟通" },
         { label: "伤害", value: "[[Cyan damage|青伤]]（治疗）" },
@@ -993,7 +997,7 @@ The English page title stays **Attachment** so links stay stable. In this game t
     "Repression",
     {
       title: "Repression",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("Repression", "压迫", [
         { label: "Work", value: "Repression" },
         { label: "Damage", value: "[[Black damage]] (lasting)" },
@@ -1009,7 +1013,7 @@ The English page title stays **Attachment** so links stay stable. In this game t
     },
     {
       title: "压迫",
-      categories: ["Mechanics"],
+      categories: ["Basics"],
       infobox: box("压迫", "Repression", [
         { label: "工作", value: "压迫" },
         { label: "伤害", value: "[[Black damage|黑伤]]（持续）" },
@@ -1028,32 +1032,93 @@ The English page title stays **Attachment** so links stay stable. In this game t
     "Salad",
     {
       title: "Salad",
-      categories: ["Basics"],
-      infobox: box("Salad", "Name in the title", [
-        { label: "Appears in", value: "[[Salad's leucotomy branches]]" },
-        { label: "Tied to", value: "[[Leucotomy]], [[Branches]]" },
+      categories: ["Creators"],
+      infobox: box("Salad", "Game author", [
+        { label: "Role", value: "Game author / 游戏总作者" },
+        { label: "Game", value: "[[Salad's leucotomy branches]]" },
+        { label: "Also see", value: "[[Stalad]], [[Creators]]" },
       ]),
-      content: `**Salad** is the name the game carries. Until a confirmed in-game biography is filed, treat this page as a stub: the person, handle, or figure the [[Branches]] of the facility are drawn around.
+      content: `**Salad** is the **game author** (游戏总作者) of [[Salad's leucotomy branches]].
 
-Replace the stub when you have a reliable file. Keep the English title **Salad** so existing links do not break.`,
+![Salad](/creators/salad.png)
+
+Salad owns the design and direction of the Roblox facility. The title carries this name; see also [[Leucotomy]] and [[Branches]] for the medical joke in the full title.
+
+## See also
+
+* [[Creators]]
+* [[Stalad]]
+* [[Salad's leucotomy branches]]`,
     },
     {
       title: "Salad",
-      categories: ["Basics"],
-      infobox: box("Salad", "标题中的名字", [
-        { label: "出现于", value: "[[Salad's leucotomy branches]]" },
-        { label: "相关", value: "[[Leucotomy]]、[[Branches]]" },
+      categories: ["Creators"],
+      infobox: box("Salad", "游戏总作者", [
+        { label: "职务", value: "游戏总作者 / Game author" },
+        { label: "游戏", value: "[[Salad's leucotomy branches]]" },
+        { label: "参见", value: "[[Stalad]]、[[Creators]]" },
       ]),
-      content: `**Salad** 是游戏标题里的名字。在有可靠游戏内传记之前，本页先当草稿：设施的 [[Branches]] 围着的那个人、称呼或形象。
+      content: `**Salad** 是 [[Salad's leucotomy branches]] 的 **游戏总作者**（Game author）。
 
-有确切档案后请改掉草稿。英语标题保持 **Salad**，以免已有链接断裂。`,
+![Salad](/creators/salad.png)
+
+Salad 负责这款 Roblox 设施的设计与统筹。游戏标题带了这个名字；医学梗见 [[Leucotomy]] 与 [[Branches]]。
+
+## 参见
+
+* [[Creators|创作者]]
+* [[Stalad]]
+* [[Salad's leucotomy branches]]`,
+    }
+  ),
+  page(
+    "Stalad",
+    {
+      title: "Stalad",
+      categories: ["Creators"],
+      infobox: box("Stalad", "Composer", [
+        { label: "Role", value: "Composer / 曲师" },
+        { label: "Game", value: "[[Salad's leucotomy branches]]" },
+        { label: "Also see", value: "[[Salad]], [[Creators]]" },
+      ]),
+      content: `**Stalad** is the **composer** (曲师) for [[Salad's leucotomy branches]].
+
+![Stalad](/creators/stalad.png)
+
+Stalad writes the facility's music. For the game author, see [[Salad]].
+
+## See also
+
+* [[Creators]]
+* [[Salad]]
+* [[Salad's leucotomy branches]]`,
+    },
+    {
+      title: "Stalad",
+      categories: ["Creators"],
+      infobox: box("Stalad", "曲师", [
+        { label: "职务", value: "曲师 / Composer" },
+        { label: "游戏", value: "[[Salad's leucotomy branches]]" },
+        { label: "参见", value: "[[Salad]]、[[Creators]]" },
+      ]),
+      content: `**Stalad** 是 [[Salad's leucotomy branches]] 的 **曲师**（Composer）。
+
+![Stalad](/creators/stalad.png)
+
+Stalad 负责设施音乐。游戏总作者见 [[Salad]]。
+
+## 参见
+
+* [[Creators|创作者]]
+* [[Salad]]
+* [[Salad's leucotomy branches]]`,
     }
   ),
   page(
     "Leucotomy",
     {
       title: "Leucotomy",
-      categories: ["Mechanics"],
+      categories: ["Help"],
       infobox: box("Leucotomy", "Name of the cut", [
         { label: "Also called", value: "White-matter cut" },
         { label: "Game", value: "[[Salad's leucotomy branches]]" },
@@ -1064,7 +1129,7 @@ Describe in-game operations on the pages that use them. This article only names 
     },
     {
       title: "白质切开",
-      categories: ["Mechanics"],
+      categories: ["Help"],
       infobox: box("Leucotomy", "标题里的那一刀", [
         { label: "也称", value: "白质切开" },
         { label: "游戏", value: "[[Salad's leucotomy branches]]" },
@@ -1078,7 +1143,7 @@ Describe in-game operations on the pages that use them. This article only names 
     "Branches",
     {
       title: "Branches",
-      categories: ["Mechanics"],
+      categories: ["Help"],
       infobox: box("Branches", "Facility wings", [
         { label: "Part of", value: "[[Salad's leucotomy branches]]" },
         { label: "Holds", value: "[[Abnormalities]]" },
@@ -1089,7 +1154,7 @@ Abnormality files should say where a being is held if the game shows a location.
     },
     {
       title: "分支",
-      categories: ["Mechanics"],
+      categories: ["Help"],
       infobox: box("分支", "设施侧翼", [
         { label: "属于", value: "[[Salad's leucotomy branches]]" },
         { label: "收容", value: "[[Abnormalities]]" },
@@ -1097,6 +1162,153 @@ Abnormality files should say where a being is held if the game shows a location.
       content: `**Branches** 是设施的侧翼和分叉走廊。游戏有名字再写（部门、侧翼、收容厅）。不要编一套编号结局表。
 
 异想体档案在游戏有显示位置时，写清关在哪。`,
+    }
+  ),
+  page(
+    "Mechanics",
+    {
+      title: "Mechanics",
+      categories: ["Mechanics"],
+      infobox: box("Mechanics", "机制", [
+        { label: "Status", value: "Empty for now" },
+        { label: "Category", value: "[[Category:Mechanics]]" },
+      ]),
+      content: `**Mechanics** (机制) is the category for facility mechanisms beyond the [[Basics]] rules.
+
+Mechanics are not documented yet. Work types live under [[Basics]] / [[Work]]; this index stays empty until breach, fear, or other systems are filed.
+
+See [[Category:Mechanics]].`,
+    },
+    {
+      title: "机制",
+      categories: ["Mechanics"],
+      infobox: box("机制", "Mechanics", [
+        { label: "状态", value: "暂空" },
+        { label: "分类", value: "[[Category:Mechanics|机制]]" },
+      ]),
+      content: `**机制**（Mechanics）用来收 [[Basics|基本信息]] 之外的设施机制。
+
+机制条目暂未撰写。工作类型在 [[Basics|基本信息]] / [[Work|工作]]；本目录先空着，等出逃、恐惧等系统再归档。
+
+见 [[Category:Mechanics|机制]]。`,
+    }
+  ),
+  page(
+    "Primary_personality",
+    {
+      title: "Primary personality",
+      categories: ["Basics"],
+      infobox: box("Primary personality", "主性格", [
+        { label: "Count", value: "8" },
+        { label: "Also see", value: "[[Secondary personality]]" },
+        { label: "Category", value: "[[Category:Basics]]" },
+      ]),
+      content: `Each Agent has one **primary personality** (主性格). It shapes work preference, fear, and special effects.
+
+The eight primaries in this game:
+
+* **Curious** (好奇)
+* **Compassionate** (慈悲)
+* **Resolute** (坚定)
+* **Calm** (冷静)
+* **Submissive** (顺从)
+* **Bloodthirsty** (嗜血)
+* **Callous** (冷酷)
+* **Paranoid** (偏执)
+
+Abnormality files may list a preferred primary. For secondary traits, see [[Secondary personality]].
+
+## See also
+
+* [[Basics]]
+* [[Secondary personality]]
+* [[Work]]`,
+    },
+    {
+      title: "主性格",
+      categories: ["Basics"],
+      infobox: box("主性格", "Primary personality", [
+        { label: "数量", value: "8" },
+        { label: "参见", value: "[[Secondary personality|副性格]]" },
+        { label: "分类", value: "[[Category:Basics|基本信息]]" },
+      ]),
+      content: `每位员工有一个 **主性格**（primary personality）。它影响工作偏好、恐惧与特殊效果。
+
+本游戏八种主性格：
+
+* **Curious**（好奇）
+* **Compassionate**（慈悲）
+* **Resolute**（坚定）
+* **Calm**（冷静）
+* **Submissive**（顺从）
+* **Bloodthirsty**（嗜血）
+* **Callous**（冷酷）
+* **Paranoid**（偏执）
+
+异想体档案可能写偏好的主性格。副性格见 [[Secondary personality|副性格]]。
+
+## 参见
+
+* [[Basics|基本信息]]
+* [[Secondary personality|副性格]]
+* [[Work|工作]]`,
+    }
+  ),
+  page(
+    "Secondary_personality",
+    {
+      title: "Secondary personality",
+      categories: ["Basics"],
+      infobox: box("Secondary personality", "副性格", [
+        { label: "Kind", value: "Work / social traits" },
+        { label: "Also see", value: "[[Primary personality]]" },
+        { label: "Category", value: "[[Category:Basics]]" },
+      ]),
+      content: `**Secondary personalities** (副性格) are extra work and social traits. An Agent can hold several at once; more exist than the short list below.
+
+Common secondaries that appear in current game content:
+
+* **Obsessive** (执着)
+* **Selfish** (自私)
+* **Innocent** (天真)
+* **Remorse** (悔恨)
+* **Patient** (耐心)
+* **Loyal** (忠诚)
+
+Other secondaries (impulsive, cowardly, detached, guilt-ridden, and more) also appear in the pool. Name the ones the game shows on a given Agent or abnormality file.
+
+## See also
+
+* [[Basics]]
+* [[Primary personality]]
+* [[Work]]`,
+    },
+    {
+      title: "副性格",
+      categories: ["Basics"],
+      infobox: box("副性格", "Secondary personality", [
+        { label: "类型", value: "工作 / 社交特质" },
+        { label: "参见", value: "[[Primary personality|主性格]]" },
+        { label: "分类", value: "[[Category:Basics|基本信息]]" },
+      ]),
+      content: `**副性格**（secondary personality）是额外的工作与社交特质。一名员工可同时持有多个；完整池比下面这份更长。
+
+当前游戏内容里常见的副性格：
+
+* **Obsessive**（执着）
+* **Selfish**（自私）
+* **Innocent**（天真）
+* **Remorse**（悔恨）
+* **Patient**（耐心）
+* **Loyal**（忠诚）
+
+另有冲动、怯懦、疏离、愧疚等。以游戏在具体员工或异想体档案上显示的为准。
+
+## 参见
+
+* [[Basics|基本信息]]
+* [[Primary personality|主性格]]
+* [[Work|工作]]`,
     }
   ),
   page(
@@ -1108,15 +1320,15 @@ Abnormality files should say where a being is held if the game shows a location.
         { label: "Game", value: "[[Salad's leucotomy branches]]" },
         { label: "Platform", value: "Roblox" },
       ]),
-      content: `**Creators** is the credit list for [[Salad's leucotomy branches]]. Add people under the role they actually had. English names stay stable; Chinese names can sit in the Chinese version of this page.
+      content: `**Creators** is the credit list for [[Salad's leucotomy branches]].
 
-## List
+![Salad](/creators/salad.png)
 
-* —
+**[[Salad]]** — Game author (游戏总作者)
 
-Write a role next to each name (director, scripter, builder, sound, wiki). When you know a Roblox username, put it in the infobox or after the name.
+![Stalad](/creators/stalad.png)
 
-New people: either edit this list, or create a page for them and set the category to \`Creators\`.
+**[[Stalad]]** — Composer (曲师)
 
 ## See also
 
@@ -1130,15 +1342,15 @@ New people: either edit this list, or create a page for them and set the categor
         { label: "游戏", value: "[[Salad's leucotomy branches]]" },
         { label: "平台", value: "Roblox" },
       ]),
-      content: `**创作者** 是 [[Salad's leucotomy branches]] 的制作名单。按实际分工写人。英语名保持稳定；中文名写在本页的中文版。
+      content: `**创作者** 是 [[Salad's leucotomy branches]] 的制作名单。
 
-## 名单
+![Salad](/creators/salad.png)
 
-* —
+**[[Salad]]** — 游戏总作者（Game author）
 
-每人后面写职务（策划、脚本、建造、音效、百科）。有 Roblox 用户名就写在信息框或名字后面。
+![Stalad](/creators/stalad.png)
 
-新人：可以直接改这份名单，或单独建页并把分类设为 \`Creators\`。
+**[[Stalad]]** — 曲师（Composer）
 
 ## 参见
 
@@ -1148,7 +1360,7 @@ New people: either edit this list, or create a page for them and set the categor
   ),
   page("The_Q", {
     title: "The Q",
-    categories: ["Basics"],
+    categories: ["Help"],
     infobox: box("The Q", "Emblem", [
       { label: "Form", value: "Brain inside a Q-shaped mark" },
       { label: "Used in", value: "[[Salad's leucotomy branches]]" },
@@ -1183,9 +1395,9 @@ Infobox rows (example):
 The four categories:
 
 * \`Abnormalities\` — 异想体 files
-* \`Basics\` — 基本信息 (damage types and other facts)
-* \`Mechanics\` — 机制 (work)
-* \`Creators\` — 创作者列表
+* \`Basics\` — 基本信息 (damage, work, primary / secondary personalities)
+* \`Mechanics\` — 机制 (empty for now)
+* \`Creators\` — 创作者 ([[Salad]], [[Stalad]])
 
 An abnormality page should use:
 
@@ -1243,9 +1455,9 @@ Escape conditions, gifts, or other facts from the Roblox game — not copied off
 四个分类：
 
 * \`Abnormalities\` — 异想体
-* \`Basics\` — 基本信息（伤害类型等）
-* \`Mechanics\` — 机制（工作）
-* \`Creators\` — 创作者列表
+* \`Basics\` — 基本信息（伤害、工作、主性格与副性格）
+* \`Mechanics\` — 机制（暂空）
+* \`Creators\` — 创作者（[[Salad]]、[[Stalad]]）
 
 异想体档案分类填：
 
