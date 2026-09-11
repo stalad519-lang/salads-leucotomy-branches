@@ -11,7 +11,6 @@ import {
   formatRange,
   formatSigned,
   loc,
-  portraitCropStyle,
   resistanceWord,
   type AbnormalityRecord,
   type DamageColor,
@@ -59,11 +58,7 @@ export function AbnormalityFile({
           <figure>
             <div className="dossier-shot">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={file.portrait}
-                alt={name}
-                style={portraitCropStyle(file.portraitFocus, 2.05)}
-              />
+              <img src={file.portraitThumb ?? file.portrait} alt={name} />
             </div>
             <figcaption>{file.code}</figcaption>
           </figure>

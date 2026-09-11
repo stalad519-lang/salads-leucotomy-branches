@@ -10,7 +10,6 @@ import {
   formatRange,
   groupedAbnormalities,
   loc,
-  portraitCropStyle,
 } from "@/lib/abnormality"
 import { navigate } from "@/lib/nav"
 import { wikiHref } from "@/lib/wiki"
@@ -73,11 +72,7 @@ export function AbnormalityBoard() {
                     <td>
                       <div className="archive-shot">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={file.portrait}
-                          alt=""
-                          style={portraitCropStyle(file.portraitFocus, 2.7)}
-                        />
+                        <img src={file.portraitThumb ?? file.portrait} alt="" />
                       </div>
                     </td>
                     <td>
