@@ -8,6 +8,9 @@ import {
   DAMAGE_META,
   DAMAGE_ORDER,
   FILE_UI,
+  WORK_LEVELS,
+  WORK_ORDER,
+  WORK_RATE_LABEL,
   formatRange,
   formatSigned,
   loc,
@@ -15,9 +18,18 @@ import {
   type AbnormalityRecord,
   type DamageColor,
   type DamageRange,
+  type WorkKey,
+  type WorkNarrationBundle,
 } from "@/lib/abnormality"
 import { wikiHref } from "@/lib/wiki"
 import type { Locale } from "@/lib/types"
+
+const WORK_LABEL: Record<WorkKey, { en: string; zh: string; href: string }> = {
+  analysis: { en: "Analysis", zh: "解析", href: "Analysis" },
+  instinct: { en: "Instinct", zh: "本能", href: "Instinct" },
+  attachment: { en: "Attachment", zh: "沟通", href: "Attachment" },
+  repression: { en: "Repression", zh: "压迫", href: "Repression" },
+}
 
 const WORK_HREF = {
   analysis: "Analysis",
@@ -38,10 +50,17 @@ export function AbnormalityFile({
   const name = loc(file.name, locale)
   const egoName = file.ego ? loc(file.ego.name, locale) : null
   const dmg = DAMAGE_META[file.damage.color]
+  const bg = file.background ? loc(file.background, locale) : []
   const sections = [
     { id: "Story", label: ui.story },
+    ...(bg.length ? [{ id: "Background", label: ui.background }] : []),
     { id: "Management", label: ui.management },
     { id: "Personality", label: ui.personality },
+    { id: "WorkPreference", label: ui.workPreference },
+    { id: "WorkNarration", label: ui.workNarration },
+    ...(file.sealedWorkNarration
+      ? [{ id: "SealedNarration", label: ui.sealedNarration }]
+      : []),
     ...(egoName ? [{ id: "EGO", label: `${ui.ego} · ${egoName}` }] : []),
     ...(notes?.trim() ? [{ id: "Notes", label: ui.notes }] : []),
   ]
@@ -134,6 +153,19 @@ export function AbnormalityFile({
             <p className="abn-story">{loc(file.story, locale)}</p>
           </section>
 
+          {bg.length > 0 ? (
+            <section id="Background">
+              <h2>{ui.background}</h2>
+              <ol className="dossier-guides">
+                {bg.map((line, index) => (
+                  <li key={`${index}-${line.slice(0, 24)}`}>
+                    <p>{line}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ) : null}
+
           <section id="Management">
             <h2>{ui.management}</h2>
             <ol className="dossier-guides">
@@ -158,6 +190,73 @@ export function AbnormalityFile({
               {loc(file.personality.secondary, locale).join(" / ")}
             </p>
           </section>
+
+          <section id="WorkPreference">
+            <h2>{ui.workPreference}</h2>
+            <div className="dossier-work-scroll">
+              <table className="dossier-work-table">
+                <thead>
+                  <tr>
+                    <th>{ui.workLevel}</th>
+                    {WORK_LEVELS.map((level) => (
+                      <th key={level}>{level}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {WORK_ORDER.map((key) => {
+                    const entry = file.workPreference[key]
+                    const label = WORK_LABEL[key]
+                    return (
+                      <tr key={key}>
+                        <th scope="row">
+                          <Link href={wikiHref(label.href)}>
+                            {locale === "zh" ? label.zh : label.en}
+                          </Link>
+                        </th>
+                        {entry.rates.map((rate, index) => (
+                          <td key={`${key}-${index}`} data-rate={rate}>
+                            {loc(WORK_RATE_LABEL[rate], locale)}
+                          </td>
+                        ))}
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <ul className="dossier-work-notes">
+              {WORK_ORDER.map((key) => {
+                const note = file.workPreference[key].note
+                if (!note) return null
+                const label = WORK_LABEL[key]
+                return (
+                  <li key={`${key}-note`}>
+                    <strong>{locale === "zh" ? label.zh : label.en}</strong>
+                    {" — "}
+                    {loc(note, locale)}
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+
+          <section id="WorkNarration">
+            <h2>{ui.workNarration}</h2>
+            <p className="dossier-work-hint">{ui.agentPlaceholder}</p>
+            <NarrationBlocks bundle={file.workNarration} locale={locale} />
+          </section>
+
+          {file.sealedWorkNarration ? (
+            <section id="SealedNarration">
+              <h2>
+                {ui.sealedNarration}
+                {file.sealedLabel ? ` · ${loc(file.sealedLabel, locale)}` : ""}
+              </h2>
+              <p className="dossier-work-hint">{ui.agentPlaceholder}</p>
+              <NarrationBlocks bundle={file.sealedWorkNarration} locale={locale} />
+            </section>
+          ) : null}
 
           {file.ego && egoName ? (
             <section id="EGO">
@@ -221,6 +320,37 @@ export function AbnormalityFile({
           ) : null}
         </div>
       </div>
+    </div>
+  )
+}
+
+function NarrationBlocks({
+  bundle,
+  locale,
+}: {
+  bundle: WorkNarrationBundle
+  locale: Locale
+}) {
+  return (
+    <div className="dossier-narration">
+      {WORK_ORDER.map((key) => {
+        const label = WORK_LABEL[key]
+        const lines = loc(bundle[key], locale)
+        return (
+          <div key={key} className="dossier-narration-block">
+            <h3>
+              <Link href={wikiHref(label.href)}>
+                {locale === "zh" ? label.zh : label.en}
+              </Link>
+            </h3>
+            <ul>
+              {lines.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -44,6 +44,90 @@ export const qe: AbnormalityRecord = {
       "每过 120 秒，Qe 会随机掉一点情绪值。",
     ],
   },
+  background: {
+    en: [
+      "Why does it keep returning to its original form no matter how much I remove it?! What should I do? Someone, please help me.",
+      "Can this human experiment really cure this damned disease? I'm being driven mad.",
+      "Primary personality: Curious. Secondary personalities: Obsessive, Selfish.",
+    ],
+    zh: [
+      "为什么，不管怎么去除它都会变回原样？！我应该怎么办？谁能帮帮我",
+      "这个人体实验真的能解决这该死的疾病吗？我快要被逼疯了",
+      "主性格：好奇，副性格：执着，自私",
+    ],
+  },
+  workPreference: {
+    analysis: {
+      rates: ["Low", "Normal", "High", "High", "VeryHigh"],
+      note: {
+        en: "On unit enter: if Fortitude is below II, Qe executes the Agent (o01Kill).",
+        zh: "进入收容室时：勇气低于 II 则处刑该员工（o01Kill）。",
+      },
+    },
+    instinct: {
+      rates: ["Normal", "Normal", "High", "VeryHigh", "VeryHigh"],
+    },
+    attachment: {
+      rates: ["VeryLow", "VeryLow", "VeryLow", "VeryLow", "VeryLow"],
+      note: {
+        en: "Attachment is always Very Low at every level.",
+        zh: "沟通全程极低。",
+      },
+    },
+    repression: {
+      rates: ["Low", "Normal", "High", "High", "VeryHigh"],
+    },
+  },
+  workNarration: {
+    analysis: {
+      en: [
+        "{1} sketches the pattern of yellow growth crawling across Qe's body.",
+        "{1} notes how fast fresh fluid beads form after each peel.",
+        "{1} compares today's lesions against yesterday's chart, line by line.",
+      ],
+      zh: [
+        "{1}勾画着爬满Qe身体的黄色增生纹路。",
+        "{1}记录每次剥离后新渗出的液体汇聚得有多快。",
+        "{1}逐行对照今天与昨天的病灶图表。",
+      ],
+    },
+    instinct: {
+      en: [
+        "{1} tries to wipe away the yellow fluid seeping around Qe.",
+        "{1} scrapes a sticky film of yellow off the floor near Qe's feet.",
+        "{1} carefully peels a thin yellow crust from the containment wall.",
+      ],
+      zh: [
+        "{1}试着清理Qe周围渗出的黄色液体。",
+        "{1}刮去Qe脚边地上那层黏腻的黄色薄膜。",
+        "{1}小心剥离收容壁上结成的一层黄痂。",
+      ],
+    },
+    attachment: {
+      en: [
+        "{1} sits close to Qe and talks in a low voice, as if to a sick patient.",
+        "{1} holds Qe's trembling hand until the shaking slows.",
+        "{1} stays within arm's reach, watching Qe the way one watches someone in pain.",
+      ],
+      zh: [
+        "{1}坐在Qe身旁低声说话，像在陪护一名病人。",
+        "{1}握住Qe发抖的手，直到颤抖渐渐平息。",
+        "{1}始终待在伸手可及处，像看护疼痛中的人那样盯着Qe。",
+      ],
+    },
+    repression: {
+      en: [
+        "{1} forces Qe's hands away before another strip of skin can be torn free.",
+        "{1} tightens the restraints and stops Qe from chasing the yellow down its own arm.",
+        "{1} presses Qe back against the wall when it starts to thrash.",
+      ],
+      zh: [
+        "{1}强行掰开Qe的手，不让它再撕下一片皮肤。",
+        "{1}勒紧约束，阻止Qe顺着手臂继续抠掉黄色部分。",
+        "{1}在Qe开始挣扎时把它按回墙边。",
+      ],
+    },
+  },
   personality: {
     primary: { en: "Curious", zh: "好奇" },
     secondary: {

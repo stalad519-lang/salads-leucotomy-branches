@@ -49,6 +49,18 @@ export type EgoGift = {
   special: Localized | null
 }
 
+export type WorkKey = "analysis" | "instinct" | "attachment" | "repression"
+export type WorkRate = "VeryLow" | "Low" | "Normal" | "High" | "VeryHigh" | "AlwaysBad"
+
+export type WorkPreferenceEntry = {
+  /** Success band for Agent level I → V */
+  rates: [WorkRate, WorkRate, WorkRate, WorkRate, WorkRate]
+  /** Enter / special rule note for this work */
+  note?: Localized
+}
+
+export type WorkNarrationBundle = Record<WorkKey, Localized<string[]>>
+
 export type AbnormalityRecord = {
   slug: string
   aliases: string[]
@@ -68,6 +80,13 @@ export type AbnormalityRecord = {
   resistances: Record<DamageColor, number>
   story: Localized
   management: Localized<string[]>
+  /** Background / personality panel freeform lines */
+  background?: Localized<string[]>
+  workPreference: Record<WorkKey, WorkPreferenceEntry>
+  workNarration: WorkNarrationBundle
+  /** Remedic (sealed) work float lines — H-02 only */
+  sealedWorkNarration?: WorkNarrationBundle
+  sealedLabel?: Localized
   personality: {
     primary: Localized
     secondary: Localized<string[]>
@@ -79,6 +98,19 @@ export type AbnormalityRecord = {
     corrosion: EgoCorrosion
     gift: EgoGift
   } | null
+}
+
+export const WORK_ORDER: WorkKey[] = ["analysis", "instinct", "attachment", "repression"]
+
+export const WORK_LEVELS = ["I", "II", "III", "IV", "V"] as const
+
+export const WORK_RATE_LABEL: Record<WorkRate, Localized> = {
+  VeryLow: { en: "Very Low", zh: "极低" },
+  Low: { en: "Low", zh: "低" },
+  Normal: { en: "Normal", zh: "普通" },
+  High: { en: "High", zh: "高" },
+  VeryHigh: { en: "Very High", zh: "极高" },
+  AlwaysBad: { en: "Always Bad", zh: "必差" },
 }
 
 export const DAMAGE_META: Record<
@@ -162,6 +194,12 @@ export const FILE_UI = {
     colPe: "PE",
     colEgo: "E.G.O",
     guideline: "Managerial Guidelines",
+    background: "Background",
+    workPreference: "Work Preference",
+    workNarration: "Work Narration",
+    sealedNarration: "Sealed work narration",
+    workLevel: "Level",
+    agentPlaceholder: "{1} = Agent name",
   },
   zh: {
     code: "编号",
@@ -213,6 +251,12 @@ export const FILE_UI = {
     colPe: "情绪值",
     colEgo: "E.G.O",
     guideline: "管理需知",
+    background: "背景",
+    workPreference: "工作偏好",
+    workNarration: "工作旁白",
+    sealedNarration: "密封形态工作旁白",
+    workLevel: "等级",
+    agentPlaceholder: "{1} = 员工名字",
   },
 } as const
 
@@ -249,6 +293,14 @@ export function abnormalitySearchText(file: AbnormalityRecord) {
         file.ego.gift.name.zh,
       ]
     : []
+  const narrBits: string[] = []
+  for (const key of WORK_ORDER) {
+    narrBits.push(...file.workNarration[key].en, ...file.workNarration[key].zh)
+    const sealed = file.sealedWorkNarration?.[key]
+    if (sealed) narrBits.push(...sealed.en, ...sealed.zh)
+    const note = file.workPreference[key].note
+    if (note) narrBits.push(note.en, note.zh)
+  }
   return [
     file.code,
     file.slug,
@@ -258,8 +310,11 @@ export function abnormalitySearchText(file: AbnormalityRecord) {
     ...egoBits,
     file.story.en,
     file.story.zh,
+    ...(file.background?.en ?? []),
+    ...(file.background?.zh ?? []),
     ...file.management.en,
     ...file.management.zh,
+    ...narrBits,
   ].join("\n")
 }
 

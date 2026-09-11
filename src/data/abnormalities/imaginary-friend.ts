@@ -67,6 +67,145 @@ export const imaginaryFriend: AbnormalityRecord = {
       "成功镇压 What should I do！！！后，与《朋友》的羁绊断裂并退回医骸；本存档无法再次获得 You found me。",
     ],
   },
+  background: {
+    en: [
+      "The unit is crowded with flesh. Agents who enter are no longer on the outside.",
+      "Broadcasts and dialogue do not reach anyone working inside the Imaginary Friend.",
+      "Primary personality: Compassionate. Secondary personalities: Innocent, Remorse (special — killing a best friend).",
+    ],
+    zh: [
+      "收容室塞满血肉。走进去的员工已不在「外面」。",
+      "广播与对话传不到在幻想朋友体内工作的人。",
+      "主性格：慈悲。副性格：天真、悔恨（特殊——杀害挚友）。",
+    ],
+  },
+  sealedLabel: { en: "Remedic (sealed)", zh: "医骸（密封）" },
+  workPreference: {
+    analysis: {
+      rates: ["VeryLow", "VeryLow", "Low", "Low", "Normal"],
+      note: {
+        en: "On unit enter: Analysis instantly half-kills the Agent (o02Semi / skip enter anim).",
+        zh: "进入收容室时：解析会立刻半死（o02Semi，跳过进入动画）。",
+      },
+    },
+    instinct: {
+      rates: ["Low", "Normal", "Normal", "High", "VeryHigh"],
+      note: {
+        en: "《朋友》 Agents: Attachment / Instinct box success forced to 85%.",
+        zh: "《朋友》员工：沟通 / 本能箱成功率强制 85%。",
+      },
+    },
+    attachment: {
+      rates: ["Normal", "High", "High", "VeryHigh", "VeryHigh"],
+      note: {
+        en: "《朋友》 Agents: Attachment / Instinct box success forced to 85%.",
+        zh: "《朋友》员工：沟通 / 本能箱成功率强制 85%。",
+      },
+    },
+    repression: {
+      rates: ["VeryLow", "VeryLow", "VeryLow", "Low", "Low"],
+    },
+  },
+  workNarration: {
+    analysis: {
+      en: [
+        "{1} tries to write the Friend down carefully, afraid a half-truth might thin it out.",
+        "{1} counts its edges for the log. The Friend reminds them to count the soft ones too.",
+        "{1} sketches a second silhouette beside their own. The pencil keeps moving after they stop.",
+      ],
+      zh: [
+        "{1}小心地把它写进记录，生怕半真半假会让它变薄。",
+        "{1}在日志里数它的边。朋友提醒也要把软的数进去。",
+        "{1}在自己旁边画了第二个轮廓。笔停了之后还在动。",
+      ],
+    },
+    instinct: {
+      en: [
+        "{1} offers a hand into empty air; something warm closes around it and squeezes back.",
+        "The Friend presses close to {1}, checking they are still soft, still here.",
+        "{1} asks what it eats. The answer is company — preferably theirs.",
+      ],
+      zh: [
+        "{1}把手伸进空里；有什么温暖握住，又轻轻回握。",
+        "朋友贴近{1}，确认他们还软、还在。",
+        "{1}问它吃什么。答案是陪伴——最好是他们的。",
+      ],
+    },
+    attachment: {
+      en: [
+        "{1} sits with the Imaginary Friend and talks until the silence in the room softens.",
+        "The Friend leans on {1}'s shoulder and asks for something boring to listen to.",
+        "{1} asks if it still remembers their name. The Friend answers without hesitation.",
+      ],
+      zh: [
+        "{1}和幻想朋友坐在一起说话，直到房间里的安静软下来。",
+        "朋友靠在{1}肩上，要听一点无聊的事。",
+        "{1}问它是否还记得自己的名字。朋友毫不犹豫地答了。",
+      ],
+    },
+    repression: {
+      en: [
+        "{1} tells the Friend to stay back. It takes a little distance, but not forever.",
+        "{1} pushes it away; the Friend treats even that as a kind of conversation.",
+        "{1} locks the restraint. A second set of fingers rests on the latch and does not open it.",
+      ],
+      zh: [
+        "{1}让朋友退后。它退开一点，却不肯退到永远。",
+        "{1}把它推开；朋友连这也当成一种交谈。",
+        "{1}扣上束缚。另一双手搭在锁扣上，却没有打开。",
+      ],
+    },
+  },
+  sealedWorkNarration: {
+    analysis: {
+      en: [
+        "{1} tries to map the body that is the room. The map eats the pencil.",
+        "Remedic does not like being taken apart. {1} learns that too late.",
+        "{1} underlines a blank line twice. Somewhere, a joint clicks like a correction.",
+      ],
+      zh: [
+        "{1}试图把这间房测绘成身体。地图把铅笔吃了。",
+        "医骸不喜欢被拆开。{1}学得太晚。",
+        "{1}在空白行下划了两道。不知哪里，关节咔哒一声像在改错。",
+      ],
+    },
+    instinct: {
+      en: [
+        "{1} presses a palm to warm tissue. It presses back, curious and wrong.",
+        "Remedic tastes {1}'s pulse through the walls and keeps it.",
+        "{1} asks what it wants. The answer is to keep moving parts moving.",
+      ],
+      zh: [
+        "{1}把手按在温热的组织上。它回压过来，好奇而错误。",
+        "医骸隔着墙尝到{1}的脉搏，不肯放。",
+        "{1}问它要什么。答案是：让能动的部分继续动。",
+      ],
+    },
+    attachment: {
+      en: [
+        "{1} speaks into wet walls. Something that is not a mouth answers from inside the meat.",
+        "The unit closes around {1}. Outside voices never arrive.",
+        "{1} asks if anyone can hear them. Only the flesh listens.",
+      ],
+      zh: [
+        "{1}对着湿墙说话。不是嘴的东西从肉里应了。",
+        "单元把{1}关在里面。外面的声音永远到不了。",
+        "{1}问有没有人听得见。只有肉在听。",
+      ],
+    },
+    repression: {
+      en: [
+        "{1} orders the meat to stay put. It already is — and so are they.",
+        "When {1} pushes, Remedic folds them deeper into the unit.",
+        "{1} raises a barrier. Soft knocking answers from the inside of their own sleeve.",
+      ],
+      zh: [
+        "{1}命令肉待在原地。它本来就在——他们也是。",
+        "{1}一推，医骸就把他们折进单元更深处。",
+        "{1}升起屏障。袖子内侧传来轻轻的敲门声。",
+      ],
+    },
+  },
   personality: {
     primary: { en: "Compassionate", zh: "慈悲" },
     secondary: {
