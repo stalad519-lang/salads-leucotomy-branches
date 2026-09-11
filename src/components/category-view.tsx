@@ -2,6 +2,7 @@
 
 import { Link } from "@/components/wiki-link"
 import { AbnormalityBoard } from "@/components/abnormality-catalog"
+import { CreatorsBoard } from "@/components/creators-board"
 
 import { useWiki } from "@/components/wiki-provider"
 import { categoryKey, categoryLabel, messages } from "@/lib/i18n"
@@ -19,6 +20,10 @@ export function CategoryView({ name }: { name: string }) {
 
   if (key === "Abnormalities") {
     return <AbnormalityBoard />
+  }
+
+  if (key === "Creators") {
+    return <CreatorsBoard />
   }
 
   return (

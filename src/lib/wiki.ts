@@ -20,7 +20,7 @@ export const SETTINGS_KEY = "slb-wiki.settings.v2"
 export const WIKI_EVENT = "slb-wiki:changed"
 export const SEED_SYNC_KEY = "slb-wiki.seed-sync"
 /** Bump whenever shipped seed content must overwrite localStorage copies */
-export const SEED_SYNC_ID = "2026-09-11-mood-not-pe"
+export const SEED_SYNC_ID = "2026-09-11-creators-cards"
 
 export function slugify(title: string): string {
   return title.trim().replace(/\s+/g, "_")
