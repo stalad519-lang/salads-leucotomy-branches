@@ -8,9 +8,10 @@
     "start": "npx --yes serve out -p 43217 -s --no-port-switching",
     "lint": "eslint",
     "prepare": "git config core.hooksPath .githooks || true",
-    "deploy": "bash scripts/deploy-netlify.sh",
-    "deploy:web": "bash scripts/deploy-netlify.sh",
-    "deploy:cf": "npm run build && npx --yes wrangler pages deploy out --project-name salads-leucotomy-branches"
+    "deploy": "bash scripts/deploy-cloudflare.sh",
+    "deploy:web": "bash scripts/deploy-cloudflare.sh",
+    "deploy:cf": "bash scripts/deploy-cloudflare.sh",
+    "deploy:netlify": "bash scripts/deploy-netlify.sh"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

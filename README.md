@@ -41,15 +41,16 @@ The first abnormality file is **[[Qe]]** (`H-01-0`). It uses a structured sheet 
 
 ## Public site
 
-Live URL: **https://admirable-moonbeam-ccd3df.netlify.app**
+Primary host: **Cloudflare Pages**  
+Project: `salads-leucotomy-branches` → `https://salads-leucotomy-branches.pages.dev`
 
 GitHub (source for continuous deploy):  
 https://github.com/stalad519-lang/salads-leucotomy-branches
 
 How the public site stays updated:
 
-1. **GitHub Actions (continuous):** every push to `main` on GitHub builds and deploys to Netlify.
-2. **Local pre-push hook:** pushing `main` from this workspace also mirrors to GitHub and publishes immediately.
+1. **GitHub Actions (continuous):** every push to `main` on GitHub builds and deploys to Cloudflare Pages.
+2. **Local pre-push hook:** pushing `main` from this workspace mirrors to GitHub (and deploys locally if a Cloudflare token is present).
 3. **Manual:** `npm run deploy`
 
 ```bash
@@ -59,14 +60,13 @@ npm run deploy
 Skip helpers for one push:
 
 ```bash
-SKIP_NETLIFY_DEPLOY=1 SKIP_GITHUB_MIRROR=1 git push
+SKIP_CLOUDFLARE_DEPLOY=1 SKIP_GITHUB_MIRROR=1 git push
 ```
 
 Auth for local deploys lives in gitignored `secrets/deploy.local`.  
-GitHub Actions uses repository secrets `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`.
+GitHub Actions needs repository secrets:
 
-### Optional: Cloudflare Pages
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
 
-```bash
-npm run deploy:cf
-```
+Netlify remains available as a fallback via `npm run deploy:netlify`, but the account is currently credit-blocked.
