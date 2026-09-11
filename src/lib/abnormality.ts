@@ -122,6 +122,7 @@ export const DAMAGE_META: Record<
     workZh: string
     workKey: "analysis" | "instinct" | "attachment" | "repression"
     css: string
+    /** Damage-type glyph (not the work-type icon) */
     icon: string
   }
 > = {
@@ -132,7 +133,7 @@ export const DAMAGE_META: Record<
     workZh: "解析",
     workKey: "analysis",
     css: "#c45c4a",
-    icon: "/abnormalities/work-red.png",
+    icon: "/abnormalities/dmg-red.png",
   },
   grey: {
     en: "Grey",
@@ -141,7 +142,7 @@ export const DAMAGE_META: Record<
     workZh: "本能",
     workKey: "instinct",
     css: "#9aa3ad",
-    icon: "/abnormalities/work-grey.png",
+    icon: "/abnormalities/dmg-grey.png",
   },
   black: {
     en: "Black",
@@ -150,7 +151,7 @@ export const DAMAGE_META: Record<
     workZh: "压迫",
     workKey: "repression",
     css: "#8a74b8",
-    icon: "/abnormalities/work-black.png",
+    icon: "/abnormalities/dmg-black.png",
   },
   cyan: {
     en: "Cyan",
@@ -159,7 +160,7 @@ export const DAMAGE_META: Record<
     workZh: "沟通",
     workKey: "attachment",
     css: "#6ec4c4",
-    icon: "/abnormalities/work-cyan.png",
+    icon: "/abnormalities/dmg-cyan.png",
   },
 }
 

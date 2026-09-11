@@ -89,7 +89,7 @@ export function AbnormalityBoard() {
                     </td>
                     <td className="archive-dmg">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={meta.icon} alt="" className="work-type-icon" />
+                      <img src={meta.icon} alt="" className="dmg-type-icon" />
                       <span>
                         {formatRange(file.damage.min, file.damage.max)}{" "}
                         {locale === "zh" ? meta.zh : meta.en}

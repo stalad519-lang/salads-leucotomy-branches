@@ -94,7 +94,8 @@ export function AbnormalityFile({
               <dt>{ui.colDamage}</dt>
               <dd>
                 <span className="archive-dmg">
-                  <i style={{ background: dmg.css }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={dmg.icon} alt="" className="dmg-type-icon" />
                   <span>
                     {formatRange(file.damage.min, file.damage.max)}{" "}
                     {locale === "zh" ? dmg.zh : dmg.en}
@@ -421,6 +422,8 @@ function DamageChip({ damage, locale }: { damage: DamageRange; locale: Locale })
   const meta = DAMAGE_META[damage.color]
   return (
     <span className="abn-dmg" style={{ borderColor: meta.css, color: meta.css }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={meta.icon} alt="" className="dmg-type-icon" />
       {formatRange(damage.min, damage.max)} {locale === "zh" ? meta.zh : meta.en}
     </span>
   )
@@ -441,6 +444,8 @@ function ResistanceList({
         return (
           <li key={color}>
             <span className="abn-res-name" style={{ color: meta.css }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={meta.icon} alt="" className="dmg-type-icon dmg-type-icon--sm" />
               {locale === "zh" ? meta.zh : meta.en}
             </span>
             <span className="abn-res-n">{value}</span>

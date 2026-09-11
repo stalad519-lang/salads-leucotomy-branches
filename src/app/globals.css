@@ -1048,6 +1048,9 @@
 }
 
 .abn-res-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-weight: 650;
 }
 
@@ -1421,6 +1424,32 @@
   height: 0.55rem;
   flex: none;
   border: 1px solid #fff;
+}
+
+.dmg-type-icon {
+  width: 1.45rem;
+  height: 1.45rem;
+  object-fit: contain;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+
+.dmg-type-icon--sm {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.wiki-prose img[src*="dmg-red"],
+.wiki-prose img[src*="dmg-grey"],
+.wiki-prose img[src*="dmg-cyan"],
+.wiki-prose img[src*="dmg-black"] {
+  display: block;
+  width: 4.75rem;
+  height: 4.75rem;
+  margin: 0.65rem 0 0.35rem;
+  object-fit: contain;
+  background: transparent;
+  filter: none;
 }
 
 .archive-pe {

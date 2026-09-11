@@ -482,10 +482,21 @@ On abnormality sheets, the **PE** value is the mood ceiling (Qliphoth / emotion 
       ]),
       content: `**Damage** in [[Salad's leucotomy branches]] is always one of four colors. The color tells you both what the hit *does* and which [[Work]] it belongs to.
 
-* [[Red damage]] (红伤) — mental — [[Analysis]] (解析)
-* [[Grey damage]] (灰伤) — physical — [[Instinct]] (本能)
-* [[Cyan damage]] (青伤) — healing — [[Attachment]] (沟通)
-* [[Black damage]] (黑伤) — lasting — [[Repression]] (压迫)
+![Red damage](/abnormalities/dmg-red.png)
+
+**[[Red damage]]** (红伤) — mental — [[Analysis]] (解析)
+
+![Grey damage](/abnormalities/dmg-grey.png)
+
+**[[Grey damage]]** (灰伤) — physical — [[Instinct]] (本能)
+
+![Cyan damage](/abnormalities/dmg-cyan.png)
+
+**[[Cyan damage]]** (青伤) — healing — [[Attachment]] (沟通)
+
+![Black damage](/abnormalities/dmg-black.png)
+
+**[[Black damage]]** (黑伤) — lasting — [[Repression]] (压迫)
 
 These names are this Roblox game's rules. Do not assume official Lobotomy Corporation color meanings if they disagree.
 
@@ -501,10 +512,21 @@ When you file an abnormality, name the color it deals and the color it is weak t
       ]),
       content: `[[Salad's leucotomy branches]] 里的 **伤害** 只有四种颜色。颜色既说明这一下 *做什么*，也对应哪一种 [[Work|工作]]。
 
-* [[Red damage|红伤]] — 精神伤害 — [[Analysis|解析]]
-* [[Grey damage|灰伤]] — 物理伤害 — [[Instinct|本能]]
-* [[Cyan damage|青伤]] — 治疗伤害 — [[Attachment|沟通]]
-* [[Black damage|黑伤]] — 持续伤害 — [[Repression|压迫]]
+![红伤](/abnormalities/dmg-red.png)
+
+**[[Red damage|红伤]]** — 精神伤害 — [[Analysis|解析]]
+
+![灰伤](/abnormalities/dmg-grey.png)
+
+**[[Grey damage|灰伤]]** — 物理伤害 — [[Instinct|本能]]
+
+![青伤](/abnormalities/dmg-cyan.png)
+
+**[[Cyan damage|青伤]]** — 治疗伤害 — [[Attachment|沟通]]
+
+![黑伤](/abnormalities/dmg-black.png)
+
+**[[Black damage|黑伤]]** — 持续伤害 — [[Repression|压迫]]
 
 以上是这款 Roblox 游戏自己的规则。如果和官方脑叶公司的颜色含义冲突，以本游戏为准。
 
@@ -523,6 +545,8 @@ When you file an abnormality, name the color it deals and the color it is weak t
       ]),
       content: `**Red damage** (红伤) is **mental damage**. In this game it is the color of [[Analysis]] (解析).
 
+![Red damage](/abnormalities/dmg-red.png)
+
 Use this page for the rule. Use an abnormality article for a specific red-damage file.
 
 ## See also
@@ -540,6 +564,8 @@ Use this page for the rule. Use an abnormality article for a specific red-damage
         { label: "工作", value: "[[Analysis|解析]]" },
       ]),
       content: `**红伤**（Red damage）是 **精神伤害**。在本游戏里，它对应 [[Analysis|解析]]。
+
+![红伤](/abnormalities/dmg-red.png)
 
 本页只写规则。具体某个打红伤的异想体，写在它自己的档案里。
 
@@ -562,6 +588,8 @@ Use this page for the rule. Use an abnormality article for a specific red-damage
       ]),
       content: `**Grey damage** (灰伤) is **physical damage**. In this game it is the color of [[Instinct]] (本能).
 
+![Grey damage](/abnormalities/dmg-grey.png)
+
 ## See also
 
 * [[Damage]]
@@ -577,6 +605,8 @@ Use this page for the rule. Use an abnormality article for a specific red-damage
         { label: "工作", value: "[[Instinct|本能]]" },
       ]),
       content: `**灰伤**（Grey damage）是 **物理伤害**。在本游戏里，它对应 [[Instinct|本能]]。
+
+![灰伤](/abnormalities/dmg-grey.png)
 
 ## 参见
 
@@ -597,6 +627,8 @@ Use this page for the rule. Use an abnormality article for a specific red-damage
       ]),
       content: `**Cyan damage** (青伤) is **healing**. In this game it is the color of [[Attachment]] (沟通).
 
+![Cyan damage](/abnormalities/dmg-cyan.png)
+
 It still occupies a damage-color slot: work logs, resistances, and abnormality files should name it as cyan / 青伤 even when the number goes up instead of down.
 
 ## See also
@@ -614,6 +646,8 @@ It still occupies a damage-color slot: work logs, resistances, and abnormality f
         { label: "工作", value: "[[Attachment|沟通]]" },
       ]),
       content: `**青伤**（Cyan damage）是 **治疗伤害**。在本游戏里，它对应 [[Attachment|沟通]]。
+
+![青伤](/abnormalities/dmg-cyan.png)
 
 它仍然占一个伤害颜色格：工作记录、抗性和异想体档案都要写成青伤，即使数字是在加而不是减。
 
@@ -636,6 +670,8 @@ It still occupies a damage-color slot: work logs, resistances, and abnormality f
       ]),
       content: `**Black damage** (黑伤) is **lasting damage**: it continues after the hit. In this game it is the color of [[Repression]] (压迫).
 
+![Black damage](/abnormalities/dmg-black.png)
+
 Write tick rate, duration, or stack rules on the abnormality that inflicts it, not as guesses on this page.
 
 ## See also
@@ -653,6 +689,8 @@ Write tick rate, duration, or stack rules on the abnormality that inflicts it, n
         { label: "工作", value: "[[Repression|压迫]]" },
       ]),
       content: `**黑伤**（Black damage）是 **持续伤害**：打中之后还会继续掉。在本游戏里，它对应 [[Repression|压迫]]。
+
+![黑伤](/abnormalities/dmg-black.png)
 
 跳数、持续、叠层写在施加它的异想体档案里，不要在本页臆测。
 
