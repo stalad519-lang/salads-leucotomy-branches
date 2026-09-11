@@ -37,14 +37,42 @@ jobs:
           test -f out/hand-ui/panel-torn.png
 
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3.0
-        with:
-          publish-dir: "./out"
-          production-deploy: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "GHA ${{ github.sha }}"
-          enable-commit-comment: false
-          enable-pull-request-comment: false
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          set -euo pipefail
+          TOKEN="$(printf '%s' "${NETLIFY_AUTH_TOKEN:-}" | tr -d '\r\n[:space:]')"
+          SITE_ID="$(printf '%s' "${NETLIFY_SITE_ID:-9adc9168-5491-4e81-9bfc-9f19068b0ab6}" | tr -d '\r\n[:space:]')"
+
+          if [ -z "$TOKEN" ]; then
+            echo "::error::NETLIFY_AUTH_TOKEN secret is empty. Add it under Settings → Secrets → Actions."
+            exit 1
+          fi
+
+          echo "token_len=${#TOKEN} site=$SITE_ID"
+
+          http_code="$(curl -sS -o /tmp/netlify-user.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${TOKEN}" \
+            https://api.netlify.com/api/v1/user || true)"
+          echo "netlify_auth_http=${http_code}"
+          if [ "$http_code" != "200" ]; then
+            echo "::error::Netlify rejected the token (HTTP ${http_code}). Create a new Personal Access Token and update NETLIFY_AUTH_TOKEN."
+            head -c 400 /tmp/netlify-user.json || true
+            echo
+            exit 1
+          fi
+
+          rm -rf /tmp/wiki-deploy
+          mkdir -p /tmp/wiki-deploy
+          cp -a out/. /tmp/wiki-deploy/
+          find /tmp/wiki-deploy -name '*.txt' -delete
+          find /tmp/wiki-deploy -name '*:*' -exec rm -rf {} + 2>/dev/null || true
+          test -f /tmp/wiki-deploy/hand-ui/panel-torn.png
+
+          npx --yes netlify-cli@23.1.0 deploy \
+            --dir /tmp/wiki-deploy \
+            --prod \
+            --site "$SITE_ID" \
+            --auth "$TOKEN" \
+            --message "GHA ${GITHUB_SHA:0:7}"
