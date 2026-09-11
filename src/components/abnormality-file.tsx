@@ -106,7 +106,7 @@ export function AbnormalityFile({
             <div className="dossier-box-row">
               <dt>{ui.pe}</dt>
               <dd>
-                <PeMeter count={file.pe} label={ui.pe} />
+                <MoodMeter count={file.mood} label={ui.pe} />
               </dd>
             </div>
             <BoxRow label={ui.ego} value={egoName ?? "—"} />
@@ -283,33 +283,64 @@ export function AbnormalityFile({
                 {ui.weapon} <RiskBadge risk={file.ego.weapon.risk} />
               </h3>
               <p className="abn-look">{loc(file.ego.weapon.appearance, locale)}</p>
-              <p>
-                {ui.range}: {loc(file.ego.weapon.range, locale)} · {ui.damage}:{" "}
-                <DamageChip damage={file.ego.weapon.damage} locale={locale} />
-              </p>
-              <p>
-                {ui.mastered}: {loc(file.ego.weapon.mastered.range, locale)} ·{" "}
-                <DamageChip damage={file.ego.weapon.mastered.damage} locale={locale} />
-              </p>
+              <div className="ego-stage-grid">
+                <div className="ego-stage">
+                  <h4>{ui.weaponBase}</h4>
+                  <dl className="ego-stage-stats">
+                    <div>
+                      <dt>{ui.range}</dt>
+                      <dd>{loc(file.ego.weapon.range, locale)}</dd>
+                    </div>
+                    <div>
+                      <dt>{ui.damage}</dt>
+                      <dd>
+                        <DamageChip damage={file.ego.weapon.damage} locale={locale} />
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+                <div className="ego-stage ego-stage--alt">
+                  <h4>{ui.mastered}</h4>
+                  <dl className="ego-stage-stats">
+                    <div>
+                      <dt>{ui.range}</dt>
+                      <dd>{loc(file.ego.weapon.mastered.range, locale)}</dd>
+                    </div>
+                    <div>
+                      <dt>{ui.damage}</dt>
+                      <dd>
+                        <DamageChip damage={file.ego.weapon.mastered.damage} locale={locale} />
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
 
               <h3>
                 {ui.suit} <RiskBadge risk={file.ego.suit.risk} />
               </h3>
               <p className="abn-look">{loc(file.ego.suit.appearance, locale)}</p>
-              <ResistanceList values={file.ego.suit.resistances} locale={locale} />
-              <p className="abn-special">
-                {ui.special}: {file.ego.suit.special ? loc(file.ego.suit.special, locale) : ui.optional}
-              </p>
-
-              <h3>{ui.corrosion}</h3>
-              <p className="abn-look">{loc(file.ego.corrosion.appearance, locale)}</p>
-              <ResistanceList values={file.ego.corrosion.resistances} locale={locale} />
-              <p className="abn-special">
-                {ui.special}: {loc(file.ego.corrosion.special, locale)}
-              </p>
-              <p className="abn-special">
-                {ui.weaponSkill}: {loc(file.ego.corrosion.weaponSkill, locale)}
-              </p>
+              <div className="ego-stage-grid">
+                <div className="ego-stage">
+                  <h4>{ui.suitBase}</h4>
+                  <ResistanceList values={file.ego.suit.resistances} locale={locale} />
+                  <p className="abn-special">
+                    {ui.special}:{" "}
+                    {file.ego.suit.special ? loc(file.ego.suit.special, locale) : ui.optional}
+                  </p>
+                </div>
+                <div className="ego-stage ego-stage--alt">
+                  <h4>{ui.suitEroded}</h4>
+                  <p className="abn-look">{loc(file.ego.corrosion.appearance, locale)}</p>
+                  <ResistanceList values={file.ego.corrosion.resistances} locale={locale} />
+                  <p className="abn-special">
+                    {ui.special}: {loc(file.ego.corrosion.special, locale)}
+                  </p>
+                  <p className="abn-special">
+                    {ui.weaponSkill}: {loc(file.ego.corrosion.weaponSkill, locale)}
+                  </p>
+                </div>
+              </div>
 
               <h3>
                 {ui.gift} · {loc(file.ego.gift.name, locale)}
@@ -339,17 +370,16 @@ export function AbnormalityFile({
   )
 }
 
-function PeMeter({ count, label }: { count: number; label: string }) {
+function MoodMeter({ count, label }: { count: number; label: string }) {
   const n = Math.max(0, Math.min(12, Math.floor(count)))
   return (
-    <span className="pe-meter" title={`${label}: ${count}`}>
-      <span className="pe-meter-boxes" aria-hidden>
+    <span className="mood-meter" title={`${label}: ${count}`}>
+      <span className="mood-meter-pips" aria-hidden>
         {Array.from({ length: n }, (_, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img key={i} src="/abnormalities/pebox.png" alt="" className="pe-meter-box" />
+          <span key={i} className="mood-meter-pip" />
         ))}
       </span>
-      <span className="pe-meter-n">{count}</span>
+      <span className="mood-meter-n">{count}</span>
     </span>
   )
 }

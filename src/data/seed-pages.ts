@@ -191,7 +191,7 @@ When you add a file:
 
 ## File template
 
-See [[Help:Editing]] for the full abnormality template. Structured files (portrait, PE, resistances, EGO) render as a sheet; wiki text on those pages is extra notes only.
+See [[Help:Editing]] for the full abnormality template. Structured files (portrait, Mood, resistances, EGO) render as a sheet; wiki text on those pages is extra notes only.
 
 ## Files
 
@@ -224,7 +224,7 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
 
 ## 档案模板
 
-完整模板见 [[Help:Editing]]。结构化档案（立绘、情绪值、抗性、EGO）会按分栏显示，词条正文只作备注。
+完整模板见 [[Help:Editing]]。结构化档案（立绘、情绪、抗性、EGO）会按分栏显示，词条正文只作备注。
 
 ## 档案
 
@@ -247,7 +247,7 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
       infobox: box("Qe", "H-01-0", [
         { label: "Code", value: "H-01-0" },
         { label: "Risk", value: "TETH" },
-        { label: "PE", value: "3" },
+        { label: "Mood", value: "3" },
         { label: "Damage", value: "[[Red damage]] 14" },
         { label: "EGO", value: "Fusion / 融合" },
       ]),
@@ -255,7 +255,7 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
 
 * Code: H-01-0
 * Risk: TETH
-* PE (mood max): 3
+* Mood max: 3
 * Work damage: [[Red damage]] 14 (Mental)
 * EGO: Fusion (融合) · gift Bone Spike (骨刺)
 * Personality: Curious · Obsessive, Selfish
@@ -268,7 +268,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
       infobox: box("Qe", "H-01-0", [
         { label: "编号", value: "H-01-0" },
         { label: "危险等级", value: "TETH" },
-        { label: "情绪值", value: "3" },
+        { label: "情绪", value: "3" },
         { label: "伤害", value: "[[Red damage|红伤]] 14" },
         { label: "EGO", value: "融合" },
       ]),
@@ -292,7 +292,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
       infobox: box("Imaginary Friend", "H-02-0", [
         { label: "Code", value: "H-02-0" },
         { label: "Risk", value: "ALEPH (sealed: Remedic / WAW)" },
-        { label: "PE", value: "2" },
+        { label: "Mood", value: "2" },
         { label: "Damage", value: "[[Red damage]] 32" },
         { label: "EGO", value: "Mimesis / Pseudo-Life / You found me" },
       ]),
@@ -300,7 +300,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
 
 * Code: H-02-0
 * Revealed risk: ALEPH · Sealed: Remedic / WAW
-* PE (mood max): 2
+* Mood max: 2
 * Work damage: [[Red damage]] 32
 * EGO: Mimesis (weapon), Pseudo-Life (suit), You found me (gift)
 * Personality: Compassionate · Innocent, Remorse
@@ -313,7 +313,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
       infobox: box("幻想朋友", "H-02-0", [
         { label: "编号", value: "H-02-0" },
         { label: "危险等级", value: "ALEPH（密封：医骸 / WAW）" },
-        { label: "情绪值", value: "2" },
+        { label: "情绪", value: "2" },
         { label: "伤害", value: "[[Red damage|红伤]] 32" },
         { label: "EGO", value: "拟生 / You found me" },
       ]),
@@ -337,7 +337,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
       infobox: box("folagerlak", "S-03-0", [
         { label: "Code", value: "S-03-0" },
         { label: "Risk", value: "WAW" },
-        { label: "PE", value: "4" },
+        { label: "Mood", value: "4" },
         { label: "Damage", value: "[[Black damage]] 32" },
         { label: "EGO", value: "—" },
       ]),
@@ -345,7 +345,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
 
 * Code: S-03-0
 * Risk: WAW
-* PE (mood max): 4
+* Mood max: 4
 * Work damage: [[Black damage]] 32 (Corrosion)
 * Personality: Calm · Patient, Loyal
 
@@ -357,7 +357,7 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
       infobox: box("folagerlak", "S-03-0", [
         { label: "编号", value: "S-03-0" },
         { label: "危险等级", value: "WAW" },
-        { label: "情绪值", value: "4" },
+        { label: "情绪", value: "4" },
         { label: "伤害", value: "[[Black damage|黑伤]] 32" },
         { label: "EGO", value: "—" },
       ]),
@@ -437,15 +437,15 @@ See [[Category:Basics]].`,
       title: "PE-BOX",
       categories: ["Help"],
       infobox: box("PE-BOX", "Facility currency", [
-        { label: "Also called", value: "PEBOX · PE-Box · 情绪箱" },
+        { label: "Also called", value: "PEBOX · PE-Box" },
         { label: "Used for", value: "Introduce unlocks, E.G.O extract" },
-        { label: "Shown as", value: "Mood / PE on abnormality files" },
+        { label: "Earned from", value: "Work completion (Good / Normal / Bad)" },
       ]),
-      content: `**PE-BOX** (情绪箱) is the observation box used in [[Salad's leucotomy branches]]. Agents earn PE-BOX from work; the Manager spends it to unlock Introduce panels and extract E.G.O.
+      content: `**PE-BOX** is spendable observation currency in [[Salad's leucotomy branches]]. Agents earn PE-BOX when work finishes; the Manager spends it to unlock Introduce panels and extract E.G.O.
 
 ![PE-BOX texture](/abnormalities/pebox.png)
 
-On abnormality sheets, the **PE** value is the mood ceiling (Qliphoth / emotion max). The archive list and file sidebar render that number with this PE-BOX texture.
+PE-BOX is **not** abnormality Mood. Mood (情绪) is the Qliphoth emotion ceiling on containment files — a separate meter.
 
 ## Related
 
@@ -457,15 +457,15 @@ On abnormality sheets, the **PE** value is the mood ceiling (Qliphoth / emotion 
       title: "PE-BOX",
       categories: ["Help"],
       infobox: box("PE-BOX", "设施货币", [
-        { label: "也称", value: "PEBOX · 情绪箱" },
+        { label: "也称", value: "PEBOX" },
         { label: "用途", value: "图鉴解锁、E.G.O 提取" },
-        { label: "档案显示", value: "异想体情绪上限 / PE" },
+        { label: "来源", value: "工作完成（优 / 良 / 差）" },
       ]),
-      content: `**PE-BOX**（情绪箱）是 [[Salad's leucotomy branches]] 里的观察箱。员工工作产出 PE-BOX，管理人用它解锁图鉴面板、提取 E.G.O。
+      content: `**PE-BOX** 是 [[Salad's leucotomy branches]] 里可花费的观察点数。员工工作结束产出 PE-BOX，管理人用它解锁图鉴面板、提取 E.G.O。
 
 ![PE-BOX 贴图](/abnormalities/pebox.png)
 
-异想体档案上的 **PE / 情绪值** 表示情绪上限。一览表与侧栏用这张 PE-BOX 贴图标出该数值。
+PE-BOX **不是** 异想体的情绪。档案上的 **情绪 / Mood** 是收容情绪上限，与 PE-BOX 无关。
 
 ## 相关
 
@@ -843,7 +843,7 @@ See [[Work result]]. Energy ranges on abnormality sheets are listed under these 
 
 **Poor (差)** — red frown. Lowest energy band; often worsens mood.
 
-These icons appear on abnormality energy tables next to the PE ranges.
+These icons appear on abnormality energy tables next to the energy ranges.
 
 ## See also
 

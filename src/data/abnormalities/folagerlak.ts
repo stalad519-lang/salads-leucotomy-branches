@@ -7,7 +7,7 @@ export const folagerlak: AbnormalityRecord = {
   code: "S-03-0",
   name: { en: "folagerlak", zh: "folagerlak" },
   risk: "WAW",
-  pe: 4,
+  mood: 4,
   portrait: "/abnormalities/folagerlak.jpg",
   portraitThumb: "/abnormalities/folagerlak.jpg",
   damage: { color: "black", min: 32, max: 32 },

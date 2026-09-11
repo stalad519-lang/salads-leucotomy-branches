@@ -67,7 +67,8 @@ export type AbnormalityRecord = {
   code: string
   name: Localized
   risk: RiskLevel
-  pe: number
+  /** Mood ceiling (Qliphoth emotion max) — not PE-BOX currency */
+  mood: number
   portrait: string
   portraitThumb?: string
   portraitFocus?: string
@@ -195,7 +196,7 @@ export const FILE_UI = {
   en: {
     code: "Code",
     risk: "Risk",
-    pe: "PE",
+    pe: "Mood",
     damage: "Damage",
     energy: "Energy output",
     bad: "Bad",
@@ -214,11 +215,14 @@ export const FILE_UI = {
     ego: "EGO",
     weapon: "Weapon",
     suit: "Suit",
-    corrosion: "Corrosion",
+    corrosion: "Erosion",
     gift: "Gift",
     appearance: "Look",
     range: "Range",
-    mastered: "After high proficiency",
+    mastered: "High proficiency",
+    weaponBase: "Base proficiency",
+    suitBase: "Without erosion",
+    suitEroded: "With erosion",
     special: "Special",
     none: "None",
     optional: "Optional — not set",
@@ -243,7 +247,7 @@ export const FILE_UI = {
     colName: "Name",
     colRisk: "Risk Level",
     colDamage: "Work Damage",
-    colPe: "PE",
+    colPe: "Mood",
     colEgo: "E.G.O",
     guideline: "Managerial Guidelines",
     background: "Background",
@@ -256,7 +260,7 @@ export const FILE_UI = {
   zh: {
     code: "编号",
     risk: "危险等级",
-    pe: "情绪值",
+    pe: "情绪",
     damage: "伤害",
     energy: "能源产量",
     bad: "差",
@@ -279,7 +283,10 @@ export const FILE_UI = {
     gift: "饰品",
     appearance: "外貌",
     range: "攻击距离",
-    mastered: "高熟练度之后",
+    mastered: "高熟练度",
+    weaponBase: "非熟练",
+    suitBase: "非侵蚀",
+    suitEroded: "侵蚀",
     special: "特殊效果",
     none: "无",
     optional: "可选 — 暂未填写",
@@ -304,7 +311,7 @@ export const FILE_UI = {
     colName: "名称",
     colRisk: "危险等级",
     colDamage: "作业伤害",
-    colPe: "情绪值",
+    colPe: "情绪",
     colEgo: "E.G.O",
     guideline: "管理需知",
     background: "背景",

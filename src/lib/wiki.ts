@@ -14,9 +14,13 @@ import type {
 } from "@/lib/types"
 
 export const HOME_SLUG = "Main_Page"
-export const PAGES_KEY = "slb-wiki.pages.v4"
+/** Bump when seed pages change so browsers pick up Creators / Help fixes */
+export const PAGES_KEY = "slb-wiki.pages.v5"
 export const SETTINGS_KEY = "slb-wiki.settings.v2"
 export const WIKI_EVENT = "slb-wiki:changed"
+export const SEED_SYNC_KEY = "slb-wiki.seed-sync"
+/** Bump whenever shipped seed content must overwrite localStorage copies */
+export const SEED_SYNC_ID = "2026-09-11-mood-not-pe"
 
 export function slugify(title: string): string {
   return title.trim().replace(/\s+/g, "_")
@@ -163,15 +167,24 @@ let settingsCache: WikiSettings = serverSettings
 let storageHydrated = false
 const listeners = new Set<() => void>()
 
+function mergeSeedIntoPages(stored: Record<string, WikiPage>): Record<string, WikiPage> {
+  const merged = { ...stored }
+  for (const page of seedPages) {
+    merged[page.slug] = structuredClone(page)
+  }
+  return merged
+}
+
 function readPagesFromStorage(): Record<string, WikiPage> {
   try {
     const raw = window.localStorage.getItem(PAGES_KEY)
-    if (!raw) {
-      const seeded = clonePages(seedPages)
-      window.localStorage.setItem(PAGES_KEY, JSON.stringify(seeded))
-      return seeded
-    }
-    return JSON.parse(raw) as Record<string, WikiPage>
+    const stored = raw
+      ? (JSON.parse(raw) as Record<string, WikiPage>)
+      : clonePages(seedPages)
+    const merged = mergeSeedIntoPages(stored)
+    window.localStorage.setItem(PAGES_KEY, JSON.stringify(merged))
+    window.localStorage.setItem(SEED_SYNC_KEY, SEED_SYNC_ID)
+    return merged
   } catch {
     return clonePages(seedPages)
   }
@@ -324,6 +337,7 @@ export function restoreSeedPages(pages: Record<string, WikiPage>) {
     updated[page.slug] = structuredClone(page)
   }
   persistPages(updated)
+  window.localStorage.setItem(SEED_SYNC_KEY, SEED_SYNC_ID)
   persistSettings({ ...defaultSettings })
   return { pages: updated, settings: { ...defaultSettings } }
 }

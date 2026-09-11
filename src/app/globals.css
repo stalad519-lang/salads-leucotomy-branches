@@ -757,41 +757,41 @@
   color: #fff;
 }
 
-.pe-meter {
+.mood-meter {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   vertical-align: middle;
 }
 
-.pe-meter-boxes {
+.mood-meter-pips {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.18rem;
+  gap: 0.22rem;
   max-width: 7.5rem;
 }
 
-.pe-meter-box {
-  width: 1.15rem;
-  height: 1.15rem;
-  object-fit: contain;
-  image-rendering: auto;
-  filter: drop-shadow(0 0 4px rgb(200 16 46 / 0.45));
+.mood-meter-pip {
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 1px solid #ff2a2a;
+  background: radial-gradient(circle at 40% 35%, #ff6b6b 0%, #8b0000 70%, #1a0000 100%);
+  box-shadow: 0 0 6px rgb(255 42 42 / 0.35);
 }
 
-.pe-meter-n {
+.mood-meter-n {
   font-variant-numeric: tabular-nums;
   font-size: 0.9rem;
   font-weight: 700;
 }
 
-.pe-meter--compact {
+.mood-meter--compact {
   gap: 0.3rem;
 }
 
-.pe-meter--compact .pe-meter-box {
-  width: 1.35rem;
-  height: 1.35rem;
+.mood-meter--compact .mood-meter-pip {
+  width: 0.85rem;
+  height: 0.85rem;
 }
 
 .work-result {
@@ -1041,8 +1041,8 @@
 
 .abn-res li {
   display: grid;
-  grid-template-columns: 2.2rem 2.4rem auto;
-  gap: 0.5rem;
+  grid-template-columns: minmax(5.5rem, auto) 2.2rem minmax(0, 1fr);
+  gap: 0.55rem;
   align-items: center;
   font-size: 0.85rem;
 }
@@ -1189,6 +1189,69 @@
   display: block;
 }
 
+.ego-stage-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.55rem 0 1.15rem;
+}
+
+@media (min-width: 720px) {
+  .ego-stage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ego-stage {
+  border: 1px solid rgb(255 255 255 / 0.28);
+  background: #0a0a0a;
+  padding: 0.75rem 0.85rem 0.85rem;
+}
+
+.ego-stage--alt {
+  border-color: rgb(255 80 80 / 0.55);
+  background: #120606;
+}
+
+.ego-stage h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff8a8a;
+}
+
+.ego-stage-stats {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.ego-stage-stats > div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.ego-stage-stats dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+}
+
+.ego-stage-stats dd {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.ego-stage .abn-res {
+  margin-top: 0.25rem;
+}
+
+.ego-stage .abn-look,
+.ego-stage .abn-special {
+  margin-bottom: 0.45rem;
+}
+
 .abn-quote {
   margin: 0 0 0.75rem;
   padding: 0.55rem 0.7rem;
@@ -1227,12 +1290,6 @@
 .abn-bonus .is-neg {
   color: #ff2a2a;
   text-shadow: 0 0 8px rgb(255 42 42 / 0.45);
-}
-
-.abn-mastered {
-  margin-top: 0.35rem;
-  padding-top: 0.6rem;
-  border-top: 1px dashed rgb(255 255 255 / 0.35);
 }
 
 .archive {

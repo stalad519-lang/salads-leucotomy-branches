@@ -7,7 +7,7 @@ export const qe: AbnormalityRecord = {
   code: "H-01-0",
   name: { en: "Qe", zh: "Qe" },
   risk: "TETH",
-  pe: 3,
+  mood: 3,
   portrait: "/abnormalities/qe.png",
   portraitThumb: "/abnormalities/qe-thumb.png",
   damage: { color: "red", min: 14, max: 14 },
