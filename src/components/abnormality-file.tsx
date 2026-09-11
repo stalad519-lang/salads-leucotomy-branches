@@ -1,14 +1,13 @@
 "use client"
 
 import { Link } from "@/components/wiki-link"
+import { RiskBadge } from "@/components/risk-badge"
 import { WikiMarkdown } from "@/components/wiki-markdown"
 import { useWiki } from "@/components/wiki-provider"
 import {
   DAMAGE_META,
   DAMAGE_ORDER,
   FILE_UI,
-  RISK_CSS,
-  RISK_INK,
   formatRange,
   formatSigned,
   loc,
@@ -16,7 +15,6 @@ import {
   type AbnormalityRecord,
   type DamageColor,
   type DamageRange,
-  type RiskLevel,
 } from "@/lib/abnormality"
 import { wikiHref } from "@/lib/wiki"
 import type { Locale } from "@/lib/types"
@@ -35,237 +33,204 @@ export function AbnormalityFile({
   file: AbnormalityRecord
   notes?: string
 }) {
-  const { locale } = useWiki()
+  const { locale, t } = useWiki()
   const ui = FILE_UI[locale]
   const name = loc(file.name, locale)
   const egoName = loc(file.ego.name, locale)
+  const dmg = DAMAGE_META[file.damage.color]
+  const sections = [
+    { id: "Story", label: ui.story },
+    { id: "Management", label: ui.management },
+    { id: "Personality", label: ui.personality },
+    { id: "EGO", label: `${ui.ego} · ${egoName}` },
+    ...(notes?.trim() ? [{ id: "Notes", label: ui.notes }] : []),
+  ]
 
   return (
-    <div className="abn-file">
-      <header className="abn-hero">
-        <p className="abn-kicker">{ui.file}</p>
-        <div className="abn-hero-row">
-          <h1 className="abn-name">{name}</h1>
-          <RiskBadge risk={file.risk} />
-        </div>
-        <p className="abn-code">{file.code}</p>
-        <PeMeter value={file.pe} label={ui.pe} />
-        <nav className="abn-jump" aria-label={ui.file}>
-          <a href="#Damage">{ui.damage}</a>
-          <a href="#Energy">{ui.energy}</a>
-          <a href="#Resistances">{ui.resistances}</a>
-          <a href="#Story">{ui.story}</a>
-          <a href="#Management">{ui.management}</a>
-          <a href="#Personality">{ui.personality}</a>
-          <a href="#EGO">{ui.ego}</a>
-        </nav>
-      </header>
+    <div className="dossier">
+      <p className="dossier-back">
+        <Link href="/">{ui.backArchive}</Link>
+      </p>
 
-      <div className="abn-top">
-        <figure className="abn-portrait">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={file.portrait}
-            alt={name}
-            style={{ objectPosition: file.portraitFocus ?? "center" }}
-          />
-          <figcaption>
-            {file.code} · {name}
-          </figcaption>
-        </figure>
-
-        <div className="abn-stats">
-          <section className="abn-panel" id="Damage">
-            <h2>{ui.damage}</h2>
-            <DamageChip damage={file.damage} locale={locale} />
-          </section>
-
-          <section className="abn-panel" id="Energy">
-            <h2>{ui.energy}</h2>
-            <div className="abn-energy">
-              <EnergyCell tone="bad" label={ui.bad} value={file.energy.bad} />
-              <EnergyCell tone="normal" label={ui.normal} value={file.energy.normal} />
-              <EnergyCell tone="good" label={ui.good} value={file.energy.good} />
+      <div className="dossier-grid">
+        <aside className="dossier-box">
+          <div className="dossier-box-name">{name}</div>
+          <figure>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={file.portrait}
+              alt={name}
+              style={{ objectPosition: file.portraitFocus ?? "center" }}
+            />
+            <figcaption>{file.code}</figcaption>
+          </figure>
+          <dl>
+            <BoxRow label={ui.code} value={file.code} />
+            <div className="dossier-box-row">
+              <dt>{ui.risk}</dt>
+              <dd>
+                <RiskBadge risk={file.risk} />
+              </dd>
             </div>
-          </section>
-
-          <section className="abn-panel" id="Resistances">
-            <h2>{ui.resistances}</h2>
-            <ResistanceList values={file.resistances} locale={locale} />
-          </section>
-        </div>
-      </div>
-
-      <section className="abn-panel" id="Story">
-        <h2>{ui.story}</h2>
-        <p className="abn-story">{loc(file.story, locale)}</p>
-      </section>
-
-      <section className="abn-panel" id="Management">
-        <h2>{ui.management}</h2>
-        <ol className="abn-rules">
-          {loc(file.management, locale).map((rule, index) => (
-            <li key={rule}>
-              <span className="abn-rule-n">{index + 1}</span>
-              <span>{rule}</span>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="abn-panel" id="Personality">
-        <h2>{ui.personality}</h2>
-        <div className="abn-traits">
-          <div>
-            <p className="abn-label">{ui.primary}</p>
-            <span className="abn-chip abn-chip-main">{loc(file.personality.primary, locale)}</span>
-          </div>
-          <div>
-            <p className="abn-label">{ui.secondary}</p>
-            <div className="abn-chip-row">
-              {loc(file.personality.secondary, locale).map((trait) => (
-                <span key={trait} className="abn-chip">
-                  {trait}
+            <div className="dossier-box-row">
+              <dt>{ui.colDamage}</dt>
+              <dd>
+                <span className="archive-dmg">
+                  <i style={{ background: dmg.css }} />
+                  <span>
+                    {formatRange(file.damage.min, file.damage.max)}{" "}
+                    {locale === "zh" ? dmg.zh : dmg.en}
+                  </span>
                 </span>
-              ))}
+              </dd>
             </div>
+            <BoxRow label={ui.pe} value={String(file.pe)} />
+            <BoxRow label={ui.ego} value={egoName} />
+          </dl>
+          <div className="dossier-box-energy">
+            <p>{ui.energy}</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>{ui.bad}</th>
+                  <th>{ui.normal}</th>
+                  <th>{ui.good}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{file.energy.bad}</td>
+                  <td>{file.energy.normal}</td>
+                  <td>{file.energy.good}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-      </section>
+          <div className="dossier-box-res">
+            <p>{ui.resistances}</p>
+            <ResistanceList values={file.resistances} locale={locale} />
+          </div>
+        </aside>
 
-      <section className="abn-panel" id="EGO">
-        <h2>
-          {ui.ego} · {egoName}
-        </h2>
+        <div className="dossier-body">
+          <p className="dossier-stamp">{ui.file}</p>
+          <h1>{name}</h1>
+          <p className="dossier-class">
+            <span className="dossier-code">{file.code}</span>
+            <RiskBadge risk={file.risk} />
+          </p>
 
-        <div className="abn-ego-grid">
-          <article className="abn-ego-card">
-            <header>
-              <h3>{ui.weapon}</h3>
-              <RiskBadge risk={file.ego.weapon.risk} />
-            </header>
+          <nav className="dossier-toc" aria-label={t("contents")}>
+            <p>{t("contents")}</p>
+            <ol>
+              {sections.map((section) => (
+                <li key={section.id}>
+                  <a href={`#${section.id}`}>{section.label}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+
+          <section id="Story">
+            <h2>{ui.story}</h2>
+            <p className="abn-story">{loc(file.story, locale)}</p>
+          </section>
+
+          <section id="Management">
+            <h2>{ui.management}</h2>
+            <ol className="dossier-guides">
+              {loc(file.management, locale).map((rule, index) => (
+                <li key={rule}>
+                  <h3>
+                    {ui.guideline} {index + 1}
+                  </h3>
+                  <p>{rule}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section id="Personality">
+            <h2>{ui.personality}</h2>
+            <p>
+              <span className="abn-label">{ui.primary}</span>{" "}
+              {loc(file.personality.primary, locale)}
+              <br />
+              <span className="abn-label">{ui.secondary}</span>{" "}
+              {loc(file.personality.secondary, locale).join(" / ")}
+            </p>
+          </section>
+
+          <section id="EGO">
+            <h2>
+              {ui.ego} · {egoName}
+            </h2>
+
+            <h3>
+              {ui.weapon} <RiskBadge risk={file.ego.weapon.risk} />
+            </h3>
             <p className="abn-look">{loc(file.ego.weapon.appearance, locale)}</p>
-            <dl className="abn-kv">
-              <div>
-                <dt>{ui.range}</dt>
-                <dd>{loc(file.ego.weapon.range, locale)}</dd>
-              </div>
-              <div>
-                <dt>{ui.damage}</dt>
-                <dd>
-                  <DamageChip damage={file.ego.weapon.damage} locale={locale} />
-                </dd>
-              </div>
-            </dl>
-            <div className="abn-mastered">
-              <p className="abn-label">{ui.mastered}</p>
-              <dl className="abn-kv">
-                <div>
-                  <dt>{ui.range}</dt>
-                  <dd>{loc(file.ego.weapon.mastered.range, locale)}</dd>
-                </div>
-                <div>
-                  <dt>{ui.damage}</dt>
-                  <dd>
-                    <DamageChip damage={file.ego.weapon.mastered.damage} locale={locale} />
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </article>
+            <p>
+              {ui.range}: {loc(file.ego.weapon.range, locale)} · {ui.damage}:{" "}
+              <DamageChip damage={file.ego.weapon.damage} locale={locale} />
+            </p>
+            <p>
+              {ui.mastered}: {loc(file.ego.weapon.mastered.range, locale)} ·{" "}
+              <DamageChip damage={file.ego.weapon.mastered.damage} locale={locale} />
+            </p>
 
-          <article className="abn-ego-card">
-            <header>
-              <h3>{ui.suit}</h3>
-              <RiskBadge risk={file.ego.suit.risk} />
-            </header>
+            <h3>
+              {ui.suit} <RiskBadge risk={file.ego.suit.risk} />
+            </h3>
             <p className="abn-look">{loc(file.ego.suit.appearance, locale)}</p>
             <ResistanceList values={file.ego.suit.resistances} locale={locale} />
             <p className="abn-special">
-              <span className="abn-label">{ui.special}</span>
-              {file.ego.suit.special ? loc(file.ego.suit.special, locale) : ui.optional}
+              {ui.special}: {file.ego.suit.special ? loc(file.ego.suit.special, locale) : ui.optional}
             </p>
-          </article>
 
-          <article className="abn-ego-card">
-            <header>
-              <h3>{ui.corrosion}</h3>
-            </header>
+            <h3>{ui.corrosion}</h3>
             <p className="abn-look">{loc(file.ego.corrosion.appearance, locale)}</p>
             <ResistanceList values={file.ego.corrosion.resistances} locale={locale} />
             <p className="abn-special">
-              <span className="abn-label">{ui.special}</span>
-              {loc(file.ego.corrosion.special, locale)}
+              {ui.special}: {loc(file.ego.corrosion.special, locale)}
             </p>
             <p className="abn-special">
-              <span className="abn-label">{ui.weaponSkill}</span>
-              {loc(file.ego.corrosion.weaponSkill, locale)}
+              {ui.weaponSkill}: {loc(file.ego.corrosion.weaponSkill, locale)}
             </p>
-          </article>
 
-          <article className="abn-ego-card">
-            <header>
-              <h3>
-                {ui.gift} · {loc(file.ego.gift.name, locale)}
-              </h3>
-            </header>
-            <blockquote className="abn-quote">
-              {loc(file.ego.gift.appearance, locale)}
-            </blockquote>
+            <h3>
+              {ui.gift} · {loc(file.ego.gift.name, locale)}
+            </h3>
+            <blockquote className="abn-quote">{loc(file.ego.gift.appearance, locale)}</blockquote>
             <dl className="abn-bonus">
-              <BonusRow
-                href={WORK_HREF.analysis}
-                label={ui.analysis}
-                value={file.ego.gift.bonuses.analysis}
-              />
-              <BonusRow
-                href={WORK_HREF.instinct}
-                label={ui.instinct}
-                value={file.ego.gift.bonuses.instinct}
-              />
-              <BonusRow
-                href={WORK_HREF.attachment}
-                label={ui.attachment}
-                value={file.ego.gift.bonuses.attachment}
-              />
-              <BonusRow
-                href={WORK_HREF.repression}
-                label={ui.repression}
-                value={file.ego.gift.bonuses.repression}
-              />
+              <BonusRow href={WORK_HREF.analysis} label={ui.analysis} value={file.ego.gift.bonuses.analysis} />
+              <BonusRow href={WORK_HREF.instinct} label={ui.instinct} value={file.ego.gift.bonuses.instinct} />
+              <BonusRow href={WORK_HREF.attachment} label={ui.attachment} value={file.ego.gift.bonuses.attachment} />
+              <BonusRow href={WORK_HREF.repression} label={ui.repression} value={file.ego.gift.bonuses.repression} />
             </dl>
             <p className="abn-special">
-              <span className="abn-label">{ui.special}</span>
-              {file.ego.gift.special ? loc(file.ego.gift.special, locale) : ui.none}
+              {ui.special}: {file.ego.gift.special ? loc(file.ego.gift.special, locale) : ui.none}
             </p>
-          </article>
-        </div>
-      </section>
+          </section>
 
-      {notes?.trim() ? (
-        <section className="abn-panel" id="Notes">
-          <h2>{ui.notes}</h2>
-          <WikiMarkdown content={notes} />
-        </section>
-      ) : null}
+          {notes?.trim() ? (
+            <section id="Notes">
+              <h2>{ui.notes}</h2>
+              <WikiMarkdown content={notes} />
+            </section>
+          ) : null}
+        </div>
+      </div>
     </div>
   )
 }
 
-function RiskBadge({ risk }: { risk: RiskLevel }) {
-  const color = RISK_CSS[risk]
+function BoxRow({ label, value }: { label: string; value: string }) {
   return (
-    <span
-      className="abn-risk"
-      style={{
-        color: RISK_INK[risk],
-        background: color,
-        borderColor: color,
-        boxShadow: `0 0 12px ${color}aa, 0 0 2px ${color}`,
-      }}
-    >
-      {risk}
-    </span>
+    <div className="dossier-box-row">
+      <dt>{label}</dt>
+      <dd>{value}</dd>
+    </div>
   )
 }
 
@@ -273,26 +238,8 @@ function DamageChip({ damage, locale }: { damage: DamageRange; locale: Locale })
   const meta = DAMAGE_META[damage.color]
   return (
     <span className="abn-dmg" style={{ borderColor: meta.css, color: meta.css }}>
-      <span className="abn-dmg-swatch" style={{ background: meta.css }} />
       {formatRange(damage.min, damage.max)} {locale === "zh" ? meta.zh : meta.en}
     </span>
-  )
-}
-
-function EnergyCell({
-  tone,
-  label,
-  value,
-}: {
-  tone: "bad" | "normal" | "good"
-  label: string
-  value: string
-}) {
-  return (
-    <div className={`abn-energy-cell is-${tone}`}>
-      <span>{label}</span>
-      <strong>{value}</strong>
-    </div>
   )
 }
 
@@ -313,15 +260,6 @@ function ResistanceList({
             <span className="abn-res-name" style={{ color: meta.css }}>
               {locale === "zh" ? meta.zh : meta.en}
             </span>
-            <span className="abn-res-bar">
-              <span
-                className="abn-res-fill"
-                style={{
-                  width: `${Math.min(value / 2, 1) * 100}%`,
-                  background: meta.css,
-                }}
-              />
-            </span>
             <span className="abn-res-n">{value}</span>
             <span className="abn-res-w">{resistanceWord(value, locale)}</span>
           </li>
@@ -340,20 +278,6 @@ function BonusRow({ href, label, value }: { href: string; label: string; value: 
       <dd className={value < 0 ? "is-neg" : value > 0 ? "is-pos" : ""}>
         {formatSigned(value)}
       </dd>
-    </div>
-  )
-}
-
-function PeMeter({ value, label }: { value: number; label: string }) {
-  return (
-    <div className="abn-pe" aria-label={`${label} ${value}`}>
-      <span className="abn-label">{label}</span>
-      <span className="abn-pe-boxes">
-        {Array.from({ length: value }, (_, i) => (
-          <span key={i} className="abn-pe-box" />
-        ))}
-      </span>
-      <span className="abn-pe-n">{value}</span>
     </div>
   )
 }

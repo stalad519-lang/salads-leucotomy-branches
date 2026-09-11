@@ -34,28 +34,7 @@ export function ArticleView({ slug }: { slug: string }) {
   if (file) {
     return (
       <article className="wiki-article abn-article">
-        <PageTabs slug={tabSlug} current="view" missing={!page} />
-        {page ? (
-          <p className="mb-4 text-xs text-muted-foreground">
-            {t("lastEdited")} {formatTime(page.updatedAt, locale)} ·{" "}
-            <Link href={historyHref(tabSlug)} className="wiki-inline">
-              {t("viewHistory")}
-            </Link>
-          </p>
-        ) : null}
         <AbnormalityFile file={file} notes={resolved?.content} />
-        <div className="wiki-cats">
-          <span className="text-xs text-muted-foreground">{t("categories")}:</span>
-          {(resolved?.categories ?? ["Abnormalities"]).map((category) => (
-            <Badge
-              key={category}
-              variant="outline"
-              render={<Link href={categoryHref(category)} />}
-            >
-              {categoryLabel(category, locale)}
-            </Badge>
-          ))}
-        </div>
       </article>
     )
   }

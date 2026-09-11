@@ -3,7 +3,6 @@
 import { useMemo } from "react"
 
 import { Link } from "@/components/wiki-link"
-import { NameList } from "@/components/name-list"
 import { useWiki } from "@/components/wiki-provider"
 import { categoryLabel, messages, PRIMARY_CATEGORIES } from "@/lib/i18n"
 import { allCategories, categoryHref, wikiHref } from "@/lib/wiki"
@@ -28,13 +27,13 @@ export function AllPagesView() {
   )
 
   return (
-    <div className="name-panel">
-      <header className="name-panel-head">
+    <div className="archive">
+      <header className="archive-head">
         <h1>{t("navAll")}</h1>
-        <span>{messages[locale].allPagesIntro(items.length)}</span>
+        <p>{messages[locale].allPagesIntro(items.length)}</p>
       </header>
       {extra.length ? (
-        <p className="name-panel-empty">
+        <p className="archive-empty">
           {extra.map((cat) => (
             <span key={cat.name}>
               {" "}
@@ -46,14 +45,15 @@ export function AllPagesView() {
         </p>
       ) : null}
       {items.length === 0 ? (
-        <p className="name-panel-empty">{t("emptyWiki")}</p>
+        <p className="archive-empty">{t("emptyWiki")}</p>
       ) : (
-        <NameList
-          items={items.map(({ page, resolved }) => ({
-            href: wikiHref(page.slug),
-            name: resolved.title,
-          }))}
-        />
+        <ul className="archive-index">
+          {items.map(({ page, resolved }) => (
+            <li key={page.slug}>
+              <Link href={wikiHref(page.slug)}>{resolved.title}</Link>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   )

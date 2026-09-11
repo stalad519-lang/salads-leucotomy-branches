@@ -898,7 +898,7 @@
 
 .abn-res li {
   display: grid;
-  grid-template-columns: 2.2rem minmax(0, 1fr) 2.4rem auto;
+  grid-template-columns: 2.2rem 2.4rem auto;
   gap: 0.5rem;
   align-items: center;
   font-size: 0.85rem;
@@ -1087,5 +1087,466 @@
   margin-top: 0.35rem;
   padding-top: 0.6rem;
   border-top: 1px dashed rgb(255 255 255 / 0.35);
+}
+
+.archive {
+  position: relative;
+  border: 1px solid #fff;
+  background: #000;
+  box-shadow:
+    0 0 0 3px #000,
+    0 0 0 4px #fff,
+    0 0 28px rgb(200 16 46 / 0.2);
+}
+
+.archive-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.2rem 1rem;
+  padding: 0.95rem 1.15rem 0.85rem;
+  border-bottom: 1px solid #fff;
+  background:
+    linear-gradient(90deg, rgb(200 16 46 / 0.22), transparent 48%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 11px,
+      rgb(255 255 255 / 0.04) 11px,
+      rgb(255 255 255 / 0.04) 12px
+    ),
+    #000;
+}
+
+.archive-kicker {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ff2a2a;
+  text-shadow: 0 0 10px rgb(255 42 42 / 0.65);
+}
+
+.archive-head h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.archive-head span,
+.archive-head p {
+  margin: 0;
+  align-self: end;
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.5);
+}
+
+.archive-head p {
+  grid-column: 1 / -1;
+  align-self: start;
+}
+
+.archive-scroll {
+  overflow-x: auto;
+}
+
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.archive-table caption {
+  caption-side: top;
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #111;
+  border-bottom: 1px solid #fff;
+}
+
+.archive-table th {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+  border-bottom: 1px solid rgb(255 255 255 / 0.28);
+  white-space: nowrap;
+  background: #050505;
+}
+
+.archive-shot-h {
+  width: 3.4rem;
+}
+
+.archive-rank td {
+  padding: 0;
+  background: #0a0a0a;
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.archive-rank td span {
+  display: inline-block;
+  padding: 0.45rem 0.75rem 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.archive-rank td i {
+  display: block;
+  height: 2px;
+  width: 100%;
+}
+
+.archive-row {
+  cursor: pointer;
+}
+
+.archive-row:nth-child(odd) {
+  background: rgb(255 255 255 / 0.03);
+}
+
+.archive-row:hover,
+.archive-row:focus-visible {
+  background: rgb(255 42 42 / 0.1);
+  outline: none;
+}
+
+.archive-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  vertical-align: middle;
+}
+
+.archive-code {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  color: rgb(255 255 255 / 0.72);
+  white-space: nowrap;
+}
+
+.archive-shot img {
+  display: block;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border: 1px solid #fff;
+  background: #050505;
+}
+
+.archive-name {
+  font-size: 1rem;
+  font-weight: 650;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.archive-row:hover .archive-name,
+.archive-row:focus-visible .archive-name {
+  color: #ff2a2a !important;
+  text-shadow: 0 0 8px rgb(255 42 42 / 0.45);
+}
+
+.archive-dmg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.archive-dmg i {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: none;
+  border: 1px solid #fff;
+}
+
+.archive-pe {
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+.archive-index {
+  list-style: none;
+  margin: 0;
+  padding: 0 1.1rem 0.4rem;
+}
+
+.archive-index a {
+  display: block;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgb(255 255 255 / 0.18);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 1.02rem;
+}
+
+.archive-index a:hover {
+  color: #ff2a2a !important;
+  text-shadow: 0 0 8px rgb(255 42 42 / 0.4);
+}
+
+.archive-empty,
+.archive-foot {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  font-size: 0.88rem;
+  color: rgb(255 255 255 / 0.55);
+}
+
+.archive-foot {
+  padding-top: 0.4rem;
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+}
+
+.abn-article {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.dossier-back {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+}
+
+.dossier-back a {
+  color: #ff6b6b !important;
+}
+
+.dossier-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 960px) {
+  .dossier-grid {
+    grid-template-columns: minmax(0, 1fr) 18.5rem;
+    align-items: start;
+  }
+
+  .dossier-body {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .dossier-box {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 0.75rem;
+  }
+}
+
+.dossier-box {
+  border: 1px solid #fff;
+  background: #000;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 3px #000,
+    0 0 0 4px #fff,
+    0 0 22px rgb(200 16 46 / 0.2);
+}
+
+.dossier-box-name {
+  padding: 0.75rem 0.8rem 0.55rem;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: #0a0a0a;
+  border-bottom: 3px solid #ff2a2a;
+}
+
+.dossier-box figure {
+  margin: 0;
+  padding: 0.65rem 0.65rem 0.45rem;
+  background: #050505;
+  border-bottom: 1px solid #fff;
+}
+
+.dossier-box img {
+  display: block;
+  width: 100%;
+  height: 15.5rem;
+  object-fit: cover;
+  border: 1px solid #fff;
+  background: #000;
+}
+
+.dossier-box figcaption {
+  margin-top: 0.4rem;
+  text-align: center;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.dossier-box-row {
+  display: grid;
+  grid-template-columns: 4.8rem 1fr;
+  gap: 0.45rem;
+  padding: 0.42rem 0.75rem;
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+  font-size: 0.82rem;
+  align-items: center;
+}
+
+.dossier-box-row dt {
+  color: rgb(255 255 255 / 0.45);
+}
+
+.dossier-box-energy,
+.dossier-box-res {
+  padding: 0.55rem 0.75rem 0.8rem;
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+}
+
+.dossier-box-energy > p,
+.dossier-box-res > p {
+  margin: 0 0 0.45rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.45);
+}
+
+.dossier-box-energy table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.dossier-box-energy th,
+.dossier-box-energy td {
+  border: 1px solid rgb(255 255 255 / 0.35);
+  padding: 0.28rem 0.2rem;
+  text-align: center;
+}
+
+.dossier-box-energy th {
+  color: rgb(255 255 255 / 0.5);
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.dossier-body {
+  border: 1px solid #fff;
+  background: #000;
+  padding: 1.15rem 1.2rem 1.5rem;
+  box-shadow:
+    0 0 0 3px #000,
+    0 0 0 4px #fff,
+    0 0 22px rgb(200 16 46 / 0.12);
+}
+
+.dossier-stamp {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #ff2a2a;
+  text-shadow: 0 0 10px rgb(255 42 42 / 0.6);
+}
+
+.dossier-body h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+.dossier-class {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.4rem 0 1rem;
+  color: rgb(255 255 255 / 0.65);
+}
+
+.dossier-code {
+  letter-spacing: 0.16em;
+}
+
+.dossier-toc {
+  display: table;
+  margin: 0 0 1.15rem;
+  padding: 0.65rem 0.9rem 0.75rem;
+  border: 1px solid #fff;
+  background: #050505;
+  min-width: 12rem;
+}
+
+.dossier-toc p {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+}
+
+.dossier-toc ol {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.85rem;
+}
+
+.dossier-toc a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.dossier-toc a:hover {
+  color: #ff2a2a !important;
+}
+
+.dossier-body section {
+  margin-top: 1.25rem;
+  scroll-margin-top: 0.75rem;
+}
+
+.dossier-body h2 {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.28);
+  padding-bottom: 0.3rem;
+}
+
+.dossier-body h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 1rem 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.dossier-guides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.95rem;
+}
+
+.dossier-guides h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.92rem;
+  color: #ff6b6b;
+  letter-spacing: 0.04em;
+}
+
+.dossier-guides p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.abn-res-bar {
+  display: none;
 }
 

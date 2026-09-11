@@ -2,7 +2,6 @@
 
 import { Link } from "@/components/wiki-link"
 import { AbnormalityBoard } from "@/components/abnormality-catalog"
-import { NameList } from "@/components/name-list"
 
 import { useWiki } from "@/components/wiki-provider"
 import { categoryKey, categoryLabel, messages } from "@/lib/i18n"
@@ -23,22 +22,24 @@ export function CategoryView({ name }: { name: string }) {
   }
 
   return (
-    <div className="name-panel">
-      <header className="name-panel-head">
+    <div className="archive">
+      <header className="archive-head">
+        <p className="archive-kicker">{t("archiveEyebrow")}</p>
         <h1>{label}</h1>
         <span>{messages[locale].categoryCount(items.length)}</span>
       </header>
       {items.length === 0 ? (
-        <p className="name-panel-empty">{messages[locale].categoryEmpty(label)}</p>
+        <p className="archive-empty">{messages[locale].categoryEmpty(label)}</p>
       ) : (
-        <NameList
-          items={items.map(({ page, resolved }) => ({
-            href: wikiHref(page.slug),
-            name: resolved.title,
-          }))}
-        />
+        <ul className="archive-index">
+          {items.map(({ page, resolved }) => (
+            <li key={page.slug}>
+              <Link href={wikiHref(page.slug)}>{resolved.title}</Link>
+            </li>
+          ))}
+        </ul>
       )}
-      <p className="name-panel-foot">
+      <p className="archive-foot">
         <Link href="/special/all">{t("backAll")}</Link>
       </p>
     </div>
