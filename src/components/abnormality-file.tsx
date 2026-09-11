@@ -60,7 +60,7 @@ export function AbnormalityFile({
             <img
               src={file.portrait}
               alt={name}
-              style={{ objectPosition: file.portraitFocus ?? "center" }}
+              style={{ transformOrigin: file.portraitFocus ?? "center" }}
             />
             <figcaption>{file.code}</figcaption>
           </figure>

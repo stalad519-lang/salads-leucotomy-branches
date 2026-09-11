@@ -69,13 +69,15 @@ export function AbnormalityBoard() {
                     }}
                   >
                     <td className="archive-code">{file.code}</td>
-                    <td className="archive-shot">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={file.portrait}
-                        alt=""
-                        style={{ objectPosition: file.portraitFocus ?? "center" }}
-                      />
+                    <td>
+                      <div className="archive-shot">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={file.portrait}
+                          alt=""
+                          style={{ transformOrigin: file.portraitFocus ?? "center" }}
+                        />
+                      </div>
                     </td>
                     <td>
                       <Link

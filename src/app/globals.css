@@ -1180,7 +1180,7 @@
 }
 
 .archive-shot-h {
-  width: 3.4rem;
+  width: 5.5rem;
 }
 
 .archive-rank td {
@@ -1230,13 +1230,20 @@
   white-space: nowrap;
 }
 
-.archive-shot img {
-  display: block;
-  width: 44px;
-  height: 44px;
-  object-fit: cover;
+.archive-shot {
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
   border: 1px solid #fff;
   background: #050505;
+}
+
+.archive-shot img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  transform: scale(2.2);
 }
 
 .archive-name {
@@ -1367,15 +1374,18 @@
   padding: 0.65rem 0.65rem 0.45rem;
   background: #050505;
   border-bottom: 1px solid #fff;
+  overflow: hidden;
 }
 
 .dossier-box img {
   display: block;
   width: 100%;
-  height: 15.5rem;
+  height: 16.5rem;
   object-fit: cover;
   border: 1px solid #fff;
   background: #000;
+  transform: scale(1.75);
+  transform-origin: 80% 40%;
 }
 
 .dossier-box figcaption {

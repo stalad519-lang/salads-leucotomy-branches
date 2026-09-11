@@ -8,7 +8,7 @@ export const qe: AbnormalityRecord = {
   risk: "HE",
   pe: 3,
   portrait: "/abnormalities/qe.png",
-  portraitFocus: "82% 42%",
+  portraitFocus: "80% 40%",
   damage: { color: "grey", min: 6, max: 9 },
   energy: {
     bad: "0–1",
