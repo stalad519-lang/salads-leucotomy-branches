@@ -1180,7 +1180,7 @@
 }
 
 .archive-shot-h {
-  width: 5.5rem;
+  width: 7rem;
 }
 
 .archive-rank td {
@@ -1231,8 +1231,8 @@
 }
 
 .archive-shot {
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   overflow: hidden;
   border: 1px solid #fff;
   background: #050505;
@@ -1240,10 +1240,11 @@
 
 .archive-shot img {
   display: block;
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   object-fit: cover;
   object-position: center;
+  filter: brightness(1.16) saturate(1.08);
 }
 
 .archive-name {
