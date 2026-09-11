@@ -1361,7 +1361,7 @@
   padding: 0.55rem;
   background:
     linear-gradient(rgb(0 0 0 / 0.92), rgb(0 0 0 / 0.92)) center / calc(100% - 22px) calc(100% - 22px) no-repeat,
-    url("/ui/frame-ornate.png") center / 100% 100% no-repeat;
+    url("/hand-ui/frame-ornate.png") center / 100% 100% no-repeat;
 }
 
 .archive-head {
@@ -1835,10 +1835,24 @@
 
 .dossier-box.hand-panel {
   position: relative;
-  padding: 0.55rem 0.55rem 1.35rem;
-  background:
-    linear-gradient(rgb(0 0 0 / 0.82), rgb(0 0 0 / 0.82)) center / calc(100% - 10px) calc(100% - 14px) no-repeat,
-    url("/ui/panel-torn.png") center / 100% 100% no-repeat;
+  padding: 0.7rem 0.65rem 1.5rem;
+  background: rgb(0 0 0 / 0.9);
+  border: 0;
+}
+
+.dossier-box.hand-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url("/hand-ui/panel-torn.png") center / 100% 100% no-repeat;
+  opacity: 1;
+}
+
+.dossier-box.hand-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .dossier-box-name {
@@ -1855,7 +1869,7 @@
   padding: 0.7rem 0.85rem;
   border: 0;
   border-bottom: 0;
-  background: url("/ui/bar-slash.png") center / 100% 100% no-repeat;
+  background: url("/hand-ui/bar-slash.png") center / 100% 100% no-repeat;
   text-shadow: 0 0 8px rgb(0 0 0 / 0.85);
 }
 
@@ -1905,7 +1919,7 @@
   border-top: 0;
   font-size: 0.82rem;
   align-items: center;
-  background: url("/ui/bar-stripes.png") center / 100% 100% no-repeat;
+  background: url("/hand-ui/bar-stripes.png") center / 100% 100% no-repeat;
 }
 
 .dossier-box-row dt {
@@ -1920,7 +1934,7 @@
 }
 
 .dossier-box-energy.hand-energy {
-  background: url("/ui/frame-wide-noise.png") center / 100% 100% no-repeat;
+  background: url("/hand-ui/frame-wide-noise.png") center / 100% 100% no-repeat;
   padding: 0.85rem 0.9rem 1rem;
 }
 
@@ -1939,7 +1953,7 @@
   padding: 1rem 0.7rem 1.15rem;
   border-top: 0;
   color: var(--sensitive-ink);
-  background: url("/ui/frame-tall-smoke.png") center / 100% 100% no-repeat;
+  background: url("/hand-ui/frame-tall-smoke.png") center / 100% 100% no-repeat;
 }
 
 .sensitive-panel-title {
@@ -2077,7 +2091,7 @@
   padding: 1.55rem 1.55rem 1.9rem;
   background:
     linear-gradient(rgb(0 0 0 / 0.88), rgb(0 0 0 / 0.88)) center / calc(100% - 28px) calc(100% - 28px) no-repeat,
-    url("/ui/frame-ornate.png") center / 100% 100% no-repeat;
+    url("/hand-ui/frame-ornate.png") center / 100% 100% no-repeat;
 }
 
 .dossier-stamp {
@@ -2099,7 +2113,7 @@
   min-width: min(100%, 18rem);
   margin: 0 0 0.65rem;
   padding: 0.45rem 1.1rem 0.55rem;
-  background: url("/ui/bar-slash.png") center / 100% 100% no-repeat;
+  background: url("/hand-ui/bar-slash.png") center / 100% 100% no-repeat;
   font-size: clamp(1.45rem, 3.5vw, 2rem);
   line-height: 1.2;
 }

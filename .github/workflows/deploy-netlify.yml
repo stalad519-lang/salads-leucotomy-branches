@@ -38,15 +38,24 @@ jobs:
           cp -a out/. /tmp/wiki-deploy/
           find /tmp/wiki-deploy -name '*.txt' -delete
           find /tmp/wiki-deploy -name '*:*' -exec rm -rf {} + 2>/dev/null || true
+          echo "hand-ui assets:"
+          ls -la /tmp/wiki-deploy/hand-ui || (echo "missing hand-ui in publish folder" && exit 1)
 
       - name: Deploy to Netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          npx --yes netlify-cli deploy \
+          set -euo pipefail
+          if [ -z "${NETLIFY_AUTH_TOKEN:-}" ]; then
+            echo "::error::NETLIFY_AUTH_TOKEN is empty. Re-add the repo secret."
+            exit 1
+          fi
+          SITE_ID="${NETLIFY_SITE_ID:-9adc9168-5491-4e81-9bfc-9f19068b0ab6}"
+          echo "Deploying site $SITE_ID"
+          npx --yes netlify-cli@17.38.1 deploy \
             --dir /tmp/wiki-deploy \
             --no-build \
             --prod \
-            --site "$NETLIFY_SITE_ID" \
-            --message "GitHub Actions ${GITHUB_SHA::7}"
+            --site "$SITE_ID" \
+            --message "GitHub Actions ${GITHUB_SHA:0:7}"

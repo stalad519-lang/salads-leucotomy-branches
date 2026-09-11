@@ -76,7 +76,7 @@ export function AbnormalityFile({
       <div className="dossier-grid">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/ui/deco-pillar.png"
+          src="/hand-ui/deco-pillar.png"
           alt=""
           aria-hidden
           className="dossier-deco"
