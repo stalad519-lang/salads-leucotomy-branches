@@ -74,8 +74,15 @@ export function AbnormalityFile({
       </p>
 
       <div className="dossier-grid">
-        <aside className="dossier-box">
-          <div className="dossier-box-name">{name}</div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/ui/deco-pillar.png"
+          alt=""
+          aria-hidden
+          className="dossier-deco"
+        />
+        <aside className="dossier-box hand-panel">
+          <div className="dossier-box-name hand-namebar">{name}</div>
           <figure>
             <div className="dossier-shot">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -106,7 +113,7 @@ export function AbnormalityFile({
             </div>
             <BoxRow label={ui.ego} value={egoName ?? "—"} />
           </dl>
-          <div className="dossier-box-energy">
+          <div className="dossier-box-energy hand-energy">
             <p>{ui.energy}</p>
             <table>
               <thead>
@@ -134,9 +141,9 @@ export function AbnormalityFile({
           <SensitivePanel mood={file.mood} resistances={file.resistances} locale={locale} />
         </aside>
 
-        <div className="dossier-body">
+        <div className="dossier-body hand-frame">
           <p className="dossier-stamp">{ui.file}</p>
-          <h1>{name}</h1>
+          <h1 className="hand-titlebar">{name}</h1>
           <p className="dossier-class">
             <span className="dossier-code">{file.code}</span>
             <RiskBadge risk={file.risk} />
