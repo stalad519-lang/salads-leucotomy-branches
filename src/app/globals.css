@@ -1683,6 +1683,27 @@
   padding: 0;
 }
 
+.dossier {
+  position: relative;
+  isolation: isolate;
+  padding-bottom: 1.25rem;
+}
+
+.dossier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(180deg, rgb(0 0 0 / 0.72) 0%, rgb(0 0 0 / 0.35) 42%, rgb(0 0 0 / 0.78) 100%),
+    url("/abnormalities/containment-room.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: min(980px, 115%) auto;
+  opacity: 0.95;
+}
+
 .dossier-back {
   margin: 0 0 0.75rem;
   font-size: 0.82rem;
@@ -1718,7 +1739,7 @@
 
 .dossier-box {
   border: 1px solid #fff;
-  background: #000;
+  background: rgb(0 0 0 / 0.88);
   overflow: hidden;
   box-shadow:
     0 0 0 3px #000,
@@ -1800,6 +1821,117 @@
   color: rgb(255 255 255 / 0.45);
 }
 
+.sensitive-panel {
+  --sensitive-ink: #d8d8a7;
+  margin: 0;
+  padding: 0.85rem 0.7rem 0.9rem;
+  border-top: 1px solid rgb(255 255 255 / 0.16);
+  color: var(--sensitive-ink);
+}
+
+.sensitive-panel-title {
+  margin: 0 auto 0.65rem;
+  width: fit-content;
+  max-width: calc(100% - 1rem);
+  padding: 0 0.55rem;
+  border: 1px solid var(--sensitive-ink);
+  background: #000;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+.sensitive-panel-body {
+  display: grid;
+  grid-template-columns: 4.6rem minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: stretch;
+}
+
+.sensitive-mood {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 5.5rem;
+  border: 1px solid var(--sensitive-ink);
+  background: #050505;
+  padding: 1.1rem 0.25rem 0.55rem;
+}
+
+.sensitive-mood-legend {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0 0.28rem;
+  background: #000;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: var(--sensitive-ink);
+}
+
+.sensitive-mood-n {
+  margin: 0;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--sensitive-ink);
+}
+
+.sensitive-res {
+  position: relative;
+  border: 1px solid var(--sensitive-ink);
+  background: #050505;
+  padding: 0.85rem 0.45rem 0.5rem;
+  min-width: 0;
+}
+
+.sensitive-res-legend {
+  position: absolute;
+  top: 0;
+  left: 0.45rem;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0 0.28rem;
+  background: #000;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: var(--sensitive-ink);
+}
+
+.sensitive-res-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 0.35rem;
+}
+
+.sensitive-res-grid li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.68rem;
+  line-height: 1.25;
+  min-width: 0;
+}
+
+.sensitive-res-n {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.sensitive-res-w {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .dossier-box-energy table {
   width: 100%;
   border-collapse: collapse;
@@ -1822,7 +1954,7 @@
 
 .dossier-body {
   border: 1px solid #fff;
-  background: #000;
+  background: rgb(0 0 0 / 0.86);
   padding: 1.15rem 1.2rem 1.5rem;
   box-shadow:
     0 0 0 3px #000,

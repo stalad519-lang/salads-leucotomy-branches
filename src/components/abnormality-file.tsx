@@ -13,6 +13,7 @@ import {
   WORK_ORDER,
   WORK_RATE_LABEL,
   formatRange,
+  formatResistance,
   formatSigned,
   loc,
   resistanceWord,
@@ -103,12 +104,6 @@ export function AbnormalityFile({
                 </span>
               </dd>
             </div>
-            <div className="dossier-box-row">
-              <dt>{ui.pe}</dt>
-              <dd>
-                <MoodMeter count={file.mood} label={ui.pe} />
-              </dd>
-            </div>
             <BoxRow label={ui.ego} value={egoName ?? "—"} />
           </dl>
           <div className="dossier-box-energy">
@@ -136,10 +131,7 @@ export function AbnormalityFile({
               </tbody>
             </table>
           </div>
-          <div className="dossier-box-res">
-            <p>{ui.resistances}</p>
-            <ResistanceList values={file.resistances} locale={locale} />
-          </div>
+          <SensitivePanel mood={file.mood} resistances={file.resistances} locale={locale} />
         </aside>
 
         <div className="dossier-body">
@@ -370,17 +362,43 @@ export function AbnormalityFile({
   )
 }
 
-function MoodMeter({ count, label }: { count: number; label: string }) {
-  const n = Math.max(0, Math.min(12, Math.floor(count)))
+function SensitivePanel({
+  mood,
+  resistances,
+  locale,
+}: {
+  mood: number
+  resistances: Record<DamageColor, number>
+  locale: Locale
+}) {
+  const ui = FILE_UI[locale]
   return (
-    <span className="mood-meter" title={`${label}: ${count}`}>
-      <span className="mood-meter-pips" aria-hidden>
-        {Array.from({ length: n }, (_, i) => (
-          <span key={i} className="mood-meter-pip" />
-        ))}
-      </span>
-      <span className="mood-meter-n">{count}</span>
-    </span>
+    <section className="sensitive-panel" aria-label={ui.sensitive}>
+      <h3 className="sensitive-panel-title">{ui.sensitive}</h3>
+      <div className="sensitive-panel-body">
+        <div className="sensitive-mood">
+          <p className="sensitive-mood-legend">{ui.moodCeiling}</p>
+          <p className="sensitive-mood-n">{mood}</p>
+        </div>
+        <div className="sensitive-res">
+          <p className="sensitive-res-legend">{ui.resistances}</p>
+          <ul className="sensitive-res-grid">
+            {DAMAGE_ORDER.map((color) => {
+              const meta = DAMAGE_META[color]
+              const value = resistances[color]
+              return (
+                <li key={color} style={{ color: meta.css }}>
+                  <span className="sensitive-res-n">({formatResistance(value)})</span>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={meta.icon} alt="" className="dmg-type-icon dmg-type-icon--sm" />
+                  <span className="sensitive-res-w">{resistanceWord(value, locale)}</span>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      </div>
+    </section>
   )
 }
 

@@ -206,7 +206,9 @@ export const FILE_UI = {
     workResultBad: "Poor",
     workResultNormal: "Normal",
     workResultGood: "Good",
-    resistances: "Resistances",
+    resistances: "Damage resistance",
+    sensitive: "Sensitive Information",
+    moodCeiling: "Mood ceiling",
     story: "Story",
     management: "Managerial Guidelines",
     personality: "Personality",
@@ -232,10 +234,10 @@ export const FILE_UI = {
     attachment: "Attachment",
     repression: "Repression",
     immune: "Immune",
-    endured: "Endured",
-    normalRes: "Normal",
-    weak: "Weak",
-    vulnerable: "Vulnerable",
+    endured: "High resistance",
+    normalRes: "Normal resistance",
+    weak: "Low resistance",
+    vulnerable: "Very low resistance",
     notes: "Wiki notes",
     file: "Containment file",
     board: "held",
@@ -270,7 +272,9 @@ export const FILE_UI = {
     workResultBad: "差",
     workResultNormal: "良",
     workResultGood: "优",
-    resistances: "抗性",
+    resistances: "伤害抗性",
+    sensitive: "敏感信息",
+    moodCeiling: "情绪上限",
     story: "来源故事",
     management: "管理需知",
     personality: "对应性格",
@@ -296,10 +300,10 @@ export const FILE_UI = {
     attachment: "沟通",
     repression: "压迫",
     immune: "免疫",
-    endured: "抵抗",
-    normalRes: "普通",
-    weak: "脆弱",
-    vulnerable: "极脆弱",
+    endured: "抗性较高",
+    normalRes: "抗性一般",
+    weak: "抗性较低",
+    vulnerable: "抗性极低",
     notes: "词条备注",
     file: "收容档案",
     board: "在库",
@@ -388,6 +392,11 @@ export function formatRange(min: number, max: number) {
 export function formatSigned(value: number) {
   if (value === 0) return "0"
   return value > 0 ? `+${value}` : String(value)
+}
+
+export function formatResistance(value: number) {
+  if (Number.isInteger(value)) return value.toFixed(1)
+  return String(value)
 }
 
 export function resistanceWord(value: number, locale: Locale) {
