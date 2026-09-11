@@ -5,7 +5,6 @@ import { useEffect, useState, useSyncExternalStore } from "react"
 import { AllPagesView } from "@/components/all-pages-view"
 import { ArticleView } from "@/components/article-view"
 import { CategoryView } from "@/components/category-view"
-import { FacilityHero } from "@/components/category-deck"
 import { EditorView } from "@/components/editor-view"
 import { HistoryView } from "@/components/history-view"
 import { NewPageView } from "@/components/new-page-view"
@@ -55,7 +54,7 @@ export function WikiRouter() {
 function routeView(route: WikiRoute) {
   switch (route.type) {
     case "home":
-      return <FacilityHero />
+      return <CategoryView name="Abnormalities" />
     case "wiki":
       return <ArticleView slug={route.slug} />
     case "edit":
@@ -78,6 +77,7 @@ function routeView(route: WikiRoute) {
 }
 
 function sceneKey(route: WikiRoute) {
+  if (route.type === "home") return "category:Abnormalities"
   if (route.type === "category") return `category:${categoryKey(route.name)}`
   if (route.type === "wiki") return `wiki:${route.slug}`
   if (route.type === "edit") return `edit:${route.slug}`

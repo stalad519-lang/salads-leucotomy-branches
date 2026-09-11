@@ -22,6 +22,7 @@ import {
   navigate,
   subscribeLocation,
 } from "@/lib/nav"
+import { findAbnormality } from "@/lib/abnormality"
 import { categoryLabel, PRIMARY_CATEGORIES } from "@/lib/i18n"
 import {
   Sheet,
@@ -30,7 +31,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet"
 import { useWiki } from "@/components/wiki-provider"
-import { HOME_SLUG, categoryHref, wikiHref } from "@/lib/wiki"
+import { categoryHref, wikiHref } from "@/lib/wiki"
 
 export function WikiShell({ children }: { children: React.ReactNode }) {
   const { settings, pages, updateSettings, resetDemo, t, locale } = useWiki()
@@ -44,14 +45,11 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
   const [tagline, setTagline] = useState(settings.tagline)
   const [menuOpen, setMenuOpen] = useState(false)
 
-  const nav = [
-    { href: "/", label: t("navMain") },
-    ...PRIMARY_CATEGORIES.map((key) => ({
-      href: categoryHref(key),
-      label: categoryLabel(key, locale),
-    })),
-    { href: "/special/all", label: t("navAll") },
-  ]
+  const departments = PRIMARY_CATEGORIES.map((key) => ({
+    key,
+    href: key === "Abnormalities" ? "/" : categoryHref(key),
+    label: categoryLabel(key, locale),
+  }))
 
   function openSettings() {
     setName(settings.name)
@@ -64,6 +62,17 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
     if (slugs.length === 0) return
     const slug = slugs[Math.floor(Math.random() * slugs.length)]
     navigate(wikiHref(slug))
+  }
+
+  function departmentActive(href: string, key: string) {
+    if (key === "Abnormalities") {
+      if (pathname === "/" || pathname.startsWith("/category/Abnormalities")) {
+        return true
+      }
+      const wiki = pathname.match(/^\/wiki\/(.+)$/)
+      return Boolean(wiki && findAbnormality(decodeURIComponent(wiki[1])))
+    }
+    return pathname.startsWith(href)
   }
 
   return (
@@ -85,34 +94,38 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                 <SheetTitle className="text-white">{settings.name}</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 px-4">
-                {nav.map((item) => (
+                {departments.map((item) => (
                   <Link
-                    key={item.href}
+                    key={item.key}
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className="rounded-md px-2 py-2 text-sm hover:bg-white/10"
+                    className="px-2 py-2 text-sm hover:bg-white/10"
                   >
                     {item.label}
                   </Link>
                 ))}
                 <Link
+                  href="/special/all"
+                  onClick={() => setMenuOpen(false)}
+                  className="px-2 py-2 text-sm hover:bg-white/10"
+                >
+                  {t("navAll")}
+                </Link>
+                <Link
                   href="/special/recent"
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-md px-2 py-2 text-sm hover:bg-white/10"
+                  className="px-2 py-2 text-sm hover:bg-white/10"
                 >
                   {t("navRecent")}
                 </Link>
                 <Link
                   href="/new"
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-md px-2 py-2 text-sm hover:bg-white/10"
+                  className="px-2 py-2 text-sm hover:bg-white/10"
                 >
                   {t("newPage")}
                 </Link>
               </nav>
-              <div className="px-4 pt-4">
-                <LanguageSwitcher />
-              </div>
             </SheetContent>
           </Sheet>
 
@@ -125,23 +138,18 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               className="size-10 shrink-0 border border-white"
             />
             <span className="min-w-0">
-              <span className="block truncate font-heading text-[15px] leading-tight font-semibold tracking-wide">
+              <span className="block truncate text-[15px] leading-tight font-semibold">
                 {settings.name}
-              </span>
-              <span className="hidden truncate text-[11px] text-white/55 sm:block">
-                {settings.tagline || t("defaultTagline")}
               </span>
             </span>
           </Link>
 
-          <div className="ml-auto hidden w-full max-w-sm lg:block">
+          <div className="ml-2 min-w-0 flex-1">
             <SearchBox compact />
           </div>
 
-          <div className="ml-auto flex items-center gap-2 md:ml-2">
-            <div className="hidden sm:block">
-              <LanguageSwitcher />
-            </div>
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="icon"
@@ -172,38 +180,20 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
             </Link>
           </div>
         </div>
-        <div className="border-t border-white/10 md:hidden">
-          <div className="flex items-center gap-2 px-4 py-2">
-            <SearchBox compact />
-            <LanguageSwitcher />
-          </div>
-        </div>
-        <div className="hidden border-t border-white/10 md:block">
-          <nav className="mx-auto flex max-w-6xl flex-wrap gap-1 px-4">
-            {nav.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/" || pathname === wikiHref(HOME_SLUG)
-                  : pathname.startsWith(item.href)
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`border-b-2 px-3 py-2 text-sm ${
-                    active
-                      ? "border-[#ff2a2a] text-white shadow-[0_0_12px_rgba(255,42,42,0.55)]"
-                      : "border-transparent text-white/70 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              )
-            })}
-          </nav>
-        </div>
+        <nav className="dept-tabs" aria-label="departments">
+          {departments.map((item) => (
+            <Link
+              key={item.key}
+              href={item.href}
+              className={departmentActive(item.href, item.key) ? "is-active" : ""}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </header>
 
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">{children}</main>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-5">{children}</main>
 
       <footer className="mt-auto border-t border-white bg-black px-4 py-6 text-center text-xs text-white/50">
         {t("footer")}
@@ -221,7 +211,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               <input
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                className="h-8 w-full border border-white bg-black px-2.5 text-sm outline-none"
               />
             </label>
             <label className="grid gap-1 text-sm">
@@ -229,7 +219,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
               <input
                 value={tagline}
                 onChange={(event) => setTagline(event.target.value)}
-                className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                className="h-8 w-full border border-white bg-black px-2.5 text-sm outline-none"
               />
             </label>
           </div>
