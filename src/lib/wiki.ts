@@ -1,4 +1,8 @@
 import { seedPages, defaultSettings } from "@/data/seed-pages"
+import {
+  abnormalitySearchText,
+  findAbnormality,
+} from "@/lib/abnormality"
 import { categoryKey, DEFAULT_LOCALE, PRIMARY_CATEGORIES } from "@/lib/i18n"
 import type {
   Infobox,
@@ -10,7 +14,7 @@ import type {
 } from "@/lib/types"
 
 export const HOME_SLUG = "Main_Page"
-export const PAGES_KEY = "slb-wiki.pages.v3"
+export const PAGES_KEY = "slb-wiki.pages.v4"
 export const SETTINGS_KEY = "slb-wiki.settings.v2"
 export const WIKI_EVENT = "slb-wiki:changed"
 
@@ -85,6 +89,8 @@ export function findPage(
 ): WikiPage | undefined {
   const slug = slugify(titleOrSlug)
   if (pages[slug]) return pages[slug]
+  const file = findAbnormality(titleOrSlug)
+  if (file && pages[file.slug]) return pages[file.slug]
   return Object.values(pages).find((page) => {
     const titles = [page.locales.en.title, page.locales.zh?.title].filter(Boolean) as string[]
     return titles.some((title) => title === titleOrSlug || slugify(title) === slug)
@@ -334,6 +340,7 @@ export function searchPages(
       const resolved = resolveCopy(page, locale)
       const en = page.locales.en
       const zh = page.locales.zh
+      const file = findAbnormality(page.slug)
       const haystack = [
         resolved.title,
         resolved.content,
@@ -342,15 +349,20 @@ export function searchPages(
         en.content,
         zh?.title,
         zh?.content,
+        file ? abnormalitySearchText(file) : "",
       ]
         .filter(Boolean)
         .join("\n")
         .toLowerCase()
-      const score = resolved.title.toLowerCase().includes(q)
-        ? 3
-        : haystack.includes(q)
-          ? 1
-          : 0
+      const score =
+        resolved.title.toLowerCase().includes(q) ||
+        file?.code.toLowerCase() === q ||
+        file?.name.en.toLowerCase() === q ||
+        file?.name.zh.toLowerCase() === q
+          ? 3
+          : haystack.includes(q)
+            ? 1
+            : 0
       return { page, resolved, score }
     })
     .filter((item) => item.score > 0)

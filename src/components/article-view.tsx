@@ -2,11 +2,13 @@
 
 import { Link } from "@/components/wiki-link"
 
+import { AbnormalityFile } from "@/components/abnormality-file"
 import { InfoboxCard } from "@/components/infobox"
 import { WikiMarkdown } from "@/components/wiki-markdown"
 import { useWiki } from "@/components/wiki-provider"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
+import { findAbnormality, loc } from "@/lib/abnormality"
 import { categoryLabel } from "@/lib/i18n"
 import {
   categoryHref,
@@ -21,10 +23,42 @@ import {
 
 export function ArticleView({ slug }: { slug: string }) {
   const { getPage, resolve, t, locale } = useWiki()
+  const file = findAbnormality(slug)
   const page = getPage(slug)
   const resolved = page ? resolve(page) : null
-  const title = resolved?.title ?? titleFromSlug(slug)
-  const toc = resolved ? extractToc(resolved.content) : []
+  const tabSlug = page?.slug ?? file?.slug ?? slug
+  const title = file
+    ? loc(file.name, locale)
+    : (resolved?.title ?? titleFromSlug(slug))
+
+  if (file) {
+    return (
+      <article className="wiki-article abn-article">
+        <PageTabs slug={tabSlug} current="view" missing={!page} />
+        {page ? (
+          <p className="mb-4 text-xs text-muted-foreground">
+            {t("lastEdited")} {formatTime(page.updatedAt, locale)} ·{" "}
+            <Link href={historyHref(tabSlug)} className="wiki-inline">
+              {t("viewHistory")}
+            </Link>
+          </p>
+        ) : null}
+        <AbnormalityFile file={file} notes={resolved?.content} />
+        <div className="wiki-cats">
+          <span className="text-xs text-muted-foreground">{t("categories")}:</span>
+          {(resolved?.categories ?? ["Abnormalities"]).map((category) => (
+            <Badge
+              key={category}
+              variant="outline"
+              render={<Link href={categoryHref(category)} />}
+            >
+              {categoryLabel(category, locale)}
+            </Badge>
+          ))}
+        </div>
+      </article>
+    )
+  }
 
   if (!page || !resolved) {
     return (
@@ -42,9 +76,11 @@ export function ArticleView({ slug }: { slug: string }) {
     )
   }
 
+  const toc = extractToc(resolved.content)
+
   return (
     <article className="wiki-article">
-      <PageTabs slug={slug} current="view" />
+      <PageTabs slug={tabSlug} current="view" />
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className="min-w-0 flex-1">
           <h1 className="wiki-title">{resolved.title}</h1>
@@ -57,7 +93,7 @@ export function ArticleView({ slug }: { slug: string }) {
               <>
                 {" "}
                 ·{" "}
-                <Link href={historyHref(slug)} className="wiki-inline">
+                <Link href={historyHref(tabSlug)} className="wiki-inline">
                   {t("viewHistory")}
                 </Link>
               </>

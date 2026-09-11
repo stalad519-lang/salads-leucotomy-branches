@@ -68,6 +68,7 @@ Every hit in this game is one of four colors. Each color is also a work:
 * [[Damage]] — the four colors
 * [[Work]] — Analysis, Instinct, Attachment, Repression
 * [[Creators]] — credits
+* [[Qe]] — first abnormality file (H-01-0)
 * [[Help:Editing]] — how to write an abnormality file
 * [[The Q]] — emblem (English only, to show language fallback)
 
@@ -103,6 +104,7 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 * [[Damage]] — 四种颜色
 * [[Work]] — 解析、本能、沟通、压迫
 * [[Creators]] — 创作者名单
+* [[Qe]] — 第一份异想体档案（H-01-0）
 * [[Help:Editing]] — 怎么写一篇异想体档案
 * [[The Q]] — 徽章（本条故意没有中文，用来演示回退）
 
@@ -183,9 +185,11 @@ When you add a file:
 
 ## File template
 
-See [[Help:Editing]] for the full abnormality template.
+See [[Help:Editing]] for the full abnormality template. Structured files (portrait, PE, resistances, EGO) render as a sheet; wiki text on those pages is extra notes only.
 
-Until files are pasted in, this index stays a directory. Link new articles from here as they exist.
+## Files
+
+* [[Qe]] — H-01-0, HE. Grey 6–9. EGO: Fusion.
 
 ## Related
 
@@ -212,15 +216,60 @@ Until files are pasted in, this index stays a directory. Link new articles from 
 
 ## 档案模板
 
-完整模板见 [[Help:Editing]]。
+完整模板见 [[Help:Editing]]。结构化档案（立绘、情绪值、抗性、EGO）会按分栏显示，词条正文只作备注。
 
-在档案贴上来之前，这里先当目录。新条目建好后请链到本页。
+## 档案
+
+* [[Qe]] — H-01-0，HE。灰伤 6–9。EGO：融合。
 
 ## 相关
 
 * [[Damage]]
 * [[Work]]
 * [[Help:Editing]]`,
+    }
+  ),
+  page(
+    "Qe",
+    {
+      title: "Qe",
+      categories: ["Abnormalities"],
+      infobox: box("Qe", "H-01-0", [
+        { label: "Code", value: "H-01-0" },
+        { label: "Risk", value: "HE" },
+        { label: "PE", value: "3" },
+        { label: "Damage", value: "[[Grey damage]] 6–9" },
+        { label: "EGO", value: "Fusion / 融合" },
+      ]),
+      content: `H-01-0 **Qe** is the first containment file in this archive. The readable sheet on this page is the source of truth.
+
+* Code: H-01-0
+* Risk: HE
+* PE: 3
+* Damage: [[Grey damage]] 6–9
+* EGO: Fusion (融合) · gift Bone (骨头)
+
+See [[Abnormalities]], [[Grey damage]], [[Work]].`,
+    },
+    {
+      title: "Qe",
+      categories: ["Abnormalities"],
+      infobox: box("Qe", "H-01-0", [
+        { label: "编号", value: "H-01-0" },
+        { label: "危险等级", value: "HE" },
+        { label: "情绪值", value: "3" },
+        { label: "伤害", value: "[[Grey damage|灰伤]] 6–9" },
+        { label: "EGO", value: "融合" },
+      ]),
+      content: `H-01-0 **Qe** 是本档案的第一份异想体。本页上的分栏表格才是可读的正文。
+
+* 编号：H-01-0
+* 危险等级：HE
+* 情绪值：3
+* 伤害：[[Grey damage|灰伤]] 6–9
+* EGO：融合 · 饰品骨头
+
+见 [[Abnormalities|异想体]]、[[Grey damage|灰伤]]、[[Work|工作]]。`,
     }
   ),
   page(
@@ -797,7 +846,7 @@ The **English / 中文** control changes chrome, article text, and which languag
 
 ## Abnormality file
 
-Create one page per abnormality. Keep the **English title** stable (code or English name).
+Create one page per abnormality. Keep the **English title** stable (code or English name). [[Qe]] (H-01-0) is the first structured file: portrait, PE, energy, resistances, story, guidelines, personality, and EGO.
 
 Infobox rows (example):
 
@@ -857,7 +906,7 @@ Escape conditions, gifts, or other facts from the Roblox game — not copied off
 
 ## 异想体档案
 
-一个异想体一页。**英语标题**保持稳定（编号或英文名）。
+一个异想体一页。**英语标题**保持稳定（编号或英文名）。第一份结构化档案是 [[Qe]]（H-01-0）：立绘、情绪值、能源、抗性、故事、管理需知、性格、EGO。
 
 信息框示例：
 

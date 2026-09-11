@@ -37,6 +37,8 @@ The **English / 中文** control in the header changes:
 
 `[[The Q]]` is intentionally English-only so you can see the fallback notice after switching to 中文.
 
+The first abnormality file is **[[Qe]]** (`H-01-0`). It uses a structured sheet (portrait, PE, energy, resistances, story, guidelines, personality, EGO) instead of a long wall of text.
+
 ## Publish (free public URL)
 
 The local preview is only on your computer. To let a phone or other people open it, deploy the static site.
