@@ -39,38 +39,29 @@ The **English / 中文** control in the header changes:
 
 The first abnormality file is **[[Qe]]** (`H-01-0`). It uses a structured sheet (portrait, PE, energy, resistances, story, guidelines, personality, EGO) instead of a long wall of text.
 
-## Publish (free public URL)
+## Public site
 
-Cursor Preview and `127.0.0.1` are **not** the public site. Edits here do **not** auto-update any `netlify.app` / `pages.dev` link. After a change, rebuild and redeploy:
+Live URL: **https://admirable-moonbeam-ccd3df.netlify.app**
 
-```bash
-npm run build
-```
+Cursor Preview / `127.0.0.1` are local only. The public Netlify site updates when:
 
-Then pick one host below.
-
-### Netlify Drop (fastest; may ask for a password)
+1. **Automatic (this repo):** every `git push` to `main` runs a pre-push hook that builds and deploys to Netlify.
+2. **Manual:** `npm run deploy`
 
 ```bash
-# Skip RSC .txt files and colon paths — anonymous Drop rejects some of them
-rm -rf /tmp/wiki-deploy && mkdir -p /tmp/wiki-deploy
-cp -a out/. /tmp/wiki-deploy/
-find /tmp/wiki-deploy -name '*.txt' -delete
-find /tmp/wiki-deploy -name '*:*' -exec rm -rf {} +
-
-npx netlify-cli deploy --allow-anonymous --dir /tmp/wiki-deploy --no-build --prod
-```
-
-Claim the site within 60 minutes if you want to keep the URL.
-
-### Cloudflare Pages (recommended for a lasting `pages.dev` address)
-
-1. Create a free [Cloudflare](https://dash.cloudflare.com/sign-up) account.
-2. In a terminal in this folder:
-
-```bash
-npx wrangler login
 npm run deploy
 ```
 
-Or in the Cloudflare dashboard: **Workers & Pages → Create → Pages → Upload assets**, and upload the `out` folder after `npm run build`.
+Skip one push without deploying:
+
+```bash
+SKIP_NETLIFY_DEPLOY=1 git push
+```
+
+Auth lives in the gitignored file `secrets/deploy.local` (Netlify token + site id). Do not commit that file.
+
+### Optional: Cloudflare Pages
+
+```bash
+npm run deploy:cf
+```

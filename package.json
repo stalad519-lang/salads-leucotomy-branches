@@ -7,7 +7,10 @@
     "build": "next build && node -e \"require('fs').copyFileSync('out/index.html','out/404.html')\"",
     "start": "npx --yes serve out -p 43217 -s --no-port-switching",
     "lint": "eslint",
-    "deploy": "npm run build && npx --yes wrangler pages deploy out --project-name salads-leucotomy-branches"
+    "prepare": "git config core.hooksPath .githooks || true",
+    "deploy": "bash scripts/deploy-netlify.sh",
+    "deploy:web": "bash scripts/deploy-netlify.sh",
+    "deploy:cf": "npm run build && npx --yes wrangler pages deploy out --project-name salads-leucotomy-branches"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Auto-publish the wiki to Netlify whenever main is pushed.
+# Skip with: SKIP_NETLIFY_DEPLOY=1 git push
+set -euo pipefail
+
+if [[ "${SKIP_NETLIFY_DEPLOY:-}" == "1" ]]; then
+  echo "pre-push: skipping Netlify deploy (SKIP_NETLIFY_DEPLOY=1)"
+  exit 0
+fi
+
+remote_name="${1:-}"
+url_file=
+zero="0000000000000000000000000000000000000000"
+should_deploy=0
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [[ "$local_sha" == "$zero" ]] && continue
+  # Only production branch
+  if [[ "$remote_ref" == "refs/heads/main" || "$local_ref" == "refs/heads/main" ]]; then
+    should_deploy=1
+  fi
+done
+
+if [[ "$should_deploy" -ne 1 ]]; then
+  exit 0
+fi
+
+echo "pre-push: deploying wiki to Netlify before updating main…"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+bash "$ROOT/scripts/deploy-netlify.sh" "git push $(git rev-parse --short HEAD)"
