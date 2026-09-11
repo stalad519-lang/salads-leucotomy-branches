@@ -2,16 +2,19 @@
 
 import { Link } from "@/components/wiki-link"
 import { AbnormalityBoard } from "@/components/abnormality-catalog"
+import { NameList } from "@/components/name-list"
 
 import { useWiki } from "@/components/wiki-provider"
 import { categoryKey, categoryLabel, messages } from "@/lib/i18n"
 import { pagesInCategory, wikiHref } from "@/lib/wiki"
 
+const INDEX_SLUGS = new Set(["Abnormalities", "Basics", "Mechanics", "Creators"])
+
 export function CategoryView({ name }: { name: string }) {
   const { pages, locale, t } = useWiki()
   const key = categoryKey(name)
   const items = pagesInCategory(pages, name, locale).filter(
-    (item) => item.page.slug !== "Abnormalities"
+    (item) => !INDEX_SLUGS.has(item.page.slug)
   )
   const label = categoryLabel(name, locale)
 
@@ -20,26 +23,24 @@ export function CategoryView({ name }: { name: string }) {
   }
 
   return (
-    <article className="wiki-article">
-      <h1 className="wiki-title">{label}</h1>
-      <p className="mt-1 text-sm text-muted-foreground">
-        {messages[locale].categoryCount(items.length)}{" "}
+    <div className="name-panel">
+      <header className="name-panel-head">
+        <h1>{label}</h1>
+        <span>{messages[locale].categoryCount(items.length)}</span>
+      </header>
+      {items.length === 0 ? (
+        <p className="name-panel-empty">{messages[locale].categoryEmpty(label)}</p>
+      ) : (
+        <NameList
+          items={items.map(({ page, resolved }) => ({
+            href: wikiHref(page.slug),
+            name: resolved.title,
+          }))}
+        />
+      )}
+      <p className="name-panel-foot">
         <Link href="/special/all">{t("backAll")}</Link>
       </p>
-      {items.length === 0 ? (
-        <p className="mt-6 text-sm text-muted-foreground">
-          {messages[locale].categoryEmpty(label)}
-        </p>
-      ) : (
-        <div className="wiki-file-list">
-          {items.map(({ page, resolved }) => (
-            <Link key={page.slug} href={wikiHref(page.slug)} className="wiki-file-row">
-              <span>{resolved.title}</span>
-              <span className="wiki-file-slug">{page.slug.replaceAll("_", " ")}</span>
-            </Link>
-          ))}
-        </div>
-      )}
-    </article>
+    </div>
   )
 }
