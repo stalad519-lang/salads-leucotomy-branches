@@ -51,7 +51,6 @@ The files that belong here are **[[Abnormalities|abnormality]]** records: what a
 * [[Category:Abnormalities|Abnormalities]] — one page per 异想体 file
 * [[Category:Basics|Basics]] — four damage colors, four works, personality overviews
 * [[Category:Personalities|Personalities]] — full Codex (43 traits with descriptions)
-* [[Category:Mechanics|Mechanics]] — facility mechanisms ([[Observation Level|Observation Level / Grade]], …)
 * [[Category:Creators|Creators]] — [[Salad]] (game author) and [[Stalad]] (composer)
 
 ## Damage and work
@@ -68,7 +67,6 @@ Every hit in this game is one of four colors. Each color is also a work:
 * [[Category:Abnormalities|Abnormalities]]
 * [[Basics]] — [[Damage]], [[Work]], [[Primary personality]], [[Secondary personality]]
 * [[Category:Personalities|Personalities]] — Curious, Remorse, Last Stand, …
-* [[Mechanics]] — [[Observation Level]] (Grade) and more
 * [[Creators]] — [[Salad]] and [[Stalad]]
 * [[Qe]] — first abnormality file (H-01-0)
 * [[Imaginary Friend]] — H-02-0 (sealed: Remedic)
@@ -89,7 +87,6 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 * [[Category:Abnormalities|异想体]] — 每个异想体一页档案
 * [[Category:Basics|基本信息]] — 四色伤害、四种工作、性格概览
 * [[Category:Personalities|性格]] — 完整图鉴（43 条含描述）
-* [[Category:Mechanics|机制]] — 设施机制（[[Observation Level|观察等级 / Grade]] 等）
 * [[Category:Creators|创作者]] — [[Salad]]（游戏总作者）与 [[Stalad]]（曲师）
 
 ## 伤害与工作
@@ -106,7 +103,6 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 * [[Category:Abnormalities|异想体]]
 * [[Basics|基本信息]] — [[Damage|伤害]]、[[Work|工作]]、[[Primary personality|主性格]]、[[Secondary personality|副性格]]
 * [[Category:Personalities|性格]] — 好奇、悔恨、背水一战…
-* [[Mechanics|机制]] — [[Observation Level|观察等级]] 等
 * [[Creators|创作者]] — [[Salad]] 与 [[Stalad]]
 * [[Qe]] — 第一份异想体档案（H-01-0）
 * [[Imaginary Friend|幻想朋友]] — H-02-0（密封：医骸）
@@ -448,7 +444,7 @@ See [[Category:Basics]].`,
         { label: "Used for", value: "Introduce unlocks, E.G.O extract" },
         { label: "Earned from", value: "Work completion (Good / Normal / Bad)" },
       ]),
-      content: `**PE-BOX** is spendable observation currency in [[Salad's leucotomy branches]]. Agents earn PE-BOX when work finishes; the Manager spends it to unlock Introduce panels, raise [[Observation Level]], and extract E.G.O.
+      content: `**PE-BOX** is spendable observation currency in [[Salad's leucotomy branches]]. Agents earn PE-BOX when work finishes; the Manager spends it to unlock Introduce panels and extract E.G.O.
 
 ![PE-BOX texture](/abnormalities/pebox.png)
 
@@ -456,7 +452,6 @@ PE-BOX is **not** abnormality Mood. Mood (情绪) is the Qliphoth emotion ceilin
 
 ## Related
 
-* [[Observation Level]]
 * [[Abnormalities]]
 * [[Work]]
 * [[Basics]]`,
@@ -466,10 +461,10 @@ PE-BOX is **not** abnormality Mood. Mood (情绪) is the Qliphoth emotion ceilin
       categories: ["Help"],
       infobox: box("PE-BOX", "设施货币", [
         { label: "也称", value: "PEBOX" },
-        { label: "用途", value: "图鉴解锁、观察等级、E.G.O 提取" },
+        { label: "用途", value: "图鉴解锁、E.G.O 提取" },
         { label: "来源", value: "工作完成（优 / 良 / 差）" },
       ]),
-      content: `**PE-BOX** 是 [[Salad's leucotomy branches]] 里可花费的观察点数。员工工作结束产出 PE-BOX，管理人用它解锁图鉴面板、提升 [[Observation Level|观察等级]]、提取 E.G.O。
+      content: `**PE-BOX** 是 [[Salad's leucotomy branches]] 里可花费的观察点数。员工工作结束产出 PE-BOX，管理人用它解锁图鉴面板、提取 E.G.O。
 
 ![PE-BOX 贴图](/abnormalities/pebox.png)
 
@@ -477,7 +472,6 @@ PE-BOX **不是** 异想体的情绪。档案上的 **情绪 / Mood** 是收容�
 
 ## 相关
 
-* [[Observation Level|观察等级]]
 * [[Abnormalities|异想体]]
 * [[Work|工作]]
 * [[Basics|基本信息]]`,
@@ -1174,165 +1168,6 @@ Abnormality files should say where a being is held if the game shows a location.
     }
   ),
   page(
-    "Mechanics",
-    {
-      title: "Mechanics",
-      categories: ["Mechanics"],
-      infobox: box("Mechanics", "机制", [
-        { label: "Status", value: "In progress" },
-        { label: "Category", value: "[[Category:Mechanics]]" },
-      ]),
-      content: `**Mechanics** (机制) is the category for facility mechanisms beyond the [[Basics]] rules.
-
-## Filed
-
-* [[Observation Level]] — Introduce **Grade** unlocks (work speed / success rate)
-
-Work types still live under [[Basics]] / [[Work]]. Breach, fear, and other systems stay empty until filed.
-
-See [[Category:Mechanics]].`,
-    },
-    {
-      title: "机制",
-      categories: ["Mechanics"],
-      infobox: box("机制", "Mechanics", [
-        { label: "状态", value: "撰写中" },
-        { label: "分类", value: "[[Category:Mechanics|机制]]" },
-      ]),
-      content: `**机制**（Mechanics）用来收 [[Basics|基本信息]] 之外的设施机制。
-
-## 已收录
-
-* [[Observation Level|观察等级]] — 图鉴 **Grade** 解锁（工作速度 / 成功率）
-
-工作类型仍在 [[Basics|基本信息]] / [[Work|工作]]。出逃、恐惧等系统暂空。
-
-见 [[Category:Mechanics|机制]]。`,
-    }
-  ),
-  page(
-    "Observation_Level",
-    {
-      title: "Observation Level",
-      categories: ["Mechanics"],
-      infobox: box("Observation Level", "Grade", [
-        { label: "Also called", value: "Grade · 观察等级" },
-        { label: "Max", value: "4" },
-        { label: "Paid with", value: "[[PE-BOX]]" },
-        { label: "Shown on", value: "Introduce → Grade" },
-      ]),
-      content: `**Observation Level** (观察等级), shown as **Grade** on the Introduce panel, tracks how far the Manager has researched an [[Abnormalities|abnormality]]. Spending [[PE-BOX]] raises the grade and unlocks agent bonuses, alternating **Work Speed** and **Success Rate** — the same ladder Lobotomy Corporation uses on observation unlocks.
-
-## Grade unlocks
-
-Ⅰ　Work Speed*
-
-Ⅱ　Success Rate*
-
-Ⅲ　Work Speed*
-
-Ⅳ　Success Rate*
-
-Observation Level 4
-
-\`*\` marks a bonus already unlocked at the listed grade. At Observation Level **4**, every step on the list is unlocked.
-
-## Notes
-
-* Grade is **not** Agent level (I–V on work preference tables).
-* Grade is **not** Mood. Mood is the emotion ceiling on the containment file.
-* Exact numeric bonuses stay as the game shows them; this page records the unlock order.
-
-## Related
-
-* [[PE-BOX]]
-* [[Work]]
-* [[Abnormalities]]
-* [[Mechanics]]`,
-    },
-    {
-      title: "观察等级",
-      categories: ["Mechanics"],
-      infobox: box("观察等级", "Grade", [
-        { label: "也称", value: "Grade · Observation Level" },
-        { label: "上限", value: "4" },
-        { label: "消耗", value: "[[PE-BOX]]" },
-        { label: "显示位置", value: "图鉴 → Grade" },
-      ]),
-      content: `**观察等级**（Observation Level）在图鉴 Introduce 面板上写作 **Grade**，表示管理人对该 [[Abnormalities|异想体]] 的研究进度。花费 [[PE-BOX]] 提升等级后，会按脑叶公司同款顺序解锁员工增益：交替获得 **工作速度** 与 **成功率**。
-
-## Grade 解锁
-
-Ⅰ　工作速度*
-
-Ⅱ　成功率*
-
-Ⅲ　工作速度*
-
-Ⅳ　成功率*
-
-观察等级 4
-
-\`*\` 表示该等级对应的增益已解锁。观察等级到达 **4** 时，上表四项全部点亮。
-
-## 说明
-
-* Grade **不是** 员工等级（工作偏好表上的 I–V）。
-* Grade **不是** 情绪。情绪是收容档案上的情绪上限。
-* 具体数值以游戏内显示为准；本页只固定解锁顺序。
-
-## 相关
-
-* [[PE-BOX]]
-* [[Work|工作]]
-* [[Abnormalities|异想体]]
-* [[Mechanics|机制]]`,
-    }
-  ),
-  page(
-    "Grade",
-    {
-      title: "Grade",
-      categories: ["Mechanics"],
-      infobox: box("Grade", "Observation Level", [
-        { label: "Canonical", value: "[[Observation Level]]" },
-      ]),
-      content: `**Grade** is the Introduce-panel name for [[Observation Level]].
-
-Ⅰ　Work Speed*
-
-Ⅱ　Success Rate*
-
-Ⅲ　Work Speed*
-
-Ⅳ　Success Rate*
-
-Observation Level 4
-
-See [[Observation Level]] for the full write-up.`,
-    },
-    {
-      title: "Grade",
-      categories: ["Mechanics"],
-      infobox: box("Grade", "观察等级", [
-        { label: "正式条目", value: "[[Observation Level|观察等级]]" },
-      ]),
-      content: `**Grade** 是图鉴 Introduce 面板上对 [[Observation Level|观察等级]] 的写法。
-
-Ⅰ　工作速度*
-
-Ⅱ　成功率*
-
-Ⅲ　工作速度*
-
-Ⅳ　成功率*
-
-观察等级 4
-
-完整说明见 [[Observation Level|观察等级]]。`,
-    }
-  ),
-  page(
     "Primary_personality",
     {
       title: "Primary personality",
@@ -1580,7 +1415,7 @@ The four categories:
 
 * \`Abnormalities\` — 异想体 files
 * \`Basics\` — 基本信息 (damage, work, primary / secondary personalities)
-* \`Mechanics\` — 机制 (empty for now)
+* \`Personalities\` — 性格 Codex
 * \`Creators\` — 创作者 ([[Salad]], [[Stalad]])
 
 An abnormality page should use:
@@ -1640,7 +1475,7 @@ Escape conditions, gifts, or other facts from the Roblox game — not copied off
 
 * \`Abnormalities\` — 异想体
 * \`Basics\` — 基本信息（伤害、工作、主性格与副性格）
-* \`Mechanics\` — 机制（[[Observation Level|观察等级 / Grade]] 等）
+* \`Personalities\` — 性格图鉴
 * \`Creators\` — 创作者（[[Salad]]、[[Stalad]]）
 
 异想体档案分类填：

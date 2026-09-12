@@ -140,7 +140,7 @@ function EditorForm({ slug, page }: { slug: string; page?: WikiPage }) {
             name="categories"
             value={categories}
             onChange={(event) => setCategories(event.target.value)}
-            placeholder="Abnormalities, Basics, Mechanics, Creators"
+            placeholder="Abnormalities, Basics, Personalities, Creators"
             className="h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
           />
         </label>

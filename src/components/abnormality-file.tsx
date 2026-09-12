@@ -384,7 +384,7 @@ function GradePanel({ locale }: { locale: Locale }) {
         ))}
       </ol>
       <p className="grade-panel-level">
-        {ui.observationLevel} {OBSERVATION_GRADE_MAX}
+        {ui.grade} {OBSERVATION_GRADE_MAX}
       </p>
     </section>
   )

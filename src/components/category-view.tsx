@@ -12,7 +12,6 @@ import { pagesInCategory, wikiHref } from "@/lib/wiki"
 const INDEX_SLUGS = new Set([
   "Abnormalities",
   "Basics",
-  "Mechanics",
   "Creators",
   "Personalities",
 ])

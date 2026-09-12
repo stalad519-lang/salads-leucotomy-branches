@@ -7,7 +7,7 @@ import { useWiki } from "@/components/wiki-provider"
 import { categoryLabel, messages, PRIMARY_CATEGORIES } from "@/lib/i18n"
 import { allCategories, categoryHref, wikiHref } from "@/lib/wiki"
 
-const INDEX_SLUGS = new Set(["Abnormalities", "Basics", "Mechanics", "Creators", "Main_Page"])
+const INDEX_SLUGS = new Set(["Abnormalities", "Basics", "Creators", "Personalities", "Main_Page"])
 
 export function AllPagesView() {
   const { pages, locale, t, resolve } = useWiki()

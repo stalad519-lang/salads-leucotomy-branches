@@ -99,7 +99,6 @@ export const messages = {
     pickScene: "Open a category",
     catAbnormalitiesDesc: "Held files, sorted by risk. H-01-0 lives here.",
     catBasicsDesc: "Four damage colors, four works, and primary / secondary personalities.",
-    catMechanicsDesc: "Facility mechanisms — Observation Level (Grade) and more.",
     catCreatorsDesc: "Salad (game author) and Stalad (composer).",
     catPersonalitiesDesc:
       "Full Personality Codex: 8 primaries, 19 traits, 16 special unlocks — names, descriptions, bonuses, acquire.",
@@ -194,7 +193,6 @@ export const messages = {
     pickScene: "选择分类",
     catAbnormalitiesDesc: "在库个体，按危险等级排列。H-01-0 在这里。",
     catBasicsDesc: "四色伤害、四种工作、主性格与副性格。",
-    catMechanicsDesc: "设施机制 — 观察等级（Grade）等。",
     catCreatorsDesc: "Salad（游戏总作者）与 Stalad（曲师）。",
     catPersonalitiesDesc:
       "完整性格图鉴：8 主性格、19 特质、16 特殊解锁——名称、描述、加成与获得方式。",
@@ -231,7 +229,6 @@ export const PRIMARY_CATEGORIES = [
   "Abnormalities",
   "Basics",
   "Personalities",
-  "Mechanics",
   "Creators",
 ] as const
 
@@ -239,7 +236,6 @@ export const categoryLabels: Record<string, { en: string; zh: string }> = {
   Abnormalities: { en: "Abnormalities", zh: "异想体" },
   Basics: { en: "Basics", zh: "基本信息" },
   Personalities: { en: "Personalities", zh: "性格" },
-  Mechanics: { en: "Mechanics", zh: "机制" },
   Creators: { en: "Creators", zh: "创作者" },
   Help: { en: "Help", zh: "帮助" },
 }
@@ -248,13 +244,14 @@ const CATEGORY_ALIASES: Record<string, string> = {
   Game: "Basics",
   Damage: "Basics",
   Characters: "Basics",
-  Locations: "Mechanics",
+  Locations: "Basics",
+  Mechanics: "Basics",
   异想体: "Abnormalities",
   基本信息: "Basics",
   伤害: "Basics",
   性格: "Personalities",
   性格图鉴: "Personalities",
-  机制: "Mechanics",
+  机制: "Basics",
   创作者: "Creators",
   创作者列表: "Creators",
 }
@@ -280,7 +277,6 @@ export const categoryBlurbs: Record<
   Abnormalities: "catAbnormalitiesDesc",
   Basics: "catBasicsDesc",
   Personalities: "catPersonalitiesDesc",
-  Mechanics: "catMechanicsDesc",
   Creators: "catCreatorsDesc",
 }
 
