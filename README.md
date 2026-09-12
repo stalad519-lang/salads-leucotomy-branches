@@ -6,7 +6,7 @@ The wiki is built around four categories:
 
 - **Abnormalities** / 异想体
 - **Basics** / 基本信息 (damage types and other facts)
-- **Mechanics** / 机制
+- **Personalities** / 性格
 - **Creators** / 创作者
 
 - Red / 红伤 — mental — Analysis / 解析
