@@ -23,6 +23,7 @@ import {
   subscribeLocation,
 } from "@/lib/nav"
 import { findAbnormality } from "@/lib/abnormality"
+import { findPersonality } from "@/lib/personality"
 import { categoryLabel, PRIMARY_CATEGORIES } from "@/lib/i18n"
 import {
   Sheet,
@@ -71,6 +72,11 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
       }
       const wiki = pathname.match(/^\/wiki\/(.+)$/)
       return Boolean(wiki && findAbnormality(decodeURIComponent(wiki[1])))
+    }
+    if (key === "Personalities") {
+      if (pathname.startsWith("/category/Personalities")) return true
+      const wiki = pathname.match(/^\/wiki\/(.+)$/)
+      return Boolean(wiki && findPersonality(decodeURIComponent(wiki[1])))
     }
     return pathname.startsWith(href)
   }

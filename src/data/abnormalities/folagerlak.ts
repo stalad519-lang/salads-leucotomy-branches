@@ -12,9 +12,9 @@ export const folagerlak: AbnormalityRecord = {
   portraitThumb: "/abnormalities/folagerlak.jpg",
   damage: { color: "black", min: 32, max: 32 },
   energy: {
-    bad: "0–2",
-    normal: "5–8",
-    good: "10–15",
+    bad: "0–0",
+    normal: "1–1",
+    good: "1–2",
   },
   resistances: {
     red: 1,

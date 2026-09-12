@@ -22,8 +22,8 @@ export const imaginaryFriend: AbnormalityRecord = {
   damage: { color: "red", min: 32, max: 32 },
   energy: {
     bad: "0–0",
-    normal: "5–8",
-    good: "20–25",
+    normal: "1–1",
+    good: "1–2",
   },
   resistances: {
     red: 0,
@@ -207,7 +207,7 @@ export const imaginaryFriend: AbnormalityRecord = {
     },
   },
   personality: {
-    primary: { en: "Compassionate", zh: "慈悲" },
+    primary: { en: "Compassionate", zh: "共情" },
     secondary: {
       en: ["Innocent", "Remorse"],
       zh: ["天真", "悔恨"],
@@ -222,10 +222,10 @@ export const imaginaryFriend: AbnormalityRecord = {
       },
       risk: "ALEPH",
       range: { en: "Very close", zh: "极近" },
-      damage: { color: "grey", min: 30, max: 45 },
+      damage: { color: "grey", min: 5, max: 6 },
       mastered: {
         range: { en: "Close", zh: "近" },
-        damage: { color: "grey", min: 45, max: 50 },
+        damage: { color: "grey", min: 5, max: 7 },
       },
     },
     suit: {

@@ -12,9 +12,9 @@ export const qe: AbnormalityRecord = {
   portraitThumb: "/abnormalities/qe-thumb.png",
   damage: { color: "red", min: 14, max: 14 },
   energy: {
-    bad: "0–4",
-    normal: "5–9",
-    good: "10–14",
+    bad: "0–0",
+    normal: "1–1",
+    good: "1–2",
   },
   resistances: {
     red: 0.5,
@@ -34,6 +34,7 @@ export const qe: AbnormalityRecord = {
       "Good work raises Qe's mood by one. Bad work lowers it by one. Normal work does not change mood.",
       "If Qe's mood is 1 and a work result is Bad, Qe will kill that Agent outright. Any Agent killed inside the unit also counts as an execution.",
       "Every 120 seconds Qe randomly loses one point of mood.",
+      "Breach entity (qe) MaxHealth is code-designed at 200 (TETH-tier escape).",
     ],
     zh: [
       "被击杀的员工身体部分会被 Qe 夺取并按在身上，并恢满情绪值。",
@@ -42,6 +43,7 @@ export const qe: AbnormalityRecord = {
       "工作结果为优时情绪 +1；为差时 −1；为良时不变。",
       "若 Qe 情绪为 1 且工作结果为差，Qe 将直接击杀该员工。收容室内被击杀的员工也计为处刑。",
       "每过 120 秒，Qe 会随机掉一点情绪值。",
+      "出逃体（qe）血量由代码设计为 200（TETH 档出逃）。",
     ],
   },
   background: {
@@ -144,10 +146,10 @@ export const qe: AbnormalityRecord = {
       },
       risk: "WAW",
       range: { en: "Very close", zh: "极近" },
-      damage: { color: "grey", min: 35, max: 40 },
+      damage: { color: "grey", min: 4, max: 5 },
       mastered: {
         range: { en: "Very close", zh: "极近" },
-        damage: { color: "grey", min: 50, max: 60 },
+        damage: { color: "grey", min: 5, max: 7 },
       },
     },
     suit: {

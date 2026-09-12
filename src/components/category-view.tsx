@@ -3,12 +3,19 @@
 import { Link } from "@/components/wiki-link"
 import { AbnormalityBoard } from "@/components/abnormality-catalog"
 import { CreatorsBoard } from "@/components/creators-board"
+import { PersonalityBoard } from "@/components/personality-board"
 
 import { useWiki } from "@/components/wiki-provider"
 import { categoryKey, categoryLabel, messages } from "@/lib/i18n"
 import { pagesInCategory, wikiHref } from "@/lib/wiki"
 
-const INDEX_SLUGS = new Set(["Abnormalities", "Basics", "Mechanics", "Creators"])
+const INDEX_SLUGS = new Set([
+  "Abnormalities",
+  "Basics",
+  "Mechanics",
+  "Creators",
+  "Personalities",
+])
 
 export function CategoryView({ name }: { name: string }) {
   const { pages, locale, t } = useWiki()
@@ -20,6 +27,10 @@ export function CategoryView({ name }: { name: string }) {
 
   if (key === "Abnormalities") {
     return <AbnormalityBoard />
+  }
+
+  if (key === "Personalities") {
+    return <PersonalityBoard />
   }
 
   if (key === "Creators") {

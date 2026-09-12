@@ -1,4 +1,5 @@
 import type { Infobox, PageCopy, WikiPage } from "@/lib/types"
+import { personalities as personalityCatalog } from "@/data/personalities"
 
 const createdAt = "2026-09-11T01:00:00.000Z"
 
@@ -48,7 +49,8 @@ The files that belong here are **[[Abnormalities|abnormality]]** records: what a
 ## Four categories
 
 * [[Category:Abnormalities|Abnormalities]] — one page per 异想体 file
-* [[Category:Basics|Basics]] — four damage colors, four works, primary / secondary personalities
+* [[Category:Basics|Basics]] — four damage colors, four works, personality overviews
+* [[Category:Personalities|Personalities]] — full Codex (43 traits with descriptions)
 * [[Category:Mechanics|Mechanics]] — facility mechanisms ([[Observation Level|Observation Level / Grade]], …)
 * [[Category:Creators|Creators]] — [[Salad]] (game author) and [[Stalad]] (composer)
 
@@ -65,6 +67,7 @@ Every hit in this game is one of four colors. Each color is also a work:
 
 * [[Category:Abnormalities|Abnormalities]]
 * [[Basics]] — [[Damage]], [[Work]], [[Primary personality]], [[Secondary personality]]
+* [[Category:Personalities|Personalities]] — Curious, Remorse, Last Stand, …
 * [[Mechanics]] — [[Observation Level]] (Grade) and more
 * [[Creators]] — [[Salad]] and [[Stalad]]
 * [[Qe]] — first abnormality file (H-01-0)
@@ -84,7 +87,8 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 ## 四个分类
 
 * [[Category:Abnormalities|异想体]] — 每个异想体一页档案
-* [[Category:Basics|基本信息]] — 四色伤害、四种工作、主性格与副性格
+* [[Category:Basics|基本信息]] — 四色伤害、四种工作、性格概览
+* [[Category:Personalities|性格]] — 完整图鉴（43 条含描述）
 * [[Category:Mechanics|机制]] — 设施机制（[[Observation Level|观察等级 / Grade]] 等）
 * [[Category:Creators|创作者]] — [[Salad]]（游戏总作者）与 [[Stalad]]（曲师）
 
@@ -101,6 +105,7 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 
 * [[Category:Abnormalities|异想体]]
 * [[Basics|基本信息]] — [[Damage|伤害]]、[[Work|工作]]、[[Primary personality|主性格]]、[[Secondary personality|副性格]]
+* [[Category:Personalities|性格]] — 好奇、悔恨、背水一战…
 * [[Mechanics|机制]] — [[Observation Level|观察等级]] 等
 * [[Creators|创作者]] — [[Salad]] 与 [[Stalad]]
 * [[Qe]] — 第一份异想体档案（H-01-0）
@@ -397,6 +402,7 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
 
 ## Personalities
 
+* [[Category:Personalities]] — full Codex (43)
 * [[Primary personality]] — one of eight primaries
 * [[Secondary personality]] — work / social traits (several at once)
 
@@ -425,6 +431,7 @@ See [[Category:Basics]].`,
 
 ## 性格
 
+* [[Category:Personalities|性格]] — 完整图鉴（43）
 * [[Primary personality|主性格]] — 八种主性格之一
 * [[Secondary personality|副性格]] — 工作 / 社交特质（可多个）
 
@@ -1329,60 +1336,66 @@ See [[Observation Level]] for the full write-up.`,
     "Primary_personality",
     {
       title: "Primary personality",
-      categories: ["Basics"],
+      categories: ["Basics", "Personalities"],
       infobox: box("Primary personality", "主性格", [
         { label: "Count", value: "8" },
-        { label: "Also see", value: "[[Secondary personality]]" },
+        { label: "Also see", value: "[[Secondary personality]] · [[Category:Personalities]]" },
         { label: "Category", value: "[[Category:Basics]]" },
       ]),
-      content: `Each Agent has one **primary personality** (主性格). It shapes work preference, fear, and special effects.
+      content: `Each Agent has one **primary personality** (主性格). It is assigned at creation and cannot be changed. It shapes work preference, fear, obedience, and special combat effects.
 
-The eight primaries in this game:
+Full cards (description, bonus, obtain): [[Category:Personalities]].
 
-* **Curious** (好奇)
-* **Compassionate** (慈悲)
-* **Resolute** (坚定)
-* **Calm** (冷静)
-* **Submissive** (顺从)
-* **Bloodthirsty** (嗜血)
-* **Callous** (冷酷)
-* **Paranoid** (偏执)
+The eight primaries:
 
-Abnormality files may list a preferred primary. For secondary traits, see [[Secondary personality]].
+* [[Curious]] — PE-BOX ×1.25
+* [[Compassionate]] — SP restore on hostile kill
+* [[Resolute]] — less Fear damage
+* [[Calm]] — insane-aura immune
+* [[Submissive]] — never refuses orders
+* [[Bloodthirsty]] — more damage vs hostiles
+* [[Callous]] — death-fear / guilt immune
+* [[Paranoid]] — more likely to refuse remote orders
+
+For random traits and special unlocks, see [[Secondary personality]] and [[Category:Personalities]].
 
 ## See also
 
 * [[Basics]]
 * [[Secondary personality]]
+* [[Category:Personalities]]
 * [[Work]]`,
     },
     {
       title: "主性格",
-      categories: ["Basics"],
+      categories: ["Basics", "Personalities"],
       infobox: box("主性格", "Primary personality", [
         { label: "数量", value: "8" },
-        { label: "参见", value: "[[Secondary personality|副性格]]" },
+        { label: "参见", value: "[[Secondary personality|副性格]] · [[Category:Personalities|性格]]" },
         { label: "分类", value: "[[Category:Basics|基本信息]]" },
       ]),
-      content: `每位员工有一个 **主性格**（primary personality）。它影响工作偏好、恐惧与特殊效果。
+      content: `每位员工有一个 **主性格**（primary personality）。创建时固定，不可更改。影响工作偏好、恐惧、服从与战斗特效。
 
-本游戏八种主性格：
+完整卡片（描述、加成、获得）：[[Category:Personalities|性格]]。
 
-* **Curious**（好奇）
-* **Compassionate**（慈悲）
-* **Resolute**（坚定）
-* **Calm**（冷静）
-* **Submissive**（顺从）
-* **Bloodthirsty**（嗜血）
-* **Callous**（冷酷）
-* **Paranoid**（偏执）
+八种主性格：
 
-异想体档案可能写偏好的主性格。副性格见 [[Secondary personality|副性格]]。
+* [[Curious|好奇]] — PE-BOX ×1.25
+* [[Compassionate|共情]] — 击杀敌对回复 SP
+* [[Resolute|坚定]] — 恐惧伤害降低
+* [[Calm|冷静]] — 免疫发疯光环
+* [[Submissive|顺从]] — 永不抗命
+* [[Bloodthirsty|嗜杀]] — 对敌对伤害提高
+* [[Callous|冷酷]] — 免疫死亡恐惧 / 愧疚
+* [[Paranoid|多疑]] — 更易拒绝远程指令
+
+随机特质与特殊解锁见 [[Secondary personality|副性格]] 与 [[Category:Personalities|性格]]。
 
 ## 参见
 
 * [[Basics|基本信息]]
 * [[Secondary personality|副性格]]
+* [[Category:Personalities|性格]]
 * [[Work|工作]]`,
     }
   ),
@@ -1390,57 +1403,96 @@ Abnormality files may list a preferred primary. For secondary traits, see [[Seco
     "Secondary_personality",
     {
       title: "Secondary personality",
-      categories: ["Basics"],
+      categories: ["Basics", "Personalities"],
       infobox: box("Secondary personality", "副性格", [
-        { label: "Kind", value: "Work / social traits" },
-        { label: "Also see", value: "[[Primary personality]]" },
+        { label: "Traits", value: "19 random" },
+        { label: "Special", value: "16 unlock" },
+        { label: "Also see", value: "[[Primary personality]] · [[Category:Personalities]]" },
         { label: "Category", value: "[[Category:Basics]]" },
       ]),
-      content: `**Secondary personalities** (副性格) are extra work and social traits. An Agent can hold several at once; more exist than the short list below.
+      content: `**Secondary personalities** come in two pools (game Personality Codex):
 
-Common secondaries that appear in current game content:
+### Traits (19)
+Random at creation, or granted by abnormality work when the Agent's **primary matches** the unit. Never from the special pool.
 
-* **Obsessive** (执着)
-* **Selfish** (自私)
-* **Innocent** (天真)
-* **Remorse** (悔恨)
-* **Patient** (耐心)
-* **Loyal** (忠诚)
+[[Patient]] · [[Impulsive]] · [[Meticulous]] · [[Loyal]] · [[Selfless]] · [[Selfish]] · [[Greedy]] · [[Ambitious]] · [[Obsessive]] · [[Cowardly]] · [[Reckless]] · [[Honest]] · [[Deceptive]] · [[Nostalgic]] · [[Humble]] · [[Arrogant]] · [[Protective]] · [[Innocent]] · [[Devoted]]
 
-Other secondaries (impulsive, cowardly, detached, guilt-ridden, and more) also appear in the pool. Name the ones the game shows on a given Agent or abnormality file.
+### Special (16)
+Experience unlocks only. Never from abnormality work grants.
+
+[[Detached]] · [[Zealous]] · [[Vengeful]] · [[GuiltRidden|Guilt-ridden]] · [[Remorse]] · [[Broken]] · [[PTSD]] · [[Inability]] · [[Martyr]] · [[Scarred]] · [[Witness]] · [[Forsaken]] · [[Unbroken]] · [[Hollow]] · [[Devoured]] · [[LastStand|Last Stand]]
+
+Open any name for the full English / Chinese description, attribute bonus, and acquire line — or browse [[Category:Personalities]].
 
 ## See also
 
 * [[Basics]]
 * [[Primary personality]]
+* [[Category:Personalities]]
 * [[Work]]`,
     },
     {
       title: "副性格",
-      categories: ["Basics"],
+      categories: ["Basics", "Personalities"],
       infobox: box("副性格", "Secondary personality", [
-        { label: "类型", value: "工作 / 社交特质" },
-        { label: "参见", value: "[[Primary personality|主性格]]" },
+        { label: "特质", value: "随机 19" },
+        { label: "特殊", value: "解锁 16" },
+        { label: "参见", value: "[[Primary personality|主性格]] · [[Category:Personalities|性格]]" },
         { label: "分类", value: "[[Category:Basics|基本信息]]" },
       ]),
-      content: `**副性格**（secondary personality）是额外的工作与社交特质。一名员工可同时持有多个；完整池比下面这份更长。
+      content: `**副性格**在游戏性格图鉴里分两池：
 
-当前游戏内容里常见的副性格：
+### 特质（19）
+创建时随机；或主性格与异想体相符时由工作授予。不会从特殊池掉落。
 
-* **Obsessive**（执着）
-* **Selfish**（自私）
-* **Innocent**（天真）
-* **Remorse**（悔恨）
-* **Patient**（耐心）
-* **Loyal**（忠诚）
+[[Patient|耐心]] · [[Impulsive|冲动]] · [[Meticulous|严谨]] · [[Loyal|忠诚]] · [[Selfless|无私]] · [[Selfish|自私]] · [[Greedy|贪婪]] · [[Ambitious|野心]] · [[Obsessive|偏执]] · [[Cowardly|怯懦]] · [[Reckless|鲁莽]] · [[Honest|诚实]] · [[Deceptive|善于伪装]] · [[Nostalgic|怀旧]] · [[Humble|谦逊]] · [[Arrogant|傲慢]] · [[Protective|保护欲]] · [[Innocent|天真]] · [[Devoted|奉献]]
 
-另有冲动、怯懦、疏离、愧疚等。以游戏在具体员工或异想体档案上显示的为准。
+### 特殊（16）
+仅由经历解锁，永不由异想体工作授予。
+
+[[Detached|疏离]] · [[Zealous|狂热]] · [[Vengeful|记仇]] · [[GuiltRidden|愧疚]] · [[Remorse|悔恨]] · [[Broken|支离破碎]] · [[PTSD]] · [[Inability|失能]] · [[Martyr|殉道者]] · [[Scarred|伤痕累累]] · [[Witness|见证者]] · [[Forsaken|被遗弃者]] · [[Unbroken|不屈]] · [[Hollow|空洞]] · [[Devoured|吞噬者]] · [[LastStand|背水一战]]
+
+点开任意名称可读完整中英描述、属性加成与获得方式；或浏览 [[Category:Personalities|性格]]。
 
 ## 参见
 
 * [[Basics|基本信息]]
 * [[Primary personality|主性格]]
+* [[Category:Personalities|性格]]
 * [[Work|工作]]`,
+    }
+  ),
+  page(
+    "Personalities",
+    {
+      title: "Personalities",
+      categories: ["Personalities"],
+      infobox: box("Personalities", "性格图鉴", [
+        { label: "Count", value: "43" },
+        { label: "Source", value: "Game Personality Codex" },
+        { label: "Category", value: "[[Category:Personalities]]" },
+      ]),
+      content: `**Personalities** is the full Agent trait catalog for [[Salad's leucotomy branches]].
+
+* [[Primary personality]] — 8 fixed at hire
+* [[Secondary personality]] — 19 traits + 16 special unlocks
+
+Browse the board: [[Category:Personalities]].`,
+    },
+    {
+      title: "性格",
+      categories: ["Personalities"],
+      infobox: box("性格", "Personalities", [
+        { label: "数量", value: "43" },
+        { label: "来源", value: "游戏性格图鉴" },
+        { label: "分类", value: "[[Category:Personalities|性格]]" },
+      ]),
+      content: `**性格**是 [[Salad's leucotomy branches|Salad's leucotomy branches]] 的员工特质完整目录。
+
+* [[Primary personality|主性格]] — 创建时固定 8 种
+* [[Secondary personality|副性格]] — 19 特质 + 16 特殊解锁
+
+图鉴板：[[Category:Personalities|性格]]。`,
     }
   ),
   page(
@@ -1626,3 +1678,31 @@ Escape conditions, gifts, or other facts from the Roblox game — not copied off
     }
   ),
 ]
+
+for (const p of personalityCatalog) {
+  seedPages.push(
+    page(
+      p.slug,
+      {
+        title: p.name.en,
+        categories: ["Personalities"],
+        infobox: box(p.name.en, p.name.zh, [
+          { label: "Id", value: p.id },
+          { label: "Kind", value: p.kind },
+          { label: "Category", value: "[[Category:Personalities]]" },
+        ]),
+        content: `Structured file for **${p.name.en}**. See the Personality Codex card on this page.`,
+      },
+      {
+        title: p.name.zh,
+        categories: ["Personalities"],
+        infobox: box(p.name.zh, p.name.en, [
+          { label: "Id", value: p.id },
+          { label: "类型", value: p.kind },
+          { label: "分类", value: "[[Category:Personalities|性格]]" },
+        ]),
+        content: `**${p.name.zh}** 的结构化档案见本页性格卡片。`,
+      }
+    )
+  )
+}

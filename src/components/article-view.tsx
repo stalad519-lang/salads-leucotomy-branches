@@ -3,12 +3,14 @@
 import { Link } from "@/components/wiki-link"
 
 import { AbnormalityFile } from "@/components/abnormality-file"
+import { PersonalityFile } from "@/components/personality-file"
 import { InfoboxCard } from "@/components/infobox"
 import { WikiMarkdown } from "@/components/wiki-markdown"
 import { useWiki } from "@/components/wiki-provider"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { findAbnormality, loc } from "@/lib/abnormality"
+import { findPersonality } from "@/lib/personality"
 import { categoryLabel } from "@/lib/i18n"
 import {
   categoryHref,
@@ -24,17 +26,28 @@ import {
 export function ArticleView({ slug }: { slug: string }) {
   const { getPage, resolve, t, locale } = useWiki()
   const file = findAbnormality(slug)
+  const personality = findPersonality(slug)
   const page = getPage(slug)
   const resolved = page ? resolve(page) : null
-  const tabSlug = page?.slug ?? file?.slug ?? slug
+  const tabSlug = page?.slug ?? file?.slug ?? personality?.slug ?? slug
   const title = file
     ? loc(file.name, locale)
-    : (resolved?.title ?? titleFromSlug(slug))
+    : personality
+      ? loc(personality.name, locale)
+      : (resolved?.title ?? titleFromSlug(slug))
 
   if (file) {
     return (
       <article className="wiki-article abn-article">
         <AbnormalityFile file={file} notes={resolved?.content} />
+      </article>
+    )
+  }
+
+  if (personality) {
+    return (
+      <article className="wiki-article pers-article">
+        <PersonalityFile file={personality} notes={resolved?.content} />
       </article>
     )
   }

@@ -101,6 +101,8 @@ export const messages = {
     catBasicsDesc: "Four damage colors, four works, and primary / secondary personalities.",
     catMechanicsDesc: "Facility mechanisms — Observation Level (Grade) and more.",
     catCreatorsDesc: "Salad (game author) and Stalad (composer).",
+    catPersonalitiesDesc:
+      "Full Personality Codex: 8 primaries, 19 traits, 16 special unlocks — names, descriptions, bonuses, acquire.",
   },
   zh: {
     navMain: "首页",
@@ -194,6 +196,8 @@ export const messages = {
     catBasicsDesc: "四色伤害、四种工作、主性格与副性格。",
     catMechanicsDesc: "设施机制 — 观察等级（Grade）等。",
     catCreatorsDesc: "Salad（游戏总作者）与 Stalad（曲师）。",
+    catPersonalitiesDesc:
+      "完整性格图鉴：8 主性格、19 特质、16 特殊解锁——名称、描述、加成与获得方式。",
   },
 } as const
 
@@ -226,6 +230,7 @@ export function detectDeviceLocale(): Locale {
 export const PRIMARY_CATEGORIES = [
   "Abnormalities",
   "Basics",
+  "Personalities",
   "Mechanics",
   "Creators",
 ] as const
@@ -233,6 +238,7 @@ export const PRIMARY_CATEGORIES = [
 export const categoryLabels: Record<string, { en: string; zh: string }> = {
   Abnormalities: { en: "Abnormalities", zh: "异想体" },
   Basics: { en: "Basics", zh: "基本信息" },
+  Personalities: { en: "Personalities", zh: "性格" },
   Mechanics: { en: "Mechanics", zh: "机制" },
   Creators: { en: "Creators", zh: "创作者" },
   Help: { en: "Help", zh: "帮助" },
@@ -246,6 +252,8 @@ const CATEGORY_ALIASES: Record<string, string> = {
   异想体: "Abnormalities",
   基本信息: "Basics",
   伤害: "Basics",
+  性格: "Personalities",
+  性格图鉴: "Personalities",
   机制: "Mechanics",
   创作者: "Creators",
   创作者列表: "Creators",
@@ -271,6 +279,7 @@ export const categoryBlurbs: Record<
 > = {
   Abnormalities: "catAbnormalitiesDesc",
   Basics: "catBasicsDesc",
+  Personalities: "catPersonalitiesDesc",
   Mechanics: "catMechanicsDesc",
   Creators: "catCreatorsDesc",
 }

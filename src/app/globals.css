@@ -2514,3 +2514,111 @@
   display: none;
 }
 
+
+/* Personality Codex board + file */
+.pers-board-intro {
+  margin: 0 1.1rem 0.85rem;
+  font-size: 0.9rem;
+  color: rgb(255 255 255 / 0.62);
+  line-height: 1.55;
+}
+.pers-board-section {
+  padding: 0.35rem 1.1rem 1rem;
+}
+.pers-board-h {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+.pers-board-count {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.45);
+}
+.pers-board-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+}
+.pers-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem 0.8rem;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  background: #050505;
+  color: #fff;
+  text-decoration: none !important;
+  min-height: 7.5rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.pers-card:hover {
+  border-color: #ff2a2a;
+  box-shadow: 0 0 16px rgb(200 16 46 / 0.22);
+  transform: translateY(-1px);
+}
+.pers-card-disp {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.pers-disp-good { color: #76b28a; }
+.pers-disp-neutral { color: #919bb0; }
+.pers-disp-bad { color: #d7585c; }
+.pers-card-name {
+  font-size: 1.02rem;
+  font-weight: 650;
+}
+.pers-card:hover .pers-card-name { color: #ff6b6b; }
+.pers-card-desc {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgb(255 255 255 / 0.62);
+}
+.pers-card-bonus {
+  font-size: 0.72rem;
+  color: rgb(255 255 255 / 0.48);
+}
+.pers-file {
+  max-width: 42rem;
+  padding: 0.25rem 0 1.5rem;
+}
+.pers-file-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.55);
+}
+.pers-file-id {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: rgb(255 255 255 / 0.4);
+  font-family: ui-monospace, monospace;
+}
+.pers-file-block {
+  margin-top: 1.15rem;
+}
+.pers-file-block h2 {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+.pers-file-block p {
+  margin: 0;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.82);
+}
+.pers-file-foot {
+  margin-top: 1.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgb(255 255 255 / 0.18);
+  font-size: 0.88rem;
+}

@@ -3,6 +3,10 @@ import {
   abnormalitySearchText,
   findAbnormality,
 } from "@/lib/abnormality"
+import {
+  findPersonality,
+  personalitySearchText,
+} from "@/lib/personality"
 import { categoryKey, DEFAULT_LOCALE, PRIMARY_CATEGORIES } from "@/lib/i18n"
 import type {
   Infobox,
@@ -15,12 +19,12 @@ import type {
 
 export const HOME_SLUG = "Main_Page"
 /** Bump when seed pages change so browsers pick up Creators / Help fixes */
-export const PAGES_KEY = "slb-wiki.pages.v5"
+export const PAGES_KEY = "slb-wiki.pages.v6"
 export const SETTINGS_KEY = "slb-wiki.settings.v2"
 export const WIKI_EVENT = "slb-wiki:changed"
 export const SEED_SYNC_KEY = "slb-wiki.seed-sync"
 /** Bump whenever shipped seed content must overwrite localStorage copies */
-export const SEED_SYNC_ID = "2026-09-11-creators-cards"
+export const SEED_SYNC_ID = "2026-09-11-personality-codex"
 
 export function slugify(title: string): string {
   return title.trim().replace(/\s+/g, "_")
@@ -95,6 +99,8 @@ export function findPage(
   if (pages[slug]) return pages[slug]
   const file = findAbnormality(titleOrSlug)
   if (file && pages[file.slug]) return pages[file.slug]
+  const personality = findPersonality(titleOrSlug)
+  if (personality && pages[personality.slug]) return pages[personality.slug]
   return Object.values(pages).find((page) => {
     const titles = [page.locales.en.title, page.locales.zh?.title].filter(Boolean) as string[]
     return titles.some((title) => title === titleOrSlug || slugify(title) === slug)
@@ -355,6 +361,7 @@ export function searchPages(
       const en = page.locales.en
       const zh = page.locales.zh
       const file = findAbnormality(page.slug)
+      const personality = findPersonality(page.slug)
       const haystack = [
         resolved.title,
         resolved.content,
@@ -364,6 +371,7 @@ export function searchPages(
         zh?.title,
         zh?.content,
         file ? abnormalitySearchText(file) : "",
+        personality ? personalitySearchText(personality) : "",
       ]
         .filter(Boolean)
         .join("\n")
@@ -372,7 +380,10 @@ export function searchPages(
         resolved.title.toLowerCase().includes(q) ||
         file?.code.toLowerCase() === q ||
         file?.name.en.toLowerCase() === q ||
-        file?.name.zh.toLowerCase() === q
+        file?.name.zh.toLowerCase() === q ||
+        personality?.name.en.toLowerCase() === q ||
+        personality?.name.zh.toLowerCase() === q ||
+        personality?.id.toLowerCase() === q
           ? 3
           : haystack.includes(q)
             ? 1
