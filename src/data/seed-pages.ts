@@ -71,6 +71,7 @@ Every hit in this game is one of four colors. Each color is also a work:
 * [[Qe]] — first abnormality file (H-01-0)
 * [[Imaginary Friend]] — H-02-0 (sealed: Remedic)
 * [[folagerlak]] — S-03-0
+* [[Unyielding Pale Flower]] — O-04-0 (submitter: 日照野田)
 * [[Help:Editing]] — how to write an abnormality file
 
 English is the source language. Switch to 中文 in the header; missing Chinese falls back to English.`,
@@ -107,6 +108,7 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 * [[Qe]] — 第一份异想体档案（H-01-0）
 * [[Imaginary Friend|幻想朋友]] — H-02-0（密封：医骸）
 * [[folagerlak]] — S-03-0
+* [[Unyielding Pale Flower|不屈苍花]] — O-04-0（投稿：日照野田）
 * [[Help:Editing]] — 怎么写一篇异想体档案
 
 网站以英语为原文。顶栏可切到中文；缺译的字段会显示英语。`,
@@ -199,6 +201,7 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
 * [[Qe]] — H-01-0, TETH. Red 14. EGO: Fusion.
 * [[Imaginary Friend]] — H-02-0, ALEPH (sealed Remedic / WAW). Red 32. EGO: Mimesis.
 * [[folagerlak]] — S-03-0, WAW. Black 32. No EGO yet.
+* [[Unyielding Pale Flower]] — O-04-0, WAW. Red 6–8. EGO: Cherished Love. Submitted by 日照野田.
 
 ## Related
 
@@ -232,6 +235,7 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
 * [[Qe]] — H-01-0，TETH。红伤 14。EGO：融合。
 * [[Imaginary Friend|幻想朋友]] — H-02-0，ALEPH（密封医骸 / WAW）。红伤 32。EGO：拟生。
 * [[folagerlak]] — S-03-0，WAW。黑伤 32。暂无 EGO。
+* [[Unyielding Pale Flower|不屈苍花]] — O-04-0，WAW。红伤 6–8。EGO：怀爱。投稿：日照野田。
 
 ## 相关
 
@@ -371,6 +375,59 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
 * 性格：冷静 · 耐心、忠诚
 
 见 [[Abnormalities|异想体]]、[[Black damage|黑伤]]、[[Work|工作]]。`,
+    }
+  ),
+  page(
+    "Unyielding_Pale_Flower",
+    {
+      title: "Unyielding Pale Flower",
+      categories: ["Abnormalities"],
+      infobox: box("Unyielding Pale Flower", "O-04-0", [
+        { label: "Code", value: "O-04-0" },
+        { label: "Risk", value: "WAW" },
+        { label: "Mood", value: "4" },
+        { label: "Damage", value: "[[Red damage]] 6–8" },
+        { label: "EGO", value: "Cherished Love / 怀爱" },
+        { label: "Submitter", value: "日照野田" },
+      ]),
+      content: `O-04-0 **Unyielding Pale Flower** (不屈苍花) is a WAW abnormality. Fan submission by **日照野田**.
+
+* Code: O-04-0
+* Risk: WAW
+* Mood max (Qliphoth): 4
+* Work damage: [[Red damage]] 6–8
+* Energy: Bad 0–9 · Normal 10–15 · Good 16–21
+* EGO: Cherished Love (怀爱) — spear, suit (craft once), ALEPH corrosion, gift Pale Eye (苍瞳)
+* Personality: Compassionate (仁慈) · Greedy, Arrogant
+
+See the structured sheet on this page for management rules (Hollow / Resurrection), work rates, and EGO details.
+
+See [[Abnormalities]], [[Red damage]], [[Work]], [[Compassionate]].`,
+    },
+    {
+      title: "不屈苍花",
+      categories: ["Abnormalities"],
+      infobox: box("不屈苍花", "O-04-0", [
+        { label: "编号", value: "O-04-0" },
+        { label: "危险等级", value: "WAW" },
+        { label: "情绪", value: "4" },
+        { label: "伤害", value: "[[Red damage|红伤]] 6–8" },
+        { label: "EGO", value: "怀爱" },
+        { label: "投稿者", value: "日照野田" },
+      ]),
+      content: `O-04-0 **不屈苍花**（Unyielding Pale Flower）为 WAW 异想体。投稿者：**日照野田**。
+
+* 编号：O-04-0
+* 危险等级：WAW
+* 情绪上限（逆卡巴拉）：4
+* 作业伤害：[[Red damage|红伤]] 6–8
+* 能源：坏 0–9 · 良 10–15 · 优 16–21
+* EGO：怀爱 — 长矛、西装（仅可制作一次）、ALEPH 侵蚀、饰品苍瞳
+* 性格：仁慈 · 贪婪、傲慢
+
+管理需知（空壳 / 复活）、工作成功率与 EGO 细节见本页结构化档案。
+
+见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]、[[Compassionate|仁慈]]。`,
     }
   ),
   page(
@@ -1953,7 +2010,7 @@ The **English / 中文** control changes chrome, article text, and which languag
 
 ## Abnormality file
 
-Create one page per abnormality. Keep the **English title** stable (code or English name). Structured files currently include [[Qe]] (H-01-0), [[Imaginary Friend]] (H-02-0), and [[folagerlak]] (S-03-0).
+Create one page per abnormality. Keep the **English title** stable (code or English name). Structured files currently include [[Qe]] (H-01-0), [[Imaginary Friend]] (H-02-0), [[folagerlak]] (S-03-0), and [[Unyielding Pale Flower]] (O-04-0).
 
 Infobox rows (example):
 
@@ -2013,7 +2070,7 @@ Escape conditions, gifts, or other facts from the Roblox game — not copied off
 
 ## 异想体档案
 
-一个异想体一页。**英语标题**保持稳定（编号或英文名）。当前结构化档案包括 [[Qe]]（H-01-0）、[[Imaginary Friend|幻想朋友]]（H-02-0）、[[folagerlak]]（S-03-0）。
+一个异想体一页。**英语标题**保持稳定（编号或英文名）。当前结构化档案包括 [[Qe]]（H-01-0）、[[Imaginary Friend|幻想朋友]]（H-02-0）、[[folagerlak]]（S-03-0）、[[Unyielding Pale Flower|不屈苍花]]（O-04-0）。
 
 信息框示例：
 
