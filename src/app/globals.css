@@ -1727,9 +1727,9 @@
 }
 
 .archive-shot img[src*="imaginary-friend"] {
-  object-fit: contain;
-  object-position: center top;
-  background: #f4f4f4;
+  object-fit: cover;
+  object-position: center;
+  background: #ffe033;
   filter: none;
 }
 
@@ -2057,9 +2057,9 @@
 }
 
 .dossier-shot img[src*="imaginary-friend"] {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  background: #f4f4f4;
+  background: #ffe033;
 }
 
 .dossier-box figcaption {
