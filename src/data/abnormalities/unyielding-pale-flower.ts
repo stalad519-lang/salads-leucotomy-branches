@@ -66,18 +66,18 @@ export const unyieldingPaleFlower: AbnormalityRecord = {
     ],
   },
   workPreference: {
-    instinct: {
-      rates: ["Low", "Low", "Low", "Normal", "High"],
-      note: {
-        en: "Success I–V: 30% / 35% / 40% / 50% / 70%. With a Hollow present and a death that day, Instinct becomes “Resurrection”.",
-        zh: "成功率 I–V：30% / 35% / 40% / 50% / 70%。存在空壳且当天有员工死亡时，本能替换为「复活」。",
-      },
-    },
     analysis: {
       rates: ["Low", "Normal", "High", "High", "VeryHigh"],
       note: {
         en: "Success I–V: 40% / 50% / 60% / 70% / 80%.",
         zh: "成功率 I–V：40% / 50% / 60% / 70% / 80%。",
+      },
+    },
+    instinct: {
+      rates: ["Low", "Low", "Low", "Normal", "High"],
+      note: {
+        en: "Success I–V: 30% / 35% / 40% / 50% / 70%. With a Hollow present and a death that day, Instinct becomes “Resurrection”.",
+        zh: "成功率 I–V：30% / 35% / 40% / 50% / 70%。存在空壳且当天有员工死亡时，本能替换为「复活」。",
       },
     },
     attachment: {

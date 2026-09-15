@@ -213,7 +213,7 @@ export const imaginaryFriend: AbnormalityRecord = {
       zh: ["天真", "悔恨"],
     },
   },
-  submitter: "Salad",
+  // No named submitter → dossier shows Salad (facility author)
   ego: {
     name: { en: "Mimesis", zh: "拟生" },
     weapon: {

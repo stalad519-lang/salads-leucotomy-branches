@@ -112,6 +112,16 @@ export function AbnormalityFile({
               </dd>
             </div>
             <BoxRow label={ui.ego} value={egoName ?? "—"} />
+            <div className="dossier-box-row">
+              <dt>{ui.submitter}</dt>
+              <dd>
+                {submitter === "Salad" ? (
+                  <Link href={wikiHref("Salad")}>{submitter}</Link>
+                ) : (
+                  submitter
+                )}
+              </dd>
+            </div>
           </dl>
           <div className="dossier-box-energy hand-energy">
             <p>{ui.energy}</p>
@@ -278,6 +288,7 @@ export function AbnormalityFile({
               <h2>
                 {ui.ego} · {egoName}
               </h2>
+              <SubmitterLine name={submitter} label={ui.submitter} />
 
               <h3>
                 {ui.weapon} <RiskBadge risk={file.ego.weapon.risk} />
@@ -355,28 +366,12 @@ export function AbnormalityFile({
               <p className="abn-special">
                 {ui.special}: {file.ego.gift.special ? loc(file.ego.gift.special, locale) : ui.none}
               </p>
-
-              <p className="dossier-submitter">
-                <span className="abn-label">{ui.submitter}</span>{" "}
-                {submitter === "Salad" ? (
-                  <Link href={wikiHref("Salad")}>{submitter}</Link>
-                ) : (
-                  <span>{submitter}</span>
-                )}
-              </p>
             </section>
           ) : (
             <section id="EGO">
               <h2>{ui.ego}</h2>
+              <SubmitterLine name={submitter} label={ui.submitter} />
               <p className="abn-look">{ui.noEgo}</p>
-              <p className="dossier-submitter">
-                <span className="abn-label">{ui.submitter}</span>{" "}
-                {submitter === "Salad" ? (
-                  <Link href={wikiHref("Salad")}>{submitter}</Link>
-                ) : (
-                  <span>{submitter}</span>
-                )}
-              </p>
             </section>
           )}
 
@@ -389,6 +384,15 @@ export function AbnormalityFile({
         </div>
       </div>
     </div>
+  )
+}
+
+function SubmitterLine({ name, label }: { name: string; label: string }) {
+  return (
+    <p className="dossier-submitter">
+      <span className="abn-label">{label}</span>{" "}
+      {name === "Salad" ? <Link href={wikiHref("Salad")}>{name}</Link> : <span>{name}</span>}
+    </p>
   )
 }
 

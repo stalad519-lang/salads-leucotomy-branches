@@ -137,7 +137,7 @@ export const qe: AbnormalityRecord = {
       zh: ["执着", "自私"],
     },
   },
-  submitter: "Salad",
+  // No named submitter → dossier shows Salad (facility author)
   ego: {
     name: { en: "Fusion", zh: "融合" },
     weapon: {

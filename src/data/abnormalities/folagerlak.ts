@@ -102,6 +102,6 @@ export const folagerlak: AbnormalityRecord = {
     },
   },
   // No E.G.O extracted yet in-game
-  submitter: "Salad",
+  // No named submitter → dossier shows Salad (facility author)
   ego: null,
 }
