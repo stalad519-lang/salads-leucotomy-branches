@@ -255,6 +255,7 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
         { label: "Mood", value: "3" },
         { label: "Damage", value: "[[Red damage]] 14" },
         { label: "EGO", value: "Fusion / 融合" },
+        { label: "Submitter", value: "[[Salad]]" },
       ]),
       content: `H-01-0 **Qe** is a TETH abnormality. The readable sheet on this page is synced from the game's English content file.
 
@@ -276,6 +277,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
         { label: "情绪", value: "3" },
         { label: "伤害", value: "[[Red damage|红伤]] 14" },
         { label: "EGO", value: "融合" },
+        { label: "投稿者", value: "[[Salad]]" },
       ]),
       content: `H-01-0 **Qe** 为 TETH 异想体。本页分栏表格与游戏英文本对齐。
 
@@ -300,6 +302,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
         { label: "Mood", value: "2" },
         { label: "Damage", value: "[[Red damage]] 32" },
         { label: "EGO", value: "Mimesis / Pseudo-Life / You found me" },
+        { label: "Submitter", value: "[[Salad]]" },
       ]),
       content: `H-02-0 **Imaginary Friend** (幻想朋友). Before an Agent claims the gift **You found me**, Introduce shows **Remedic** (医骸) at WAW.
 
@@ -321,6 +324,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
         { label: "情绪", value: "2" },
         { label: "伤害", value: "[[Red damage|红伤]] 32" },
         { label: "EGO", value: "拟生 / You found me" },
+        { label: "投稿者", value: "[[Salad]]" },
       ]),
       content: `H-02-0 **幻想朋友**。在员工获得饰品 **You found me** 之前，图鉴显示 **医骸**（WAW）。
 
@@ -345,6 +349,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
         { label: "Mood", value: "4" },
         { label: "Damage", value: "[[Black damage]] 32" },
         { label: "EGO", value: "—" },
+        { label: "Submitter", value: "[[Salad]]" },
       ]),
       content: `S-03-0 **folagerlak** is a WAW abnormality. No E.G.O has been extracted in the current build.
 
@@ -365,6 +370,7 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
         { label: "情绪", value: "4" },
         { label: "伤害", value: "[[Black damage|黑伤]] 32" },
         { label: "EGO", value: "—" },
+        { label: "投稿者", value: "[[Salad]]" },
       ]),
       content: `S-03-0 **folagerlak** 为 WAW 异想体。当前版本尚未提取 E.G.O。
 

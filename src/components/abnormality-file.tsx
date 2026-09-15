@@ -18,6 +18,7 @@ import {
   formatResistance,
   formatSigned,
   loc,
+  resolveSubmitter,
   resistanceWord,
   type AbnormalityRecord,
   type DamageColor,
@@ -53,6 +54,7 @@ export function AbnormalityFile({
   const ui = FILE_UI[locale]
   const name = loc(file.name, locale)
   const egoName = file.ego ? loc(file.ego.name, locale) : null
+  const submitter = resolveSubmitter(file)
   const dmg = DAMAGE_META[file.damage.color]
   const bg = file.background ? loc(file.background, locale) : []
   const sections = [
@@ -65,7 +67,10 @@ export function AbnormalityFile({
     ...(file.sealedWorkNarration
       ? [{ id: "SealedNarration", label: ui.sealedNarration }]
       : []),
-    ...(egoName ? [{ id: "EGO", label: `${ui.ego} · ${egoName}` }] : []),
+    {
+      id: "EGO",
+      label: egoName ? `${ui.ego} · ${egoName}` : ui.ego,
+    },
     ...(notes?.trim() ? [{ id: "Notes", label: ui.notes }] : []),
   ]
 
@@ -350,8 +355,30 @@ export function AbnormalityFile({
               <p className="abn-special">
                 {ui.special}: {file.ego.gift.special ? loc(file.ego.gift.special, locale) : ui.none}
               </p>
+
+              <p className="dossier-submitter">
+                <span className="abn-label">{ui.submitter}</span>{" "}
+                {submitter === "Salad" ? (
+                  <Link href={wikiHref("Salad")}>{submitter}</Link>
+                ) : (
+                  <span>{submitter}</span>
+                )}
+              </p>
             </section>
-          ) : null}
+          ) : (
+            <section id="EGO">
+              <h2>{ui.ego}</h2>
+              <p className="abn-look">{ui.noEgo}</p>
+              <p className="dossier-submitter">
+                <span className="abn-label">{ui.submitter}</span>{" "}
+                {submitter === "Salad" ? (
+                  <Link href={wikiHref("Salad")}>{submitter}</Link>
+                ) : (
+                  <span>{submitter}</span>
+                )}
+              </p>
+            </section>
+          )}
 
           {notes?.trim() ? (
             <section id="Notes">

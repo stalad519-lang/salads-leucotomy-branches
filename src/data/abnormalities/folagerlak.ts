@@ -102,5 +102,6 @@ export const folagerlak: AbnormalityRecord = {
     },
   },
   // No E.G.O extracted yet in-game
+  submitter: "Salad",
   ego: null,
 }

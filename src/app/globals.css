@@ -1361,8 +1361,25 @@
   margin-top: 0.25rem;
 }
 
-.ego-stage .abn-look,
-.ego-stage .abn-special {
+.dossier-submitter {
+  margin: 1.1rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgb(255 255 255 / 0.22);
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: rgb(255 255 255 / 0.82);
+}
+
+.dossier-submitter .abn-label {
+  color: rgb(255 255 255 / 0.55);
+  margin-right: 0.35rem;
+}
+
+.dossier-submitter a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
   margin-bottom: 0.45rem;
 }
 
@@ -1404,6 +1421,26 @@
 .abn-bonus .is-neg {
   color: #ff2a2a;
   text-shadow: 0 0 8px rgb(255 42 42 / 0.45);
+}
+
+.dossier-submitter {
+  margin: 1.1rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgb(255 255 255 / 0.22);
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: rgb(255 255 255 / 0.82);
+}
+
+.dossier-submitter .abn-label {
+  color: rgb(255 255 255 / 0.55);
+  margin-right: 0.35rem;
+}
+
+.dossier-submitter a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .archive {

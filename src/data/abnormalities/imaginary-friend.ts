@@ -213,6 +213,7 @@ export const imaginaryFriend: AbnormalityRecord = {
       zh: ["天真", "悔恨"],
     },
   },
+  submitter: "Salad",
   ego: {
     name: { en: "Mimesis", zh: "拟生" },
     weapon: {

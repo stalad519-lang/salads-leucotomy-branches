@@ -92,6 +92,11 @@ export type AbnormalityRecord = {
     primary: Localized
     secondary: Localized<string[]>
   }
+  /**
+   * Fan-submission credit shown under the EGO block.
+   * Omit or leave empty to default to Salad (facility author).
+   */
+  submitter?: string
   ego: {
     name: Localized
     weapon: EgoWeapon
@@ -99,6 +104,14 @@ export type AbnormalityRecord = {
     corrosion: EgoCorrosion
     gift: EgoGift
   } | null
+}
+
+/** Facility author — used when an abnormality has no named submitter. */
+export const DEFAULT_SUBMITTER = "Salad"
+
+export function resolveSubmitter(file: Pick<AbnormalityRecord, "submitter">) {
+  const name = file.submitter?.trim()
+  return name && name.length > 0 ? name : DEFAULT_SUBMITTER
 }
 
 export const WORK_ORDER: WorkKey[] = ["analysis", "instinct", "attachment", "repression"]
@@ -261,6 +274,8 @@ export const FILE_UI = {
     grade: "Grade",
     workSpeed: "Work Speed",
     successRate: "Success Rate",
+    submitter: "Submitter",
+    noEgo: "No E.G.O extracted yet.",
   },
   zh: {
     code: "编号",
@@ -330,6 +345,8 @@ export const FILE_UI = {
     grade: "Grade",
     workSpeed: "工作速度",
     successRate: "成功率",
+    submitter: "投稿者",
+    noEgo: "暂未提取 E.G.O。",
   },
 } as const
 

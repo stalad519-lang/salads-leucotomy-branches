@@ -59,11 +59,9 @@ export const unyieldingPaleFlower: AbnormalityRecord = {
   },
   background: {
     en: [
-      "Submitted by 日照野田.",
       "Primary personality: Compassionate (仁慈). Secondary personalities: Greedy, Arrogant.",
     ],
     zh: [
-      "投稿者：日照野田。",
       "主性格：仁慈。副性格：贪婪、傲慢。",
     ],
   },
@@ -162,6 +160,7 @@ export const unyieldingPaleFlower: AbnormalityRecord = {
       zh: ["贪婪", "傲慢"],
     },
   },
+  submitter: "日照野田",
   ego: {
     name: { en: "Cherished Love", zh: "怀爱" },
     weapon: {

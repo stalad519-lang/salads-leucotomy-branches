@@ -137,6 +137,7 @@ export const qe: AbnormalityRecord = {
       zh: ["执着", "自私"],
     },
   },
+  submitter: "Salad",
   ego: {
     name: { en: "Fusion", zh: "融合" },
     weapon: {
