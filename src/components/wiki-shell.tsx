@@ -164,6 +164,7 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
           <Link
             href="/"
             className="wiki-brand flex min-w-0 shrink-0 items-center gap-2 text-white sm:gap-2.5"
+            aria-label={settings.name}
           >
             <span className="wiki-brand-icon" aria-hidden>
               <Image
@@ -173,10 +174,14 @@ export function WikiShell({ children }: { children: React.ReactNode }) {
                 height={64}
               />
             </span>
-            <span className="wiki-brand-name min-w-0">
-              <span className="block truncate text-[15px] leading-tight font-semibold">
-                {settings.name}
-              </span>
+            <span className="wiki-brand-wordmark min-w-0" aria-hidden>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/salad-wordmark.png"
+                alt=""
+                width={220}
+                height={50}
+              />
             </span>
           </Link>
 

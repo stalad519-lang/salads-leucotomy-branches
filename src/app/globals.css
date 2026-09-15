@@ -168,20 +168,29 @@
   min-width: 0;
 }
 
-.wiki-brand-name {
+.wiki-brand-wordmark {
   display: none;
 }
 
+.wiki-brand-wordmark img {
+  display: block;
+  height: 1.35rem;
+  width: auto;
+  max-width: 11.5rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
 @media (min-width: 640px) {
-  .wiki-brand-name {
+  .wiki-brand-wordmark {
     display: block;
-    max-width: 11rem;
   }
 }
 
 @media (min-width: 900px) {
-  .wiki-brand-name {
-    max-width: 18rem;
+  .wiki-brand-wordmark img {
+    height: 1.55rem;
+    max-width: 15rem;
   }
 }
 
@@ -1448,107 +1457,139 @@
   border-bottom: 0;
 }
 
-.game-title-banner {
-  --banner-rail: 0.42rem;
+.brand-hero {
+  --banner-rail: 0.38rem;
   --banner-stripe: repeating-linear-gradient(
     -45deg,
     #8a0d16 0 5px,
     #0a0a0a 5px 10px
   );
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(0.8rem, 1.8vw, 1.2rem);
-  width: 100%;
-  padding:
-    calc(var(--banner-rail) + 0.75rem) clamp(0.9rem, 2.2vw, 1.35rem)
-    calc(var(--banner-rail) + 0.8rem);
-  box-sizing: border-box;
-  border-bottom: 1px solid rgb(255 255 255 / 0.28);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgb(255 255 255 / 0.22);
   background:
     linear-gradient(
-      90deg,
-      rgb(200 16 46 / 0.2),
-      transparent 38%
+      180deg,
+      rgb(200 16 46 / 0.14),
+      transparent 42%
     ),
-    linear-gradient(#080808, #080808) center /
+    linear-gradient(#050505, #050505) center /
       100% calc(100% - (var(--banner-rail) * 2)) no-repeat,
     var(--banner-stripe);
-  color: #fff;
+  animation: brand-hero-in 0.7s ease-out both;
 }
 
-.game-title-banner-icon {
+.brand-hero-stage {
+  position: relative;
   display: grid;
-  place-items: center;
-  width: clamp(3.9rem, 8.5vw, 5.1rem);
-  height: clamp(3.9rem, 8.5vw, 5.1rem);
-  flex-shrink: 0;
-  overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 0.8);
-  background: #000;
-  box-shadow:
-    0 0 0 1px #000,
-    0 0 14px rgb(255 255 255 / 0.1);
+  place-items: end center;
+  min-height: clamp(9.5rem, 22vw, 14rem);
+  padding:
+    calc(var(--banner-rail) + 0.85rem)
+    clamp(1rem, 3vw, 2rem)
+    calc(var(--banner-rail) + 1rem);
+  box-sizing: border-box;
 }
 
-.game-title-banner-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.58);
-  transform-origin: center;
+.brand-hero-marks {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--banner-rail) + 0.35rem);
+  width: min(42rem, 92%);
+  height: auto;
+  transform: translateX(-50%);
+  opacity: 0.72;
+  pointer-events: none;
+  animation: brand-marks-rise 0.9s ease-out 0.12s both;
 }
 
-.game-title-banner-copy {
+.brand-hero-wordmark {
+  position: relative;
+  z-index: 1;
+  width: min(22rem, 78vw);
+  height: auto;
+  margin-bottom: 0.35rem;
+  filter: drop-shadow(0 0 18px rgb(200 16 46 / 0.28));
+  animation: brand-word-in 0.65s ease-out 0.18s both;
+}
+
+.archive-list-bar {
   display: flex;
   flex-direction: column;
-  gap: 0.18rem;
-  min-width: 0;
+  gap: 0.2rem;
+  padding: 0.7rem clamp(0.9rem, 2.2vw, 1.35rem) 0.85rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.18);
+  background: rgb(0 0 0 / 0.72);
 }
 
-.game-title-banner-brand {
+.archive-list-bar .archive-kicker {
   margin: 0;
-  order: 3;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: rgb(255 255 255 / 0.48);
-}
-
-.game-title-banner-copy .archive-kicker {
-  margin: 0;
-  order: 1;
   grid-column: auto;
 }
 
-.game-title-banner-title-row {
-  order: 2;
+.archive-list-bar-row {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: 0.25rem 1rem;
-  margin-top: 0.05rem;
 }
 
-.game-title-banner-title-row h1 {
+.archive-list-bar-row h1 {
   margin: 0;
-  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
   font-weight: 700;
   letter-spacing: 0.03em;
-  line-height: 1.12;
+  line-height: 1.15;
   color: #fff;
-  text-shadow: 0 0 12px rgb(200 16 46 / 0.25);
 }
 
-.game-title-banner-count {
+.archive-list-bar-count {
   margin: 0;
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgb(255 255 255 / 0.5);
   white-space: nowrap;
+}
+
+@keyframes brand-hero-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes brand-marks-rise {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0.7rem);
+  }
+  to {
+    opacity: 0.72;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes brand-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-hero,
+  .brand-hero-marks,
+  .brand-hero-wordmark {
+    animation: none;
+  }
 }
 
 .archive-head-meta {

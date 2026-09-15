@@ -23,20 +23,33 @@ export function AbnormalityBoard() {
   return (
     <div className="archive">
       <header className="archive-head archive-head--banner">
-        <div className="game-title-banner">
-          <span className="game-title-banner-icon" aria-hidden>
+        <div className="brand-hero" aria-label="Salad's leucotomy branches">
+          <div className="brand-hero-stage">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/game-icon.jpg" alt="" />
-          </span>
-          <div className="game-title-banner-copy">
-            <p className="archive-kicker">{ui.file}</p>
-            <div className="game-title-banner-title-row">
-              <h1>{locale === "zh" ? "异想体一览" : "List of Abnormalities"}</h1>
-              <span className="game-title-banner-count">
-                {held} {ui.board}
-              </span>
-            </div>
-            <p className="game-title-banner-brand">Salad&apos;s leucotomy branches</p>
+            <img
+              className="brand-hero-marks"
+              src="/brand/facility-marks.png"
+              alt=""
+              width={620}
+              height={340}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="brand-hero-wordmark"
+              src="/brand/salad-wordmark.png"
+              alt="Salad's Leucotomy Branches"
+              width={440}
+              height={100}
+            />
+          </div>
+        </div>
+        <div className="archive-list-bar">
+          <p className="archive-kicker">{ui.file}</p>
+          <div className="archive-list-bar-row">
+            <h1>{locale === "zh" ? "异想体一览" : "List of Abnormalities"}</h1>
+            <span className="archive-list-bar-count">
+              {held} {ui.board}
+            </span>
           </div>
         </div>
       </header>
