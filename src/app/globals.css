@@ -1380,6 +1380,9 @@
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
+
+.ego-stage .abn-look,
+.ego-stage .abn-special {
   margin-bottom: 0.45rem;
 }
 
