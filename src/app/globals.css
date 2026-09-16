@@ -1085,6 +1085,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  line-height: 1;
   border: 1px solid;
   padding: 0.22rem 0.7rem;
   font-weight: 600;
@@ -1770,10 +1771,16 @@
   text-shadow: 0 0 8px rgb(255 42 42 / 0.45);
 }
 
+.archive-cell-meta {
+  vertical-align: middle;
+}
+
 .archive-dmg {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .archive-dmg i {
@@ -1784,11 +1791,11 @@
 }
 
 .dmg-type-icon {
+  display: block;
   width: 1.45rem;
   height: 1.45rem;
   object-fit: contain;
   flex: 0 0 auto;
-  vertical-align: middle;
 }
 
 .dmg-type-icon--sm {

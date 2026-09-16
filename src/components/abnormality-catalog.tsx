@@ -106,15 +106,17 @@ export function AbnormalityBoard() {
                         {loc(file.name, locale)}
                       </Link>
                     </td>
-                    <td>
+                    <td className="archive-cell-meta">
                       <RiskBadge risk={file.risk} />
                     </td>
-                    <td className="archive-dmg">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={meta.icon} alt="" className="dmg-type-icon" />
-                      <span>{locale === "zh" ? meta.zh : meta.en}</span>
+                    <td className="archive-cell-meta">
+                      <span className="archive-dmg">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={meta.icon} alt="" className="dmg-type-icon" />
+                        <span>{locale === "zh" ? meta.zh : meta.en}</span>
+                      </span>
                     </td>
-                    <td className="archive-pe">
+                    <td className="archive-cell-meta archive-pe">
                       <span
                         className="mood-meter mood-meter--compact"
                         title={`${ui.pe} ${file.mood}`}
@@ -123,7 +125,9 @@ export function AbnormalityBoard() {
                         <span className="mood-meter-n">{file.mood}</span>
                       </span>
                     </td>
-                    <td>{file.ego ? loc(file.ego.name, locale) : "—"}</td>
+                    <td className="archive-cell-meta">
+                      {file.ego ? loc(file.ego.name, locale) : "—"}
+                    </td>
                   </tr>
                 )
               })}
