@@ -45,9 +45,9 @@ export const creators: CreatorRecord[] = [
     role: { en: "Modeler", zh: "建模师" },
   },
   {
-    slug: "萌克",
-    name: "萌克",
-    portrait: "/creators/mengke.jpg",
+    slug: "花生酱",
+    name: "花生酱",
+    portrait: "/creators/huashengjiang.jpg",
     role: { en: "Artist", zh: "画师" },
   },
   {

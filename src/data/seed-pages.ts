@@ -51,7 +51,7 @@ The files that belong here are **[[Abnormalities|abnormality]]** records: what a
 * [[Category:Abnormalities|Abnormalities]] — one page per 异想体 file
 * [[Category:Basics|Basics]] — four damage colors, four works, personality overviews
 * [[Category:Personalities|Personalities]] — full Codex (43 traits with descriptions)
-* [[Category:Creators|Creators]] — [[Salad]], [[Stalad]], artists [[邮箱]] / [[WATER_]] / [[萌克]] / [[云陌商]] / [[言]] / [[凉菜]] / [[小E]], mascot [[不改]], modeler [[男玩]]
+* [[Category:Creators|Creators]] — [[Salad]], [[Stalad]], artists [[邮箱]] / [[WATER_]] / [[花生酱]] / [[云陌商]] / [[言]] / [[凉菜]] / [[小E]], mascot [[不改]], modeler [[男玩]]
 
 ## Damage and work
 
@@ -67,7 +67,7 @@ Every hit in this game is one of four colors. Each color is also a work:
 * [[Category:Abnormalities|Abnormalities]]
 * [[Basics]] — [[Damage]], [[Work]], [[Primary personality]], [[Secondary personality]]
 * [[Category:Personalities|Personalities]] — Curious, Remorse, Last Stand, …
-* [[Creators]] — [[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[不改]], [[男玩]], [[萌克]], [[云陌商]], [[言]], [[凉菜]], [[小E]]
+* [[Creators]] — [[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[不改]], [[男玩]], [[花生酱]], [[云陌商]], [[言]], [[凉菜]], [[小E]]
 * [[Qe]] — first abnormality file (H-01-0)
 * [[Imaginary Friend]] — H-02-0 (sealed: Remedic)
 * [[folagerlak]] — S-03-0
@@ -88,7 +88,7 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 * [[Category:Abnormalities|异想体]] — 每个异想体一页档案
 * [[Category:Basics|基本信息]] — 四色伤害、四种工作、性格概览
 * [[Category:Personalities|性格]] — 完整图鉴（43 条含描述）
-* [[Category:Creators|创作者]] — [[Salad]]、[[Stalad]]、画师 [[邮箱]] / [[WATER_]] / [[萌克]] / [[云陌商]] / [[言]] / [[凉菜]] / [[小E]]、吉祥物 [[不改]]、建模师 [[男玩]]
+* [[Category:Creators|创作者]] — [[Salad]]、[[Stalad]]、画师 [[邮箱]] / [[WATER_]] / [[花生酱]] / [[云陌商]] / [[言]] / [[凉菜]] / [[小E]]、吉祥物 [[不改]]、建模师 [[男玩]]
 
 ## 伤害与工作
 
@@ -104,7 +104,7 @@ English is the source language. Switch to 中文 in the header; missing Chinese 
 * [[Category:Abnormalities|异想体]]
 * [[Basics|基本信息]] — [[Damage|伤害]]、[[Work|工作]]、[[Primary personality|主性格]]、[[Secondary personality|副性格]]
 * [[Category:Personalities|性格]] — 好奇、悔恨、背水一战…
-* [[Creators|创作者]] — [[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[不改]]、[[男玩]]、[[萌克]]、[[云陌商]]、[[言]]、[[凉菜]]、[[小E]]
+* [[Creators|创作者]] — [[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[不改]]、[[男玩]]、[[花生酱]]、[[云陌商]]、[[言]]、[[凉菜]]、[[小E]]
 * [[Qe]] — 第一份异想体档案（H-01-0）
 * [[Imaginary Friend|幻想朋友]] — H-02-0（密封：医骸）
 * [[folagerlak]] — S-03-0
@@ -1375,20 +1375,20 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
     }
   ),
   page(
-    "萌克",
+    "花生酱",
     {
-      title: "萌克",
+      title: "花生酱",
       categories: ["Creators"],
-      infobox: box("萌克", "Artist", [
+      infobox: box("花生酱", "Artist", [
         { label: "Role", value: "Artist / 画师" },
         { label: "Game", value: "[[Salad's leucotomy branches]]" },
         { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[不改]], [[男玩]], [[Creators]]" },
       ]),
-      content: `**萌克** is an **artist** (画师) for [[Salad's leucotomy branches]].
+      content: `**花生酱** is an **artist** (画师) for [[Salad's leucotomy branches]].
 
-![萌克](/creators/mengke.jpg)
+![花生酱](/creators/huashengjiang.jpg)
 
-萌克 draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]] and [[WATER_]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
+花生酱 draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]] and [[WATER_]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
 
 ## See also
 
@@ -1402,18 +1402,18 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Salad's leucotomy branches]]`,
     },
     {
-      title: "萌克",
+      title: "花生酱",
       categories: ["Creators"],
-      infobox: box("萌克", "画师", [
+      infobox: box("花生酱", "画师", [
         { label: "职务", value: "画师 / Artist" },
         { label: "游戏", value: "[[Salad's leucotomy branches]]" },
         { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[不改]]、[[男玩]]、[[Creators]]" },
       ]),
-      content: `**萌克** 是 [[Salad's leucotomy branches]] 的 **画师**（Artist）。
+      content: `**花生酱** 是 [[Salad's leucotomy branches]] 的 **画师**（Artist）。
 
-![萌克](/creators/mengke.jpg)
+![花生酱](/creators/huashengjiang.jpg)
 
-萌克负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]] 与 [[WATER_]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
+花生酱负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]] 与 [[WATER_]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
 
 ## 参见
 
@@ -1435,13 +1435,13 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
       infobox: box("云陌商", "Artist", [
         { label: "Role", value: "Artist / 画师" },
         { label: "Game", value: "[[Salad's leucotomy branches]]" },
-        { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[萌克]], [[不改]], [[男玩]], [[Creators]]" },
+        { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[花生酱]], [[不改]], [[男玩]], [[Creators]]" },
       ]),
       content: `**云陌商** is an **artist** (画师) for [[Salad's leucotomy branches]].
 
 ![云陌商](/creators/yunmoshang.jpg)
 
-云陌商 draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]], [[WATER_]], and [[萌克]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
+云陌商 draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]], [[WATER_]], and [[花生酱]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
 
 ## See also
 
@@ -1450,7 +1450,7 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Stalad]]
 * [[邮箱]]
 * [[WATER_]]
-* [[萌克]]
+* [[花生酱]]
 * [[不改]]
 * [[男玩]]
 * [[Salad's leucotomy branches]]`,
@@ -1461,13 +1461,13 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
       infobox: box("云陌商", "画师", [
         { label: "职务", value: "画师 / Artist" },
         { label: "游戏", value: "[[Salad's leucotomy branches]]" },
-        { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[萌克]]、[[不改]]、[[男玩]]、[[Creators]]" },
+        { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[花生酱]]、[[不改]]、[[男玩]]、[[Creators]]" },
       ]),
       content: `**云陌商** 是 [[Salad's leucotomy branches]] 的 **画师**（Artist）。
 
 ![云陌商](/creators/yunmoshang.jpg)
 
-云陌商负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]]、[[WATER_]] 与 [[萌克]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
+云陌商负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]]、[[WATER_]] 与 [[花生酱]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
 
 ## 参见
 
@@ -1476,7 +1476,7 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Stalad]]
 * [[邮箱]]
 * [[WATER_]]
-* [[萌克]]
+* [[花生酱]]
 * [[不改]]
 * [[男玩]]
 * [[Salad's leucotomy branches]]`,
@@ -1490,13 +1490,13 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
       infobox: box("言", "Artist", [
         { label: "Role", value: "Artist / 画师" },
         { label: "Game", value: "[[Salad's leucotomy branches]]" },
-        { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[萌克]], [[云陌商]], [[不改]], [[男玩]], [[Creators]]" },
+        { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[花生酱]], [[云陌商]], [[不改]], [[男玩]], [[Creators]]" },
       ]),
       content: `**言** is an **artist** (画师) for [[Salad's leucotomy branches]].
 
 ![言](/creators/yan.jpg)
 
-言 draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]], [[WATER_]], [[萌克]], and [[云陌商]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
+言 draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]], [[WATER_]], [[花生酱]], and [[云陌商]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
 
 ## See also
 
@@ -1505,7 +1505,7 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Stalad]]
 * [[邮箱]]
 * [[WATER_]]
-* [[萌克]]
+* [[花生酱]]
 * [[云陌商]]
 * [[不改]]
 * [[男玩]]
@@ -1517,13 +1517,13 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
       infobox: box("言", "画师", [
         { label: "职务", value: "画师 / Artist" },
         { label: "游戏", value: "[[Salad's leucotomy branches]]" },
-        { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[萌克]]、[[云陌商]]、[[不改]]、[[男玩]]、[[Creators]]" },
+        { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[花生酱]]、[[云陌商]]、[[不改]]、[[男玩]]、[[Creators]]" },
       ]),
       content: `**言** 是 [[Salad's leucotomy branches]] 的 **画师**（Artist）。
 
 ![言](/creators/yan.jpg)
 
-言负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]]、[[WATER_]]、[[萌克]] 与 [[云陌商]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
+言负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]]、[[WATER_]]、[[花生酱]] 与 [[云陌商]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
 
 ## 参见
 
@@ -1532,7 +1532,7 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Stalad]]
 * [[邮箱]]
 * [[WATER_]]
-* [[萌克]]
+* [[花生酱]]
 * [[云陌商]]
 * [[不改]]
 * [[男玩]]
@@ -1547,13 +1547,13 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
       infobox: box("凉菜", "Artist", [
         { label: "Role", value: "Artist / 画师" },
         { label: "Game", value: "[[Salad's leucotomy branches]]" },
-        { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[萌克]], [[云陌商]], [[言]], [[不改]], [[男玩]], [[Creators]]" },
+        { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[花生酱]], [[云陌商]], [[言]], [[不改]], [[男玩]], [[Creators]]" },
       ]),
       content: `**凉菜** is an **artist** (画师) for [[Salad's leucotomy branches]].
 
 ![凉菜](/creators/liangcai.jpg)
 
-凉菜 draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]], [[WATER_]], [[萌克]], [[云陌商]], and [[言]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
+凉菜 draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]], [[WATER_]], [[花生酱]], [[云陌商]], and [[言]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
 
 ## See also
 
@@ -1562,7 +1562,7 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Stalad]]
 * [[邮箱]]
 * [[WATER_]]
-* [[萌克]]
+* [[花生酱]]
 * [[云陌商]]
 * [[言]]
 * [[不改]]
@@ -1575,13 +1575,13 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
       infobox: box("凉菜", "画师", [
         { label: "职务", value: "画师 / Artist" },
         { label: "游戏", value: "[[Salad's leucotomy branches]]" },
-        { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[萌克]]、[[云陌商]]、[[言]]、[[不改]]、[[男玩]]、[[Creators]]" },
+        { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[花生酱]]、[[云陌商]]、[[言]]、[[不改]]、[[男玩]]、[[Creators]]" },
       ]),
       content: `**凉菜** 是 [[Salad's leucotomy branches]] 的 **画师**（Artist）。
 
 ![凉菜](/creators/liangcai.jpg)
 
-凉菜负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]]、[[WATER_]]、[[萌克]]、[[云陌商]] 与 [[言]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
+凉菜负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]]、[[WATER_]]、[[花生酱]]、[[云陌商]] 与 [[言]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
 
 ## 参见
 
@@ -1590,7 +1590,7 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Stalad]]
 * [[邮箱]]
 * [[WATER_]]
-* [[萌克]]
+* [[花生酱]]
 * [[云陌商]]
 * [[言]]
 * [[不改]]
@@ -1606,13 +1606,13 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
       infobox: box("小E", "Artist", [
         { label: "Role", value: "Artist / 画师" },
         { label: "Game", value: "[[Salad's leucotomy branches]]" },
-        { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[萌克]], [[云陌商]], [[言]], [[凉菜]], [[不改]], [[男玩]], [[Creators]]" },
+        { label: "Also see", value: "[[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[花生酱]], [[云陌商]], [[言]], [[凉菜]], [[不改]], [[男玩]], [[Creators]]" },
       ]),
       content: `**小E** is an **artist** (画师) for [[Salad's leucotomy branches]].
 
 ![小E](/creators/xiaoe.jpg)
 
-小E draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]], [[WATER_]], [[萌克]], [[云陌商]], [[言]], and [[凉菜]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
+小E draws for the facility. For the game author, see [[Salad]]; for music, see [[Stalad]]; for other artists, see [[邮箱]], [[WATER_]], [[花生酱]], [[云陌商]], [[言]], and [[凉菜]]; for the mascot, see [[不改]]; for modeling, see [[男玩]].
 
 ## See also
 
@@ -1621,7 +1621,7 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Stalad]]
 * [[邮箱]]
 * [[WATER_]]
-* [[萌克]]
+* [[花生酱]]
 * [[云陌商]]
 * [[言]]
 * [[凉菜]]
@@ -1635,13 +1635,13 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
       infobox: box("小E", "画师", [
         { label: "职务", value: "画师 / Artist" },
         { label: "游戏", value: "[[Salad's leucotomy branches]]" },
-        { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[萌克]]、[[云陌商]]、[[言]]、[[凉菜]]、[[不改]]、[[男玩]]、[[Creators]]" },
+        { label: "参见", value: "[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[花生酱]]、[[云陌商]]、[[言]]、[[凉菜]]、[[不改]]、[[男玩]]、[[Creators]]" },
       ]),
       content: `**小E** 是 [[Salad's leucotomy branches]] 的 **画师**（Artist）。
 
 ![小E](/creators/xiaoe.jpg)
 
-小E负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]]、[[WATER_]]、[[萌克]]、[[云陌商]]、[[言]] 与 [[凉菜]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
+小E负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[Stalad]]；其他画师见 [[邮箱]]、[[WATER_]]、[[花生酱]]、[[云陌商]]、[[言]] 与 [[凉菜]]；吉祥物见 [[不改]]；建模师见 [[男玩]]。
 
 ## 参见
 
@@ -1650,7 +1650,7 @@ WATER_ 负责设施相关的绘制。游戏总作者见 [[Salad]]；曲师见 [[
 * [[Stalad]]
 * [[邮箱]]
 * [[WATER_]]
-* [[萌克]]
+* [[花生酱]]
 * [[云陌商]]
 * [[言]]
 * [[凉菜]]
@@ -1907,9 +1907,9 @@ Browse the board: [[Category:Personalities]].`,
 
 **[[男玩]]** — Modeler (建模师)
 
-![萌克](/creators/mengke.jpg)
+![花生酱](/creators/huashengjiang.jpg)
 
-**[[萌克]]** — Artist (画师)
+**[[花生酱]]** — Artist (画师)
 
 ![云陌商](/creators/yunmoshang.jpg)
 
@@ -1965,9 +1965,9 @@ Browse the board: [[Category:Personalities]].`,
 
 **[[男玩]]** — 建模师（Modeler）
 
-![萌克](/creators/mengke.jpg)
+![花生酱](/creators/huashengjiang.jpg)
 
-**[[萌克]]** — 画师（Artist）
+**[[花生酱]]** — 画师（Artist）
 
 ![云陌商](/creators/yunmoshang.jpg)
 
@@ -2030,7 +2030,7 @@ The four categories:
 * \`Abnormalities\` — 异想体 files
 * \`Basics\` — 基本信息 (damage, work, primary / secondary personalities)
 * \`Personalities\` — 性格 Codex
-* \`Creators\` — 创作者 ([[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[不改]], [[男玩]], [[萌克]], [[云陌商]], [[言]], [[凉菜]], [[小E]])
+* \`Creators\` — 创作者 ([[Salad]], [[Stalad]], [[邮箱]], [[WATER_]], [[不改]], [[男玩]], [[花生酱]], [[云陌商]], [[言]], [[凉菜]], [[小E]])
 
 An abnormality page should use:
 
@@ -2090,7 +2090,7 @@ Escape conditions, gifts, or other facts from the Roblox game — not copied off
 * \`Abnormalities\` — 异想体
 * \`Basics\` — 基本信息（伤害、工作、主性格与副性格）
 * \`Personalities\` — 性格图鉴
-* \`Creators\` — 创作者（[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[不改]]、[[男玩]]、[[萌克]]、[[云陌商]]、[[言]]、[[凉菜]]、[[小E]]）
+* \`Creators\` — 创作者（[[Salad]]、[[Stalad]]、[[邮箱]]、[[WATER_]]、[[不改]]、[[男玩]]、[[花生酱]]、[[云陌商]]、[[言]]、[[凉菜]]、[[小E]]）
 
 异想体档案分类填：
 

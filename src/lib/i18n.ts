@@ -99,7 +99,7 @@ export const messages = {
     pickScene: "Open a category",
     catAbnormalitiesDesc: "Held files, sorted by risk. H-01-0 lives here.",
     catBasicsDesc: "Four damage colors, four works, and primary / secondary personalities.",
-    catCreatorsDesc: "Salad, Stalad, artists 邮箱 / WATER_ / 萌克 / 云陌商 / 言 / 凉菜 / 小E, mascot 不改, and modeler 男玩.",
+    catCreatorsDesc: "Salad, Stalad, artists 邮箱 / WATER_ / 花生酱 / 云陌商 / 言 / 凉菜 / 小E, mascot 不改, and modeler 男玩.",
     catPersonalitiesDesc:
       "Full Personality Codex: 8 primaries, 19 traits, 16 special unlocks — names, descriptions, bonuses, acquire.",
   },
@@ -193,7 +193,7 @@ export const messages = {
     pickScene: "选择分类",
     catAbnormalitiesDesc: "在库个体，按危险等级排列。H-01-0 在这里。",
     catBasicsDesc: "四色伤害、四种工作、主性格与副性格。",
-    catCreatorsDesc: "Salad、Stalad、画师 邮箱 / WATER_ / 萌克 / 云陌商 / 言 / 凉菜 / 小E、吉祥物 不改，以及建模师 男玩。",
+    catCreatorsDesc: "Salad、Stalad、画师 邮箱 / WATER_ / 花生酱 / 云陌商 / 言 / 凉菜 / 小E、吉祥物 不改，以及建模师 男玩。",
     catPersonalitiesDesc:
       "完整性格图鉴：8 主性格、19 特质、16 特殊解锁——名称、描述、加成与获得方式。",
   },
