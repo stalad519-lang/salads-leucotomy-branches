@@ -104,10 +104,7 @@ export function AbnormalityFile({
                 <span className="archive-dmg">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={dmg.icon} alt="" className="dmg-type-icon" />
-                  <span>
-                    {formatRange(file.damage.min, file.damage.max)}{" "}
-                    {locale === "zh" ? dmg.zh : dmg.en}
-                  </span>
+                  <span>{locale === "zh" ? dmg.zh : dmg.en}</span>
                 </span>
               </dd>
             </div>

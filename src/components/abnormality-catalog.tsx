@@ -7,7 +7,6 @@ import {
   DAMAGE_META,
   FILE_UI,
   RISK_CSS,
-  formatRange,
   groupedAbnormalities,
   loc,
 } from "@/lib/abnormality"
@@ -113,10 +112,7 @@ export function AbnormalityBoard() {
                     <td className="archive-dmg">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={meta.icon} alt="" className="dmg-type-icon" />
-                      <span>
-                        {formatRange(file.damage.min, file.damage.max)}{" "}
-                        {locale === "zh" ? meta.zh : meta.en}
-                      </span>
+                      <span>{locale === "zh" ? meta.zh : meta.en}</span>
                     </td>
                     <td className="archive-pe">
                       <span
