@@ -1515,8 +1515,8 @@
 .brand-hero-marks {
   position: absolute;
   left: 50%;
-  /* sit on the bottom hazard rail (警报线) */
-  bottom: 0;
+  /* nest base into the bottom hazard rail (警报线) */
+  bottom: calc(var(--banner-rail) * -0.55);
   width: min(42rem, 92%);
   height: auto;
   transform: translateX(-50%);
