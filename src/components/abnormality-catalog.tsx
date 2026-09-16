@@ -29,8 +29,8 @@ export function AbnormalityBoard() {
               className="brand-hero-marks"
               src="/brand/facility-marks.png"
               alt=""
-              width={620}
-              height={340}
+              width={825}
+              height={331}
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
