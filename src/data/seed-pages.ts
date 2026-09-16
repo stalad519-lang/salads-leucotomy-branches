@@ -406,7 +406,7 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
 * EGO: Cherished Love (怀爱) — spear, suit (craft once), ALEPH corrosion, gift Pale Eye (苍瞳)
 * Personality: Compassionate (仁慈) · Greedy, Arrogant
 
-See the structured sheet on this page for management rules (Hollow / Resurrection), work rates, and EGO details.
+See the structured sheet on this page for managerial guidelines, traits (work rates / Resurrection), and EGO details.
 
 See [[Abnormalities]], [[Red damage]], [[Work]], [[Compassionate]].`,
     },
@@ -431,7 +431,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]], [[Compassionate]].`,
 * EGO：怀爱 — 长矛、西装（仅可制作一次）、ALEPH 侵蚀、饰品苍瞳
 * 性格：仁慈 · 贪婪、傲慢
 
-管理需知（空壳 / 复活）、工作成功率与 EGO 细节见本页结构化档案。
+管理需知、特性（工作成功率 / 复活）与 EGO 细节见本页结构化档案。
 
 见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]、[[Compassionate|仁慈]]。`,
     }

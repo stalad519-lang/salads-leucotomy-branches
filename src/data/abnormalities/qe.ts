@@ -58,23 +58,25 @@ export const qe: AbnormalityRecord = {
       "主性格：好奇，副性格：执着，自私",
     ],
   },
+  traits: {
+    en: [
+      "Analysis — On unit enter: if Fortitude is below II, Qe executes the Agent (o01Kill).",
+      "Attachment — Always Very Low at every level.",
+    ],
+    zh: [
+      "解析 — 进入收容室时：勇气低于 II 则处刑该员工（o01Kill）。",
+      "沟通 — 全程极低。",
+    ],
+  },
   workPreference: {
     analysis: {
       rates: ["Low", "Normal", "High", "High", "VeryHigh"],
-      note: {
-        en: "On unit enter: if Fortitude is below II, Qe executes the Agent (o01Kill).",
-        zh: "进入收容室时：勇气低于 II 则处刑该员工（o01Kill）。",
-      },
     },
     instinct: {
       rates: ["Normal", "Normal", "High", "VeryHigh", "VeryHigh"],
     },
     attachment: {
       rates: ["VeryLow", "VeryLow", "VeryLow", "VeryLow", "VeryLow"],
-      note: {
-        en: "Attachment is always Very Low at every level.",
-        zh: "沟通全程极低。",
-      },
     },
     repression: {
       rates: ["Low", "Normal", "High", "High", "VeryHigh"],

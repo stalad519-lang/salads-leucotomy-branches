@@ -2553,6 +2553,20 @@
   color: rgb(255 255 255 / 0.82);
 }
 
+.dossier-traits {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.88);
+}
+
+.dossier-traits li::marker {
+  color: rgb(255 42 42 / 0.75);
+}
+
 .dossier-work-hint {
   margin: 0 0 0.65rem;
   font-size: 0.78rem;

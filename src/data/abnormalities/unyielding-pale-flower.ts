@@ -65,34 +65,32 @@ export const unyieldingPaleFlower: AbnormalityRecord = {
       "主性格：仁慈。副性格：贪婪、傲慢。",
     ],
   },
+  traits: {
+    en: [
+      "Analysis — Success I–V: 40% / 50% / 60% / 70% / 80%.",
+      "Instinct — Success I–V: 30% / 35% / 40% / 50% / 70%. With a Hollow present and a death that day, Instinct becomes “Resurrection”.",
+      "Attachment — Success I–V: 40% / 40% / 40% / 60% / 60%.",
+      "Repression — Success I–V: 0% / 0% / 10% / 12% / 25%.",
+    ],
+    zh: [
+      "解析 — 成功率 I–V：40% / 50% / 60% / 70% / 80%。",
+      "本能 — 成功率 I–V：30% / 35% / 40% / 50% / 70%。存在空壳且当天有员工死亡时，本能替换为「复活」。",
+      "沟通 — 成功率 I–V：40% / 40% / 40% / 60% / 60%。",
+      "压迫 — 成功率 I–V：0% / 0% / 10% / 12% / 25%。",
+    ],
+  },
   workPreference: {
     analysis: {
       rates: ["Low", "Normal", "High", "High", "VeryHigh"],
-      note: {
-        en: "Success I–V: 40% / 50% / 60% / 70% / 80%.",
-        zh: "成功率 I–V：40% / 50% / 60% / 70% / 80%。",
-      },
     },
     instinct: {
       rates: ["Low", "Low", "Low", "Normal", "High"],
-      note: {
-        en: "Success I–V: 30% / 35% / 40% / 50% / 70%. With a Hollow present and a death that day, Instinct becomes “Resurrection”.",
-        zh: "成功率 I–V：30% / 35% / 40% / 50% / 70%。存在空壳且当天有员工死亡时，本能替换为「复活」。",
-      },
     },
     attachment: {
       rates: ["Low", "Low", "Low", "High", "High"],
-      note: {
-        en: "Success I–V: 40% / 40% / 40% / 60% / 60%.",
-        zh: "成功率 I–V：40% / 40% / 40% / 60% / 60%。",
-      },
     },
     repression: {
       rates: ["AlwaysBad", "AlwaysBad", "VeryLow", "VeryLow", "Low"],
-      note: {
-        en: "Success I–V: 0% / 0% / 10% / 12% / 25%.",
-        zh: "成功率 I–V：0% / 0% / 10% / 12% / 25%。",
-      },
     },
   },
   workNarration: {

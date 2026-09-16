@@ -80,27 +80,25 @@ export const imaginaryFriend: AbnormalityRecord = {
     ],
   },
   sealedLabel: { en: "Remedic (sealed)", zh: "医骸（密封）" },
+  traits: {
+    en: [
+      "Analysis — On unit enter: Analysis instantly half-kills the Agent (o02Semi / skip enter anim).",
+      "Instinct / Attachment — 《朋友》 Agents: box success forced to 85%.",
+    ],
+    zh: [
+      "解析 — 进入收容室时：解析会立刻半死（o02Semi，跳过进入动画）。",
+      "本能 / 沟通 — 《朋友》员工：箱成功率强制 85%。",
+    ],
+  },
   workPreference: {
     analysis: {
       rates: ["VeryLow", "VeryLow", "Low", "Low", "Normal"],
-      note: {
-        en: "On unit enter: Analysis instantly half-kills the Agent (o02Semi / skip enter anim).",
-        zh: "进入收容室时：解析会立刻半死（o02Semi，跳过进入动画）。",
-      },
     },
     instinct: {
       rates: ["Low", "Normal", "Normal", "High", "VeryHigh"],
-      note: {
-        en: "《朋友》 Agents: Attachment / Instinct box success forced to 85%.",
-        zh: "《朋友》员工：沟通 / 本能箱成功率强制 85%。",
-      },
     },
     attachment: {
       rates: ["Normal", "High", "High", "VeryHigh", "VeryHigh"],
-      note: {
-        en: "《朋友》 Agents: Attachment / Instinct box success forced to 85%.",
-        zh: "《朋友》员工：沟通 / 本能箱成功率强制 85%。",
-      },
     },
     repression: {
       rates: ["VeryLow", "VeryLow", "VeryLow", "Low", "Low"],

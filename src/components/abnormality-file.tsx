@@ -57,11 +57,13 @@ export function AbnormalityFile({
   const submitter = resolveSubmitter(file)
   const dmg = DAMAGE_META[file.damage.color]
   const bg = file.background ? loc(file.background, locale) : []
+  const traits = file.traits ? loc(file.traits, locale) : []
   const sections = [
     { id: "Story", label: ui.story },
     ...(bg.length ? [{ id: "Background", label: ui.background }] : []),
     { id: "Management", label: ui.management },
     { id: "Personality", label: ui.personality },
+    ...(traits.length ? [{ id: "Traits", label: ui.traits }] : []),
     { id: "WorkPreference", label: ui.workPreference },
     { id: "WorkNarration", label: ui.workNarration },
     ...(file.sealedWorkNarration
@@ -211,6 +213,17 @@ export function AbnormalityFile({
             </p>
           </section>
 
+          {traits.length > 0 ? (
+            <section id="Traits">
+              <h2>{ui.traits}</h2>
+              <ul className="dossier-traits">
+                {traits.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+
           <section id="WorkPreference">
             <h2>{ui.workPreference}</h2>
             <div className="dossier-work-scroll">
@@ -247,20 +260,6 @@ export function AbnormalityFile({
                 </tbody>
               </table>
             </div>
-            <ul className="dossier-work-notes">
-              {WORK_ORDER.map((key) => {
-                const note = file.workPreference[key].note
-                if (!note) return null
-                const label = WORK_LABEL[key]
-                return (
-                  <li key={`${key}-note`}>
-                    <strong>{locale === "zh" ? label.zh : label.en}</strong>
-                    {" — "}
-                    {loc(note, locale)}
-                  </li>
-                )
-              })}
-            </ul>
           </section>
 
           <section id="WorkNarration">

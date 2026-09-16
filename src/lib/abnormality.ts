@@ -81,8 +81,10 @@ export type AbnormalityRecord = {
   resistances: Record<DamageColor, number>
   story: Localized
   management: Localized<string[]>
-  /** Background / personality panel freeform lines */
+  /** Background / personality panel freeform lines (资料) */
   background?: Localized<string[]>
+  /** Short special traits (特性) — work quirks, success notes, etc. */
+  traits?: Localized<string[]>
   workPreference: Record<WorkKey, WorkPreferenceEntry>
   workNarration: WorkNarrationBundle
   /** Remedic (sealed) work float lines — H-02 only */
@@ -265,7 +267,8 @@ export const FILE_UI = {
     colPe: "Mood",
     colEgo: "E.G.O",
     guideline: "Managerial Guidelines",
-    background: "Background",
+    background: "Records",
+    traits: "Traits",
     workPreference: "Work Preference",
     workNarration: "Work Narration",
     sealedNarration: "Sealed work narration",
@@ -336,7 +339,8 @@ export const FILE_UI = {
     colPe: "情绪",
     colEgo: "E.G.O",
     guideline: "管理需知",
-    background: "背景",
+    background: "资料",
+    traits: "特性",
     workPreference: "工作偏好",
     workNarration: "工作旁白",
     sealedNarration: "密封形态工作旁白",
@@ -412,6 +416,8 @@ export function abnormalitySearchText(file: AbnormalityRecord) {
     file.story.zh,
     ...(file.background?.en ?? []),
     ...(file.background?.zh ?? []),
+    ...(file.traits?.en ?? []),
+    ...(file.traits?.zh ?? []),
     ...file.management.en,
     ...file.management.zh,
     ...narrBits,
