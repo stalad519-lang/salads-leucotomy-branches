@@ -431,7 +431,7 @@ See [[Abnormalities]], [[Red damage]], [[Work]], [[Compassionate]].`,
 * EGO：怀爱 — 长矛、西装（仅可制作一次）、ALEPH 侵蚀、饰品苍瞳
 * 性格：仁慈 · 贪婪、傲慢
 
-管理需知、特性（工作成功率 / 复活）与 EGO 细节见本页结构化档案。
+管理需知、特性（复活）与 EGO 细节见本页结构化档案。
 
 见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]、[[Compassionate|仁慈]]。`,
     }
