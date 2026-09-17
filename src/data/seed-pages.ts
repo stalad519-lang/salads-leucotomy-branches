@@ -406,7 +406,7 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
 * EGO: Cherished Love (怀爱) — spear, suit (craft once), ALEPH corrosion, gift Pale Eye (苍瞳)
 * Personality: Compassionate (仁慈) · Greedy, Arrogant
 
-See the structured sheet on this page for managerial guidelines, traits (work rates / Resurrection), and EGO details.
+See the structured sheet on this page for managerial guidelines, traits (Resurrection), and EGO details.
 
 See [[Abnormalities]], [[Red damage]], [[Work]], [[Compassionate]].`,
     },
