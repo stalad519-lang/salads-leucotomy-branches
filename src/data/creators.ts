@@ -74,4 +74,10 @@ export const creators: CreatorRecord[] = [
     portrait: "/creators/xiaoe.jpg",
     role: { en: "Artist", zh: "画师" },
   },
+  {
+    slug: "Flow",
+    name: "Flow",
+    portrait: "/creators/flow.jpg",
+    role: { en: "Animator", zh: "动画师" },
+  },
 ]
