@@ -140,9 +140,7 @@ It is a community project. Official names from Project Moon should be treated as
 
 ## Tone
 
-Keep files encyclopedic: identity, damage, work, and what happens if work fails. Mark spoilers if a page walks through a full suppression.
-
-The name **leucotomy** in the title is the medical joke the facility is built on. See [[Leucotomy]] and [[Salad]].`,
+Keep files encyclopedic: identity, damage, work, and what happens if work fails. Mark spoilers if a page walks through a full suppression.`,
     },
     {
       title: "Salad's leucotomy branches",
@@ -168,9 +166,7 @@ The name **leucotomy** in the title is the medical joke the facility is built on
 
 ## 文风
 
-档案写成词条：它是谁、什么伤害、哪种工作、工作失败会怎样。如果一篇是完整镇压力流程，请标明剧透。
-
-标题里的 **leucotomy** 是设施建立其上的医学梗。见 [[Leucotomy]] 与 [[Salad]]。`,
+档案写成词条：它是谁、什么伤害、哪种工作、工作失败会怎样。如果一篇是完整镇压力流程，请标明剧透。`,
     }
   ),
   page(
@@ -198,10 +194,10 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
 
 ## Files
 
-* [[Qe]] — H-01-0, TETH. Red 14. EGO: Fusion.
-* [[Imaginary Friend]] — H-02-0, ALEPH (sealed Remedic / WAW). Red 32. EGO: Mimesis.
-* [[folagerlak]] — S-03-0, WAW. Black 32. No EGO yet.
-* [[Unyielding Pale Flower]] — O-04-0, WAW. Red 6–8. EGO: Cherished Love. Submitted by 日照野田.
+* [[Qe]] — H-01-0, TETH. Red. EGO: Fusion.
+* [[Imaginary Friend]] — H-02-0, ALEPH (sealed Remedic / WAW). Red. EGO: Mimesis.
+* [[folagerlak]] — S-03-0, WAW. Black. No EGO yet.
+* [[Unyielding Pale Flower]] — O-04-0, WAW. Red. EGO: Cherished Love. Submitted by 日照野田.
 
 ## Related
 
@@ -232,10 +228,10 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
 
 ## 档案
 
-* [[Qe]] — H-01-0，TETH。红伤 14。EGO：融合。
-* [[Imaginary Friend|幻想朋友]] — H-02-0，ALEPH（密封医骸 / WAW）。红伤 32。EGO：拟生。
-* [[folagerlak]] — S-03-0，WAW。黑伤 32。暂无 EGO。
-* [[Unyielding Pale Flower|不屈苍花]] — O-04-0，WAW。红伤 6–8。EGO：怀爱。投稿：日照野田。
+* [[Qe]] — H-01-0，TETH。红伤。EGO：融合。
+* [[Imaginary Friend|幻想朋友]] — H-02-0，ALEPH（密封医骸 / WAW）。红伤。EGO：拟生。
+* [[folagerlak]] — S-03-0，WAW。黑伤。暂无 EGO。
+* [[Unyielding Pale Flower|不屈苍花]] — O-04-0，WAW。红伤。EGO：怀爱。投稿：日照野田。
 
 ## 相关
 
@@ -253,20 +249,13 @@ See [[Help:Editing]] for the full abnormality template. Structured files (portra
         { label: "Code", value: "H-01-0" },
         { label: "Risk", value: "TETH" },
         { label: "Mood", value: "3" },
-        { label: "Damage", value: "[[Red damage]] 14" },
+        { label: "Damage", value: "[[Red damage]]" },
         { label: "EGO", value: "Fusion / 融合" },
         { label: "Submitter", value: "[[Salad]]" },
       ]),
-      content: `H-01-0 **Qe** is a TETH abnormality. The readable sheet on this page is synced from the game's English content file.
+      content: `H-01-0 **Qe** is a TETH abnormality.
 
-* Code: H-01-0
-* Risk: TETH
-* Mood max: 3
-* Work damage: [[Red damage]] 14 (Mental)
-* EGO: Fusion (融合) · gift Bone Spike (骨刺)
-* Personality: Curious · Obsessive, Selfish
-
-See [[Abnormalities]], [[Red damage]], [[Work]].`,
+Containment sheet (portrait, Mood, work, E.G.O) is on this page. See [[Abnormalities]], [[Red damage]], [[Work]].`,
     },
     {
       title: "Qe",
@@ -275,20 +264,13 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
         { label: "编号", value: "H-01-0" },
         { label: "危险等级", value: "TETH" },
         { label: "情绪", value: "3" },
-        { label: "伤害", value: "[[Red damage|红伤]] 14" },
+        { label: "伤害", value: "[[Red damage|红伤]]" },
         { label: "EGO", value: "融合" },
         { label: "投稿者", value: "[[Salad]]" },
       ]),
-      content: `H-01-0 **Qe** 为 TETH 异想体。本页分栏表格与游戏英文本对齐。
+      content: `H-01-0 **Qe** 为 TETH 异想体。
 
-* 编号：H-01-0
-* 危险等级：TETH
-* 情绪上限：3
-* 作业伤害：[[Red damage|红伤]] 14（精神）
-* EGO：融合 · 饰品骨刺
-* 性格：好奇 · 执着、自私
-
-见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]。`,
+收容档案（立绘、情绪、工作、E.G.O）见本页分栏。见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]。`,
     }
   ),
   page(
@@ -300,20 +282,13 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
         { label: "Code", value: "H-02-0" },
         { label: "Risk", value: "ALEPH (sealed: Remedic / WAW)" },
         { label: "Mood", value: "2" },
-        { label: "Damage", value: "[[Red damage]] 32" },
+        { label: "Damage", value: "[[Red damage]]" },
         { label: "EGO", value: "Mimesis / Pseudo-Life / You found me" },
         { label: "Submitter", value: "[[Salad]]" },
       ]),
       content: `H-02-0 **Imaginary Friend** (幻想朋友). Before an Agent claims the gift **You found me**, Introduce shows **Remedic** (医骸) at WAW.
 
-* Code: H-02-0
-* Revealed risk: ALEPH · Sealed: Remedic / WAW
-* Mood max: 2
-* Work damage: [[Red damage]] 32
-* EGO: Mimesis (weapon), Pseudo-Life (suit), You found me (gift)
-* Personality: Compassionate · Innocent, Remorse
-
-See [[Abnormalities]], [[Red damage]], [[Work]].`,
+Containment sheet is on this page. See [[Abnormalities]], [[Red damage]], [[Work]].`,
     },
     {
       title: "幻想朋友",
@@ -322,20 +297,13 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
         { label: "编号", value: "H-02-0" },
         { label: "危险等级", value: "ALEPH（密封：医骸 / WAW）" },
         { label: "情绪", value: "2" },
-        { label: "伤害", value: "[[Red damage|红伤]] 32" },
+        { label: "伤害", value: "[[Red damage|红伤]]" },
         { label: "EGO", value: "拟生 / You found me" },
         { label: "投稿者", value: "[[Salad]]" },
       ]),
       content: `H-02-0 **幻想朋友**。在员工获得饰品 **You found me** 之前，图鉴显示 **医骸**（WAW）。
 
-* 编号：H-02-0
-* 揭示危险等级：ALEPH · 密封：医骸 / WAW
-* 情绪上限：2
-* 作业伤害：[[Red damage|红伤]] 32
-* EGO：拟生（武器）、Pseudo-Life（套装）、You found me（饰品）
-* 性格：慈悲 · 天真、悔恨
-
-见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]。`,
+收容档案见本页分栏。见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]。`,
     }
   ),
   page(
@@ -347,19 +315,13 @@ See [[Abnormalities]], [[Red damage]], [[Work]].`,
         { label: "Code", value: "S-03-0" },
         { label: "Risk", value: "WAW" },
         { label: "Mood", value: "4" },
-        { label: "Damage", value: "[[Black damage]] 32" },
+        { label: "Damage", value: "[[Black damage]]" },
         { label: "EGO", value: "—" },
         { label: "Submitter", value: "[[Salad]]" },
       ]),
       content: `S-03-0 **folagerlak** is a WAW abnormality. No E.G.O has been extracted in the current build.
 
-* Code: S-03-0
-* Risk: WAW
-* Mood max: 4
-* Work damage: [[Black damage]] 32 (Corrosion)
-* Personality: Calm · Patient, Loyal
-
-See [[Abnormalities]], [[Black damage]], [[Work]].`,
+Containment sheet is on this page. See [[Abnormalities]], [[Black damage]], [[Work]].`,
     },
     {
       title: "folagerlak",
@@ -368,19 +330,13 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
         { label: "编号", value: "S-03-0" },
         { label: "危险等级", value: "WAW" },
         { label: "情绪", value: "4" },
-        { label: "伤害", value: "[[Black damage|黑伤]] 32" },
+        { label: "伤害", value: "[[Black damage|黑伤]]" },
         { label: "EGO", value: "—" },
         { label: "投稿者", value: "[[Salad]]" },
       ]),
       content: `S-03-0 **folagerlak** 为 WAW 异想体。当前版本尚未提取 E.G.O。
 
-* 编号：S-03-0
-* 危险等级：WAW
-* 情绪上限：4
-* 作业伤害：[[Black damage|黑伤]] 32（侵蚀）
-* 性格：冷静 · 耐心、忠诚
-
-见 [[Abnormalities|异想体]]、[[Black damage|黑伤]]、[[Work|工作]]。`,
+收容档案见本页分栏。见 [[Abnormalities|异想体]]、[[Black damage|黑伤]]、[[Work|工作]]。`,
     }
   ),
   page(
@@ -392,23 +348,13 @@ See [[Abnormalities]], [[Black damage]], [[Work]].`,
         { label: "Code", value: "O-04-0" },
         { label: "Risk", value: "WAW" },
         { label: "Mood", value: "4" },
-        { label: "Damage", value: "[[Red damage]] 6–8" },
+        { label: "Damage", value: "[[Red damage]]" },
         { label: "EGO", value: "Cherished Love / 怀爱" },
         { label: "Submitter", value: "日照野田" },
       ]),
       content: `O-04-0 **Unyielding Pale Flower** (不屈苍花) is a WAW abnormality. Fan submission by **日照野田**.
 
-* Code: O-04-0
-* Risk: WAW
-* Mood max (Qliphoth): 4
-* Work damage: [[Red damage]] 6–8
-* Energy: Bad 0–9 · Normal 10–15 · Good 16–21
-* EGO: Cherished Love (怀爱) — spear, suit (craft once), ALEPH corrosion, gift Pale Eye (苍瞳)
-* Personality: Compassionate (仁慈) · Greedy, Arrogant
-
-See the structured sheet on this page for managerial guidelines, traits (Resurrection), and EGO details.
-
-See [[Abnormalities]], [[Red damage]], [[Work]], [[Compassionate]].`,
+Containment sheet (guidelines, traits, E.G.O) is on this page. See [[Abnormalities]], [[Red damage]], [[Work]], [[Compassionate]].`,
     },
     {
       title: "不屈苍花",
@@ -417,23 +363,13 @@ See [[Abnormalities]], [[Red damage]], [[Work]], [[Compassionate]].`,
         { label: "编号", value: "O-04-0" },
         { label: "危险等级", value: "WAW" },
         { label: "情绪", value: "4" },
-        { label: "伤害", value: "[[Red damage|红伤]] 6–8" },
+        { label: "伤害", value: "[[Red damage|红伤]]" },
         { label: "EGO", value: "怀爱" },
         { label: "投稿者", value: "日照野田" },
       ]),
       content: `O-04-0 **不屈苍花**（Unyielding Pale Flower）为 WAW 异想体。投稿者：**日照野田**。
 
-* 编号：O-04-0
-* 危险等级：WAW
-* 情绪上限（逆卡巴拉）：4
-* 作业伤害：[[Red damage|红伤]] 6–8
-* 能源：坏 0–9 · 良 10–15 · 优 16–21
-* EGO：怀爱 — 长矛、西装（仅可制作一次）、ALEPH 侵蚀、饰品苍瞳
-* 性格：仁慈 · 贪婪、傲慢
-
-管理需知、特性（复活）与 EGO 细节见本页结构化档案。
-
-见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]、[[Compassionate|仁慈]]。`,
+收容档案（管理需知、特性、E.G.O）见本页分栏。见 [[Abnormalities|异想体]]、[[Red damage|红伤]]、[[Work|工作]]、[[Compassionate|仁慈]]。`,
     }
   ),
   page(
@@ -1108,7 +1044,7 @@ The English page title stays **Attachment** so links stay stable. In this game t
 
 ![Salad](/creators/salad.png)
 
-Salad owns the design and direction of the Roblox facility. The title carries this name; see also [[Leucotomy]] and [[Branches]] for the medical joke in the full title.
+Salad owns the design and direction of the Roblox facility.
 
 ## See also
 
@@ -1128,7 +1064,7 @@ Salad owns the design and direction of the Roblox facility. The title carries th
 
 ![Salad](/creators/salad.png)
 
-Salad 负责这款 Roblox 设施的设计与统筹。游戏标题带了这个名字；医学梗见 [[Leucotomy]] 与 [[Branches]]。
+Salad 负责这款 Roblox 设施的设计与统筹。
 
 ## 参见
 
@@ -1723,53 +1659,34 @@ Flow 负责设施相关的动画。游戏总作者见 [[Salad]]；曲师见 [[St
     }
   ),
   page(
-    "Leucotomy",
-    {
-      title: "Leucotomy",
-      categories: ["Help"],
-      infobox: box("Leucotomy", "Name of the cut", [
-        { label: "Also called", value: "White-matter cut" },
-        { label: "Game", value: "[[Salad's leucotomy branches]]" },
-      ]),
-      content: `**Leucotomy** (a historical cut through white matter) is the medical joke in the title of [[Salad's leucotomy branches]]. The Roblox facility is a Lobotomy Corporation fan work: employees open, contain, and work [[Abnormalities]] rather than performing a lecture on surgery.
-
-Describe in-game operations on the pages that use them. This article only names the title's cut.`,
-    },
-    {
-      title: "白质切开",
-      categories: ["Help"],
-      infobox: box("Leucotomy", "标题里的那一刀", [
-        { label: "也称", value: "白质切开" },
-        { label: "游戏", value: "[[Salad's leucotomy branches]]" },
-      ]),
-      content: `**Leucotomy**（历史上指切开脑白质）是 [[Salad's leucotomy branches]] 标题里的医学梗。这款 Roblox 设施是脑叶公司同人：员工打开、收容、工作 [[Abnormalities|异想体]]，而不是上手术课。
-
-游戏里的具体操作写在用到它的页面。本条只点明标题中的那一刀。`,
-    }
-  ),
-  page(
     "Branches",
     {
       title: "Branches",
-      categories: ["Help"],
+      categories: ["Basics"],
       infobox: box("Branches", "Facility wings", [
         { label: "Part of", value: "[[Salad's leucotomy branches]]" },
         { label: "Holds", value: "[[Abnormalities]]" },
       ]),
-      content: `**Branches** are the wings and split corridors of the facility. Name a branch when the game does (a department, a wing, a containment hall). Do not invent a numbered ending list.
+      content: `**Branches** are the wings and corridors of the facility in [[Salad's leucotomy branches]]. Departments and containment halls that the game names belong here.
 
-Abnormality files should say where a being is held if the game shows a location.`,
+## See also
+
+* [[Abnormalities]]
+* [[Salad's leucotomy branches]]`,
     },
     {
       title: "分支",
-      categories: ["Help"],
+      categories: ["Basics"],
       infobox: box("分支", "设施侧翼", [
         { label: "属于", value: "[[Salad's leucotomy branches]]" },
         { label: "收容", value: "[[Abnormalities]]" },
       ]),
-      content: `**Branches** 是设施的侧翼和分叉走廊。游戏有名字再写（部门、侧翼、收容厅）。不要编一套编号结局表。
+      content: `**Branches（分支）** 是 [[Salad's leucotomy branches]] 设施里的侧翼与走廊。游戏有名字的部门、收容厅归入此类。
 
-异想体档案在游戏有显示位置时，写清关在哪。`,
+## 参见
+
+* [[Abnormalities|异想体]]
+* [[Salad's leucotomy branches]]`,
     }
   ),
   page(
@@ -2064,15 +1981,30 @@ Browse the board: [[Category:Personalities]].`,
   ),
   page("The_Q", {
     title: "The Q",
-    categories: ["Help"],
+    categories: ["Basics"],
     infobox: box("The Q", "Emblem", [
       { label: "Form", value: "Brain inside a Q-shaped mark" },
       { label: "Used in", value: "[[Salad's leucotomy branches]]" },
-      { label: "Chinese", value: "Not translated yet — this page tests fallback" },
     ]),
-    content: `**The Q** is the mark of [[Salad's leucotomy branches]]: a red brain seated in a white Q. It is the icon of the wiki and the game.
+    content: `**The Q** is the emblem of [[Salad's leucotomy branches]]: a red brain seated in a white Q. It appears as the facility mark on this wiki and in the game.
 
-This article has **no Chinese translation** on purpose. Switch the header to 中文 and you should still see this English text, with a notice that English is being used as fallback.`,
+## See also
+
+* [[Salad's leucotomy branches]]
+* [[Creators]]`,
+  }, {
+    title: "The Q",
+    categories: ["Basics"],
+    infobox: box("The Q", "徽章", [
+      { label: "形态", value: "白 Q 里的红色脑" },
+      { label: "用于", value: "[[Salad's leucotomy branches]]" },
+    ]),
+    content: `**The Q** 是 [[Salad's leucotomy branches]] 的徽章：白色 Q 形标记中嵌着红色大脑。本站与游戏设施标识都会用到它。
+
+## 参见
+
+* [[Salad's leucotomy branches]]
+* [[Creators|创作者]]`,
   }),
   page(
     "Help:Editing",
